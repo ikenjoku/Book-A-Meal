@@ -1,0 +1,28 @@
+.container {
+    display: grid;
+    /* grid-template-columns: repeat(12, 1fr); */
+    grid-template-rows: 60px calc(100vh - 120px) 60px;
+}
+
+.header {
+    background-color: #ea5b31;
+    color: #ffffff;
+    grid-column: 1/-1;
+    display: flex;
+}
+
+.header>a:nth-child(2) {
+    margin-left: auto;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    background-color: #363535;
+    grid-column: 1/-1;
+}
