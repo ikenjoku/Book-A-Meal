@@ -4,6 +4,31 @@
     grid-template-rows: 60px calc(100vh - 120px) 60px;
 }
 
+.container-wrap {
+    /* background-image: url("../img/homepage-splash.jpg");
+    background-size: cover;
+    background-position: center; */
+    /* opacity: 0.4; */
+    /* position: relative; */
+    position: relative;
+    overflow: hidden;
+}
+
+.container-wrap div {
+    padding: 200px;
+    position: relative;
+    z-index: 2;
+}
+
+.container-wrap img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    opacity: 0.3;
+}
+
 .header {
     grid-column: 1/-1;
     display: flex;
@@ -43,6 +68,7 @@
     max-width: 740px;
     padding: 20px;
     text-align: center;
+    opacity: 1;
 }
 
 #welcomeContent p {
@@ -70,6 +96,22 @@
     border-radius: 2px;
     transition: all 0.3s ease 0s;
 }
+
+
+/* .btn-hero {
+    background: none;
+    border-color: white;
+    text-decoration: none;
+    font-size: 1.750em;
+    color: #ffffff;
+    padding: 15px 30px;
+}
+
+.btn-hero:hover {
+    font-size: 1.750em;
+    background-color: #ffffff;
+    color: #39b54a;
+} */
 
 .footer {
     background-color: #363535;
