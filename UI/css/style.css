@@ -169,6 +169,59 @@
 
 /* ******************************* */
 
+
+/* ***********manage-meal-page******************** */
+
+.contain-form {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+}
+
+.add-meal-form {
+    grid-column: 2/3;
+}
+
+.manage-meals-content {
+    background-color: #ffffff;
+}
+
+.contain-table-headers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    font-weight: bold;
+}
+
+.meal-table-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.meal-table-item-img img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 78px;
+    max-height: 78px;
+    margin: 0 auto;
+}
+
+.pad-btn {
+    padding: 10px;
+    text-decoration: none;
+}
+
+#all-meal-table {
+    padding: 20px 20px;
+}
+
+#all-meal-table h3 {
+    color: #20ac76;
+    font-size: 35px;
+}
+
+
+/* ******************************* */
+
 #welcomeContent {
     max-width: 740px;
     padding: 20px;
@@ -184,6 +237,12 @@
     background: #20ac76;
     border-color: #8DC63F;
     color: white;
+}
+
+.btn-danger {
+    background-color: #a30303;
+    color: #ffffff;
+    border-color: #cf4332;
 }
 
 .btn {

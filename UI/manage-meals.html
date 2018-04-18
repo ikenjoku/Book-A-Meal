@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book-A-Meal</title>
+    <link rel="stylesheet" href="./css/basic.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="contain-page">
+        <nav class="header-primary header">
+            <a href="index.html" class="nav-link">Book-A-Meal</a>
+            <a href="login.html" class="nav-link">Login</a>
+            <a href="#" class="nav-link">Admin</a>
+        </nav>
+        <main class="manage-meals-content">
+            <h2 class="center">Manage Meals</h2>
+            <h3 class="center">Add a Meal</h3>
+            <div class="contain-form">
+                <form action="#all-meal-table" class="add-meal-form">
+                    <div class="center">
+                        <input class="input-field control" type="text" name="mealname" placeholder="Meal Name">
+                    </div>
+                    <div class="center">
+                        <input class="input-field control" type="text" name="shortdesc" placeholder="Short Description">
+                    </div>
+                    <div class="center">
+                        <input class="input-field control" type="number" name="price" placeholder="Price">
+                    </div>
+                    <div class="center">
+                        <input class="input-field control" type="text" name="img-upload" placeholder="Category">
+                    </div>
+                    <div class="center">
+                        <input class="input-field control" type="file" name="img-upload" placeholder="image">
+                    </div>
+                    <div class="center">
+                        <input type="submit" class="btn btn-nature submitBtn" value="Add Meal">
+                    </div>
+                </form>
+            </div>
+            <div id="all-meal-table">
+                <h3>All Meal List</h3>
+                <div class="contain-table-headers">
+                    <p>Image</p>
+                    <p>Name</p>
+                    <p>Category</p>
+                    <p>Description</p>
+                    <p>Price</p>
+                    <p>Actions</p>
+                </div>
+                <div class="meal-table">
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\Jollofrice+plantain+turkey+coke.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Party Rice</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Assorted </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N850</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\coke.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Coke</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Drink </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N300</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\Ugwu-Archi.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Ugwu Archie</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Soup </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N1400</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\Utazi.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Utazi</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Soup </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N1400</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\sprite.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Sprite</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Drink </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N250</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\egusi.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Egusi</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Soup </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N1100</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\saucedturkey.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Extra Turkey</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Assorted </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N500</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\fanta.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Fanta</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Drink </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N300</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\boiledegg.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Boiled Egg</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Soup </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N100</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\semo-egusi.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Egusi Semo</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Soup </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+
+                        <div class="meal-table-item-price">
+                            <p>N1400</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+                    <div class="meal-table-item">
+                        <div class="meal-table-item-img">
+                            <img src="img\Rice+beans+plantain+panlasauce+coke.jpg" alt="">
+                        </div>
+                        <div class="meal-table-item-name">
+                            <p>Rice and Beans</p>
+                        </div>
+                        <div class="meal-table-item-cat">
+                            <p>Assorted </p>
+                        </div>
+                        <div class="meal-table-item-desc">
+                            <p>Integer ultrices pretium elit ut fermentum. Mauris congue </p>
+                        </div>
+                        <div class="meal-table-item-price">
+                            <p>N1500</p>
+                        </div>
+                        <div class="meal-table-item-action">
+                            <a href="" class="food-add-btn btn-nature pad-btn">Edit</a>
+                            <a href="" class="food-add-btn btn-danger pad-btn">Delete</a>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="center">
+                    <button>Fetch More</button>
+                </div>
+
+            </div>
+        </main>
+        <footer class="footer">
+            <p>Book-A-Meal &copy;2018</p>
+        </footer>
+    </div>
+</body>
+
+</html>
