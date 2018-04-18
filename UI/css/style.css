@@ -3,7 +3,7 @@
     grid-template-rows: 60px calc(100vh - 120px) 60px;
 }
 
-.contain-signup {
+.contain-page {
     display: grid;
     /* grid-template-columns: repeat(12, 1fr); */
     grid-template-rows: 60px auto 60px;
@@ -69,6 +69,106 @@
     justify-content: center;
 }
 
+
+/* ******************************* */
+
+.menu-list-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 5px;
+}
+
+.menu-list {
+    background-color: #ffffff;
+    padding-left: 20px;
+}
+
+.order-summary {}
+
+@media (max-width: 768px) {
+    .menu-list-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+    }
+}
+
+.food-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    padding: 15px 0;
+    border-bottom: #ededed 1px solid
+}
+
+.food-item .food-title-desc p {
+    margin: 0px auto;
+}
+
+.food-item .food-title-desc .food-item-title {
+    font-weight: 600;
+}
+
+.food-item .food-title-desc .food-item-detail {
+    font-weight: 100;
+    color: grey;
+}
+
+.food-item .food-item-price {
+    font-weight: bold;
+}
+
+.food-add-btn {
+    border-radius: 50px;
+    outline: none
+}
+
+.categories .food-item img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 78px;
+    max-height: 78px;
+    margin: 0 auto;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr
+}
+
+.order-summary-wrap {
+    background-color: #ffffff;
+    padding: 20px 10px
+}
+
+.order-summary h4 {
+    color: #20ac76;
+    font-size: 25px;
+    border-bottom: #ededed 1px solid
+}
+
+.order-total-price span {
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.order-total-price {
+    font-weight: 600;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.order-item {
+    margin-bottom: 10px;
+}
+
+#orderBtn {
+    margin-top: 20px;
+}
+
+
+/* ******************************* */
+
 #welcomeContent {
     max-width: 740px;
     padding: 20px;
@@ -101,22 +201,6 @@
     border-radius: 2px;
     transition: all 0.3s ease 0s;
 }
-
-
-/* .btn-hero {
-    background: none;
-    border-color: white;
-    text-decoration: none;
-    font-size: 1.750em;
-    color: #ffffff;
-    padding: 15px 30px;
-}
-
-.btn-hero:hover {
-    font-size: 1.750em;
-    background-color: #ffffff;
-    color: #39b54a;
-} */
 
 .control {
     font-size: 16px;
