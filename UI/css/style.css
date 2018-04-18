@@ -70,7 +70,7 @@
 }
 
 
-/* ******************************* */
+/* ***********menu-list-page******************** */
 
 .menu-list-content {
     display: grid;
@@ -222,6 +222,58 @@
 
 /* ******************************* */
 
+
+/* *************set-menu-page****************** */
+
+.set-menu-content {
+    background-color: #ffffff;
+}
+
+.set-menu-category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: dashed 1px grey;
+    border-radius: 3px;
+    margin: 10px 20px;
+    padding-left: 10px;
+}
+
+.set-menu-header {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.set-menu-cat-hearders {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.set-menu-meals select {
+    color: grey;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    height: 30px;
+    width: 205px;
+    outline: none;
+    margin-top: 16px;
+}
+
+.set-menu-meals input {
+    margin: 0px;
+    height: 30px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #20ac76;
+    color: #ffffff;
+}
+
+.set-menu-add-meal li {
+    line-height: 40px;
+}
+
+
+/* ******************************* */
+
 #welcomeContent {
     max-width: 740px;
     padding: 20px;
@@ -282,7 +334,7 @@
     margin-bottom: 10px
 }
 
-form {
+.formDesign {
     min-width: 400px;
     background-color: white;
     padding: 20px 0;
