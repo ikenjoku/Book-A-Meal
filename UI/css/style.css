@@ -1,7 +1,12 @@
 .container {
     display: grid;
-    /* grid-template-columns: repeat(12, 1fr); */
     grid-template-rows: 60px calc(100vh - 120px) 60px;
+}
+
+.contain-signup {
+    display: grid;
+    /* grid-template-columns: repeat(12, 1fr); */
+    grid-template-rows: 60px auto 60px;
 }
 
 .container-wrap {
@@ -145,7 +150,7 @@ form {
     color: white;
 }
 
-#submitBtn {
+.submitBtn {
     width: 279px;
 }
 
