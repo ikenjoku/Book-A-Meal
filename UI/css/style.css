@@ -83,8 +83,6 @@
     padding-left: 20px;
 }
 
-.order-summary {}
-
 @media (max-width: 768px) {
     .menu-list-content {
         display: grid;
@@ -267,7 +265,7 @@
     font-size: 20px;
 }
 
-.set-menu-meals select {
+.input-field-control {
     color: grey;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
@@ -277,7 +275,7 @@
     margin-top: 16px;
 }
 
-.set-menu-meals input {
+.input-btn-control {
     margin: 0px;
     height: 30px;
     border-bottom-right-radius: 5px;
@@ -288,6 +286,46 @@
 
 .set-menu-add-meal li {
     line-height: 40px;
+}
+
+
+/* ******************************* */
+
+
+/* *************order-history-page****************** */
+
+.order-history-content {
+    background-color: #ffffff;
+    padding: 0px 20px 50px 20px;
+}
+
+.order-table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.order-table-body-row:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+.order-table-body-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-left: 10px;
+}
+
+.order-tbody-summary-row {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.order-tbody-summary-row>p {
+    margin: 0px;
+}
+
+.order-history-title {
+    color: #20ac76;
+    font-size: 35px;
 }
 
 
