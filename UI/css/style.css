@@ -166,6 +166,12 @@
     margin-top: 20px;
 }
 
+.order-cancel-x {
+    color: #a30303;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 
 /* ******************************* */
 
@@ -219,6 +225,11 @@
     font-size: 35px;
 }
 
+#setMenuBtn {
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
 
 /* ******************************* */
 
@@ -241,11 +252,19 @@
 .set-menu-header {
     display: grid;
     grid-template-columns: 4fr 1fr;
+    padding-left: 20px;
+}
+
+.set-menu-title {
+    font-size: 20px
 }
 
 .set-menu-cat-hearders {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .set-menu-meals select {
