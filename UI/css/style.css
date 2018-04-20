@@ -250,11 +250,12 @@ nav {
     padding-left: 10px;
 }
 
-.set-menu-header {
+
+/* .set-menu-header {
     display: grid;
     grid-template-columns: 4fr 1fr;
     padding-left: 20px;
-}
+} */
 
 .set-menu-title {
     font-size: 20px
