@@ -402,9 +402,31 @@ nav {
 }
 
 .formDesign {
-    min-width: 400px;
+    width: 400px;
     background-color: white;
     padding: 20px 0;
+}
+
+@media (max-width:400px) {
+    .input-field {
+        height: 40px;
+        width: 100vw;
+        padding: 6px 10px;
+        line-height: 1.3333333;
+        border-radius: 2px;
+        margin-bottom: 10px
+    }
+    .formDesign {
+        width: 100vw;
+        background-color: white;
+        padding: 20px 0;
+    }
+    .formText {
+        padding-right: 30px;
+    }
+    .extra-lg {
+        font-size: 24px;
+    }
 }
 
 .btn-google {
