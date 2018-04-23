@@ -30,6 +30,7 @@
         "import/prefer-default-export": 0,
         "curly": ["error", "multi-line"],
         "import/no-unresolved": "off",
+        "import/no-extraneous-dependencies": "off",
         "import/extensions": "off",
         "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
         "react/jsx-uses-react": "error",
