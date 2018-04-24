@@ -1,4 +1,3 @@
-// import { readJsonFile } from '../modules/meals';
 import path from 'path';
 import fs from 'fs';
 const meal = path.join(__dirname, '/data/meals.json');
