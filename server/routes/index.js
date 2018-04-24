@@ -1,5 +1,5 @@
 const mealController = require('../controllers').meals;
-const menuController = require('..controllers').menu;
+const menuController = require('../controllers').menu;
 
 module.exports = (app) => {
     app.get('/api/v1', (req, res) => res.status(200).send({
