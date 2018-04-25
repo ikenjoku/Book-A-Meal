@@ -6,4 +6,6 @@ const ordersRouter = express.Router();
 ordersRouter.get('/', orderController.listOrders);
 ordersRouter.post('/', orderController.createOrder);
 
-ordersRouter.put('/api/v1/orders/:orderId', orderController.updateOrder);
+ordersRouter.put('/:orderId', orderController.updateOrder);
+
+export default ordersRouter;

@@ -15,7 +15,7 @@ class MealsController extends IndexController {
       });
     }
     Meal.push({
-      id: Meal[Meal.length - 1] + 1,
+      id: Meal[Meal.length - 1].id + 1,
       name,
       description,
       imageurl,
@@ -29,7 +29,7 @@ class MealsController extends IndexController {
   }
 
   static updateMeal(req, res) {
-    const mealIndex = Meal.findIndex(meal => meal.id === req.params.id);
+    const mealIndex = Meal.findIndex(meal => meal.id === Number(req.params.mealId));
     if (mealIndex === -1) {
       return res.status(404).send({
         message: 'Meal Not Found',
@@ -40,8 +40,8 @@ class MealsController extends IndexController {
     return res.status(200).send(updatedMeal);
   }
 
-  static destroy(req, res) {
-    const mealIndex = Meal.findIndex(meal => meal.id === req.params.id);
+  static destroyMeal(req, res) {
+    const mealIndex = Meal.findIndex(meal => meal.id === Number(req.params.mealId));
     if (mealIndex === -1) {
       return res.status(404).send({
         message: 'Meal Not Found',

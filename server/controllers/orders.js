@@ -11,11 +11,11 @@ class OrdersController extends IndexController {
     } = req.body;
     if (!customerId || !date || !amount || !meals) {
       res.status(400).send({
-        message: 'Ooops ! Somehting is not right.',
+        message: 'Ooops! Something is not right.',
       });
     }
     Order.push({
-      id: Order[Order.length - 1] + 1,
+      id: Order[Order.length - 1].id + 1,
       customerId,
       date,
       meals,
@@ -29,7 +29,7 @@ class OrdersController extends IndexController {
   }
 
   static updateOrder(req, res) {
-    const orderIndex = Order.findIndex(order => order.id === req.params.orderId);
+    const orderIndex = Order.findIndex(order => order.id === Number(req.params.orderId));
     if (orderIndex === -1) {
       return res.status(404).send({
         message: 'Order Not Found',

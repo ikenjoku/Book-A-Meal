@@ -1,10 +1,5 @@
-const meals = require('./meals.js');
-const menu = require('./menu.js');
-const orders = require('./orders.js');
+class indexController {
 
-
-module.exports = {
-    meals,
-    menu,
-    orders,
 }
+
+export default indexController;

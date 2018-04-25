@@ -5,3 +5,5 @@ const menuRouter = express.Router();
 
 menuRouter.get('/', menuController.listMenu);
 menuRouter.post('/', menuController.createMenu);
+
+export default menuRouter;
