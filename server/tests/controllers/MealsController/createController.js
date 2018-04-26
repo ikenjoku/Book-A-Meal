@@ -23,7 +23,7 @@ const wrongRequest = {
   body: {
     name: 'Indain Japatti',
     description: 'Creamy spicy hot',
-    img: 'hhtp://assa.sdsddd',
+    imageurl: 'hhtp://assa.sdsddd',
   },
 };
 
