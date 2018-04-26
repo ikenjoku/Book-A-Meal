@@ -43,6 +43,13 @@ describe('updateMeal method', () => {
     res.status.should.have.been.calledWith(200);
   });
 
+  it('should update meal with specified mealId', () => {
+    MealsController.updateMeal(req, res);
+    const updatedMealIndex = Meals.findIndex(meal => meal.name === req.body.name);
+    updatedMealIndex.should.have.been.above(-1);
+  });
+
+
   it('should return 404 if no meal with specified mealId', () => {
     const wrongReq = mockReq(badRequest);
     MealsController.updateMeal(wrongReq, res);
