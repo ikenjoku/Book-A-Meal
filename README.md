@@ -29,7 +29,6 @@ Book-A-Meal is an application that allows customers to make food orders and help
 
 ## Getting Started
 
-```markdown
 
 #### Project Management
 Pivotal Tracker is used as Project Management Tool.
@@ -42,7 +41,6 @@ Project template is hosted on GitHub Pages. Please [click here](https://ikenjoku
 
 For server-side tests, run `npm test`
 
-```
 ---
 
 #### Acknowledgments
@@ -54,4 +52,3 @@ For server-side tests, run `npm test`
 #### License
 
 MIT License
-
