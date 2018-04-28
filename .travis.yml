@@ -9,6 +9,7 @@ addons:
 
 env:
   - NODE_ENV=test
+  - CC_TEST_REPORTER_ID=3d1286d56974379a927f71a0a6f79c2fe409a9e9ca82810dffd4baaa325d1fed
 
 before_script:
   - chmod 0777 ./node_modules/.bin/mocha

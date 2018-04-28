@@ -4,7 +4,8 @@
     "description": "A simple food vendor app",
     "main": "app.js",
     "scripts": {
-        "start": "nodemon server/bin/www.js --exec babel-node",
+        "start": "babel-node server/bin/www.js",
+        "start:dev": "nodemon server/bin/www.js --exec babel-node",
         "test": "NODE_ENV=test nyc mocha server/tests --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
         "server:lint": "eslint \"server/**/*.js\" app.js --fix",
         "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
