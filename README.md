@@ -4,6 +4,7 @@
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ikenjoku/Book-A-Meal/badge.svg?branch=157118291-chore-hound-travis-coverall)](https://coveralls.io/github/ikenjoku/Book-A-Meal?branch=157118291-chore-hound-travis-coverall)
 [![Build Status](https://travis-ci.org/ikenjoku/Book-A-Meal.svg?branch=157118291-chore-hound-travis-coverall)](https://travis-ci.org/ikenjoku/Book-A-Meal)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8e5a45961bc5c768c684/maintainability)](https://codeclimate.com/github/ikenjoku/Book-A-Meal/maintainability)
 
 ## A Food Vendor App
 
