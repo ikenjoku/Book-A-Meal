@@ -1,8 +1,7 @@
-import IndexController from './index';
 import Meal from '../model-mocks/meals';
 
-class MealsController extends IndexController {
-  static createMeal(req, res) {
+const MealsController = {
+  createMeal(req, res) {
     const {
       name,
       description,
@@ -22,13 +21,13 @@ class MealsController extends IndexController {
     });
     const newMealIndex = Meal.findIndex(meal => meal.name === req.body.name);
     return res.status(201).send(Meal[newMealIndex]);
-  }
+  },
 
-  static listMeals(req, res) {
+  listMeals(req, res) {
     return res.status(200).send(Meal);
-  }
+  },
 
-  static updateMeal(req, res) {
+  updateMeal(req, res) {
     const mealIndex = Meal.findIndex(meal => meal.id === Number(req.params.mealId));
     if (mealIndex === -1) {
       return res.status(404).send({
@@ -38,9 +37,9 @@ class MealsController extends IndexController {
     const updatedMeal = { ...Meal[mealIndex], ...req.body };
     Meal.splice(mealIndex, 1, updatedMeal);
     return res.status(200).send(updatedMeal);
-  }
+  },
 
-  static destroyMeal(req, res) {
+  removeMeal(req, res) {
     const mealIndex = Meal.findIndex(meal => meal.id === Number(req.params.mealId));
     if (mealIndex === -1) {
       return res.status(404).send({
@@ -49,7 +48,7 @@ class MealsController extends IndexController {
     }
     Meal.splice(mealIndex, 1);
     return res.status(204).send();
-  }
-}
+  },
+};
 
 export default MealsController;

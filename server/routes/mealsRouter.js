@@ -7,6 +7,6 @@ mealsRouter.get('/', mealController.listMeals);
 mealsRouter.post('/', mealController.createMeal);
 
 mealsRouter.put('/:mealId', mealController.updateMeal);
-mealsRouter.delete('/:mealId', mealController.destroyMeal);
+mealsRouter.delete('/:mealId', mealController.removeMeal);
 
 export default mealsRouter;
