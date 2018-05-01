@@ -1,2 +1,8 @@
+
+# dependencies
+
 node_modules/
-.nyc_output
+
+# testing
+
+/.nyc_output
