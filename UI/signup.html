@@ -11,42 +11,41 @@
 </head>
 
 <body>
-    <div class="contain-page">
+    <div class="contain-signup-page">
         <nav class="header-primary header">
             <a href="index.html" class="brand-link extra-lg">Book-A-Meal</a>
             <a href="login.html" class="nav-link">Login</a>
             <a href="menu-list.html" class="nav-link">Menu</a>
         </nav>
         <main class="content">
-            <form class="formDesign" action="index.html">
+            <form class="formDesign signupform" action="index.html">
                 <h2 class="center">Sign In</h2>
-                <div class="center">
-                    <input class="input-field control" type="text" name="firstname" placeholder="First Name">
-                </div>
-                <div class="center">
-                    <input class="input-field control" type="text" name="lastname" placeholder="Last Name">
-                </div>
-                <div class="center">
-                    <input class="input-field control" type="text" name="username" placeholder="Preferred username">
-                </div>
-                <div class="center">
-                    <input class="input-field control" type="email" name="email" placeholder="Email">
-                </div>
-                <div class="center">
-                    <input class="input-field control" type="password" name="password" placeholder="Password">
-                </div>
-                <div class="center">
-                    <input class="input-field control" type="password" name="confirm-password" placeholder="Confirm password">
-                </div>
-                <div class="center">
-                    <input type="submit" class="btn btn-nature submitBtn" value="submit">
-                </div>
+                <label for="fname">First Name</label>
+                <input class="form-control" type="text" id="email" name="firstname" placeholder="First Name">
+
+                <label for="fname">Last Name</label>
+                <input class="form-control" type="text" id="email" name="firstname" placeholder="Last Name">
+                
+                <label for="fname">Username</label>
+                <input class="form-control" type="text" id="email" name="firstname" placeholder="Username">
+
+                <label for="fname">Email</label>
+                <input class="form-control" type="text" id="email" name="firstname" placeholder="Email">
+
+                <label for="fname">Password</label>
+                <input class="form-control" type="password" id="email" name="firstname" placeholder="Password">
+
+                <label for="fname">Confirm Passsword</label>
+                <input class="form-control" type="password" id="email" name="firstname" placeholder="Confirm Password">
+
+                <input class="btn-control" type="submit" value="Sign up">
+
                 <div class="right formText">
                     <p>Already have an account? <a href="login.html">Log In</a> </p>
                 </div>
             </form>
         </main>
-        <footer class="footer">
+        <footer class="footer signupFooter">
             <p>Book-A-Meal &copy;2018</p>
         </footer>
     </div>

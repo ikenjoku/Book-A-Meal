@@ -17,23 +17,20 @@
             <a href="signup.html" class="nav-link">Signup</a>
             <a href="menu-list.html" class="nav-link">Menu</a>
         </nav>
-        <main class="content">
+        <main class="content contain-login">
             <form class="formDesign" action="index.html">
-                <h2 class="center">Log In</h2>
-                <div class="center">
-                    <input class="input-field control" type="text" name="email" placeholder="Email">
-                </div>
-                <div class="center">
-                    <input class="input-field control" type="password" name="password" placeholder="Password">
-                </div>
-                <div class="center">
-                    <input type="submit" class="btn btn-nature submitBtn" value="submit">
-                </div>
+                <h2 class="center">Welcome</h2>
+
+                <label for="fname">Email</label>
+                <input class="form-control" type="text" id="email" name="firstname" placeholder="Email">
+
+                <label for="fname">First Name</label>
+                <input class="form-control" type="text" id="fname" name="firstname" placeholder="Password">
+
+                <input class="btn-control" type="submit" value="Login">
                 <hr>
-                <div class="center">
-                    <p>OR</p>
-                    <a href="" class="btn btn-google">Sign in with Google</a>
-                </div>
+
+                <a href="" class="formText btn-google">Sign in with Google</a>
                 <div class="right formText">
                     <p>No Account? <a href="signup.html">Sign Up</a> </p>
                     <a href="#">Forgot your password?</a>
