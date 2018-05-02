@@ -239,6 +239,7 @@ nav {
 .meal-table-item {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    border-bottom: #ededed 1px solid
 }
 
 .meal-table-item-img img {
@@ -278,7 +279,9 @@ nav {
     text-decoration: none;
     padding: 10px;
     font-weight: bold;
+    width: 50px;
 }
+
 
 /* ******************************* */
 
