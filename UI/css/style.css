@@ -17,7 +17,7 @@
 .container-wrap div {
     padding: 200px;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .container-wrap img {
@@ -36,6 +36,8 @@
 
 nav {
     font-family: 'Roboto', sans-serif;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .extra-lg {
@@ -71,6 +73,21 @@ nav {
 
 .nav-link:hover {
     border-bottom: #ffffff 3px solid;
+}
+
+.brand-link {
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    transition: text-shadow 0.5s, font-size 0.5s;
+    -webkit-transition: text-shadow 0.5s, font-size 0.5s;
+}
+.brand-link:hover{
+    text-shadow: 0 -3px 0 #333;
+    font-size: 29px;
+
 }
 
 .content {
@@ -126,9 +143,23 @@ nav {
 }
 
 .food-add-btn {
-    border-radius: 50px;
-    outline: none
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
 }
+.food-add-btn:hover {
+    background-color: #20ac76;
+    color: #ffffff;
+}
+
 
 .categories .food-item img {
     display: block;
@@ -219,11 +250,6 @@ nav {
     margin: 0 auto;
 } 
 
-.pad-btn {
-    padding: 10px;
-    text-decoration: none;
-}
-
 #all-meal-table {
     padding: 20px 20px;
 }
@@ -238,6 +264,21 @@ nav {
     margin-bottom: 60px;
 }
 
+.mg-meal-btn{
+    background-color: #20ac76;
+    color: #ffffff;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+}
 
 /* ******************************* */
 
@@ -381,13 +422,14 @@ nav {
 
 #welcomeContent p {
     text-align: justify;
-    font-family: 'Gaegu', cursive;
+    font-family: 'Sans Serif', cursive;
     font-size: 22px;
+    letter-spacing: 1px;
     font-weight: 400;
 }
 
 #welcomeContent h3 {
-    font-family: 'Gaegu', cursive;
+    font-family: 'sans serif', cursive;
     font-size: 35px;
 }
 
@@ -395,6 +437,20 @@ nav {
     background: #20ac76;
     border-color: #8DC63F;
     color: white;
+}
+
+#enter-btn {
+    background-color: #20ac76;
+    border-color: #20ac76;
+    color: white;
+    padding: 10px 60px;
+    font-size: 30px;
+    transition: background-color 0.3s, color 0.3s;
+    -webkit-transition: background-color 0.3s, color 0.3s, padding 0.3s;
+}
+#enter-btn:hover{
+    background-color: #ffffff;
+    color: #20ac76;
 }
 
 .btn-danger {
