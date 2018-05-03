@@ -34,7 +34,7 @@ describe('createOrder method', () => {
       ],
     },
   };
-  
+
   const wrongRequest = {
     body: {
       date: '05-09-2018',
@@ -49,20 +49,20 @@ describe('createOrder method', () => {
       ],
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
   beforeEach(() => {
     OrdersController.createOrder(req, res);
   });
 
-  it('should return 201 on success', () => {
-		 res.status.should.have.been.calledWith(201);
-  });
-
   it('should create new order data', () => {
     const newOrder = Orders.filter(order => order.date === '05-09-2018');
     newOrder.length.should.be.above(0);
+  });
+  
+  it('should return 201 on success', () => {
+		 res.status.should.have.been.calledWith(201);
   });
 
   it('should return error 400 with missing order data fields', () => {
@@ -86,7 +86,7 @@ describe('listOrders method', () => {
     body: {
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
   beforeEach(() => {
@@ -143,7 +143,7 @@ describe('updateOrder method', () => {
       orderId: 15,
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
 
