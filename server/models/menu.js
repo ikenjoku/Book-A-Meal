@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   Menu.associate = (models) => {
     Menu.hasMany(models.Meal, {
+      through: models.JoinTable,
       foreignKey: 'menuId',
-      as: 'Meals',
     });
   };
   return Menu;

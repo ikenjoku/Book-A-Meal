@@ -12,15 +12,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
+    category: {
+      type: DataTypes.ENUM,
+      values: ['combo', 'assorted', 'soup', 'drinks'],
+    },
     imgurl: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   });
   Meal.associate = (models) => {
-    Meal.hasMany(models.Menu, {
+    Meal.belongsToMany(models.Menu, {
+      through: 'JoinTable',
       foreignKey: 'mealId',
-      as: 'menuId',
     });
   };
   return Meal;
