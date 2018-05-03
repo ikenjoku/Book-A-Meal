@@ -1,7 +1,7 @@
 import Order from '../model-mocks/orders';
 
-const OrdersController = {
-  createOrder(req, res) {
+class OrdersController {
+  static createOrder(req, res) {
     const {
       customerId,
       date,
@@ -21,13 +21,13 @@ const OrdersController = {
     });
     const newOrderIndex = Order.findIndex(order => order.customerId === req.body.customerId);
     return res.status(201).send(Order[newOrderIndex]);
-  },
+  }
 
-  listOrders(req, res) {
+  static listOrders(req, res) {
     return res.status(200).send(Order);
-  },
+  }
 
-  updateOrder(req, res) {
+  static updateOrder(req, res) {
     const orderIndex = Order.findIndex(order => order.id === Number(req.params.orderId));
     if (orderIndex === -1) {
       return res.status(404).send({
@@ -37,8 +37,8 @@ const OrdersController = {
     const updatedOrder = { ...Order[orderIndex], ...req.body };
     Order.splice(orderIndex, 1, updatedOrder);
     return res.status(200).send(updatedOrder);
-  },
-};
+  }
+}
 
 export default OrdersController;
 
