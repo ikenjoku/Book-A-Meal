@@ -5,19 +5,19 @@ import app from '../../app';
 chai.use(chaiHttp);
 chai.should();
 
-describe('Route GET /api/v1/menu', () => {
-  it('should return status 200', async () => {
+describe('Route: GET /api/v1/menu', () => {
+  it('should return menu objects', async () => {
     try {
       const res = await chai.request(app).get('/api/v1/menu');
-      res.should.have.status(200);
+      res.body.menus.length.should.be.above(1);
     } catch (err) {
       throw err;
     }
   });
 });
 
-describe('Route POST /api/v1/menu', () => {
-  it('should return status 200', async () => {
+describe('Route: POST /api/v1/menu', () => {
+  it('should add a menu object', async () => {
     try {
       const res = await chai.request(app)
         .post('/api/v1/menu')
@@ -33,13 +33,13 @@ describe('Route POST /api/v1/menu', () => {
           },
           ],
         });
-      res.should.have.status(201);
+      res.body.menu.name.should.equal('test');
     } catch (err) {
       throw err;
     }
   });
 
-  it('should return error 400 with incomplete menu data', async () => {
+  it('should return status code 400 with incomplete menu data', async () => {
     try {
       const res = await chai.request(app)
         .post('/api/v1/menu')

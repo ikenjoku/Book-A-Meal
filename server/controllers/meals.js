@@ -22,11 +22,11 @@ class MealsController {
       imageurl,
     });
     const newMealIndex = Meal.findIndex(meal => meal.name === req.body.name);
-    return res.status(201).send(Meal[newMealIndex]);
+    return res.status(201).send({ meal: Meal[newMealIndex] });
   }
 
   static listMeals(req, res) {
-    return res.status(200).send(Meal);
+    return res.status(200).send({ meals: Meal });
   }
 
   static updateMeal(req, res) {

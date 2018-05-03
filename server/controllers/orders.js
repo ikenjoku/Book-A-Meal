@@ -20,11 +20,11 @@ class OrdersController {
       meals,
     });
     const newOrderIndex = Order.findIndex(order => order.customerId === req.body.customerId);
-    return res.status(201).send(Order[newOrderIndex]);
+    return res.status(201).send({ order: Order[newOrderIndex] });
   }
 
   static listOrders(req, res) {
-    return res.status(200).send(Order);
+    return res.status(200).send({ orders: Order });
   }
 
   static updateOrder(req, res) {

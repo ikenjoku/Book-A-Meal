@@ -19,11 +19,11 @@ class MenuController {
       meals,
     });
     const newMenuIndex = Menu.findIndex(menu => menu.name === req.body.name);
-    return res.status(201).send(Menu[newMenuIndex]);
+    return res.status(201).send({ menu: Menu[newMenuIndex] });
   }
 
   static listMenu(req, res) {
-    return res.status(200).send(Menu);
+    return res.status(200).send({ menus: Menu });
   }
 }
 
