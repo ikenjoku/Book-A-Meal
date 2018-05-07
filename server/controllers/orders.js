@@ -24,6 +24,10 @@ class OrdersController {
   }
 
   static listOrders(req, res) {
+    if (req.params.date) {
+      const orderForDate = Order.filter(order => order.date === req.params.date);
+      return res.status(200).send({ order: orderForDate });
+    }
     return res.status(200).send({ orders: Order });
   }
 

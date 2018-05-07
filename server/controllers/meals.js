@@ -18,6 +18,7 @@ class MealsController {
     Meal.push({
       id: Meal[Meal.length - 1].id + 1,
       name,
+      price,
       description,
       imageurl,
     });
