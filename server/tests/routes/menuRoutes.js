@@ -54,7 +54,7 @@ describe('Route: POST /api/v1/menu', () => {
           },
           ],
         });
-      res.should.have.status(400);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     }

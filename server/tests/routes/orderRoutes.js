@@ -18,7 +18,7 @@ describe('Route GET /api/v1/orders', () => {
   it('should return status code 200', async () => {
     try {
       const res = await chai.request(app).get('/api/v1/orders');
-      res.should.have.status(200);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     }
@@ -79,7 +79,7 @@ describe('Route: POST /api/v1/orders', () => {
           },
           ],
         });
-      res.should.have.status(201);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     };
@@ -101,7 +101,7 @@ describe('Route: POST /api/v1/orders', () => {
           },
           ],
         });
-      res.should.have.status(400);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     }
@@ -150,7 +150,7 @@ describe('Route PUT /api/v1/orders/:orderId', () => {
           },
           ],
         });
-      res.should.have.status(404);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     }

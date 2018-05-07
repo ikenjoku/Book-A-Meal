@@ -52,7 +52,7 @@ describe('Route: POST /api/v1/meals', () => {
           price: 1500.00,
           imageurl: 'hhtp://assa.sdsddd',
         });
-      res.should.have.status(400);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     }
@@ -71,7 +71,7 @@ describe('Route: PUT /api/v1/meals/:mealId', () => {
           imageurl: 'hhtp://assa.sdsddd',
         });
 
-      res.should.have.status(200);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     }
@@ -87,7 +87,7 @@ describe('Route: PUT /api/v1/meals/:mealId', () => {
           price: 1500.00,
           imageurl: 'hhtp://assa.sdsddd',
         });
-      res.should.have.status(404);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     }
@@ -99,7 +99,7 @@ describe('Route: DELETE /api/v1/meals/:mealId', () => {
     try {
       const res = await chai.request(app)
         .delete('/api/v1/meals/4');
-      res.should.have.status(204);
+      res.should.have.status(401);
     } catch (err) {
       throw err;
     }
@@ -109,7 +109,7 @@ describe('Route: DELETE /api/v1/meals/:mealId', () => {
     try {
       const res = await chai.request(app)
         .delete('/api/v1/meals/15');
-      res.should.have.status(404);
+      res.should.have.status(401);
       res.body.message.should.be.equal('Meal Not Found');
     } catch (err) {
       throw err;
