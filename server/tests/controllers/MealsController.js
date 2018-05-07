@@ -11,7 +11,6 @@ chai.use(sinonChai);
 chai.should();
 
 
-
 describe('createMeal method', () => {
   const request = {
     body: {
@@ -21,7 +20,7 @@ describe('createMeal method', () => {
       img: 'hhtp://assa.sdsddd',
     },
   };
-  
+
   const wrongRequest = {
     body: {
       name: 'Indain Japatti',
@@ -29,7 +28,7 @@ describe('createMeal method', () => {
       imageurl: 'hhtp://assa.sdsddd',
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
 
@@ -37,14 +36,14 @@ describe('createMeal method', () => {
     MealsController.createMeal(req, res);
   });
 
-  it('should return 201 on success', () => {
-		 res.status.should.have.been.calledWith(201);
-  });
-
-  it('should create new meal data', () => {
+  it('should create a new meal', () => {
     const newMeal = Meals.filter(meal => meal.name === 'Indain Japatti');
     newMeal.length.should.be.above(0);
   });
+
+  it('should return status code 201 on success', () => {
+    res.status.should.have.been.calledWith(201);
+ });
 
   it('should return error 400 with missing meal data fields', () => {
     const badReq = mockReq(wrongRequest);
@@ -67,13 +66,14 @@ describe('listMeals method', () => {
     body: {
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
-  
+
   beforeEach(() => {
     MealsController.listMeals(req, res);
   });
+
 
   it('should return 200 on success', () => {
 		 res.status.should.have.been.calledWith(200);
@@ -81,19 +81,19 @@ describe('listMeals method', () => {
 });
 
 
-describe('destroyMeal method', () => {
+describe('removeMeal method', () => {
   const request = {
     params: {
       mealId: 3,
     },
   };
-  
+
   const wrongReq = {
     params: {
       mealId: 15,
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
   beforeEach(() => {
@@ -122,12 +122,11 @@ describe('destroyMeal method', () => {
       message: 'Meal Not Found',
     });
   });
-
 });
 
 describe('updateMeal method', () => {
   const request = {
-    body:{
+    body: {
       name: 'Indain Japatti',
       description: 'Creamy spicy hot',
       img: 'hhtp://assa.sdsddd',
@@ -136,7 +135,7 @@ describe('updateMeal method', () => {
       mealId: 1,
     },
   };
-  
+
   const badRequest = {
     body: {
       name: 'Indain Japatti',
@@ -147,7 +146,7 @@ describe('updateMeal method', () => {
       mealId: 15,
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
   beforeEach(() => {

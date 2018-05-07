@@ -11,7 +11,6 @@ chai.use(sinonChai);
 chai.should();
 
 
-
 describe('createMenu method', () => {
   const request = {
     body: {
@@ -47,15 +46,11 @@ describe('createMenu method', () => {
       ],
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
   beforeEach(() => {
     MenuController.createMenu(req, res);
-  });
-
-  it('should return 201 on success', () => {
-		 res.status.should.have.been.calledWith(201);
   });
 
   it('should create new menu data', () => {
@@ -63,7 +58,11 @@ describe('createMenu method', () => {
     newMenu.length.should.be.above(0);
   });
 
-  it('should return error 400 with missing menu data fields', () => {
+  it('should return 201 on success', () => {
+		 res.status.should.have.been.calledWith(201);
+  });
+
+  it('should return status code 400 with missing menu data fields', () => {
     const badRequest = mockReq(wrongRequest);
     MenuController.createMenu(badRequest, res);
     res.status.should.have.been.calledWith(400);
@@ -84,14 +83,14 @@ describe('listMenu method', () => {
     body: {
     },
   };
-  
+
   const req = mockReq(request);
   const res = mockRes();
   beforeEach(() => {
     MenuController.listMenu(req, res);
   });
 
-  it('should return 200 on success', () => {
+  it('should return status code 200 on success', () => {
 		 res.status.should.have.been.calledWith(200);
   });
 });

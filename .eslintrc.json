@@ -1,6 +1,11 @@
 {
     "extends": "airbnb",
     "rules": {
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "import/no-dynamic-require": "off",
+        "import/prefer-default-export": "off",
+        "no-param-reassign": "off",
+        "consistent-return": "off",
+        "prefer-destructuring": "off"
     }
 }

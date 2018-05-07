@@ -1,7 +1,7 @@
 import Menu from '../model-mocks/menus';
 
-const MenuController = {
-  createMenu(req, res) {
+class MenuController {
+  static createMenu(req, res) {
     const {
       name,
       date,
@@ -19,12 +19,12 @@ const MenuController = {
       meals,
     });
     const newMenuIndex = Menu.findIndex(menu => menu.name === req.body.name);
-    return res.status(201).send(Menu[newMenuIndex]);
-  },
+    return res.status(201).send({ menu: Menu[newMenuIndex] });
+  }
 
-  listMenu(req, res) {
-    return res.status(200).send(Menu);
-  },
-};
+  static listMenu(req, res) {
+    return res.status(200).send({ menus: Menu });
+  }
+}
 
 export default MenuController;
