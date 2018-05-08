@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
   res.status(200).send('Welcome home, Book_A_Meal');
 })
   // Users
-  .post('/auth/signup', validateInput.signup, userController.create)
-  .post('/auth/login', validateInput.login, userController.login)
+  .post('/auth/signup', userController.create)
+  .post('/auth/login', userController.login)
 
   // Meals
   .get('/meals', mealController.listMeals)
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 
   // Menu
   .get('/menu', menuController.listMenu)
-  .post('/menu', authenticate, menuController.createMenu)
+  .post('/menu', authenticate, isAdmin, menuController.createMenu)
 
   // Orders
   .get('/orders', authenticate, isAdmin, orderController.listOrders)

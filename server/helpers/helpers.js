@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-// Hashes the password of a given user
+// Hashes the password of a given user before saving to db
 
 export const hashPassword = (user) => {
   const salt = bcrypt.genSaltSync(10);
