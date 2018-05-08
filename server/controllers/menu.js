@@ -1,29 +1,27 @@
-import Menu from '../model-mocks/menus';
+import { Menu } from '../models';
 
 class MenuController {
-  static createMenu(req, res) {
+  static createMenu(req, res, next) {
     const {
-      name,
       date,
-      meals,
     } = req.body;
-    if (!name || !date || !meals) {
+    if (!date) {
       res.status(400).send({
         message: 'Missing Menu Information',
       });
     }
-    Menu.push({
-      id: Menu[Menu.length - 1].id + 1,
-      name,
-      date,
-      meals,
-    });
-    const newMenuIndex = Menu.findIndex(menu => menu.name === req.body.name);
-    return res.status(201).send({ menu: Menu[newMenuIndex] });
+    Menu.create(req.body)
+      .then(menu => res.status(201).send({
+        menu,
+        message: 'Successfully added a new menu',
+      }))
+      .catch(error => next(error));
   }
 
-  static listMenu(req, res) {
-    return res.status(200).send({ menus: Menu });
+  static listMenu(req, res, next) {
+    Menu.findAll({})
+      .then(menu => res.status(200).send({ menus: menu }))
+      .catch(error => next(error));
   }
 }
 

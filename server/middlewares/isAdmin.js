@@ -1,4 +1,4 @@
-const ensureIsAdmin = (req, res, next) => (
+const isAdmin = (req, res, next) => (
   req.user && req.user.isAdmin ?
     next() :
     res.status(401).send({
@@ -6,4 +6,4 @@ const ensureIsAdmin = (req, res, next) => (
     })
 );
 
-export default ensureIsAdmin;
+export default isAdmin;

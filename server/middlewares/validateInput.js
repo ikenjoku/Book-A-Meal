@@ -1,48 +1,34 @@
-import deepClone from 'deepclonejs';
-import bcrypt from 'bcrypt';
-import { User } from '../models';
 
 // deletes empty fields in object
 
 const deleteEmptyFields = (object) => {
-  const clonedObject = deepClone(object);
-  const fields = Object.keys(clonedObject);
+  const fields = Object.keys(object);
   fields.forEach((field) => {
-    if (clonedObject[field] === (null || undefined || '')) {
-      delete clonedObject[field];
+    if (object[field] === (null || undefined || '')) {
+      delete object[field];
     }
   });
-  return clonedObject;
+  return object;
 };
 
 
 // trims string values in object
 
 const trimFields = (object) => {
-  const clonedObject = deepClone(object);
-  const fields = Object.keys(clonedObject);
+  const fields = Object.keys(object);
   fields.forEach((field) => {
-    if (typeof clonedObject[field] === 'string') {
-      clonedObject[field] = clonedObject[field].trim();
+    if (typeof object[field] === 'string') {
+      object[field] = object[field].trim();
     }
   });
-  return clonedObject;
+  return object;
 };
-
-
-// checks if password matches that associated with user
-
-const passwordIsCorrect = (id, password) => (
-  User.findById(id)
-    .then(user => (bcrypt.compare(password, user.password)))
-);
 
 
 /**
  * input validation middleware
  */
 export default {
-
 
 // validates fields on request to signup user
 
@@ -72,9 +58,9 @@ export default {
 
   login(req, res, next) {
     req.body = deleteEmptyFields(trimFields(req.body));
-    if (!req.body.username) {
+    if (!req.body.email) {
       return res.status(400).send({
-        message: 'Username is required',
+        message: 'Email is required',
       });
     } else if (!req.body.password) {
       return res.status(400).send({

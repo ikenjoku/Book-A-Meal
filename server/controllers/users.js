@@ -31,7 +31,7 @@ class UserController {
             isAdmin,
           } = user;
           const jwtOptions = {
-            id, email, username, isAdmin,
+            id, email, isAdmin,
 
           };
 
@@ -43,7 +43,7 @@ class UserController {
             firstname,
             lastname,
             isAdmin,
-            message: `Welcome ${firstname}. This is your dashboard`,
+            message: `Welcome ${firstname}. Enjoy your meal`,
           });
         })
         .catch(error => next(error));
@@ -52,9 +52,9 @@ class UserController {
   }
 
   static login(req, res, next) {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    return User.findOne({ where: { username } }).then((user) => {
+    return User.findOne({ where: { email } }).then((user) => {
       if (!user) {
         return res.status(403).send({
           message: 'user does not exist',
@@ -72,7 +72,7 @@ class UserController {
           isAdmin,
         } = user;
         const jwtOptions = {
-          id, email, username, isAdmin,
+          id, email, isAdmin,
         };
         const token = getJWT(jwtOptions);
         const { firstname, lastname } = user;
