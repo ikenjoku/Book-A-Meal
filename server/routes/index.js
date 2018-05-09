@@ -7,7 +7,6 @@ import orderController from '../controllers/orders';
 
 import authenticate from '../middlewares/authenticate';
 import isAdmin from '../middlewares/isAdmin';
-import validateInput from '../middlewares/validateInput';
 
 
 const router = express.Router();
@@ -20,9 +19,8 @@ router.get('/', (req, res) => {
   .post('/auth/login', userController.login)
 
   // Meals
-  .get('/meals', mealController.listMeals)
-  .post('/meals', authenticate, isAdmin, mealController.createMeal)
-
+  .get('/meals', mealController.getMeals)
+  .post('/meals', authenticate, isAdmin, mealController.addMeal)
   .put('/meals/:mealId', authenticate, isAdmin, mealController.updateMeal)
   .delete('/meals/:mealId', authenticate, isAdmin, mealController.removeMeal)
 
@@ -34,11 +32,6 @@ router.get('/', (req, res) => {
   .get('/orders', authenticate, isAdmin, orderController.listOrders)
   .post('/orders', authenticate, orderController.createOrder)
   .put('/orders/:orderId', authenticate, orderController.updateOrder)
-  .get('/orders/:date', authenticate, isAdmin, orderController.listOrders)
-
-  // Anywhere else
-  .get('*', (req, res) => {
-    res.status(404).send({ msg: 'Nothing here to see. Please return to home' });
-  });
+  .get('/orders/:date', authenticate, isAdmin, orderController.listOrders);
 
 export default router;

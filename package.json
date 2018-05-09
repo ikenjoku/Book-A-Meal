@@ -33,6 +33,7 @@
         "deepclonejs": "^1.0.3",
         "dotenv": "^5.0.1",
         "express": "^4.16.3",
+        "joi": "^13.2.0",
         "jsonwebtoken": "^8.2.1",
         "morgan": "^1.9.0",
         "parse-error": "^0.2.0",
@@ -41,6 +42,7 @@
         "pg": "^7.4.1",
         "pg-hstore": "^2.3.2",
         "sequelize": "^4.37.6",
+        "shortcode": "0.0.0",
         "validator": "^9.2.0"
     },
     "devDependencies": {

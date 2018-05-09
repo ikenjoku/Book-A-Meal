@@ -2,8 +2,14 @@ import { hashPassword } from '../helpers/helpers';
 
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    firstname: DataTypes.STRING,
-    lastname: DataTypes.STRING,
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     username: {
       allowNull: false,
       type: DataTypes.STRING,
@@ -13,11 +19,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: {
-          msg: 'Email is invalid',
-        },
-      },
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
@@ -32,7 +33,14 @@ export default (sequelize, DataTypes) => {
   User.beforeCreate(user => hashPassword(user), { individualHooks: true });
 
   User.associate = (models) => {
-    User.hasMany(models.Order);
+    User.hasMany(models.notification, {
+      foreignKey: 'userId',
+      as: 'notifications',
+    });
+    User.hasMany(models.Order, {
+      foreignKey: 'userId',
+      as: 'Orders',
+    });
   };
 
   return User;
