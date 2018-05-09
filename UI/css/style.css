@@ -83,13 +83,6 @@ nav {
     margin-right: 10px;
     margin-left: 10px;
     font-weight: bold;
-    transition: text-shadow 0.5s, font-size 0.5s;
-    -webkit-transition: text-shadow 0.5s, font-size 0.5s;
-}
-.brand-link:hover{
-    text-shadow: 0 -3px 0 #333;
-    font-size: 29px;
-
 }
 
 .content {
@@ -157,10 +150,9 @@ nav {
     font-weight: bold;
 }
 .food-add-btn:hover {
-    background-color: #20ac76;
+    background-color: #4E1200;
     color: #ffffff;
 }
-
 
 .categories .food-item img {
     display: block;
@@ -182,9 +174,13 @@ nav {
 }
 
 .order-summary h4 {
-    color: #20ac76;
+    color: #000000;
     font-size: 25px;
     border-bottom: #ededed 1px solid
+}
+
+.order-summary{
+    background-color: #ffffff;
 }
 
 .order-total-price span {
@@ -224,13 +220,13 @@ nav {
 
 .contain-table-headers {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     font-weight: bold;
 }
 
 .meal-table-item {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     border-bottom: #ededed 1px solid
 }
 
@@ -358,8 +354,9 @@ nav {
     height: 30px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: #20ac76;
+    background-color: #4E1200;
     color: #ffffff;
+    outline: none;
 }
 
 .set-menu-content li {
@@ -382,6 +379,11 @@ nav {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.order-table-header p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .order-table-body-row:nth-child(odd) {
     background-color: #f1f1f1;
 }
@@ -392,17 +394,8 @@ nav {
     padding-left: 10px;
 }
 
-.order-tbody-summary-row {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-}
-
-.order-tbody-summary-row>p {
-    margin: 0px;
-}
-
 .cool-lg-text {
-    color: #20ac76;
+    color: #000000;
     font-size: 25px;
 }
 
@@ -429,14 +422,14 @@ nav {
 }
 
 .btn-nature {
-    background: #20ac76;
-    border-color: #8DC63F;
+    background: #4E1200;
+    border-color: #4E1200;
     color: white;
 }
 
 #enter-btn {
-    background-color: #20ac76;
-    border-color: #20ac76;
+    background-color: #4E1200;
+    border-color: #4E1200;
     color: white;
     padding: 10px 60px;
     font-size: 30px;
@@ -444,8 +437,8 @@ nav {
     -webkit-transition: background-color 0.3s, color 0.3s, padding 0.3s;
 }
 #enter-btn:hover{
-    background-color: #ffffff;
-    color: #20ac76;
+    background-color: #791B00;
+    color: #ffffff;
 }
 
 .btn-danger {
@@ -572,6 +565,7 @@ nav {
 }
 
 #total-made{
+    margin-top: 100px;
     margin-bottom: 500px;
 }
 
@@ -582,4 +576,26 @@ nav {
 .add-meal-form{
     max-width: 700px;
     margin: 0px auto;
+}
+
+.cancel-order-btn {
+    background-color: #4E1200;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.order-table-body{
+    -webkit-box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
 }
