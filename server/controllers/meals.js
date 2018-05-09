@@ -1,7 +1,7 @@
 import { Meal } from '../models';
 
 class MealsController {
-  static createMeal(req, res, next) {
+  static addMeal(req, res) {
     const {
       name,
       description,
@@ -13,50 +13,62 @@ class MealsController {
         message: 'Missing Meal Information',
       });
     }
-    Meal.create(req.body)
+    Meal.create({
+      name,
+      description,
+      price,
+      imgurl,
+    })
       .then(meal => res.status(201).send({
         meal,
         message: 'Successfully added a new meal',
       }))
-      .catch(error => next(error));
-  }
-  static listMeals(req, res, next) {
-    Meal.findAll({})
-      .then(meals => res.status(200).send({ meals }))
-      .catch(error => next(error));
+      .catch(error => error);
   }
 
-  static updateMeal(req, res, next) {
-    const id = req.params.id;
+  static getMeals(req, res) {
+    Meal.findAll()
+      .then(meals => res.status(200).send({ meals }))
+      .catch(error => error);
+  }
+
+  static updateMeal(req, res) {
+    const { mealId } = req.params;
     delete req.body.id;
-    Meal.findById(id)
+    Meal.findById(mealId)
       .then((meal) => {
         if (!meal) {
-          return res.status(404).send({
-            message: 'Meal not found',
+          return res.status(422).send({
+            message: 'Meal does not exist',
           });
         }
-        Meal.update(req.body, {
-          where: { id },
-          returning: true,
-          plain: true,
+        const {
+          name,
+          description,
+          price,
+          imgurl,
+        } = req.body;
+        meal.update({
+          name, description, price, imgurl,
         })
-          .then(updatedMeal => res.status(200).send({
-            book: updatedMeal[1],
-            message: `${updatedMeal[1].name} was successfully updated`,
-          }))
-          .catch(error => next(error));
+          .then((updatedMeal) => {
+            res.status(200).send({
+              updatedMeal,
+              message: 'Successfully updated meal',
+            });
+          })
+          .catch(error => error);
       })
-      .catch(error => next(error));
+      .catch(error => error);
   }
 
-  static removeMeal(req, res, next) {
-    const id = req.params.id;
-    Meal.destroy({ where: { id } })
-      .then(() => res.status(200).send({
-        message: 'Successfully deleted meal from database',
+  static removeMeal(req, res) {
+    const { mealId } = req.params;
+    Meal.destroy({ where: { id: mealId } })
+      .then(() => res.status(204).send({
+        message: 'Successfully deleted meal',
       }))
-      .catch(error => next(error));
+      .catch(error => error);
   }
 }
 

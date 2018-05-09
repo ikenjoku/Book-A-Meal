@@ -1,4 +1,4 @@
-import Order from '../model-mocks/orders';
+import { Order, User, Meal, Menu } from '../models';
 
 class OrdersController {
   static createOrder(req, res) {
@@ -8,6 +8,7 @@ class OrdersController {
       amount,
       meals,
     } = req.body;
+
     if (!customerId || !date || !amount || !meals) {
       res.status(400).send({
         message: 'Ooops! Something is not right.',

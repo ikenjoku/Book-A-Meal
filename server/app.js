@@ -27,7 +27,7 @@ app.use('/api/v1', routes);
 app.use((req, res, next) => {
   const err = new Error('Oops! Page Not Found');
   err.status = 404;
-  next(err);
+  return res;
 });
 
 // Errorhandler

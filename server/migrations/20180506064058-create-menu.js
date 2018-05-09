@@ -7,9 +7,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       date: {
         type: Sequelize.DATEONLY,
         allowNull: false,
+      },
+      orderBy: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
