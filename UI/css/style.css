@@ -617,3 +617,7 @@ nav {
     font-size: 20px;
     font-weight: bold;
 }
+
+.order-history-date-picker{
+    margin-bottom: 50px;
+}
