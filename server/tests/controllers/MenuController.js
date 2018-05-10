@@ -1,10 +1,8 @@
 import chai from 'chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
-import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 
 import MenuController from '../../controllers/menu';
-import Menu from '../../model-mocks/menus';
 
 
 chai.use(sinonChai);

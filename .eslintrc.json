@@ -1,5 +1,8 @@
 {
     "extends": "airbnb",
+    "env":{
+        "mocha": true
+    },
     "rules": {
         "import/no-extraneous-dependencies": "off",
         "import/no-dynamic-require": "off",
