@@ -1,19 +1,23 @@
-
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
-    amount: DataTypes.INTEGER,
-    date: DataTypes.DATE,
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   });
   Order.associate = (models) => {
     Order.belongsTo(models.User, {
-      foreignKey: 'userId',
-      onDelete: 'CASCADE',
+      foreignKey: 'UserId',
+      targetKey: 'id',
     });
     Order.belongsTo(models.Meal, {
-      foreignKey: 'mealId',
-      onDelete: 'CASCADE',
+      foreignKey: 'OrderId',
+      otherKey: 'MealId',
     });
   };
-
   return Order;
 };

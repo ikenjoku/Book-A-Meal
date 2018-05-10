@@ -6,18 +6,18 @@ class MealsController {
       name,
       description,
       price,
-      imgurl,
+      imageurl,
     } = req.body;
-    if (!name || !description || !price || !imgurl) {
+    if (!name || !description || !price || !imageurl) {
       res.status(400).send({
-        message: 'Missing Meal Information',
+        message: 'Please fill in the missing fields',
       });
     }
     Meal.create({
       name,
       description,
       price,
-      imgurl,
+      imageurl,
     })
       .then(meal => res.status(201).send({
         meal,
@@ -46,10 +46,10 @@ class MealsController {
           name,
           description,
           price,
-          imgurl,
+          imageurl,
         } = req.body;
         meal.update({
-          name, description, price, imgurl,
+          name, description, price, imageurl,
         })
           .then((updatedMeal) => {
             res.status(200).send({

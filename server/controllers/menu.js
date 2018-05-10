@@ -1,28 +1,57 @@
-import { Menu } from '../models';
+import { Menu, Meal } from '../models';
 
 class MenuController {
-  static createMenu(req, res, next) {
-    const {
-      date,
-    } = req.body;
-    if (!date) {
+  static getMenu(req, res) {
+    const { date } = req.body;
+
+    Menu.findAll({
+      include: [{
+        model: Meal,
+        attributes: ['name', 'price', 'imageurl'],
+      }],
+    }).then((menu) => {
+      res.send(menu);
+    }).catch((error) => {
       res.status(400).send({
-        message: 'Missing Menu Information',
+        message: 'Menu could not be found',
+        error,
       });
-    }
-    Menu.create(req.body)
-      .then(menu => res.status(201).send({
-        menu,
-        message: 'Successfully added a new menu',
-      }))
-      .catch(error => next(error));
+    });
   }
 
-  static listMenu(req, res, next) {
-    Menu.findAll({})
-      .then(menu => res.status(200).send({ menus: menu }))
-      .catch(error => next(error));
+  static postMenu(req, res) {
+    const { mealsId } = req.body;
+    const date = new Date();
+
+    Menu.findOne({ where: { date } })
+      .then((menu) => {
+        if (menu) {
+          res.status(400).send({ message: 'Menu for today is set already' });
+        } else {
+          Menu.create({ date })
+            .then((newMenu) => {
+              newMenu.addMeals(mealsId)
+                .then((menus) => {
+                  res.status(200).send({
+                    message: 'New menu created',
+                    menus,
+                  });
+                }).catch(error => error);
+            }).catch((error) => {
+              res.status(400).send({
+                message: 'Menu could not be created',
+                error,
+              });
+            });
+        }
+      }).catch((error) => {
+        res.status(400).send({
+          message: 'Menu couln not be found',
+          error,
+        });
+      });
   }
 }
+
 
 export default MenuController;

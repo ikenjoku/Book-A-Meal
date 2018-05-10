@@ -1,6 +1,6 @@
 module.exports = {
-  up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('Orders', {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('Menus', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,9 +9,7 @@ module.exports = {
       },
       date: {
         type: Sequelize.DATEONLY,
-      },
-      amount: {
-        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -21,14 +19,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Users',
-          key: 'id',
-          as: 'userId',
-        },
-      },
-    }),
-  down: queryInterface => queryInterface.dropTable('Orders'),
+    });
+  },
+  down: (queryInterface) => {
+    return queryInterface.dropTable('Menus');
+  },
 };

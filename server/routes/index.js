@@ -25,8 +25,8 @@ router.get('/', (req, res) => {
   .delete('/meals/:mealId', authenticate, isAdmin, mealController.removeMeal)
 
   // Menu
-  .get('/menu', menuController.listMenu)
-  .post('/menu', authenticate, isAdmin, menuController.createMenu)
+  .get('/menu', menuController.getMenu)
+  .post('/menu', authenticate, isAdmin, menuController.postMenu)
 
   // Orders
   .get('/orders', authenticate, isAdmin, orderController.listOrders)
