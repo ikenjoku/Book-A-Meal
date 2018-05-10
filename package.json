@@ -10,7 +10,7 @@
         "server:lint": "eslint \"server/**/*.js\" app.js --fix",
         "migrations": "sequelize db:migrate:undo:all && sequelize db:migrate",
         "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
-        "heroku-postbuild": "NODE_ENV=production && npm run migrations"
+        "heroku-postbuild": "NODE_ENV=production && NODE_END=production && npm run migrations"
     },
     "repository": {
         "type": "git",
