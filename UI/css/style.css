@@ -354,7 +354,7 @@ nav {
     height: 30px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: #4E1200;
+    background-color: #9D2401;
     color: #ffffff;
     outline: none;
 }
@@ -385,7 +385,7 @@ nav {
 }
 
 .order-table-body-row:nth-child(odd) {
-    background-color: #f1f1f1;
+    background-color: #fd7e5942;
 }
 
 .order-table-body-row {
@@ -422,14 +422,14 @@ nav {
 }
 
 .btn-nature {
-    background: #4E1200;
-    border-color: #4E1200;
+    background: #9D2401;
+    border-color: #9D2401;
     color: white;
 }
 
 #enter-btn {
-    background-color: #4E1200;
-    border-color: #4E1200;
+    background-color: #9D2401;
+    border-color: #9D2401;
     color: white;
     padding: 10px 60px;
     font-size: 30px;
@@ -482,7 +482,7 @@ nav {
 
 .btn-control{
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #9D2401;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -492,7 +492,7 @@ nav {
 }
 
 .btn-control:hover {
-    background-color: #45a049;
+    background-color: rgb(148, 33, 1);
 }
 
 
@@ -507,7 +507,7 @@ nav {
     font-family: sans-serif;
     letter-spacing: 1px;
     font-size: 2.5em;
-    color: #1ab188;
+    color: #000000;
 }
 .signupform{
     margin-top: 100px;
@@ -579,7 +579,7 @@ nav {
 }
 
 .cancel-order-btn {
-    background-color: #4E1200;
+    background-color: #9D2401;
     border-radius: 5px;
     outline: none;
     display: inline-block;
