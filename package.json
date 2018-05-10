@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "A simple food vendor app",
     "main": "app.js",
+    "engines": {
+        "node": "8.9.4",
+        "npm": "5.6.0"
+      },
     "scripts": {
         "start": "babel-node server/bin/www.js",
         "start:dev": "nodemon server/bin/www.js --exec babel-node",
