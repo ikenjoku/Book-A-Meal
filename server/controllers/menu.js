@@ -20,20 +20,26 @@ class MenuController {
   }
 
   static postMenu(req, res) {
-    const { mealsId } = req.body;
+    const { mealId } = req.body;
     const date = new Date();
 
     Menu.findOne({ where: { date } })
       .then((menu) => {
         if (menu) {
-          res.status(400).send({ message: 'Menu for today is set already' });
+          menu.addMeals(mealId)
+            .then((menus) => {
+              res.status(200).send({
+                message: 'New meal added to menu existing menu',
+                menus,
+              });
+            }).catch(error => error);
         } else {
           Menu.create({ date })
             .then((newMenu) => {
-              newMenu.addMeals(mealsId)
+              newMenu.addMeals(mealId)
                 .then((menus) => {
                   res.status(200).send({
-                    message: 'New menu created',
+                    message: 'Menu created and a meal added',
                     menus,
                   });
                 }).catch(error => error);
