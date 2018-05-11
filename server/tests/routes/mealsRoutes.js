@@ -36,7 +36,7 @@ describe('Route: POST /api/v1/meals', () => {
           price: 1500.00,
           imageurl: 'hhtp://assa.sdsddd',
         });
-      res.body.meal.name.should.equal('Indain');      
+      res.body.meal.name.should.equal('Indain');
     } catch (err) {
       throw err;
     }

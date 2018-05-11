@@ -58,7 +58,7 @@ describe('createOrder method', () => {
     const newOrder = Orders.filter(order => order.date === '05-09-2018');
     newOrder.length.should.be.above(0);
   });
-  
+
   it('should return 201 on success', () => {
 		 res.status.should.have.been.calledWith(201);
   });

@@ -41,7 +41,7 @@ describe('createMeal method', () => {
 
   it('should return status code 201 on success', () => {
     res.status.should.have.been.calledWith(201);
- });
+  });
 
   it('should return error 400 with missing meal data fields', () => {
     const badReq = mockReq(wrongRequest);

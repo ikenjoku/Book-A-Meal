@@ -53,10 +53,8 @@ class OrdersController {
         if (!order) {
           return res.status(404).send({ message: 'Order was not found' });
         }
-
       });
   }
-
 }
 export default OrdersController;
 

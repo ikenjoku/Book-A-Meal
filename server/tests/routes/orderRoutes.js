@@ -53,8 +53,8 @@ describe('Route: POST /api/v1/orders', () => {
       res.body.order.customerId.should.equal(340056);
     } catch (err) {
       throw err;
-    };
-  })
+    }
+  });
   it('should return status code 201 on success', async () => {
     try {
       const res = await chai.request(app)
@@ -82,8 +82,8 @@ describe('Route: POST /api/v1/orders', () => {
       res.should.have.status(401);
     } catch (err) {
       throw err;
-    };
-  })
+    }
+  });
 
   it('should return status code 400 with incomplete meal data', async () => {
     try {
@@ -105,7 +105,7 @@ describe('Route: POST /api/v1/orders', () => {
     } catch (err) {
       throw err;
     }
-  })
+  });
 });
 
 describe('Route PUT /api/v1/orders/:orderId', () => {

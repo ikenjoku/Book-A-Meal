@@ -23,7 +23,7 @@ class MenuController {
   static createMenu(req, res, next) {
     const { mealId } = req.body;
     const date = new Date();
-    
+
     Meal.findById(mealId)
       .then((meal) => {
         if (!meal) {
@@ -69,9 +69,7 @@ class MenuController {
               error,
             });
           });
-        
       });
-
   }
 }
 

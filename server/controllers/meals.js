@@ -45,7 +45,7 @@ class MealsController {
           price,
           imageurl,
         } = req.body;
-        meal.update({
+        Meal.update({
           name, description, price, imageurl,
         })
           .then((updatedMeal) => {

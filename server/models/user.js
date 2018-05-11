@@ -36,7 +36,7 @@ export default (sequelize, DataTypes) => {
     // User.hasMany(models.Order, {
     //   foreignKey: 'customerId',
     // });
-    User.hasMany(models.Order)
+    User.hasMany(models.Order);
   };
 
   return User;
