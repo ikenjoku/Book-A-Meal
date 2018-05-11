@@ -20,16 +20,21 @@ router.get('/', (req, res) => {
   // Meals
   .get('/meals', mealController.getMeals)
   .post('/meals', authenticate, isAdmin, mealController.addMeal)
-  .put('/meals/:mealId', validateId, authenticate, isAdmin, mealController.updateMeal)
-  .delete('/meals/:mealId', validateId, authenticate, isAdmin, mealController.removeMeal)
+  .put('/meals/:id', validateId, authenticate, isAdmin, mealController.updateMeal)
+  .delete('/meals/:id', validateId, authenticate, isAdmin, mealController.removeMeal)
 
   // Menu
   .get('/menu', menuController.getMenu)
-  .post('/menu', authenticate, isAdmin, menuController.postMenu)
+  .post('/menu', authenticate, isAdmin, menuController.createMenu)
 
   // Orders
   .get('/orders', authenticate, isAdmin, orderController.listOrders)
   .post('/orders', authenticate, orderController.createOrder)
-  .put('/orders/:orderId', validateId, authenticate, orderController.updateOrder)
+  .put('/orders/:id', validateId, authenticate, orderController.updateOrder)
+
+  // catch all 404
+  .get('*', (req, res) => res.status(404).send({
+    message: 'Not Found',
+  }));
 
 export default router;

@@ -14,6 +14,13 @@ module.exports = {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
+    // customerId: {
+    //   type: Sequelize.INTEGER,
+    //   ref:{
+    //     models: 'User',
+    //     key: id,
+    //   }
+    // }
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

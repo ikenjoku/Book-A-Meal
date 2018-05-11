@@ -1,13 +1,10 @@
 import { Meal } from '../models';
 
 class MealsController {
-  static addMeal(req, res) {
-    const {
-      name,
-      description,
-      price,
-      imageurl,
-    } = req.body;
+  static addMeal(req, res, next) {
+    const { name, description, imageurl } = req.body;
+    let { price } = req.body;
+    price = Number(price);
     if (!name || !description || !price || !imageurl) {
       res.status(400).send({
         message: 'Please fill in the missing fields',
@@ -23,16 +20,16 @@ class MealsController {
         meal,
         message: 'Successfully added a new meal',
       }))
-      .catch(error => error);
+      .catch(error => next(error));
   }
 
-  static getMeals(req, res) {
+  static getMeals(req, res, next) {
     Meal.findAll()
       .then(meals => res.status(200).send({ meals }))
-      .catch(error => error);
+      .catch(error => next(error));
   }
 
-  static updateMeal(req, res) {
+  static updateMeal(req, res, next) {
     const { mealId } = req.params;
     delete req.body.id;
     Meal.findById(mealId)
@@ -57,18 +54,18 @@ class MealsController {
               message: 'Successfully updated meal',
             });
           })
-          .catch(error => error);
+          .catch(error => next(error));
       })
-      .catch(error => error);
+      .catch(error => next(error));
   }
 
-  static removeMeal(req, res) {
+  static removeMeal(req, res, next) {
     const { mealId } = req.params;
     Meal.destroy({ where: { id: mealId } })
       .then(() => res.status(204).send({
         message: 'Successfully deleted meal',
       }))
-      .catch(error => error);
+      .catch(error => next(error));
   }
 }
 

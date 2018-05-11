@@ -1,49 +1,62 @@
-import { Order, User, Meal, Menu } from '../models';
+import { Order, User, Meal } from '../models';
 
 class OrdersController {
-  static createOrder(req, res) {
-    const {
-      customerId,
-      date,
-      amount,
-      meals,
-    } = req.body;
+  static createOrder(req, res, next) {
+    const { amount, userId, mealId } = req.body;
+    console.log('===\n', req.body, '\n======');
+    const date = new Date();
 
-    if (!customerId || !date || !amount || !meals) {
-      res.status(400).send({
-        message: 'Ooops! Something is not right.',
+    Meal.findById(mealId)
+      .then((meal) => {
+        if (!meal) {
+          return res.status(404).send({ message: 'Meal does not exist' });
+        }
+        User.findById(userId)
+          .then((user) => {
+            if (!user) {
+              return res.status(404).send({ message: 'User does not exist' });
+            }
+            Order.create({
+              date,
+              amount,
+              userId,
+              mealId,
+            })
+              .then(order => res.status(200)
+                .send({ message: 'New order successfully created' }))
+              .catch(error => next(error));
+          })
+          .catch(error => next(error));
       });
-    }
-    Order.push({
-      id: Order[Order.length - 1].id + 1,
-      customerId,
-      date,
-      meals,
-    });
-    const newOrderIndex = Order.findIndex(order => order.customerId === req.body.customerId);
-    return res.status(201).send({ order: Order[newOrderIndex] });
   }
 
-  static listOrders(req, res) {
-    if (req.params.date) {
-      const orderForDate = Order.filter(order => order.date === req.params.date);
-      return res.status(200).send({ order: orderForDate });
-    }
-    return res.status(200).send({ orders: Order });
+  static listOrders(req, res, next) {
+    Order.findAll({
+      include: [{
+        model: Meal,
+        attributes: ['id', 'name', 'price', 'imageurl'],
+      }, {
+        model: User,
+        attributes: ['id', 'username'],
+      }],
+    })
+      .then(order => res.status(200).send({ orders }))
+      .catch(error => next(error));
   }
 
-  static updateOrder(req, res) {
-    const orderIndex = Order.findIndex(order => order.id === Number(req.params.orderId));
-    if (orderIndex === -1) {
-      return res.status(404).send({
-        message: 'Order Not Found',
+  static updateOrder(req, res, next) {
+    const { id } = require.params;
+    const { cancel, mealId } = req.body;
+
+    Order.findById(id)
+      .then((order) => {
+        if (!order) {
+          return res.status(404).send({ message: 'Order was not found' });
+        }
+
       });
-    }
-    const updatedOrder = { ...Order[orderIndex], ...req.body };
-    Order.splice(orderIndex, 1, updatedOrder);
-    return res.status(200).send(updatedOrder);
   }
+
 }
-
 export default OrdersController;
 

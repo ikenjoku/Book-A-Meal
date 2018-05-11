@@ -66,9 +66,9 @@ export const validateLogin = (req, res, next) => {
   next();
 };
 
-export const validateId = (req, res, next) => (Number.isInteger(Number(req.params.id)) &&
-    !Number.isNaN(req.params.id) ?
-  next() :
-  res.status(400).send({
-    message: 'Id must be an integer',
-  }));
+export const validateId = (req, res, next) => (
+  Number.isInteger(Number(req.params.id)) && !Number.isNaN(req.params.id) ?
+    next() :
+    res.status(400).send({
+      message: 'Id must be an integer',
+    }));

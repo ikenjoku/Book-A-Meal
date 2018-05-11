@@ -36,7 +36,6 @@
         "body-parser": "^1.18.2",
         "chai": "^4.1.2",
         "debug": "^3.1.0",
-        "deepclonejs": "^1.0.3",
         "dotenv": "^5.0.1",
         "express": "^4.16.3",
         "joi": "^13.2.0",
