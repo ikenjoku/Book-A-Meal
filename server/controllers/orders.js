@@ -2,8 +2,8 @@ import { Order, User, Meal } from '../models';
 
 class OrdersController {
   static createOrder(req, res, next) {
-    const { amount, userId, mealId } = req.body;
-    console.log('===\n', req.body, '\n======');
+    const { amount, mealId } = req.body;
+    const { userId } = req.user;
     const date = new Date();
 
     Meal.findById(mealId)
