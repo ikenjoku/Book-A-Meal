@@ -11,6 +11,9 @@ class MenuController {
         attributes: ['id', 'name', 'price', 'imageurl'],
       }],
     }).then((menu) => {
+      if (!menu) {
+        return res.status(404).send({ message: 'Menu has not been set for today' });
+      }
       res.send(menu);
     }).catch((error) => {
       res.status(400).send({

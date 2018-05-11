@@ -30,9 +30,10 @@ class MealsController {
   }
 
   static updateMeal(req, res, next) {
-    const { mealId } = req.params;
+    const { id } = req.params;
     delete req.body.id;
-    Meal.findById(mealId)
+
+    Meal.findById(id)
       .then((meal) => {
         if (!meal) {
           return res.status(422).send({
@@ -45,7 +46,7 @@ class MealsController {
           price,
           imageurl,
         } = req.body;
-        Meal.update({
+        meal.update({
           name, description, price, imageurl,
         })
           .then((updatedMeal) => {
@@ -60,9 +61,9 @@ class MealsController {
   }
 
   static removeMeal(req, res, next) {
-    const { mealId } = req.params;
-    Meal.destroy({ where: { id: mealId } })
-      .then(() => res.status(204).send({
+    const { id } = req.params;
+    Meal.destroy({ where: { id } })
+      .then(() => res.status(200).send({
         message: 'Successfully deleted meal',
       }))
       .catch(error => next(error));

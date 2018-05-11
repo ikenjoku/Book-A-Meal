@@ -10,17 +10,15 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   Order.associate = (models) => {
-    // Order.belongsTo(models.User, {
-    //   foreignKey: 'UserId',
-    //   targetKey: 'id',
-    // });
-    // Order.belongsTo(models.Meal, {
-    //   foreignKey: 'MealId',
-    //   otherKey: 'MealId',
-    // });
+    Order.belongsTo(models.User, {
+      foreignKey: 'customerId',
+      targetKey: 'id',
+    });
+    Order.belongsTo(models.Meal, {
+      foreignKey: 'mealid',
+      // otherKey: 'MealId',
+    });
 
-    Order.belongsTo(models.User);
-    Order.belongsTo(models.Meal);
   };
   return Order;
 };

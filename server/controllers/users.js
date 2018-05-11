@@ -5,7 +5,8 @@ import { getJWT } from '../helpers/helpers';
 
 class UserController {
   static create(req, res) {
-    const userData = { ...req.body, isAdmin: undefined };
+    // const userData = { ...req.body, isAdmin: undefined };
+    const userData = req.body;
     const username = userData.username;
     const email = userData.email;
 
