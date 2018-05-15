@@ -1,7 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
   const MealMenu = sequelize.define('MealMenu', {
-    MealId: DataTypes.INTEGER,
-    MenuId: DataTypes.INTEGER,
+    mealid: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    menuid: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     classMethods: {
       associate(models) {

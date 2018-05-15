@@ -1,10 +1,8 @@
 import chai from 'chai';
 import { mockReq, mockRes } from 'sinon-express-mock';
-import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 
 import MealsController from '../../controllers/meals';
-import Meals from '../../model-mocks/meals';
 
 
 chai.use(sinonChai);
@@ -43,7 +41,7 @@ describe('createMeal method', () => {
 
   it('should return status code 201 on success', () => {
     res.status.should.have.been.calledWith(201);
- });
+  });
 
   it('should return error 400 with missing meal data fields', () => {
     const badReq = mockReq(wrongRequest);

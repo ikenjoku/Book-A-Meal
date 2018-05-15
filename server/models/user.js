@@ -33,13 +33,8 @@ export default (sequelize, DataTypes) => {
   User.beforeCreate(user => hashPassword(user), { individualHooks: true });
 
   User.associate = (models) => {
-    User.hasMany(models.notification, {
-      foreignKey: 'userId',
-      as: 'notifications',
-    });
     User.hasMany(models.Order, {
-      foreignKey: 'userId',
-      as: 'Orders',
+      foreignKey: 'customerId',
     });
   };
 

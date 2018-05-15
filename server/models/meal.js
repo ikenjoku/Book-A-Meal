@@ -5,23 +5,25 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     price: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    imgurl: {
+    imageurl: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
   });
   Meal.associate = (models) => {
     Meal.belongsToMany(models.Menu, {
-      through: 'MealMenus',
+      through: 'MealMenu',
+      foreignKey: 'MealId',
+      otherKey: 'MenuId',
       onDelete: 'CASCADE',
-    });
-    Meal.hasMany(models.Order, {
-      foreignKey: 'mealId',
-      as: 'Meals',
+      onUpdate: 'CASCADE',
     });
   };
   return Meal;
