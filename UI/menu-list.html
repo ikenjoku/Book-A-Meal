@@ -21,9 +21,9 @@
             <div class="menu-list">
                 <h2 class="center cool-lg-text">Menu List</h2>
                 <div class="order-history-date-picker center">
-                    <form action="">
-                        <input class="input-field-control" type="date" placeholder="Choose a date..." name="history-date" id="">
-                        <input class="input-btn-control" type="submit" value="Choose date">
+                    <form>
+                        <input id="datePicker" class="input-field-control" type="date" placeholder="Choose a date..." name="history-date" id="">
+                        <input id="datePickerBtn" class="input-btn-control" type="submit" value="Choose date">
                     </form>
                 </div>
                 <div class="categories">
@@ -204,6 +204,19 @@
             <p>Book-A-Meal &copy;2018</p>
         </footer>
     </div>
+    <script>
+        let menu = {
+            init: function(){
+                const datePicker = document.getElementById('datePicker');
+                const datePickerBtn = document.getElementById('datePickerBtn');
+                datePickerBtn.onclick = menu.printer;
+            },
+            printer: function(){
+                console.log(datePicker.value)
+            }
+        }
+        window.onload = menu.init
+    </script>
 </body>
 
 </html>
