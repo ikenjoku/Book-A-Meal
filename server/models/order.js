@@ -8,17 +8,34 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      // onDelete: 'CASCADE',
+      allowNull: false,
+      // references: {
+      //   model: 'Users',
+      //   key: 'id',
+      //   as: 'userId',
+      // },
+    },
+    mealId: {
+      type: DataTypes.INTEGER,
+      // onDelete: 'CASCADE',
+      allowNull: true,
+      // references: {
+      //   model: 'Meals',
+      //   key: 'id',
+      //   as: 'mealId',
+      // },
+    },
   });
   Order.associate = (models) => {
     Order.belongsTo(models.User, {
-      foreignKey: 'customerId',
-      targetKey: 'id',
+      foreignKey: 'userId',
     });
     Order.belongsTo(models.Meal, {
-      foreignKey: 'mealid',
-      // otherKey: 'MealId',
+      foreignKey: 'mealId',
     });
-
   };
   return Order;
 };

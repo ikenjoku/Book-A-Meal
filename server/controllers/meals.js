@@ -17,8 +17,8 @@ class MealsController {
       imageurl,
     })
       .then(meal => res.status(201).send({
-        meal,
         message: 'Successfully added a new meal',
+        meal,
       }))
       .catch(error => next(error));
   }
@@ -51,8 +51,8 @@ class MealsController {
         })
           .then((updatedMeal) => {
             res.status(200).send({
-              updatedMeal,
               message: 'Successfully updated meal',
+              updatedMeal,
             });
           })
           .catch(error => next(error));

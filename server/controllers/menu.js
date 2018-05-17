@@ -2,6 +2,28 @@ import { Menu, Meal, MealMenu } from '../models';
 
 class MenuController {
   static getMenu(req, res) {
+    if (req.query.date) {
+      let { date } = req.query;
+      date = date.substr(0, 10);
+      Menu.findOne({
+        where: { date },
+        include: [{
+          model: Meal,
+          attributes: ['id', 'name', 'price', 'imageurl'],
+        }],
+      }).then((menu) => {
+        if (!menu) {
+          return res.status(404).send({ message: 'Menu has not been set for this day' });
+        }
+        res.send(menu);
+      }).catch((error) => {
+        res.status(400).send({
+          message: 'Menu could not be found',
+          error,
+        });
+      });
+    }
+
     let { date = new Date().toISOString() } = req.body;
     date = date.substr(0, 10);
     Menu.findOne({
@@ -23,9 +45,10 @@ class MenuController {
     });
   }
 
+
   static createMenu(req, res, next) {
     const { mealId } = req.body;
-    const date = new Date();
+    const date = req.body.date || new Date();
 
     Meal.findById(mealId)
       .then((meal) => {
@@ -49,8 +72,8 @@ class MenuController {
                   newMenu.addMeal(mealId)
                     .then((menus) => {
                       const mealMenuInstance = new MealMenu({
-                        mealid: mealId,
-                        menuid: newMenu.id,
+                        mealId,
+                        menuId: newMenu.id,
                       });
                       mealMenuInstance.save();
                       res.status(200).send({

@@ -1,25 +1,18 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('Orders', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('MealMenus', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    date: {
-      type: Sequelize.DATE,
-      allowNull: false,
-    },
-    amount: {
+    mealId: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    customerId: {
+    menuId: {
       type: Sequelize.INTEGER,
-      ref: {
-        models: 'User',
-        key: 'id',
-      },
+      allowNull: false,
     },
     createdAt: {
       allowNull: false,
@@ -30,5 +23,5 @@ module.exports = {
       type: Sequelize.DATE,
     },
   }),
-  down: queryInterface => queryInterface.dropTable('Orders'),
+  down: queryInterface => queryInterface.dropTable('MealMenus'),
 };

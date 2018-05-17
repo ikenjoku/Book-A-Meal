@@ -4,7 +4,7 @@ class OrdersController {
   static createOrder(req, res, next) {
     const { amount, mealId } = req.body;
     const { id } = req.user;
-    const customerId = id;
+    const userId = id;
     const date = new Date();
 
     Meal.findById(mealId)
@@ -20,8 +20,8 @@ class OrdersController {
             Order.create({
               date,
               amount,
-              customerId,
-              mealid: mealId,
+              userId,
+              mealId,
             })
               .then(() => res.status(200)
                 .send({ message: 'New order successfully created' }))
@@ -31,29 +31,74 @@ class OrdersController {
       });
   }
 
-  static listOrders(req, res, next) {
+
+  static listOrders(req, res) {
+    if (req.query.date) {
+      Order.findAll({
+        include: [{
+          model: User,
+          attributes: ['id', 'firstname', 'lastname'],
+        }, {
+          model: Meal,
+          attributes: ['id', 'name', 'price'],
+        }],
+        where: {
+          date: req.query.date,
+        },
+      })
+        .then((orders) => {
+          if (orders.length < 1) {
+            return res.status(404).send({
+              message: 'No orders found for this day',
+            });
+          }
+          return res.status(200).send({
+            message: 'Orders retrieved successfully',
+            orders,
+          });
+        })
+        .catch(err => res.status(400).send({
+          message: 'Error occured while finding order',
+          err,
+        }));
+    }
+
     Order.findAll({
       include: [{
-        model: Meal,
-        attributes: ['id', 'name', 'price', 'imageurl'],
-      }, {
         model: User,
-        attributes: ['id', 'username'],
+        attributes: ['id', 'firstname', 'lastname'],
+      }, {
+        model: Meal,
+        attributes: ['id', 'name', 'price'],
       }],
     })
-      .then(orders => res.status(200).send({ orders }))
-      .catch(error => next(error));
+      .then((orders) => {
+        if (orders.length < 1) {
+          return res.status(404).send({
+            message: 'No orders found',
+          });
+        }
+        return res.status(200).send({
+          message: 'Orders retrieved successfully',
+          orders,
+        });
+      })
+      .catch(err => res.status(400).send({
+        message: 'Error occured while finding order',
+        err,
+      }));
   }
 
+
   static updateOrder(req, res, next) {
-    const originalMealId = req.params.id;
+    const originalOrderId = req.params.id;
     const { cancel, newMealId, amount } = req.body;
     const date = new Date();
     const { id } = req.user;
 
     if (cancel) {
-      return Order.destroy({
-        where: { customerId: id, mealid: originalMealId },
+      Order.destroy({
+        where: { id: originalOrderId },
       })
         .then(() => res.status(200).send({
           message: 'Your order has been cancelled',
@@ -61,14 +106,14 @@ class OrdersController {
         .catch(error => next(error));
     }
 
-    return Order.findById(originalMealId)
+    return Order.findById(originalOrderId)
       .then((order) => {
         if (!order) {
           return res.status(404).send({ message: 'Order was not found' });
         }
         order.update({
-          customerId: id,
-          mealid: newMealId,
+          userId: id,
+          mealId: newMealId,
           date,
           amount,
         })

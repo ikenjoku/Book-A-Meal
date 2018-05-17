@@ -6,13 +6,16 @@
     "engines": {
         "node": "8.9.4",
         "npm": "5.6.0"
-      },
+    },
     "scripts": {
         "start": "babel-node server/bin/www.js",
         "start:dev": "nodemon server/bin/www.js --exec babel-node",
-        "test": "NODE_ENV=test nyc mocha server/tests --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
         "server:lint": "eslint \"server/**/*.js\" app.js --fix",
-        "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
+        "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
+        "test": "npm run test:server",
+        "test:server": "cross-env NODE_ENV=test nyc mocha server/test/**/*.js --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
+        "cleardb": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
+        "pretest": "npm run cleardb && cross-env NODE_ENV=test sequelize db:migrate && cross-env NODE_ENV=test sequelize db:seed:all"
     },
     "repository": {
         "type": "git",
@@ -54,6 +57,7 @@
         "babel-register": "^6.26.0",
         "chai-http": "^4.0.0",
         "coveralls": "^3.0.0",
+        "cross-env": "^5.1.5",
         "eslint": "^4.9.0",
         "eslint-config-airbnb": "^16.1.0",
         "eslint-config-airbnb-base": "^12.1.0",
