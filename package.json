@@ -13,7 +13,7 @@
         "server:lint": "eslint \"server/**/*.js\" app.js --fix",
         "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
         "test": "npm run test:server",
-        "test:server": "cross-env NODE_ENV=test nyc mocha server/test/**/*.js --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
+        "test:server": "cross-env NODE_ENV=test nyc mocha server/test/**/*.spec.js  --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
         "cleardb": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
         "pretest": "npm run cleardb && cross-env NODE_ENV=test sequelize db:migrate && cross-env NODE_ENV=test sequelize db:seed:all"
     },
@@ -49,6 +49,8 @@
         "pg-hstore": "^2.3.2",
         "sequelize": "^4.37.6",
         "shortcode": "0.0.0",
+        "swagger-ui": "^3.15.0",
+        "swagger-ui-dist": "^3.15.0",
         "validator": "^9.2.0"
     },
     "devDependencies": {

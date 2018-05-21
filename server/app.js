@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
+import path from 'path';
 
 import routes from './routes';
 
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // routes
+app.use('/api-docs', express.static(path.join(__dirname, '/docs')));
 app.use('/api/v1', routes);
 
 // Errorhandler

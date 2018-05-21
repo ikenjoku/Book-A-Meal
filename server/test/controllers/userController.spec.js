@@ -1,9 +1,9 @@
+import UserController from '../../controllers/users';
 import {
   sinon,
   mockReq,
   mockRes,
 } from '../testSetup';
-import UserController from '../../controllers/users';
 
 const res = mockRes();
 
