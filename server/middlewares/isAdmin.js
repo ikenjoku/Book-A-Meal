@@ -24,8 +24,8 @@ const trimFields = (object) => {
 export const isAdmin = (req, res, next) => (
   req.user && req.user.isAdmin ?
     next() :
-    res.status(401).send({
-      message: 'Unauthorized access',
+    res.status(403).send({
+      message: 'You are not authorised',
     })
 );
 
@@ -70,5 +70,5 @@ export const validateId = (req, res, next) => (
   Number.isInteger(Number(req.params.id)) && !Number.isNaN(req.params.id) ?
     next() :
     res.status(400).send({
-      message: 'Id must be an integer',
+      message: 'ID must be an integer',
     }));

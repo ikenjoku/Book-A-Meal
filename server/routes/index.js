@@ -7,6 +7,7 @@ import orderController from '../controllers/orders';
 
 import authenticate from '../middlewares/authenticate';
 import { isAdmin, validateSignup, validateLogin, validateId } from '../middlewares/isAdmin';
+import { validateMealCreate, validateMealUpdate } from '../middlewares/validations/meal';
 
 const router = express.Router();
 
@@ -18,9 +19,10 @@ router.get('/', (req, res) => {
   .post('/auth/login', validateLogin, userController.login)
 
   // Meals
-  .get('/meals', mealController.getMeals)
-  .post('/meals', authenticate, isAdmin, mealController.addMeal)
-  .put('/meals/:id', validateId, authenticate, isAdmin, mealController.updateMeal)
+  .get('/meals', authenticate, mealController.getMeals)
+  .get('/meals/:id', validateId, authenticate, mealController.getMeal)
+  .post('/meals', validateMealCreate, authenticate, isAdmin, mealController.addMeal)
+  .put('/meals/:id', validateMealUpdate, validateId, authenticate, isAdmin, mealController.updateMeal)
   .delete('/meals/:id', validateId, authenticate, isAdmin, mealController.removeMeal)
 
   // Menu

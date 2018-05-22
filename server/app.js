@@ -16,10 +16,23 @@ app.use('/api-docs', express.static(path.join(__dirname, '/docs')));
 app.use('/api/v1', routes);
 
 // Errorhandler
-app.use((err, req, res, next) => {
-  console.log(err.stack);
-  res.status(err.status || 500);
-  res.send({ msg: 'Something is not right. Server Error' });
+app.use((error, req, res, next) => {
+  if (error.statusText && error.statusText === 'Bad Request') {
+    let messages = [];
+
+    error.errors.forEach((err) => {
+      messages = [...messages, ...err.messages];
+    });
+
+    return res.status(400).json({
+      statusText: error.statusText,
+      errors: {
+        messages,
+      }
+    });
+  }
+  res.status(error.status || 500);
+  res.send({ Error: error });
 });
 
 export default app;
