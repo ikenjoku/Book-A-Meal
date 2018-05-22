@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import path from 'path';
+import errorHandler from './middlewares/errorHandler';
 
 import routes from './routes';
 
@@ -16,23 +17,6 @@ app.use('/api-docs', express.static(path.join(__dirname, '/docs')));
 app.use('/api/v1', routes);
 
 // Errorhandler
-app.use((error, req, res, next) => {
-  if (error.statusText && error.statusText === 'Bad Request') {
-    let messages = [];
-
-    error.errors.forEach((err) => {
-      messages = [...messages, ...err.messages];
-    });
-
-    return res.status(400).json({
-      statusText: error.statusText,
-      errors: {
-        messages,
-      }
-    });
-  }
-  res.status(error.status || 500);
-  res.send({ Error: error });
-});
+app.use(errorHandler);
 
 export default app;

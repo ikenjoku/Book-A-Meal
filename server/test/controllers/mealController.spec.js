@@ -119,7 +119,7 @@ describe('Given /POST /api/v1/meals', () => {
           res.status.should.eql(400);
           res.body.should.have.property('errors');
           res.body.errors.should.have.property('messages');
-          res.body.errors.messages[0].should.eql('"name" is not allowed to be empty');
+          res.body.errors.messages[0].should.eql('"name" is required');
           res.body.should.be.a('object');
           done();
         });

@@ -2,7 +2,7 @@ module.exports = {
   up: (queryInterface) => {
     return queryInterface.bulkInsert('Menus', [
       {
-        date: '2018-05-10',
+        date: new Date().toISOString().substr(0, 10),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -12,7 +12,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        date: '2018-05-20',
+        date: '2018-05-18',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

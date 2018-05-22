@@ -8,17 +8,17 @@ const deleteEmptyFields = (object) => {
   return object;
 };
 
-
 // trims string values in object
-
-const trimFields = (object) => {
-  const fields = Object.keys(object);
+export const trimInputs = (req, res, next) => {
+  const body = req.body;
+  const fields = Object.keys(body);
   fields.forEach((field) => {
-    if (typeof object[field] === 'string') {
-      object[field] = object[field].trim();
+    if (typeof body[field] === 'string') {
+      body[field] = body[field].trim();
     }
   });
-  return object;
+  req.body = deleteEmptyFields(body);
+  next();
 };
 
 export const isAdmin = (req, res, next) => (
@@ -30,7 +30,6 @@ export const isAdmin = (req, res, next) => (
 );
 
 export const validateSignup = (req, res, next) => {
-  // req.body = deleteEmptyFields(trimFields(req.body));
   if (!req.body.username) {
     return res.status(400).send({
       message: 'Username is required',
@@ -53,7 +52,6 @@ export const validateSignup = (req, res, next) => {
 
 
 export const validateLogin = (req, res, next) => {
-  req.body = deleteEmptyFields(trimFields(req.body));
   if (!req.body.email) {
     return res.status(400).send({
       message: 'Email is required',

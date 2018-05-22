@@ -6,11 +6,11 @@ import menuController from '../controllers/menu';
 import orderController from '../controllers/orders';
 
 import authenticate from '../middlewares/authenticate';
-import { isAdmin, validateSignup, validateLogin, validateId } from '../middlewares/isAdmin';
+import { isAdmin, validateSignup, validateLogin, validateId, trimInputs } from '../middlewares/isAdmin';
 import { validateMealCreate, validateMealUpdate } from '../middlewares/validations/meal';
 
 const router = express.Router();
-
+router.all('*', trimInputs);
 router.get('/', (req, res) => {
   res.status(200).send('Welcome home, Book_A_Meal');
 })
