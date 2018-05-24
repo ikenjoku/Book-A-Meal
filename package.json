@@ -15,7 +15,8 @@
         "test": "npm run test:server",
         "test:server": "cross-env NODE_ENV=test nyc mocha --timeout 10000 server/test/**/*.spec.js  --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
         "cleardb": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
-        "pretest": "npm run cleardb && cross-env NODE_ENV=test sequelize db:migrate && cross-env NODE_ENV=test sequelize db:seed:all"
+        "pretest": "npm run cleardb && cross-env NODE_ENV=test sequelize db:migrate && cross-env NODE_ENV=test sequelize db:seed:all",
+        "reset:db": "NODE_ENV=development sequelize db:migrate && sequelize db:seed:all"
     },
     "repository": {
         "type": "git",

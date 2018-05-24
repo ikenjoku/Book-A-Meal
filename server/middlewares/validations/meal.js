@@ -24,6 +24,6 @@ export const validateMealUpdate = validate({
     name: name.required(),
     description: description.required(),
     price: price.required(),
-    imageurl,
+    imageurl: imageurl.required(),
   },
 });

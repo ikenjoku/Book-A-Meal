@@ -8,7 +8,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       date: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       amount: {
@@ -34,6 +34,11 @@ module.exports = {
           key: 'id',
           as: 'mealId',
         },
+      },
+      status: {
+        type: Sequelize.ENUM('delivered', 'cancelled', 'pending'),
+        allowNull: false,
+        defaultValue: 'pending',
       },
       createdAt: {
         allowNull: false,

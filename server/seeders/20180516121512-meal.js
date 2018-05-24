@@ -25,6 +25,22 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: 'Green Calulu',
+        description: 'Chicken salad with extra cabbage',
+        price: 1250,
+        imageurl: 'https://dynamic/production/ng/images/products/80/_ma.jpg',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Onion Jappatti',
+        description: 'Ingera palate with raw meat sauce',
+        price: 2200,
+        imageurl: 'https://dynamic/production/ng/images/produc475724_ma.jpg',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ], {});
   },
 

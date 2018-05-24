@@ -29,41 +29,6 @@ export const isAdmin = (req, res, next) => (
     })
 );
 
-export const validateSignup = (req, res, next) => {
-  if (!req.body.username) {
-    return res.status(400).send({
-      message: 'Username is required',
-    });
-  } else if (!req.body.password) {
-    return res.status(400).send({
-      message: 'Password is required',
-    });
-  } else if (!req.body.email) {
-    return res.status(400).send({
-      message: 'Email is required',
-    });
-  } else if (!(req.body.password === req.body.confirmPassword)) {
-    return res.status(400).send({
-      message: 'Passwords do not match',
-    });
-  }
-  next();
-};
-
-
-export const validateLogin = (req, res, next) => {
-  if (!req.body.email) {
-    return res.status(400).send({
-      message: 'Email is required',
-    });
-  } else if (!req.body.password) {
-    return res.status(400).send({
-      message: 'Password is required',
-    });
-  }
-  next();
-};
-
 export const validateId = (req, res, next) => (
   Number.isInteger(Number(req.params.id)) && !Number.isNaN(req.params.id) ?
     next() :

@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     amount: {
@@ -10,23 +10,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     userId: {
       type: DataTypes.INTEGER,
-      // onDelete: 'CASCADE',
       allowNull: false,
-      // references: {
-      //   model: 'Users',
-      //   key: 'id',
-      //   as: 'userId',
-      // },
     },
     mealId: {
       type: DataTypes.INTEGER,
-      // onDelete: 'CASCADE',
       allowNull: true,
-      // references: {
-      //   model: 'Meals',
-      //   key: 'id',
-      //   as: 'mealId',
-      // },
+    },
+    status: {
+      type: DataTypes.ENUM('delivered', 'cancelled', 'pending'),
+      allowNull: false,
+      defaultValue: 'pending',
     },
   });
   Order.associate = (models) => {

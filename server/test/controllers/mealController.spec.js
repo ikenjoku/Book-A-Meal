@@ -38,7 +38,7 @@ describe('Given /GET /api/v1/meals', () => {
         .end((err, res) => {
           res.status.should.eql(200);
           res.should.be.a('object');
-          res.body.meals.length.should.eql(3);
+          res.body.meals.length.should.eql(5);
           res.body.meals.should.be.a('array');
           res.body.meals[0].should.be.a('object');
           res.body.meals[0].should.have.property('id');
@@ -95,7 +95,7 @@ describe('Given /POST /api/v1/meals', () => {
         .send(meal)
         .end((err, res) => {
           res.status.should.eql(201);
-          res.body.meal.id.should.eql(4);
+          res.body.meal.id.should.eql(6);
           res.body.meal.name.should.eql('Indain Japatti');
           res.body.meal.description.should.eql('Spicy hot meat flakes with stew');
           res.body.meal.price.should.eql(1500);
