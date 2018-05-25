@@ -139,41 +139,43 @@ describe('Users', () => {
         'Then it should not add a user with password less than 5 characters',
         (done) => {
           const user = {
-          firstname: 'Idrismo',
-          lastname: 'Elba',
-          username: 'Bellema',
-          email: 'Idris@gmail.com',
-          password: 'is1',
-          confirmPassword: 'is1',
-        };
-        chai.request(app)
-          .post('/api/v1/auth/signup')
-          .send(user)
-          .end((err, res) => {
-            res.should.have.status(400);
-            done();
-          });
-      });
+            firstname: 'Idrismo',
+            lastname: 'Elba',
+            username: 'Bellema',
+            email: 'Idris@gmail.com',
+            password: 'is1',
+            confirmPassword: 'is1',
+          };
+          chai.request(app)
+            .post('/api/v1/auth/signup')
+            .send(user)
+            .end((err, res) => {
+              res.should.have.status(400);
+              done();
+            });
+        },
+      );
       it(
         'Then it should not add a user if the email already exist',
         (done) => {
-           const user = {
-          firstname: 'Izzy',
-          lastname: 'Chima',
-          username: 'Vero',
-          email: 'chubby@gmail.com',
-          password: '',
-          confirmPassword: 'idris1',
-        };
-        chai.request(app)
-          .post('/api/v1/auth/signup')
-          .send(user)
-          .end((err, res) => {
-            res.should.have.status(409);
-            res.body.errors.messages[0].should.eql('email is associated with an account');
-            done();
-          });
-      });
+          const user = {
+            firstname: 'Izzy',
+            lastname: 'Chima',
+            username: 'Vero',
+            email: 'chubby@gmail.com',
+            password: '',
+            confirmPassword: 'idris1',
+          };
+          chai.request(app)
+            .post('/api/v1/auth/signup')
+            .send(user)
+            .end((err, res) => {
+              res.should.have.status(409);
+              res.body.errors.messages[0].should.eql('email is associated with an account');
+              done();
+            });
+        },
+      );
       it('Then it should generate a token when the user is added', (done) => {
         chai.request(app)
           .post('/api/v1/auth/signup')
@@ -188,13 +190,13 @@ describe('Users', () => {
         'Then it should return the user payload',
         (done) => {
           const user = {
-          firstname: 'Eze',
-          lastname: 'Elvis',
-          username: 'eazyE',
-          email: 'eazy@gmail.com',
-          password: 'blessed',
-          confirmPassword: 'blessed',
-        };
+            firstname: 'Eze',
+            lastname: 'Elvis',
+            username: 'eazyE',
+            email: 'eazy@gmail.com',
+            password: 'blessed',
+            confirmPassword: 'blessed',
+          };
           chai.request(app)
             .post('/api/v1/auth/signup')
             .send(user)
@@ -214,7 +216,8 @@ describe('Users', () => {
 
   describe('Given /api/v1/auth/login', () => {
     describe('When a user wants to sign in', () => {
-      it('Then it should fail if the user does not enter the email and password fields',
+      it(
+        'Then it should fail if the user does not enter the email and password fields',
         (done) => {
           const mockUser = {
             email: '',

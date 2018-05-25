@@ -23,7 +23,7 @@ export const validateLogin = validate({
   body: {
     email: email.required(),
     password: password.required(),
-  }
+  },
 });
 
 export const validateSignup = (req, res, next) => {

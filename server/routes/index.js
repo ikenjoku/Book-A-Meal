@@ -8,7 +8,7 @@ import orderController from '../controllers/orders';
 import authenticate from '../middlewares/authenticate';
 import { isAdmin, validateId, trimInputs } from '../middlewares/isAdmin';
 import { validateMealCreate, validateMealUpdate } from '../middlewares/validations/meal';
-import { beforeSignup, validateSignup, validateLogin } from "../middlewares/validations/user";
+import { beforeSignup, validateSignup, validateLogin } from '../middlewares/validations/user';
 
 const router = express.Router();
 router.all('*', trimInputs);

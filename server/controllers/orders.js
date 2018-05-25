@@ -172,23 +172,23 @@ class OrdersController {
         }
 
         Meal.findById(newMealId)
-        .then(newMeal => {
-          if(!newMeal){
-            return res.status(400).send({
-              message: 'New Meal does not exist'
-            });
-          }
-          order.update({
-          mealId: newMeal.id,
-          amount: newMeal.price,
-        })
-        .then(order => res.status(200).send({
-            message: 'Your order has been updated',
-            order,
-          }))
+          .then((newMeal) => {
+            if (!newMeal) {
+              return res.status(400).send({
+                message: 'New Meal does not exist',
+              });
+            }
+            order.update({
+              mealId: newMeal.id,
+              amount: newMeal.price,
+            })
+              .then(updatedOrder => res.status(200).send({
+                message: 'Your order has been updated',
+                order: updatedOrder,
+              }))
+              .catch(error => next(error));
+          })
           .catch(error => next(error));
-        })
-        .catch(error => next(error));          
       });
   }
 }

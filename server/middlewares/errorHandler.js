@@ -17,7 +17,7 @@ const errorHandler = (error, req, res, next) => {
   if (error.name === 'SequelizeDatabaseError' && error.parent.routine === 'DateTimeParseError') {
     return res.status(400).send({
       message: 'Invalid date. Use this format YYYY-MM-DD',
-    })
+    });
   }
   res.status(error.status || 500);
   res.send({ Error: error });

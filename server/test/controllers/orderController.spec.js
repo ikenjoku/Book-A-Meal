@@ -129,7 +129,7 @@ describe('Given /PUT /api/v1/orders', () => {
   describe('When a user wants to update an order', () => {
     it('should update an order with a new meal', (done) => {
       const body = {
-        newMealId: 4
+        newMealId: 4,
       };
       chai.request(app)
         .put('/api/v1/orders/6')
@@ -146,7 +146,7 @@ describe('Given /PUT /api/v1/orders', () => {
     });
     it('should update an order if order does not exist', (done) => {
       const body = {
-        newMealId: 4
+        newMealId: 4,
       };
       chai.request(app)
         .put('/api/v1/orders/65')
@@ -161,7 +161,7 @@ describe('Given /PUT /api/v1/orders', () => {
     });
     it('should not update if an order was not made by the same user', (done) => {
       const body = {
-        newMealId: 4
+        newMealId: 4,
       };
       chai.request(app)
         .put('/api/v1/orders/6')
@@ -176,7 +176,7 @@ describe('Given /PUT /api/v1/orders', () => {
     });
     it('should not update an order after 15 mins of making it', (done) => {
       const body = {
-        newMealId: 4
+        newMealId: 4,
       };
       chai.request(app)
         .put('/api/v1/orders/5')
@@ -191,7 +191,7 @@ describe('Given /PUT /api/v1/orders', () => {
     });
     it('should cancel an order within 15 mins of making it', (done) => {
       const body = {
-        cancel: true
+        cancel: true,
       };
       chai.request(app)
         .put('/api/v1/orders/6')
