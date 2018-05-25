@@ -38,6 +38,9 @@ Project board can be found at [https://www.pivotaltracker.com/n/projects/2165554
 #### Template
 Project template is hosted on GitHub Pages. Please [click here](https://ikenjoku.github.io/Book-A-Meal/UI/index.html)
 
+#### Documentation
+Project API documentation can be found at [https://ikenjoku-bookameal.herokuapp.com/api-docs](https://ikenjoku-bookameal.herokuapp.com/api-docs)
+
 #### Testing
 
 For server-side tests, run `npm test`

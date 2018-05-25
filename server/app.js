@@ -15,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // routes
 app.use('/api-docs', express.static(path.join(__dirname, '/docs')));
 app.use('/api/v1', routes);
+app.use('/', (req, res) => {
+  res.status(200).send('Welcome to Book-A-Meal');
+});
 
 // Errorhandler
 app.use(errorHandler);
