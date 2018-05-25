@@ -1,24 +1,34 @@
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    mealId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    status: {
+      type: DataTypes.ENUM('delivered', 'cancelled', 'pending'),
+      allowNull: false,
+      defaultValue: 'pending',
+    },
   });
   Order.associate = (models) => {
     Order.belongsTo(models.User, {
-      foreignKey: 'customerId',
-      targetKey: 'id',
+      foreignKey: 'userId',
     });
     Order.belongsTo(models.Meal, {
-      foreignKey: 'mealid',
-      // otherKey: 'MealId',
+      foreignKey: 'mealId',
     });
-
   };
   return Order;
 };

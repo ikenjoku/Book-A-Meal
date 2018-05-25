@@ -34,7 +34,7 @@ export default (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     User.hasMany(models.Order, {
-      foreignKey: 'customerId',
+      foreignKey: 'userId',
     });
   };
 

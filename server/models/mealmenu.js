@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const MealMenu = sequelize.define('MealMenu', {
-    mealid: {
+    mealId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    menuid: {
+    menuId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
