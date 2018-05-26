@@ -1,6 +1,24 @@
 import { Meal } from '../models';
 
+/**
+ * It contains utility methods for meals
+ *
+ * @class MealController
+ */
 class MealController {
+  /**
+   * Add a new meal
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof MealController
+   */
   static addMeal(req, res, next) {
     const { name, description, imageurl } = req.body;
     let { price } = req.body;
@@ -27,7 +45,19 @@ class MealController {
       })
       .catch(error => next(error));
   }
-
+  /**
+   * Get a particular meal
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof MealController
+   */
   static getMeal(req, res, next) {
     const mealId = Number(req.params.id);
     Meal.findById(mealId)
@@ -43,13 +73,37 @@ class MealController {
       })
       .catch(error => next(error));
   }
-
+  /**
+   * Get all meals
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof MealController
+   */
   static getMeals(req, res, next) {
     Meal.findAll()
       .then(meals => res.status(200).send({ meals }))
       .catch(error => next(error));
   }
-
+  /**
+   * Edit a particular meal
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof MealController
+   */
   static updateMeal(req, res, next) {
     const id = Number(req.params.id);
     delete req.body.id;
@@ -79,7 +133,19 @@ class MealController {
       })
       .catch(error => next(error));
   }
-
+  /**
+   * Remove a particular meal
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof MealController
+   */
   static removeMeal(req, res, next) {
     const mealId = Number(req.params.id);
     Meal.findById(mealId)

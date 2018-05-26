@@ -1,4 +1,11 @@
-const errorHandler = (error, req, res, next) => {
+/**
+ * catches errors
+ *
+ * @param {Object} error error object being passed
+ * @param {Object} req express http request obect
+ * @param {Object} res express http response obect
+ */
+const errorHandler = (error, req, res) => {
   if (error.statusText && error.statusText === 'Bad Request') {
     let messages = [];
 

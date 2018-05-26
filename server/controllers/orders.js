@@ -1,6 +1,24 @@
 import { Order, User, Meal } from '../models';
 
-class OrdersController {
+/**
+ * It contains utility methods for orders
+ *
+ * @class OrderController
+ */
+class OrderController {
+  /**
+   * Place an order for a particular meal
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof OrderController
+   */
   static createOrder(req, res, next) {
     const { mealId } = req.body;
     const { id } = req.user;
@@ -33,6 +51,19 @@ class OrdersController {
           .catch(error => next(error));
       });
   }
+  /**
+   * Get all orders from database
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof OrderController
+   */
   static getAllOrders(req, res, next) {
     Order.findAll({
       include: [{
@@ -54,13 +85,22 @@ class OrdersController {
           orders,
         });
       })
-      .catch(err => res.status(400).send({
-        message: 'Error occured while finding order',
-        err,
-      }));
+      .catch(error => next(error));
   }
-
-  static getOrdersByDate(req, res) {
+  /**
+   * Get orders for a particular day
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof OrderController
+   */
+  static getOrdersByDate(req, res, next) {
     const todaysdate = new Date().toISOString();
     const date = req.query.date || todaysdate.substr(0, 10);
 
@@ -85,12 +125,21 @@ class OrdersController {
           orders,
         });
       })
-      .catch(err => res.status(400).send({
-        message: 'Error occured while finding order',
-        err,
-      }));
+      .catch(error => next(error));
   }
-
+  /**
+   * Get orders for a particular user
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof OrderController
+   */
   static getOrdersByUser(req, res, next) {
     const userId = req.user.id;
 
@@ -114,12 +163,21 @@ class OrdersController {
           orders,
         });
       })
-      .catch(error => res.status(400).send({
-        message: 'Error occured while finding your previous orders',
-        error,
-      }));
+      .catch(error => next(error));
   }
-
+  /**
+   * Deliver a particular order
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof OrderController
+   */
   static deliverOrder(req, res, next) {
     const { id } = req.params;
     Order.findById(id)
@@ -137,7 +195,19 @@ class OrdersController {
           .catch(error => next(error));
       });
   }
-
+  /**
+   * Update a particlar order
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof OrderController
+   */
   static updateOrder(req, res, next) {
     const originalOrderId = req.params.id;
     const { cancel } = req.body;
@@ -192,5 +262,5 @@ class OrdersController {
       });
   }
 }
-export default OrdersController;
+export default OrderController;
 

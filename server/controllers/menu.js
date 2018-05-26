@@ -1,7 +1,25 @@
 import { Menu, Meal, MealMenu } from '../models';
 
+/**
+ * It contains utility methodes for menu
+ *
+ * @class MenuController
+ */
 class MenuController {
-  static getMenu(req, res) {
+  /**
+   * Get menu for a particular day
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof MenuController
+   */
+  static getMenu(req, res, next) {
     const todaysdate = new Date().toISOString();
     const date = req.query.date || todaysdate.substr(0, 10);
     Menu.findOne({
@@ -15,14 +33,21 @@ class MenuController {
         return res.status(404).send({ message: `Menu has not been set for ${date}` });
       }
       res.send(menu);
-    }).catch((error) => {
-      res.status(400).send({
-        message: 'Menu could not be found',
-        error,
-      });
-    });
+    }).catch(error => next(error));
   }
-
+  /**
+   * Create menu for a particular day
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof MenuController
+   */
   static createMenu(req, res, next) {
     const { date, mealId } = req.body;
 
@@ -40,7 +65,8 @@ class MenuController {
           res.status(400).send({
             message: `Menu for ${date} already exist`,
           });
-        });
+        })
+        .catch(error => next(error));
     }
     Menu.findOne({ where: { date } })
       .then((menu) => {

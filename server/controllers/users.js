@@ -3,8 +3,26 @@ import bcrypt from 'bcrypt';
 import { User } from '../models';
 import { getJWT } from '../helpers/helpers';
 
+/**
+ * It contains utility methods for users
+ *
+ * @class UserController
+ */
 class UserController {
-  static create(req, res) {
+  /**
+   * Register a new user
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof UserController
+   */
+  static create(req, res, next) {
     const userData = { ...req.body, isAdmin: undefined };
     const username = userData.username;
     const email = userData.email;
@@ -44,12 +62,24 @@ class UserController {
             message: `Welcome ${firstname}. Enjoy your meal`,
           });
         })
-        .catch(error => error);
+        .catch(error => next(error));
     })
-      .catch(error => error);
+      .catch(error => next(error));
   }
-
-  static login(req, res) {
+  /**
+   * Logs in a new user
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof UserController
+   */
+  static login(req, res, next) {
     const email = req.body.email;
     const password = req.body.password;
     return User.findOne({ where: { email } }).then((user) => {
@@ -82,8 +112,8 @@ class UserController {
           isAdmin,
           message: `Welcome back ${firstname}`,
         });
-      }).catch(error => error);
-    }).catch(error => error);
+      }).catch(error => next(error));
+    }).catch(error => next(error));
   }
 }
 
