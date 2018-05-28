@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const devOptions = {
   devtool: 'inline-source-map',
@@ -38,15 +39,17 @@ module.exports = {
         },
       },
       {
-        test: /\.(s*)css$/,
-        use: [{
-          loader: 'css-loader',
-          options: { sourceMap: true, minimize: true },
-        },
-        {
-          loader: 'sass-loader',
-          options: { sourceMap: true },
-        }],
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true, minimize: true },
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true },
+          }],
       },
       {
         test: /\.(woff(2)?|svg|png|jpg|gif)$/,
@@ -58,6 +61,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './client/index.html',
       filename: './index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
 };
