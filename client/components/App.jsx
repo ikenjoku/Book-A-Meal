@@ -7,9 +7,7 @@ import Landing from './Landing.jsx';
 
 const App = () => (
   <div>
-    <NavBar/>
     <Landing/>
-    <Menu/>
   </div>
 );
 

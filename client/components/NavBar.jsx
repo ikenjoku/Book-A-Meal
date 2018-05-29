@@ -6,33 +6,24 @@ export default class NavBar extends Component {
   }
 
   burgerToggler(){
-    let linksEl = document.querySelector('.narrowLinks');
-    if (linksEl.style.display === 'block'){
-      linksEl.style.display = 'none';
+    let topNav = document.getElementById("myTopnav");
+    if (topNav.className === "topnav") {
+      topNav.className += " responsive";
     } else {
-      linksEl.style.display = 'block';
+      topNav.className = "topnav";
     }
   }
 
   render(){
     return (
-    <nav>
-      <div className='navWide'>
-        <div className='wideDiv'>
-          <a href="#">Book-A-Meal</a>
-          <a href="#">Login</a>
-          <a href="#">Signup</a>
-        </div>
+      <div className="topnav" id="myTopnav">
+        <a href="#home" className="" id='companyLogo'>Book-A-Meal</a>
+        <a href="#" onClick={this.burgerToggler}>Signup</a>
+        <a href="#" onClick={this.burgerToggler}>Login</a>
+        <a href="javascript:void(0);" className="icon" onClick={this.burgerToggler}>
+          <i className="fa fa-bars"></i>
+        </a>
       </div>
-      <div className='navNarrow'>
-        <i className='fa fa-bars fa-2x' onClick={this.burgerToggler}></i>
-          <div className="narrowLinks">
-            <a href="#" onClick={this.burgerToggler}>Book-A-Meal</a>
-            <a href="#" onClick={this.burgerToggler}>Login</a>
-            <a href="#" onClick={this.burgerToggler}>Signup</a>
-          </div>
-      </div>
-    </nav>
     );
   }
 }

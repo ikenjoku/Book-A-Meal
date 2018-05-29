@@ -1,5 +1,6 @@
 import React from 'react';
 
+import NavBar from './NavBar';
 
 export default class Login extends Component{
   constructor(props){
@@ -9,6 +10,7 @@ export default class Login extends Component{
   render(){
     return  (
       <div>
+      <NavBar />
       <main>
           <form>
             <h2>Log In</h2>
