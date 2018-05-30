@@ -6,10 +6,11 @@ import Menu from './Menu.jsx';
 import Landing from './Landing.jsx';
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
+import OrderHistory from './OrderHistory.jsx';
 
 const App = () => (
   <div>
-    <Menu/>
+    <OrderHistory/>
   </div>
 );
 
