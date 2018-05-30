@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
+import NavBar from './NavBar.jsx';
 
 export default class Signup extends Component{
   constructor(props) {
@@ -8,12 +9,14 @@ export default class Signup extends Component{
 
   render() {
     return (
-      <main className="content">
-            <form className="formDesign">
-                <h2>Sign In</h2>
+        <div>
+          <NavBar/>
+            <main className="">
+            <form className="form-wrapper">
+                <h2 className="center">Sign In</h2>
                 <div>
                     <input 
-                      className="input-field control"
+                      className="form-control"
                       type="text"
                       name="firstname" 
                       placeholder="First Name" 
@@ -21,7 +24,7 @@ export default class Signup extends Component{
                 </div>
                 <div>
                     <input 
-                      className="input-field control" 
+                      className="form-control" 
                       type="text" 
                       name="lastname" 
                       placeholder="Last Name" 
@@ -29,7 +32,7 @@ export default class Signup extends Component{
                 </div>
                 <div>
                     <input 
-                      className="input-field control" 
+                      className="form-control" 
                       type="text" 
                       name="username" 
                       placeholder="Preferred username" 
@@ -37,7 +40,7 @@ export default class Signup extends Component{
                 </div>
                 <div>
                     <input 
-                      className="input-field control" 
+                      className="form-control" 
                       type="email" 
                       name="email" 
                       placeholder="Email" 
@@ -45,7 +48,7 @@ export default class Signup extends Component{
                 </div>
                 <div>
                     <input 
-                      className="input-field control" 
+                      className="form-control" 
                       type="password" 
                       name="password" 
                       placeholder="Password" 
@@ -53,17 +56,17 @@ export default class Signup extends Component{
                 </div>
                 <div>
                     <input
-                      class="input-field control" 
+                      className="form-control" 
                       type="password" 
-                      name="confirm-password" 
+                      name="confirmPassword" 
                       placeholder="Confirm password" 
                     />
                 </div>
                 <div>
                     <input 
                     type="submit" 
-                    class="btn btn-nature submitBtn" 
-                    value="submit" 
+                    className="btn-control loginsubmitBtn" 
+                    value="Submit" 
                     />
                 </div>
                 <div className="right formText">
@@ -71,6 +74,10 @@ export default class Signup extends Component{
                 </div>
             </form>
         </main>
+        <footer id='signupFooter' className="footer">
+          <p>Book-A-Meal &copy;2018</p>
+        </footer>
+        </div>      
     );
   }
 }

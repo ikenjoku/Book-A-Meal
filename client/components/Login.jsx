@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import NavBar from './NavBar';
+import NavBar from './NavBar.jsx';
 
 export default class Login extends Component{
   constructor(props){
@@ -11,12 +11,12 @@ export default class Login extends Component{
     return  (
       <div>
       <NavBar />
-      <main>
-          <form>
-            <h2>Log In</h2>
-            <div>
+      <main className='mainContent'>
+          <form className='form-wrapper'>
+          <h2 className="center">Login</h2>
+          <div>
               <input 
-                className="input-field control" 
+                className="form-control" 
                 type="text" 
                 name="email" 
                 placeholder="Email"
@@ -24,7 +24,7 @@ export default class Login extends Component{
             </div>
             <div>
               <input
-                className="input-field control"
+                className="form-control"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -32,16 +32,16 @@ export default class Login extends Component{
             </div>
             <div>
               <input
-                className="btn btn-nature submitBtn"
+                className="btn-control loginsubmitBtn"
                 type="submit"  
-                value="submit"
+                value="Submit"
               />
             </div>
 
             <hr />
             <div className="center">
               <p>OR</p>
-              <a href="" className="btn btn-google">Sign in with Google</a>
+              <a href="" className="formText btn-google">Sign in with Google</a>
             </div>
             <div className="right formText">
               <p>No Account? <a href="signup.html">Sign Up</a> </p>
@@ -49,7 +49,10 @@ export default class Login extends Component{
             </div>
           </form>
         </main>
+        <footer className="footer">
+          <p>Book-A-Meal &copy;2018</p>
+        </footer>
       </div>
-          );
+    );
   }
 }
