@@ -1,0 +1,99 @@
+.manage-meals-content {
+    background-color: #ffffff;
+}
+
+.contain-table-headers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    font-weight: bold;
+}
+
+.meal-table-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    border-bottom: #ededed 1px solid
+}
+
+.meal-table-item-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 78px;
+    max-height: 78px;
+    margin: 0 auto;
+} 
+
+#all-meal-table {
+    padding: 20px 20px;
+}
+
+#all-meal-table h3 {
+    color: #20ac76;
+    font-size: 35px;
+}
+
+#setMenuBtn {
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.mg-meal-btn{
+    background-color: #20ac76;
+    color: #ffffff;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    width: 50px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-spacer{
+  // margin-right: 3px;
+  // margin-bottom: 5px;
+}
+
+#all-meal-table{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    -webkit-box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75);
+}
+
+.meal-table-title{
+    margin-left: 10px;
+}
+
+.contain-table-headers p {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px){
+  .contain-table-headers p {
+    font-size: 15px;
+    font-weight: bold;
+}
+}
+
+.add-meal-form{
+    max-width: 700px;
+    margin: 0px auto;
+    padding: 20px;
+}
+
+.btn-danger {
+    background-color: #a30303;
+    color: #ffffff;
+    border-color: #cf4332;
+}

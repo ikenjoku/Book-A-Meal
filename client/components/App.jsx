@@ -7,10 +7,11 @@ import Landing from './Landing.jsx';
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import OrderHistory from './OrderHistory.jsx';
+import ManageMeals from './ManageMeals.jsx';
 
 const App = () => (
   <div>
-    <OrderHistory/>
+    <ManageMeals/>
   </div>
 );
 
