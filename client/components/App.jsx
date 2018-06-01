@@ -8,10 +8,11 @@ import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import OrderHistory from './OrderHistory.jsx';
 import ManageMeals from './ManageMeals.jsx';
+import SetMenu from './SetMenu.jsx';
 
 const App = () => (
   <div>
-    <ManageMeals/>
+    <SetMenu/>
   </div>
 );
 
