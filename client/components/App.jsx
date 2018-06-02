@@ -11,9 +11,20 @@ import ManageMeals from './ManageMeals.jsx';
 import SetMenu from './SetMenu.jsx';
 
 const App = () => (
-  <div>
-    <SetMenu/>
-  </div>
+  <BrowserRouter>
+    <div>
+      <Switch>
+        <Route path='/' exact component={Landing}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/signup' component={Signup}/>
+        <Route path='/menu' component={Menu}/>
+        <Route path='/manage-meals' component={ManageMeals}/>
+        <Route path='/order-history' component={OrderHistory}/>
+        <Route path='/set-menu' component={SetMenu}/>
+      </Switch>
+    </div>
+  </BrowserRouter>
+  
 );
 
 
