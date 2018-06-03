@@ -1,0 +1,23 @@
+@import 'navbar';
+@import 'footer';
+@import 'landing'; 
+@import 'login';
+@import 'signup';
+@import 'menu';
+@import 'orderHistory';
+@import 'managemeals';
+@import 'setmenu';
+
+body, html {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ededed;
+
+}
+
+.app-container{
+  display: grid;
+  grid-template-rows: auto minmax(calc(100vh - 100px), 1fr) 45px;
+}
+

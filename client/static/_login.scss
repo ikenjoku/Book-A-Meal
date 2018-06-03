@@ -1,0 +1,81 @@
+.form-wrapper {
+  margin: 100px auto;
+  border-radius: 5px;
+  background-color: #e0dfdf;
+  padding: 20px;
+  max-width: 500px;
+  h2 {
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-size: 2.5em;
+    color: #000000;
+  }
+}
+
+.btn-google {
+  color: #9D2401;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.submitBtn {
+  width: 279px;
+}
+
+.formText {
+  padding: 5px 10px;
+  a {
+    text-decoration: none;
+    color: #9D2401;
+    font-size: 15px;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn-control {
+  width: 100%;
+  background-color: #9D2401;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-field-control {
+  color: grey;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  height: 30px;
+  width: 205px;
+  outline: none;
+  margin-top: 16px;
+}
+
+.input-btn-control {
+  margin: 0px;
+  height: 30px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #9D2401;
+  color: #ffffff;
+  outline: none;
+}
+
+.btn-control:hover {
+  background-color: rgb(148, 33, 1);
+}
