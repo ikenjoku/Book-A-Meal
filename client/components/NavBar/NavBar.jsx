@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  { Link } from 'react-router-dom';
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -16,14 +17,16 @@ export default class NavBar extends Component {
 
   render() {
     return (
-      <div className="topnav" id="myTopnav">
-        <a href="#home" className="" id='companyLogo'>Book-A-Meal</a>
-        <a href="#" onClick={this.burgerToggler}>Signup</a>
-        <a href="#" onClick={this.burgerToggler}>Login</a>
-        <a href="javascript:void(0);" className="icon" onClick={this.burgerToggler}>
-          <i className="fa fa-bars"></i>
-        </a>
-      </div>
+      <header>
+        <nav className="topnav" id="myTopnav">
+          <Link to='/' id='companyLogo'>Book-A-Meal</Link>
+          <Link to='/signup' onClick={this.burgerToggler}>Signup</Link>
+          <Link to='/login' onClick={this.burgerToggler}>Login</Link>
+          <a href="javascript:void(0);" className="icon" onClick={this.burgerToggler}>
+            <i className="fa fa-bars"></i>
+          </a>
+        </nav>
+      </header>
     );
   }
 }
