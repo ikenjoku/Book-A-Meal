@@ -380,7 +380,7 @@ export const mealsSample = {
       createdAt: '2018-05-23T19:56:44.674Z',
       updatedAt: '2018-05-23T19:56:44.674Z',
     },
-        {
+    {
       id: 3,
       name: 'Egusi Semo',
       price: 1200,
@@ -398,7 +398,7 @@ export const mealsSample = {
       createdAt: '2018-05-23T19:56:44.674Z',
       updatedAt: '2018-05-23T19:56:44.674Z',
     },
-        {
+    {
       id: 5,
       name: 'Egusi Semo',
       price: 1240,
@@ -416,7 +416,7 @@ export const mealsSample = {
       createdAt: '2018-05-23T19:56:44.674Z',
       updatedAt: '2018-05-23T19:56:44.674Z',
     },
-        {
+    {
       id: 7,
       name: 'Egusi Semo',
       price: 1200,
@@ -434,7 +434,7 @@ export const mealsSample = {
       createdAt: '2018-05-23T19:56:44.674Z',
       updatedAt: '2018-05-23T19:56:44.674Z',
     },
-        {
+    {
       id: 9,
       name: 'Egusi Semo',
       price: 1200,
@@ -452,7 +452,7 @@ export const mealsSample = {
       createdAt: '2018-05-23T19:56:44.674Z',
       updatedAt: '2018-05-23T19:56:44.674Z',
     },
-        {
+    {
       id: 11,
       name: 'Egusi Semo',
       price: 1200,
@@ -470,7 +470,7 @@ export const mealsSample = {
       createdAt: '2018-05-23T19:56:44.674Z',
       updatedAt: '2018-05-23T19:56:44.674Z',
     },
-        {
+    {
       id: 13,
       name: 'Egusi Semo',
       price: 1200,
@@ -488,7 +488,7 @@ export const mealsSample = {
       createdAt: '2018-05-23T19:56:44.674Z',
       updatedAt: '2018-05-23T19:56:44.674Z',
     },
-        {
+    {
       id: 15,
       name: 'Egusi Semo',
       price: 1200,

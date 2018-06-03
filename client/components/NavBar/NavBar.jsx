@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 export default class NavBar extends Component {
-  constructor(props){
-    super(props);  
+  constructor(props) {
+    super(props);
   }
 
-  burgerToggler(){
+  burgerToggler() {
     let topNav = document.getElementById("myTopnav");
     if (topNav.className === "topnav") {
       topNav.className += " responsive";
@@ -14,7 +14,7 @@ export default class NavBar extends Component {
     }
   }
 
-  render(){
+  render() {
     return (
       <div className="topnav" id="myTopnav">
         <a href="#home" className="" id='companyLogo'>Book-A-Meal</a>

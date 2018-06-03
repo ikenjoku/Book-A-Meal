@@ -1,4 +1,5 @@
 @import 'navbar';
+@import 'footer';
 @import 'landing'; 
 @import 'login';
 @import 'signup';
@@ -15,40 +16,8 @@ body, html {
 
 }
 
-
-
-.mainContent{
-  min-height: calc(100vh - 100px);
+.app-container{
+  display: grid;
+  grid-template-rows: auto minmax(calc(100vh - 45px), 1fr) 45px;
 }
 
-
-.footer {
-  background-color: #363535;
-  grid-column: 1/-1;
-  height: 45px;
-  line-height: 45px;
-}
-
-.footer p {
-  color: #efefef;
-  font-size: 15px;
-  text-align: center;
-  font-family: 'Abel', sans-serif;
-}
-
-
-.btn {
-  display: inline-block;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  background-image: none;
-  border: 1px solid transparent;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 5px 50px;
-  font-size: 1.313em;
-  font-weight: bold;
-  border-radius: 2px;
-  transition: all 0.3s ease 0s;
-}
