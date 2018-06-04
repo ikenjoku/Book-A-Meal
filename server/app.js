@@ -12,15 +12,13 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-if (process.env.NODE_ENV !== 'production'){
+if (process.env.NODE_ENV !== 'production') {
   app.use(cors());
 }
 // routes
 app.use('/api-docs', express.static(path.join(__dirname, '/docs')));
 app.use('/api/v1', routes);
-app.use('/', (req, res) => {
-  res.status(200).send('Welcome to Book-A-Meal');
-});
+app.get('/*', (req, res) => res.sendFile(path.join(path.dirname(__dirname), 'client/index.html')));
 
 // Errorhandler
 app.use(errorHandler);

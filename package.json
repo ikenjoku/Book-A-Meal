@@ -8,6 +8,7 @@
         "npm": "5.6.0"
     },
     "scripts": {
+        "compile": "webpack",
         "start": "babel-node server/bin/www.js",
         "start:client": "webpack-dev-server --mode development --hot --open",
         "start:server": "nodemon server/bin/www.js --exec babel-node",
