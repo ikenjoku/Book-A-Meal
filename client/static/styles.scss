@@ -21,3 +21,6 @@ body, html {
   grid-template-rows: auto minmax(calc(100vh - 90px), 1fr) 45px;
 }
 
+.activeNavLink{
+  background-color:#9D2401;
+}

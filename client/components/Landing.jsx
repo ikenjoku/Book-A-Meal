@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import NavBar from './NavBar/NavBar';
 import bgImg from '../static/bg-img.jpg';
@@ -23,7 +24,7 @@ export default class Landing extends Component {
           <h3>Welcome to Book-A-Meal</h3>
           <p>Rediscover local cuisine with a touch of delicious. Order hot homemade meals with a menu crafted just for you. We planned to satisfy your belly with all the good stuff.
           </p>
-          <a id="enter-btn" className="btn menu-btn-nature" href="menu-list.html">Enter</a>
+          <Link to="/menu" className="btn menu-btn-nature enter-btn">Enter</Link>
         </div>
       </main>
     );

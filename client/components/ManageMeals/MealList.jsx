@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const MealList = ({ meals }) => {
+const MealList = ({ meals, handleDeleteMeal, handelUpdateMeal }) => {
     return (
         <div>
             <h1 className="meal-table-title">All Meal List</h1>
@@ -29,8 +29,24 @@ const MealList = ({ meals }) => {
                                 <p>{meal.price}</p>
                             </div>
                             <div className="meal-table-item-action">
-                                <p><a className="mg-meal-btn btn-spacer">Edit</a>
-                                    <a className="mg-meal-btn btn-danger">Delete</a></p>
+                                <p>
+                                <a 
+                                    className="mg-meal-btn btn-spacer"
+                                    onClick={(e) => {
+                                        handelUpdateMeal(meal.id);
+                                    }}
+                                    >
+                                    Edit
+                                </a>
+                                <a 
+                                    className="mg-meal-btn btn-danger"
+                                    onClick={(e) => {
+                                        handleDeleteMeal(meal.id);
+                                    }}
+                                    >
+                                    Delete
+                                </a>
+                                </p>
                             </div>
                         </div>
                     )}

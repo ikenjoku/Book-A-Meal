@@ -5,6 +5,7 @@ import mealController from '../controllers/meals';
 import menuController from '../controllers/menu';
 import orderController from '../controllers/orders';
 
+import uploadImage from '../helpers/uploadImage';
 import authenticate from '../middlewares/authenticate';
 import { isAdmin, validateId, trimInputs } from '../middlewares/isAdmin';
 import { validateMealCreate, validateMealUpdate } from '../middlewares/validations/meal';
@@ -22,7 +23,7 @@ router.get('/', (req, res) => {
   // Meals
   .get('/meals', /* authenticate, */mealController.getMeals)
   .get('/meals/:id', validateId, /* authenticate */ mealController.getMeal)
-  .post('/meals', validateMealCreate, /* authenticate, isAdmin, */mealController.addMeal)
+  .post('/meals', validateMealCreate, /* authenticate, isAdmin, */uploadImage.single('imageurl'), mealController.addMeal)
   .put('/meals/:id', validateMealUpdate, validateId, /* authenticate, isAdmin, */mealController.updateMeal)
   .delete('/meals/:id', validateId, /* authenticate, isAdmin, */mealController.removeMeal)
 

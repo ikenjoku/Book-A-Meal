@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  { Link } from 'react-router-dom';
+import  { Link, NavLink } from 'react-router-dom';
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -19,9 +19,9 @@ export default class NavBar extends Component {
     return (
       <header>
         <nav className="topnav" id="myTopnav">
-          <Link to='/' id='companyLogo'>Book-A-Meal</Link>
-          <Link to='/signup' onClick={this.burgerToggler}>Signup</Link>
-          <Link to='/login' onClick={this.burgerToggler}>Login</Link>
+          <NavLink to='/' id='companyLogo' activeClassName='activeNavLink' exact>Book-A-Meal</NavLink>
+          <NavLink to='/signup' onClick={this.burgerToggler} activeClassName='activeNavLink'>Signup</NavLink>
+          <NavLink to='/login' onClick={this.burgerToggler} activeClassName='activeNavLink'>Login</NavLink>
           <a href="javascript:void(0);" className="icon" onClick={this.burgerToggler}>
             <i className="fa fa-bars"></i>
           </a>

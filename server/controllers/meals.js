@@ -23,7 +23,7 @@ class MealController {
     const { name, description, imageurl } = req.body;
     let { price } = req.body;
     price = Number(price);
-
+    console.log(req.file);
     Meal.findOne({ where: { name } })
       .then((meal) => {
         if (meal) {
