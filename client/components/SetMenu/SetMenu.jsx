@@ -4,7 +4,7 @@ import NavBar from '../NavBar/NavBar.jsx';
 import MenuDatePicker from './MenuDatePicker.jsx';
 import MealList from './MealList.jsx';
 import axios from 'axios';
-import API from '../axiosConfig';
+import API from '../../axiosConfig';
 
 import { mealsSample } from "../mocks";
 

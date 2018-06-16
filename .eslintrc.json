@@ -11,6 +11,7 @@
         "no-param-reassign": "off",
         "consistent-return": "off",
         "prefer-destructuring": "off",
-        "no-case-declarations": "off"
+        "no-case-declarations": "off",
+        "object-curly-newline":"off"
     }
 }

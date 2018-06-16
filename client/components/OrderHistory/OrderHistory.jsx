@@ -6,7 +6,7 @@ import OrderList from './OrderList.jsx';
 
 import { sampleOrders } from "../mocks";
 import axios from 'axios';
-import API from '../axiosConfig';
+import API from '../../axiosConfig';
 
 export default class OrderHistory extends Component {
   constructor(props) {

@@ -10,8 +10,9 @@ import routes from './routes';
 const app = express();
 
 app.use(logger('dev'));
-app.use(bodyParser.json({ limit: '200mb' }));
-app.use(bodyParser.urlencoded({ limit: '200mb', extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 if (process.env.NODE_ENV !== 'production') {
   app.use(cors());
 }

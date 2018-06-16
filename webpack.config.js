@@ -35,7 +35,7 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           presets: ['stage-2', 'react', 'env'],
-          plugins: ['transform-class-properties'],
+          plugins: ['transform-class-properties', 'transform-object-rest-spread'],
         },
       },
       {

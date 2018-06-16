@@ -3,15 +3,22 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import NavBar from './NavBar/NavBar.jsx';
 import Landing from './Landing.jsx';
-import Footer from './Footer.jsx';
-import Menu from './Menu/Menu.jsx';
 import Login from './Auth/Login.jsx';
 import Signup from './Auth/Signup.jsx';
-import OrderHistory from './OrderHistory/OrderHistory.jsx';
-import ManageMeals from './ManageMeals/ManageMeals.jsx';
-import SetMenu from './SetMenu/SetMenu.jsx';
-import NotFound from './NotFound.jsx';
+
+import MealList from './ManageMeals/MealList.jsx';
 import EditMeal from './ManageMeals/EditMeal.jsx';
+import AddMeal from './ManageMeals/AddMeal.jsx';
+
+import OrderHistory from './OrderHistory/OrderHistory.jsx';
+
+import SetMenu from './SetMenu/SetMenu.jsx';
+import Menu from './Menu/Menu.jsx';
+
+import Footer from './Footer.jsx';
+import NotFound from './NotFound.jsx';
+
+
 
 const App = () => (
   <BrowserRouter>
@@ -22,7 +29,8 @@ const App = () => (
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
           <Route path='/menu' component={Menu} />
-          <Route path='/manage-meals' component={ManageMeals} />
+          <Route path='/meals' exact component={MealList} />
+          <Route path='/meals/create' component={AddMeal} />
           <Route path='/meals/edit/:id' component={EditMeal} />
           <Route path='/order-history' component={OrderHistory} />
           <Route path='/set-menu' component={SetMenu} />

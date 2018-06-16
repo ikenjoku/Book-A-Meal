@@ -1,57 +1,29 @@
 import React from "react";
-import Modal from 'react-modal';
+import { connect } from "react-redux";
+import { updateAMeal } from "../../actions/mealActions";
+import MealForm from "./MealForm";
 
-const EditMeal = ({ selectedToUpdate, mealToUpdate, clearUpdateModal }) => {
+const EditMeal = (props) => {
+  console.log(props);
+
   return (
-    <Modal
-      isOpen={!!selectedToUpdate}
-      contentLabel='Update a meal'
-      onRequestClose={clearUpdateModal}
-    >
-        <h3 className="center">Update a Meal <button onClick={clearUpdateModal}>close</button></h3>
-        <div className="contain-form">
-          <form 
-          encType='multipart/form-data' 
-          name = 'addMealForm' 
-          className="add-meal-form">
-            <input
-              className="form-control"
-              type="text"
-              name="name"
-              required
-              placeholder={mealToUpdate.name} />
-
-            <input
-              className="form-control"
-              type="text"
-              name="description"
-              required
-              placeholder={mealToUpdate.description} />
-
-            <input
-              className="form-control"
-              type="number"
-              name="price"
-              required
-              placeholder={mealToUpdate.price} />
-
-            <input
-              className="form-control"
-              type="file"
-              required
-              name="imageurl"/>
-
-            <input
-              className="btn-control loginsubmitBtn"
-              type="submit"
-              name='submitBtn'
-              value="Add Meal" />
-
-          </form>
-        </div>
-    </Modal>
+    <div className="manage-meals-content">
+    <h3 className="center">Update {props.meal.name} Meal</h3>
+      <MealForm
+        meal={props.meal}
+        onSubmit={(meal) => {
+          props.dispatch(updateAMeal(props.meal.id, meal));
+          props.history.push('/meals');
+        }}
+      />
+    </div>
   );
 }
 
+const mapStateToProps = (state, props) => {
+  return {
+    meal: state.mealReducer.meals.find((meal) => meal.id === Number(props.match.params.id))
+  };
+};
 
-export default EditMeal;
+export default connect(mapStateToProps)(EditMeal);

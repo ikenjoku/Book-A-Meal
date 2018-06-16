@@ -4,7 +4,6 @@ import validate from 'express-validation';
 const name = Joi.string().min(2).max(30);
 const description = Joi.string().min(5).max(100);
 const price = Joi.number().min(1).positive();
-const imageurl = Joi.required();
 const mealId = Joi.number().positive();
 
 export const validateMealCreate = validate({
@@ -12,7 +11,6 @@ export const validateMealCreate = validate({
     name: name.required(),
     description: description.required(),
     price: price.required(),
-    imageurl: imageurl.required(),
   },
 });
 
@@ -24,6 +22,5 @@ export const validateMealUpdate = validate({
     name: name.required(),
     description: description.required(),
     price: price.required(),
-    imageurl: imageurl.required(),
   },
 });
