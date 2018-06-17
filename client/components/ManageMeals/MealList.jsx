@@ -20,7 +20,6 @@ const MealList = ({ meals, dispatch }) => {
                   <p>Actions</p>
               </div>
               <div className="meal-table">
-              {console.log(meals)}
                   {meals.map(meal =>
                     <div key={meal.id} className="meal-table-item">
                         <div className="meal-table-item-img">
