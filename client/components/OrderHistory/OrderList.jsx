@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 const OrderList = ({ orders }) => {
-
+  let daysTotal = 0;
+  orders.map(order =>  daysTotal += order.amount)
   return (
     <div>
       <div className="order-table-header">
@@ -23,7 +24,7 @@ const OrderList = ({ orders }) => {
         )}
       </div>
       <div id="total-made">
-        <h2>Total: &#8358;150 470.00</h2>
+        <h2>Total: &#8358;{daysTotal}</h2>
       </div>
     </div>
   );

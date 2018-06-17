@@ -20,10 +20,12 @@ class MealController {
    * @memberof MealController
    */
   static addMeal(req, res, next) {
-    const { name, description, imageurl } = req.body;
+    const { name, description } = req.body;
+    const imageurl = req.file.secure_url;
     let { price } = req.body;
     price = Number(price);
-
+    console.log(req.file);
+    console.log('>>>>>>>>', req.body);
     Meal.findOne({ where: { name } })
       .then((meal) => {
         if (meal) {
@@ -107,6 +109,13 @@ class MealController {
   static updateMeal(req, res, next) {
     const id = Number(req.params.id);
     delete req.body.id;
+    const imageurl = req.file.secure_url;
+    const {
+      name,
+      description,
+      price,
+    } = req.body;
+
     Meal.findById(id)
       .then((meal) => {
         if (!meal) {
@@ -114,12 +123,6 @@ class MealController {
             message: 'Meal does not exist',
           });
         }
-        const {
-          name,
-          description,
-          price,
-          imageurl,
-        } = req.body;
         meal.update({
           name, description, price, imageurl,
         })

@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from "react-redux";
 
-const MealList = ({ meals }) => {
+
+const MealList = ({ meals, dispatch }) => {
     return (
         <div className="contain-set-menu-meal-table">
             <div className="set-menu-table-headers">
@@ -11,15 +13,15 @@ const MealList = ({ meals }) => {
             </div>
             <div className="set-menu-table-body">
                 {meals.map(meal =>
-                    <div key={meal.id} className="set-menu-meal-item">
-                        <img src={require("../../static/mealImg.jpg")} alt="" />
+                    <div key={ meal.id } className="set-menu-meal-item">
+                        <img src={ meal.imageurl } alt="" />
                         <div className="food-title-desc">
-                            <p className="food-item-title">Rice and Beans</p>
-                            <p className="food-item-detail">Rice, Beans, Plantain, Panla Sauce, Max Coke</p>
+                            <p className="food-item-title">{ meal.name }</p>
+                            <p className="food-item-detail">{ meal.description }</p>
                         </div>
                         <div className="food-item-price">
-                            N1400
-              </div>
+                        &#8358;{ meal.price }
+                        </div>
                         <div><button className="food-add-btn">Add to menu</button></div>
                     </div>
                 )}
@@ -28,4 +30,8 @@ const MealList = ({ meals }) => {
     );
 }
 
-export default MealList;
+const mapStateToProps = state => ({
+    meals: state.mealReducer.meals,
+});
+
+export default connect(mapStateToProps)(MealList)
