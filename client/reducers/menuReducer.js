@@ -15,6 +15,7 @@ const menuReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedMenu: action.selectedMenu,
+        error: null,
       };
     case GET_MENU_FAILURE:
       return {

@@ -24,11 +24,12 @@ class MenuTable extends Component {
       <div>
         
         <h2 className="center cool-lg-text">Menu List</h2>
-        <DatePicker onSubmit={
-          () => dispatch(getAMenu({selectedDate, formattedDate}))
+        <DatePicker btnName='Get Menu' onSubmit={
+          (selectedDate) => this.props.dispatch(getAMenu(selectedDate))
         } />
-         { menu ?
-        <MenuList meals={this.props.menu.Meals} />
+        {this.props.error && <p className='error-alert'>No Menu is set for this day</p> }
+         { menu && !this.props.error ?
+        <MenuList menu={this.props.menu} />
         : ''}
       </div>
     );
@@ -43,6 +44,7 @@ class MenuTable extends Component {
 const mapStateToProps = state => ({
   menu: state.menuReducer.selectedMenu,
   isLoadingMenu: state.menuReducer.isLoading,
+  error: state.menuReducer.error
 });
 
 export default connect(mapStateToProps)(MenuTable);
