@@ -2,11 +2,11 @@ import React from 'react';
 import fallbackImage from "../../static/mealImg.jpg"
 
 
-const MealList = ({ meals }) => (
+const MenuList = ({ meals }) => (
   <div>
     {meals.map(meal =>
       <div key={meal.id} className="food-item">
-        <img src={fallbackImage} alt="" />
+        <img src={meal.imageurl} alt="" />
         <div className="food-title-desc">
           <p className="food-item-title">{meal.name}</p>
           <p className="food-item-detail">{meal.description}</p>
@@ -22,4 +22,4 @@ const MealList = ({ meals }) => (
 
 
 
-export default MealList;
+export default MenuList;

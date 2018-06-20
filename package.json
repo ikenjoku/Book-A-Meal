@@ -60,6 +60,7 @@
         "prop-types": "^15.6.1",
         "react": "^16.4.0",
         "react-dom": "^16.4.0",
+        "react-loader-spinner": "^2.1.0",
         "react-modal": "^2.2.2",
         "react-redux": "^5.0.7",
         "react-router-dom": "^4.2.2",

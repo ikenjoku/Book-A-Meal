@@ -1,42 +1,33 @@
 import API from '../axiosConfig';
 import {
-  SET_MENU_SUCCESS, SET_MENU_FAILURE,
-  SET_SELECTED_DATE,
+  GET_MENU_SUCCESS, GET_MENU_FAILURE,
 } from './actionTypes';
 
 // Actions
 
-const setMenu = createdMenu => ({
-  type: SET_MENU_SUCCESS,
-  createdMenu,
+const getMenuSuccess = selectedMenu => ({
+  type: GET_MENU_SUCCESS,
+  selectedMenu: selectedMenu.menu,
 });
 
-export const setSelectedDate = selectedDate => ({
-  type: SET_SELECTED_DATE,
-  selectedDate,
-});
-
-// const setMenuFormattedDate = formattedDate => ({
-//   type: SET_MENU_SUCCESS,
-//   formattedDate,
-// });
-
-const setMenuFailure = error => ({
-  type: SET_MENU_FAILURE,
+const getMenuFailure = error => ({
+  type: GET_MENU_FAILURE,
   error,
 });
 
+
+
+
 // Action Creators
-const setAMenu = ({ selectedDate, formattedDate }) => (dispatch) => {
-  API.post('/menu', { date: selectedDate })
+export const getAMenu = ({ selectedDate }) => (dispatch) => {
+  API.get(`/menu?date=${selectedDate}`)
     .then((res) => {
-      dispatch(setMenu(res.data));
-      // dispatch(setMenuFormattedDate(formattedDate));
+      dispatch(getMenuSuccess(res.data));
+      console.log(res.data);
+      // dispatch notification
     })
     .catch((error) => {
-      dispatch(setMenuFailure(error));
+      dispatch(getMenuFailure(error));
     });
 };
 
-export default setAMenu;
-// make an action to dispatch meal id with selected menu date

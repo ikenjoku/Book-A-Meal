@@ -4,16 +4,7 @@ import MealList from './MealList.jsx';
 
 import { mealsSample } from "../mocks";
 
-export default class SetMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      meals: mealsSample.meals,
-      justCreatedMenu: ''
-    }
-  }
-
-  render() {
+const SetMenu = () => {
     return (
       <main className="set-menu-page">
       <div className="set-menu-title">
@@ -24,4 +15,5 @@ export default class SetMenu extends Component {
       </main>
     );
   }
-}
+
+export default SetMenu;

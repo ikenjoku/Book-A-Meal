@@ -8,6 +8,7 @@ import {
 const initialState = {
   meals: [],
   error: null,
+  isLoading: true,
 
 };
 
@@ -16,7 +17,7 @@ export default (state = initialState, action) => {
   let meals;
   switch (action.type) {
     case GET_MEALS_SUCCESS:
-      return { ...state, meals: action.meals };
+      return { ...state, meals: action.meals, isLoading: false };
     case GET_MEALS_FAILURE:
       return { ...state, error: action.error };
 
