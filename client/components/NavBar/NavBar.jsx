@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import  { Link, NavLink } from 'react-router-dom';
+import  { NavLink } from 'react-router-dom';
+import authReducer from '../../reducers/authReducer';
+import { connect } from 'react-redux';
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
   }
@@ -30,3 +32,13 @@ export default class NavBar extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: authReducer.isLoggedIn,
+    user: authReducer.user,
+  }
+}
+
+
+export default connect(mapStateToProps, null)(NavBar);

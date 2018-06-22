@@ -27,9 +27,9 @@ export const addMealToMenuSuccess = ({message, updatedMenu}) => ({
   updatedMenu,
 });
 
-export const addMealToMenuFailure = ({error}) => ({
+export const addMealToMenuFailure = (error) => ({
   type: ADD_MEAL_TO_MENU_SUCCESS,
-  updatedMenu,
+  error,
 });
 // const setMenuFormattedDate = formattedDate => ({
 //   type: SET_MENU_SUCCESS,

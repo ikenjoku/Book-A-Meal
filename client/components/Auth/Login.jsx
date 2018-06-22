@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Redirect } from "react-router-dom";
+import { loginAUser } from "../../actions/authActions/login";
 
-import NavBar from '../NavBar/NavBar.jsx';
+class Login extends Component {
+  state = {
+    data: {
+      email: '',
+      password: ''
+    },
+    error: ''
+  }
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props)
+  onFormInput = (event) => {
+    const { data } = this.state;
+    data[event.target.name] = event.target.value.trim();
+    this.setState(() => ({ data }));
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    const { data } = this.state;
+    this.props.loginAUser(data)
   }
 
   render() {
     return (
+      this.props.isLoggedIn === true ?  <Redirect to='/menu'/> :
       <main className='mainContent'>
-        <form className='form-wrapper'>
+        <form className='form-wrapper' onSubmit={this.onSubmit}>
           <h2 className="center">Login</h2>
           <div>
             <input
@@ -18,6 +37,8 @@ export default class Login extends Component {
               type="text"
               name="email"
               placeholder="Email"
+              value={this.state.data.email}
+              onChange={this.onFormInput}
             />
           </div>
           <div>
@@ -26,6 +47,8 @@ export default class Login extends Component {
               type="password"
               name="password"
               placeholder="Password"
+              value={this.state.data.password}
+              onChange={this.onFormInput}
             />
           </div>
           <div>
@@ -35,12 +58,7 @@ export default class Login extends Component {
               value="Submit"
             />
           </div>
-
           <hr />
-          <div className="center">
-            <p>OR</p>
-            <a href="" className="formText btn-google">Sign in with Google</a>
-          </div>
           <div className="right formText">
             <p>No Account? <a href="signup.html">Sign Up</a> </p>
             <a href="#">Forgot your password?</a>
@@ -50,3 +68,15 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+  isLoggedIn: state.authReducer.isLoggedIn,
+  authLoading: state.authReducer.authLoading,
+  }
+};
+
+const mapDispatchToProps = dispatch => 
+  bindActionCreators({ loginAUser }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
