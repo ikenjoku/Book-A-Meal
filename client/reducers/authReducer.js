@@ -1,35 +1,34 @@
-import { 
-  AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_SUCCESS, SIGNUP_SUCCESS
-} from "../actions/actionTypes";
+import {
+  AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_SUCCESS,
+} from '../actions/actionTypes';
 
 const initialState = {
   authLoading: true,
   user: {},
   isLoggedIn: false,
-}
+};
 
 const authReducer = (state = initialState, action) => {
-  switch(action.type){
+  switch (action.type) {
     case LOGIN_SUCCESS:
-      return{
+      return {
         ...state,
         user: action.user,
-      }
+      };
     case AUTH_LOADING:
-      return{
+      return {
         ...state,
         authLoading: action.isLoading,
-      }
+      };
     case AUTH_LOGIN_STATUS:
-      return{
+      return {
         ...state,
         isLoggedIn: action.isLoggedIn,
-      }
+      };
     default:
-    return state;
+      return state;
   }
-
-}
+};
 
 
 export default authReducer;

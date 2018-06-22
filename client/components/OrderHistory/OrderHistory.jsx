@@ -1,40 +1,52 @@
 import React, { Component } from 'react';
-
-import NavBar from '../NavBar/NavBar.jsx';
+import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import DatePicker from '../DatePicker.jsx';
 import OrderSearch from './OrderSearch.jsx';
 import OrderList from './OrderList.jsx';
+import { getOrdersByDate } from "../../actions/orderActions";
 
-import { sampleOrders } from "../mocks";
-import axios from 'axios';
-import API from '../../axiosConfig';
 
-export default class OrderHistory extends Component {
+class OrderHistory extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      orders: [],
-      error: ''
-    }
-    this.getOrderHistory = this.getOrderHistory.bind(this);
+
   }
-  getOrderHistory(orderDate){
-    console.log(`get the order history for ${orderDate}`)
-    API.get('/orders/date', { params: { date: orderDate } })
-    .then(({ data: { orders } }) => this.setState({ orders: orders }))
-    .catch(error => this.setState({error: error.message}));
+  componentDidMount(){
+    const today = new Date().toISOString().substr(0, 10);
+    this.props.getOrdersByDate({selectedDate:today});
   }
 
   render() {
+    const { orders } = this.props;
     return (
       <main id='order-history-container' className="order-history-content">
         <div className="cool-lg-text">
           <h2>Order History</h2>
         </div>
-        <OrderSearch getOrderHistory={this.getOrderHistory}/>
-        {!this.state.error && <OrderList orders={this.state.orders} />}
-        {this.state.error && <h3>No orders found for this day</h3>}
+        <DatePicker btnName='Get Orders' onSubmit={
+          (selectedDate) => this.props.getOrdersByDate(selectedDate)
+        }/>
+        {this.props.error && <p className='error-alert'>No Orders found for this day</p> }
+         { orders && !this.props.error ?
+        <OrderList orders={this.props.orders} />
+        : ''}
       </main>
     );
   }
 }
 
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    orders: state.orderReducer.orders,
+    isLoadingOrders: state.orderReducer.isLoading,
+    error: state.orderReducer.error
+  }
+};
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ getOrdersByDate }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderHistory);
