@@ -1,14 +1,9 @@
 import {
   AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_SUCCESS,
 } from '../actions/actionTypes';
+import initialState from './initialState';
 
-const initialState = {
-  authLoading: true,
-  user: {},
-  isLoggedIn: false,
-};
-
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState.authReducer, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {

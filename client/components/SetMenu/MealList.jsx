@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import { addAMealToMenu } from '../../actions/setMenuActions';
+import { getAllMeals } from "../../actions/mealActions";
 
 
-const MealList = ({ meals, isLoading, selectedDate, dispatch }) => {
+class MealList extends Component{
+    constructor(props){
+        super(props);
+    }
+
+    componentDidMount(){
+        // this.props.dispatch(getAllMeals());
+        this.props.getAllMeals();
+    }
+
+    render(){
     return (
         <div className="contain-set-menu-meal-table">
             <div className="set-menu-table-headers">
@@ -14,7 +25,7 @@ const MealList = ({ meals, isLoading, selectedDate, dispatch }) => {
                 <p>Action</p>
             </div>
             {
-                isLoading ? <div className='loading-spinner'>
+                this.props.isLoading ? <div className='loading-spinner'>
                 <Loader 
                     type="Circles"
                     color="#9D2401"
@@ -24,7 +35,7 @@ const MealList = ({ meals, isLoading, selectedDate, dispatch }) => {
                 <h3 id='loader-text'>Fetching...</h3>  
                 </div> : 
             <div className="set-menu-table-body">
-                {meals.map(meal =>
+                {this.props.meals.map(meal =>
                     <div key={ meal.id } className="set-menu-meal-item">
                         <img src={ meal.imageurl } alt="" />
                         <div className="food-title-desc">
@@ -35,7 +46,7 @@ const MealList = ({ meals, isLoading, selectedDate, dispatch }) => {
                         &#8358;{ meal.price }
                         </div>
                         <div><button onClick={() => {
-                            dispatch(addAMealToMenu({date:selectedDate, mealId:meal.id}));
+                            this.props.addAMealToMenu({date:this.props.selectedDate, mealId:meal.id});
                         }} className="food-add-btn">Add to menu</button></div>
                     </div>
                 )}
@@ -44,6 +55,7 @@ const MealList = ({ meals, isLoading, selectedDate, dispatch }) => {
         </div>
     );
 }
+}
 
 const mapStateToProps = state => ({
     meals: state.mealReducer.meals,
@@ -51,4 +63,4 @@ const mapStateToProps = state => ({
     selectedDate: state.setMenuReducer.selectedDate,
 });
 
-export default connect(mapStateToProps)(MealList)
+export default connect(mapStateToProps, { addAMealToMenu, getAllMeals })(MealList)

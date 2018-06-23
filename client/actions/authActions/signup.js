@@ -10,17 +10,15 @@ const signUpSuccess = user => ({
 });
 
 
-
-
 // Action Creators
-export const signupAUser = signupData => (dispatch) => {
-  //dispatch loading
-  return API.post(`/auth/signup`, signupData)
-  .then((res) => {
-    dispatch(signUpSuccess(res.data));
-    return res.data;
-  })
-  .catch((error) => {
-    //error
-  });
-};
+export const signupAUser = signupData => dispatch =>
+  // dispatch loading
+  API.post('/auth/signup', signupData)
+    .then((res) => {
+      dispatch(signUpSuccess(res.data));
+      return res.data;
+    })
+    .catch((error) => {
+    // error
+    });
+

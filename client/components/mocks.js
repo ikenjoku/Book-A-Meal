@@ -162,7 +162,7 @@ export const sampleOrders = {
         name: 'Rice and Beans',
         price: 1500,
       },
-    }
+    },
   ],
 };
 

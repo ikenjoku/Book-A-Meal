@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import DatePicker from '../DatePicker.jsx';
-import OrderSearch from './OrderSearch.jsx';
 import OrderList from './OrderList.jsx';
 import { getOrdersByDate } from "../../actions/orderActions";
 

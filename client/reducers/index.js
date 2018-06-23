@@ -2,12 +2,13 @@ import { combineReducers } from 'redux';
 import mealReducer from './mealReducer';
 import setMenuReducer from './setMenuReducer';
 import menuReducer from './menuReducer';
-import orderReducer from "./orderReducer";
+import orderReducer from './orderReducer';
 import authReducer from './authReducer';
-import { LOGOUT_SUCCESS } from "../actions/actionTypes";
+import { LOGOUT_SUCCESS } from '../actions/actionTypes';
+import initialState from './initialState';
 
 
-const baseReducer =  combineReducers({
+const baseReducer = combineReducers({
   mealReducer,
   setMenuReducer,
   menuReducer,

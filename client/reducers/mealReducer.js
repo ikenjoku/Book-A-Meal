@@ -4,16 +4,11 @@ import {
   UPDATE_MEAL_SUCCESS, UPDATE_MEAL_FAILURE,
   REMOVE_MEAL_SUCCESS, REMOVE_MEAL_FAILURE,
 } from '../actions/actionTypes';
+import initialState from './initialState';
 
-const initialState = {
-  meals: [],
-  error: null,
-  isLoading: true,
-
-};
 
 // MEAL REDUCER
-export default (state = initialState, action) => {
+export default (state = initialState.mealReducer, action) => {
   let meals;
   switch (action.type) {
     case GET_MEALS_SUCCESS:

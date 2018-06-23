@@ -1,15 +1,10 @@
 import {
   GET_MENU_SUCCESS, GET_MENU_FAILURE,
 } from '../actions/actionTypes';
+import initialState from './initialState';
 
 
-const initialState = {
-  selectedMenu: null,
-  error: null,
-
-};
-
-const menuReducer = (state = initialState, action) => {
+const menuReducer = (state = initialState.menuReducer, action) => {
   switch (action.type) {
     case GET_MENU_SUCCESS:
       return {

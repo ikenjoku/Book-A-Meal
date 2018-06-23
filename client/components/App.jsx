@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import NavBar from './NavBar/NavBar.jsx';
+import NavBar from './NavBar/index.jsx';
 import Landing from './Landing.jsx';
 import Login from './Auth/Login.jsx';
 import Signup from './Auth/Signup.jsx';

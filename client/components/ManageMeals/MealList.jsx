@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
-import { removeAMeal } from "../../actions/mealActions.js";
+import { removeAMeal, getAllMeals } from "../../actions/mealActions.js";
 
-const MealList = ({ meals, isLoading, dispatch }) => {
+class MealList extends Component{
+    constructor(props){
+        super(props);
+    }
+
+    componentDidMount(){
+        this.props.dispatch(getAllMeals());
+    }
+
+    render(){
     return (
       <main className="manage-meals-content">
       <h2 className="center cool-lg-text">Manage Meals</h2>
@@ -21,7 +30,7 @@ const MealList = ({ meals, isLoading, dispatch }) => {
                   <p>Actions</p>
               </div>
               {
-                isLoading ? <div className='loading-spinner'>
+                this.props.isLoading ? <div className='loading-spinner'>
                 <Loader 
                     type="Circles"
                     color="#9D2401"
@@ -31,7 +40,7 @@ const MealList = ({ meals, isLoading, dispatch }) => {
                 <h3 id='loader-text'>Fetching...</h3>  
                 </div> : 
               <div className="meal-table">
-                  {meals.map(meal =>
+                  {this.props.meals.map(meal =>
                     <div key={meal.id} className="meal-table-item">
                         <div className="meal-table-item-img">
                             <p><img src={meal.imageurl} alt="" /></p>
@@ -56,7 +65,7 @@ const MealList = ({ meals, isLoading, dispatch }) => {
                             <a 
                               className="mg-meal-btn btn-danger"
                               onClick={(e) => {
-                                dispatch(removeAMeal({id:meal.id}));
+                                this.props.dispatch(removeAMeal({id:meal.id}));
                               }}
                               >
                               Delete
@@ -71,6 +80,7 @@ const MealList = ({ meals, isLoading, dispatch }) => {
         </div>
       </main>
     );
+}
 }
 
 const mapStateToProps = state => ({

@@ -1,6 +1,6 @@
 export default {
   authReducer: {
-    authLoading: false,
+    authLoading: true,
     user: {},
     isLoggedIn: false,
   },
@@ -8,12 +8,12 @@ export default {
     meals: [],
     error: null,
     isLoading: true,
-  
+
   },
   menuReducer: {
     selectedMenu: null,
     error: null,
-  
+
   },
   setMenuReducer: {
     createdMenu: null,
@@ -26,5 +26,6 @@ export default {
     orderedMeal: null,
     error: null,
     meals: [],
+    orders: [],
   },
-}
+};
