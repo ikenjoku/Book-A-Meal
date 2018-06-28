@@ -1,27 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getAllPreviousOrders } from "../../actions/orderActions";
 
-const PreviousOrderTable = (props) => {
 
-  return (
+class PreviousOrderTable extends Component{
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount(){
+    this.props.getAllPreviousOrders();
+  }
+
+  render(){
+    console.log(this.props.previousOrders);
+    return (
     <div>
       <h4>Previous orders</h4>
-      <div className="order-item">
-        <div className="order-item-qty">07/3/17</div>
-        <div className="order-item-name">Utazi</div>
-        <div className="order-item-price">N1400 </div>
-      </div>
-      <div className="order-item">
-        <div className="order-item-qty">12/4/17</div>
-        <div className="order-item-name">Jollof rice</div>
-        <div className="order-item-price">N200 </div>
-      </div>
-      <div className="order-item">
-        <div className="order-item-qty">15/3/18</div>
-        <div className="order-item-name">Boiled Egg</div>
-        <div className="order-item-price">N100 </div>
-      </div>
+      {this.props.previousOrders.length === 0 ? <p>No order history</p> :
+        this.props.previousOrders.map(previousOrder =>
+        <div key={previousOrder.id} className="order-item">
+          <div className="order-item-qty">{previousOrder.date}</div>
+          <div className="order-item-name">{previousOrder.Meal.name}</div>
+          <div className="order-item-price">&#8358; {previousOrder.amount} </div>
+        </div>
+        )}
     </div>
-  );
+    );
+}
 }
 
-export default PreviousOrderTable;
+const mapStateToProps = state => ({
+  isLoggedIn: state.authReducer.isLoading,
+  previousOrders: state.orderReducer.previousOrders,
+});
+
+export default connect(mapStateToProps, { getAllPreviousOrders })(PreviousOrderTable);

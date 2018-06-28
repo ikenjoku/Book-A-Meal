@@ -28,5 +28,6 @@ export default {
     error: null,
     meals: [],
     orders: [],
+    previousOrders: [],
   },
 };

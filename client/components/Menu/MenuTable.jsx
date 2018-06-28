@@ -30,7 +30,7 @@ class MenuTable extends Component {
         } />
         {this.props.error && <p className='error-alert'>No Menu is set for this day</p> }
          { menu && !this.props.error ?
-        <MenuList handleOrder={(mealId) => this.props.orderAMeal(mealId)} menu={this.props.menu} />
+        <MenuList handleOrder={(order) => this.props.orderAMeal(order)} menu={this.props.menu} user={this.props.user} />
         : ''}
       </div>
     );
@@ -45,7 +45,8 @@ class MenuTable extends Component {
 const mapStateToProps = state => ({
   menu: state.menuReducer.selectedMenu,
   isLoadingMenu: state.menuReducer.isLoading,
-  error: state.menuReducer.error
+  error: state.menuReducer.error,
+  user: state.authReducer.user
 });
 
 const mapDispatchToProps = dispatch =>

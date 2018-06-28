@@ -2,7 +2,7 @@ import React from 'react';
 import fallbackImage from "../../static/mealImg.jpg"
 
 
-const MenuList = ({ menu, handleOrder }) => (
+const MenuList = ({ menu, handleOrder, user }) => (
   <div>
     {menu.Meals.length > 0 ? 
     menu.Meals.map(meal =>
@@ -18,7 +18,7 @@ const MenuList = ({ menu, handleOrder }) => (
         &#8358; {meal.price}
         </div>
     <div>{ menu.date === new Date().toISOString().substr(0,10) ?
-      <button onClick={() => handleOrder(meal.id)} className="food-add-btn">Order</button> : <p className='order-btn-text'>Place order from today's menu</p>}</div>
+      <button onClick={() => handleOrder({mealId:meal.id, id:user.id})} className="food-add-btn">Order</button> : <p className='order-btn-text'>Place order from today's menu</p>}</div>
       </div>
     ) : <p className='error-alert'>No meals has been added to this menu.</p> }
   </div>

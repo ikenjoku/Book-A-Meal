@@ -59,8 +59,8 @@ router.get('/', (req, res) => {
   // Orders
   .get('/orders', /* authenticate, isAdmin, */orderController.getAllOrders)
   .get('/orders/date', /* authenticate, isAdmin, */orderController.getOrdersByDate)
-  .get('/orders/customer', /* authenticate, */orderController.getOrdersByUser)
-  .post('/orders', /* authenticate, */orderController.createOrder)
+  .get('/orders/customer', authenticate, orderController.getOrdersByUser)
+  .post('/orders', authenticate, orderController.createOrder)
   .put('/orders/:id', validateId, /* authenticate, */orderController.updateOrder)
   .put('/orders/:id/deliver', /* authenticate, isAdmin, */orderController.deliverOrder)
   // catch all 404
