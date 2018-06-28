@@ -17,8 +17,8 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   
-before_install:
-  - sudo npm install sequelize-cli@4.0.0 -g
+install:
+  - npm install sequelize-cli@4.0.0 -g
 
 script:
   - npm test
