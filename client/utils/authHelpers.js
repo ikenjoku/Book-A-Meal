@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { browserHistory } from "react-router-dom";
+import { browserHistory } from 'react-router-dom';
 
 export const setAuthorizationToken = (token) => {
   if (token) {
@@ -8,10 +8,8 @@ export const setAuthorizationToken = (token) => {
 };
 
 
-
-
 export const logout = () => {
   window.localStorage.removeItem('token');
   browserHistory.push('/');
-}
+};
 

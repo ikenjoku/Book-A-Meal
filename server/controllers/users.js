@@ -85,13 +85,13 @@ class UserController {
     return User.findOne({ where: { email } }).then((user) => {
       if (!user) {
         return res.status(403).send({
-          message: 'user does not exist',
+          message: 'User does not exist',
         });
       }
       bcrypt.compare(password, user.password).then((result) => {
         if (!result) {
           return res.status(403).send({
-            message: 'wrong username and password combination',
+            message: 'Wrong username and password combination',
           });
         }
         const {

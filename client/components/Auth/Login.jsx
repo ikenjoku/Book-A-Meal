@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { loginAUser } from "../../actions/authActions/login";
 
 class Login extends Component {
@@ -60,8 +60,8 @@ class Login extends Component {
           </div>
           <hr />
           <div className="right formText">
-            <p>No Account? <a href="signup.html">Sign Up</a> </p>
-            <a href="#">Forgot your password?</a>
+            <p>No Account? <Link to="/signup">Sign Up</Link> </p>
+            <Link to="#">Forgot your password?</Link>
           </div>
         </form>
       </main>

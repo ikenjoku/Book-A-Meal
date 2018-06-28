@@ -1,5 +1,5 @@
 import {
-  AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_SUCCESS,
+  AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_SUCCESS, LOGIN_FAILURE,
 } from '../actions/actionTypes';
 import initialState from './initialState';
 
@@ -9,6 +9,11 @@ const authReducer = (state = initialState.authReducer, action) => {
       return {
         ...state,
         user: action.user,
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        error: action.error,
       };
     case AUTH_LOADING:
       return {

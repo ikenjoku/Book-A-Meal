@@ -3,6 +3,7 @@ export default {
     authLoading: true,
     user: {},
     isLoggedIn: false,
+    error: null,
   },
   mealReducer: {
     meals: [],

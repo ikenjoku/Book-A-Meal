@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { signupAUser } from "../../actions/authActions/signup";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Signup extends Component {
     state = {
@@ -99,7 +100,7 @@ class Signup extends Component {
                         />
                     </div>
                     <div className="right formText">
-                        <p>Already have an account? <a href="login.html">Log In</a> </p>
+                        <p>Already have an account? <Link to="/login">Log In</Link> </p>
                     </div>
                 </form>
             </main>

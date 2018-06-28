@@ -1,4 +1,3 @@
-import API from '../../axiosConfig';
 import {
   LOGOUT_SUCCESS,
 } from '../actionTypes';
@@ -11,6 +10,6 @@ const logoutSuccess = () => ({
 
 // Action Creators
 export const logoutAUser = () => (dispatch) => {
-  localStorage.removeItem('token');
+  localStorage.removeItem('BAMtoken');
   dispatch(logoutSuccess());
 };
