@@ -8,7 +8,7 @@ export default {
   mealReducer: {
     meals: [],
     error: null,
-    isLoading: true,
+    isLoading: false,
 
   },
   menuReducer: {

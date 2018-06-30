@@ -4,6 +4,7 @@ import {
   ADD_MEAL_SUCCESS, ADD_MEAL_FAILURE,
   UPDATE_MEAL_SUCCESS, UPDATE_MEAL_FAILURE,
   REMOVE_MEAL_SUCCESS, REMOVE_MEAL_FAILURE,
+  GET_MEALS_LOADING_STATUS
 } from './actionTypes';
 
 
@@ -20,6 +21,10 @@ const getMealsFailure = error => ({
   error,
 });
 
+const getMealsLoadingStatus = status => ({
+  type: GET_MEALS_LOADING_STATUS,
+  status,
+});
 // Add Meal
 const addMeal = meal => ({
   type: ADD_MEAL_SUCCESS,
@@ -58,12 +63,15 @@ const removeMealFailure = error => ({
 // Action Creators
 
 const getAllMeals = () => (dispatch) => {
+  dispatch(getMealsLoadingStatus(true));
   API.get('/meals')
     .then((res) => {
       dispatch(getMeals(res.data.meals));
+      dispatch(getMealsLoadingStatus(false));
     })
     .catch((err) => {
       dispatch(getMealsFailure(err));
+      // dispatch(getMealsLoadingStatus(false));
     });
 };
 
