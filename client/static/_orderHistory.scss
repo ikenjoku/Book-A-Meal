@@ -82,3 +82,39 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+
+
+table {  
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #fd7e5942;
+}
+
+.deliverBtn{
+  border: solid grey 1px;
+  border-radius: 5px;
+  padding: 10px;
+  color: grey;
+  background-color: #dddddd;
+  text-decoration: none;
+  background: none;
+  cursor: pointer;
+  width: -webkit-fill-available;
+  width: -moz-fill-available;
+  width: fill-available;
+}
+
+.deliverBtn:hover{
+  background-color:#9d2401;
+  color: #dddddd;
+ }

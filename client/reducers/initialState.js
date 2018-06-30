@@ -29,5 +29,6 @@ export default {
     meals: [],
     orders: [],
     previousOrders: [],
+    isLoadingOrders:false,
   },
 };
