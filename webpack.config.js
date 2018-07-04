@@ -6,7 +6,7 @@ const devOptions = {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, 'client'),
+    contentBase: path.resolve(__dirname, 'client/dist'),
   },
 };
 
@@ -17,7 +17,9 @@ const options = process.env.NODE_ENV === 'production' ?
 
 module.exports = {
   ...options,
-  entry: './client/index.js',
+  entry: ['./client/index.js',
+    process.env.NODE_ENV === 'development' ? 'webpack-hot-middleware/client?path=/__webpack_hmr' :
+    null].filter(entry => entry != null),
   output: {
     path: `${__dirname}/dist/client`,
     publicPath: '/',
