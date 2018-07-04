@@ -12,9 +12,10 @@ import {
 
 // Actions
 
-const orderMealSuccess = order => ({
+const orderMealSuccess = ({order, meal}) => ({
   type: ORDER_MEAL_SUCCESS,
   orderedMeal: order,
+  meal,
 });
 
 const orderMealFailure = error => ({
@@ -58,11 +59,34 @@ const isLoadingOrders = status => ({
   isLoadingOrders: status,
 });
 
+const modifyOrderSuccess = ({deliveredOrder, id}) => ({
+  type: MODIFY_ORDER_SUCCESS,
+  deliveredOrder,
+  id,
+});
+
+const modifyOrderFailure = error => ({
+  type: MODIFY_ORDER_FAILURE,
+  error,
+});
+
+const cancelOrderSuccess = ({deliveredOrder, id}) => ({
+  type: CANCEL_ORDER_SUCCESS,
+  deliveredOrder,
+  id,
+});
+
+const cancelOrderFailure = error => ({
+  type: CANCEL_ORDER_FAILURE,
+  error,
+});
+
 // Action Creators
-export const orderAMeal = ({mealId, id}) => (dispatch) => {
+export const orderAMeal = ({mealId, id, meal}) => (dispatch) => {
   API.post('/orders', {mealId, id})
     .then((res) => {
-      dispatch(orderMealSuccess(res.data.order));
+      dispatch(orderMealSuccess({order:res.data.order, meal}));
+      dispatch(getAllPreviousOrders());
       notify.success(res.data.message);
     })
     .catch((error) => {

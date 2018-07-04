@@ -13,12 +13,12 @@ class PreviousOrderTable extends Component{
   }
 
   render(){
-    console.log(this.props.previousOrders);
+    const deliveredOrders = this.props.previousOrders.filter(order => order.status === 'delivered');
     return (
     <div>
       <h4>Previous orders</h4>
-      {this.props.previousOrders.length === 0 ? <p>No order history</p> :
-        this.props.previousOrders.map(previousOrder =>
+      {deliveredOrders.length === 0 ? <p>No order history</p> :
+        deliveredOrders.map(previousOrder =>
         <div key={previousOrder.id} className="order-item">
           <div className="order-item-qty">{previousOrder.date}</div>
           <div className="order-item-name">{previousOrder.Meal.name}</div>

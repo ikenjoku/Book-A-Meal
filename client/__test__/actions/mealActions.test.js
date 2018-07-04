@@ -3,44 +3,38 @@
 // import moxios from 'moxios';
 // import expect from 'expect';
 // import { getAllMeals, addAMeal, removeAMeal, updateAMeal } from '../../actions/mealActions.js';
-// import { getAllMealsMock } from '../mocks/mealMocks';
+// import { mockStoreData } from "../mocks";
+// import { meals } from '../mocks';
 
 // const middlewares = [thunk];
 // const mockStore = configureMockStore(middlewares);
 
-// describe('getAllMeals actions', () => {
-//   beforeEach(() => {
-//     moxios.install();
-//   });
+// describe('Meals Actions', () => {
+//   beforeEach(() => moxios.install());
+//   afterEach(() => moxios.uninstall());
 
-//   afterEach(() => {
-//     moxios.uninstall();
-//   });
-
-//   it('creates GET_MEALS_SUCCESS after successfuly fetching meals', () => {
-//     moxios.wait(() => {
-//       const request = moxios.requests.mostRecent();
-//       request.respondWith({
-//         status: 200,
-//         response: getAllMealsMock,
-//       });
-//     });
-
-//     const expectedActions = [
-//       { type: 'GET_MEALS_SUCCESS',
-//         meals: getAllMealsMock,
-//       },
-//     ];
-
-//     const store = mockStore({ meals: {} });
-
-//     return store.dispatch(getAllMeals()).then(() => {
-//       // return of async actions
+//   describe('getAllMeals', () => {
+//     it('should dispatch GET_MEALS_SUCCESS and meals', async (done) => {
+//       const meals = mockStoreData.mealReducer.meals;
+//       moxios.stubRequest('/meals', {
+//           status: 200,
+//           response: { data: meals },
+//         });
+  
+//       const expectedActions = [
+//         { type: 'GET_MEALS_LOADING_STATUS', status: true },
+//         { type: 'GET_MEALS_SUCCESS', meals },
+//         { type: 'GET_MEALS_LOADING_STATUS', status: false }
+//       ];
+//       const store = mockStore({});
+  
+//       await store.dispatch(getAllMeals());
 //       expect(store.getActions()).toEqual(expectedActions);
+//       done();
 //     });
 //   });
 // });
 
-test('test meal actions', () => {
+test('just pass', () => {
 
-});
+})

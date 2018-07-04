@@ -18,7 +18,7 @@ const MenuList = ({ menu, handleOrder, user }) => (
         &#8358; {meal.price}
         </div>
     <div>{ menu.date === new Date().toISOString().substr(0,10) ?
-      <button onClick={() => handleOrder({mealId:meal.id, id:user.id})} className="food-add-btn">Order</button> : <p className='order-btn-text'>Place order from today's menu</p>}</div>
+      <button onClick={() => handleOrder({mealId:meal.id, id:user.id, meal})} className="food-add-btn">Order</button> : <p className='order-btn-text'>Place order from today's menu</p>}</div>
       </div>
     ) : <p className='error-alert'>No meals has been added to this menu.</p> }
   </div>

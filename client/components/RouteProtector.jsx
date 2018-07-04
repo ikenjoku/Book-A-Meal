@@ -9,8 +9,15 @@ export default (ComposedComponent) => {
 
 class Authenticate extends Component {
 
+  isLoggedIn = () => {
+    if(localStorage.BAMtoken) {
+      return true
+    }
+    return false;
+  }
+
   render(){
-      if (this.props.isLoggedIn){
+      if (this.isLoggedIn()){
       return <ComposedComponent { ...this.props } /> 
     } else {
       notify.error('Please log in to proceed');
