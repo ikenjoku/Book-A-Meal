@@ -21,6 +21,7 @@
     max-width: 78px;
     max-height: 78px;
     margin: 0 auto;
+    border-radius: 2px;
   }
   
   #all-meal-table {
@@ -135,4 +136,18 @@
 
 .meal-table-item-price{
   text-align: center;
+}
+
+.loading-spinner{
+  margin-top: 100px;
+  margin-bottom: 100px;
+   div {
+     text-align: center;
+   }
+   h3#loader-text{
+     text-align: center;
+     color: black;
+     font-size: 30px;
+     padding-bottom: 150px;
+   }
 }

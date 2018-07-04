@@ -1,32 +1,21 @@
 import {
-  SET_MENU_SUCCESS, SET_MENU_FAILURE, SET_SELECTED_DATE,
+  GET_MENU_SUCCESS, GET_MENU_FAILURE,
 } from '../actions/actionTypes';
+import initialState from './initialState';
 
-const initialState = {
-  createdMenu: null,
-  selectedDate: '',
-  error: null,
-  success: false,
-};
 
-const menuReducer = (state = initialState, action) => {
+const menuReducer = (state = initialState.menuReducer, action) => {
   switch (action.type) {
-    case SET_MENU_SUCCESS:
+    case GET_MENU_SUCCESS:
       return {
         ...state,
-        createdMenu: action.createdMenu.newMenu,
-        selectedDate: action.createdMenu.newMenu.date,
-        success: true,
+        selectedMenu: action.selectedMenu,
+        error: null,
       };
-    case SET_MENU_FAILURE:
+    case GET_MENU_FAILURE:
       return {
         ...state,
         error: action.error,
-      };
-    case SET_SELECTED_DATE:
-      return {
-        ...state,
-        selectedDate: action.selectedDate,
       };
     default:
       return {
@@ -36,5 +25,3 @@ const menuReducer = (state = initialState, action) => {
 };
 
 export default menuReducer;
-
-// HAVE SELECTED DATE...onChange dispatches selected menu/date.. add to menu picks selected plus meal id.....created action also sets selected prpoerty of state

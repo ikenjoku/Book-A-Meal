@@ -1,8 +1,7 @@
 language: node_js
 
 node_js:
-  - "node"
-  - "8.9.4"
+  - 8.9.4
 
 addons:
   chrome: stable
@@ -16,7 +15,7 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  - npm install -g sequelize-cli
+  - npm install sequelize-cli@4.0.0 -g
 
 script:
   - npm test

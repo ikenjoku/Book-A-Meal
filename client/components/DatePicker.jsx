@@ -42,7 +42,7 @@ export default class DatePicker extends Component {
             <input
               className="input-btn-control"
               type="submit"
-              value="Create a Menu" />
+              value={this.props.btnName} />
           </form>
         </div>
     );

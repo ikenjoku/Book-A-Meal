@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import setAMenu, {setSelectedDate} from '../../actions/menuActions';
+import {setAMenu, setSelectedDate} from '../../actions/setMenuActions';
 import moment from 'moment';
 
 class MenuDatePicker extends Component {
@@ -56,8 +56,8 @@ class MenuDatePicker extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    selectedDate: state.menuReducer.selectedDate,
-    createdMenu: state.menuReducer.createdMenu
+    selectedDate: state.setMenuReducer.selectedDate,
+    createdMenu: state.setMenuReducer.createdMenu
   };
 };
 

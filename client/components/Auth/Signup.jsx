@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
+import { signupAUser } from "../../actions/authActions/signup";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import NavBar from '../NavBar/NavBar.jsx';
-
-export default class Signup extends Component {
-    constructor(props) {
-        super(props);
+class Signup extends Component {
+    state = {
+        signUpData: {
+            firstname: '',
+            lastname: '',
+            username: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        },
+        error: ''
+    }
+    onInputChange = (event) => {
+      const { signUpData } = this.state;
+      signUpData[event.target.name] = event.target.value.trim();
+      this.setState(() => ({ signUpData }));
     }
 
+    onSubmit = (event) => {
+      event.preventDefault();
+      const { signUpData } = this.state;
+      this.props.signupAUser(signUpData)
+    }
     render() {
         return (
             <main className="">
@@ -18,6 +38,8 @@ export default class Signup extends Component {
                             type="text"
                             name="firstname"
                             placeholder="First Name"
+                            value={this.state.signUpData.firstname}
+                            onChange={this.onInputChange}
                         />
                     </div>
                     <div>
@@ -26,6 +48,8 @@ export default class Signup extends Component {
                             type="text"
                             name="lastname"
                             placeholder="Last Name"
+                            value={this.state.signUpData.lastname}
+                            onChange={this.onInputChange}
                         />
                     </div>
                     <div>
@@ -34,6 +58,8 @@ export default class Signup extends Component {
                             type="text"
                             name="username"
                             placeholder="Preferred username"
+                            value={this.state.signUpData.username}
+                            onChange={this.onInputChange}
                         />
                     </div>
                     <div>
@@ -42,6 +68,8 @@ export default class Signup extends Component {
                             type="email"
                             name="email"
                             placeholder="Email"
+                            value={this.state.signUpData.email}
+                            onChange={this.onInputChange}
                         />
                     </div>
                     <div>
@@ -50,6 +78,8 @@ export default class Signup extends Component {
                             type="password"
                             name="password"
                             placeholder="Password"
+                            value={this.state.signUpData.password}
+                            onChange={this.onInputChange}
                         />
                     </div>
                     <div>
@@ -58,6 +88,8 @@ export default class Signup extends Component {
                             type="password"
                             name="confirmPassword"
                             placeholder="Confirm password"
+                            value={this.state.signUpData.confirmPassword}
+                            onChange={this.onInputChange}
                         />
                     </div>
                     <div>
@@ -68,10 +100,22 @@ export default class Signup extends Component {
                         />
                     </div>
                     <div className="right formText">
-                        <p>Already have an account? <a href="login.html">Log In</a> </p>
+                        <p>Already have an account? <Link to="/login">Log In</Link> </p>
                     </div>
                 </form>
             </main>
         );
     }
 }
+
+
+const mapStateToProps = state => {
+  return {
+    state: state.authReducer,
+  }
+}
+
+const mapDispatchToProps = dispatch => 
+  bindActionCreators({signupAUser}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
