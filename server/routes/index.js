@@ -46,15 +46,15 @@ router.get('/', (req, res) => {
   .post('/auth/login', validateLogin, userController.login)
 
   // Meals
-  .get('/meals', /* authenticate, */mealController.getMeals)
-  .get('/meals/:id', validateId, /* authenticate */ mealController.getMeal)
-  .post('/meals', uploadImage.single('imageurl'), validateMealCreate, /* authenticate, isAdmin, */ mealController.addMeal)
-  .put('/meals/:id', uploadImage.single('imageurl'), validateMealUpdate, validateId, /* authenticate, isAdmin, */mealController.updateMeal)
-  .delete('/meals/:id', validateId, /* authenticate, isAdmin, */mealController.removeMeal)
+  .get('/meals', authenticate, mealController.getMeals)
+  .get('/meals/:id', validateId, authenticate, mealController.getMeal)
+  .post('/meals', uploadImage.single('imageurl'), validateMealCreate, authenticate, isAdmin, mealController.addMeal)
+  .put('/meals/:id', uploadImage.single('imageurl'), validateMealUpdate, validateId, authenticate, isAdmin, mealController.updateMeal)
+  .delete('/meals/:id', validateId, authenticate, isAdmin, mealController.removeMeal)
 
   // Menu
   .get('/menu', menuController.getMenu)
-  .post('/menu', /* authenticate, isAdmin, */menuController.createMenu)
+  .post('/menu', authenticate, isAdmin, menuController.createMenu)
 
   // Orders
   .get('/orders', authenticate, isAdmin, orderController.getAllOrders)

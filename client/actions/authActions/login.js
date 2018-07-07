@@ -6,7 +6,7 @@ import {
 import { setAuthorizationToken } from '../../utils/authHelpers';
 
 // Actions
-const loginSuccess = user => ({
+export const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
   user,
 });
@@ -16,7 +16,7 @@ const loginFailure = error => ({
   error,
 });
 
-const isLoggedIn = status => ({
+export const isLoggedIn = status => ({
   type: AUTH_LOGIN_STATUS,
   isLoggedIn: status,
 });
