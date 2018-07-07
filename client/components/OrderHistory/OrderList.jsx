@@ -22,7 +22,7 @@ const OrderList = ({ orders, deliverAnOrder, isLoadingOrders }) => {
           </tr>
         </thead>
           <tbody>
-          {orders.map(order =>
+          { orders.map(order =>
             <tr key={order.id}>
               <td >{++serialNum}</td>
               <td>{order.User.firstname} {order.User.lastname}</td>

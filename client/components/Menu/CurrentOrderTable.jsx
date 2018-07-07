@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { cancelAnOrder, modifyOrderStatus } from "../../actions/orderActions";
 
-
-const CurrentOrderTable = ({currentOrders}) => {
+const CurrentOrderTable = ({currentOrders, changeOrderStatus, cancelAnOrder, modifyOrderStatus, orderIdToModify}) => {
   const pendingOrders = currentOrders.filter(order => order.status === 'pending');
-  console.log('======', currentOrders)
+  console.log('======', changeOrderStatus, orderIdToModify)
 
   return (
     <div>
@@ -14,7 +14,8 @@ const CurrentOrderTable = ({currentOrders}) => {
         <div key={order.id} className="order-item">
           <div className="order-item-qty">{order.Meal.name}</div>
           <div className="order-item-name">{order.amount}</div>
-          <div className="order-item-price"><button className="cancel-order-btn">change</button> <button className="cancel-order-btn">X</button> </div>
+          <div className="order-item-price"><button onClick={() => {modifyOrderStatus(!changeOrderStatus, order.id)}} className="cancel-order-btn">change</button> 
+          <button onClick={() => {cancelAnOrder(order.id)}} className="cancel-order-btn">X</button> </div>
         </div>
       )}
       <hr />
@@ -24,6 +25,9 @@ const CurrentOrderTable = ({currentOrders}) => {
 
 const mapStateToProps = state => ({
   currentOrders: state.orderReducer.previousOrders,
+  changeOrderStatus: state.orderReducer.changeOrderStatus,
+  orderIdToModify: state.orderReducer.orderIdToModify
+
 });
 
-export default connect(mapStateToProps, null)(CurrentOrderTable);
+export default connect(mapStateToProps, { cancelAnOrder, modifyOrderStatus })(CurrentOrderTable);
