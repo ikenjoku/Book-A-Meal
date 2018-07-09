@@ -21,13 +21,14 @@ export const isLoggedIn = status => ({
   isLoggedIn: status,
 });
 
-const isLoading = status => ({
+export const isLoading = status => ({
   type: AUTH_LOADING,
   isLoading: status,
 });
 
 // Action Creators
 export const loginAUser = loginData => (dispatch) => {
+  dispatch(isLoading(true));
   return API.post('/auth/login', loginData)
     .then((res) => {
       const token = res.data.token;

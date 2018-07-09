@@ -29,8 +29,9 @@ class Signup extends Component {
     }
     render() {
         return (
+            this.props.isLoggedIn === true ?  <Redirect to='/menu'/> :
             <main className="">
-                <form className="form-wrapper">
+                <form className="form-wrapper" onSubmit={this.onSubmit}>
                     <h2 className="center">Sign In</h2>
                     <div>
                         <input
@@ -108,14 +109,7 @@ class Signup extends Component {
     }
 }
 
-
-const mapStateToProps = state => {
-  return {
-    state: state.authReducer,
-  }
-}
-
 const mapDispatchToProps = dispatch => 
   bindActionCreators({signupAUser}, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(null, mapDispatchToProps)(Signup);
