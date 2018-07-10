@@ -14,7 +14,7 @@
 //   afterEach(() => moxios.uninstall());
 
 //   describe('getAllMeals', () => {
-//     it('should dispatch GET_MEALS_SUCCESS and meals', async (done) => {
+//     it('should dispatch GET_MEALS_SUCCESS and meals', (done) => {
 //       const meals = mockStoreData.mealReducer.meals;
 //       moxios.stubRequest('/meals', {
 //           status: 200,
@@ -28,13 +28,12 @@
 //       ];
 //       const store = mockStore({});
   
-//       await store.dispatch(getAllMeals());
+//       store.dispatch(getAllMeals());
 //       expect(store.getActions()).toEqual(expectedActions);
 //       done();
 //     });
 //   });
 // });
-
-test('just pass', () => {
+test('pass', () => {
 
 });
