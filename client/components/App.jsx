@@ -7,7 +7,7 @@ import Login from './Auth/Login.jsx';
 import Signup from './Auth/Signup.jsx';
 
 import MealList from './ManageMeals/MealList.jsx';
-import EditMeal from './ManageMeals/EditMeal.jsx';
+import EditMeal from './ManageMeals/EditMealForm.jsx';
 import AddMeal from './ManageMeals/AddMealForm.jsx';
 
 import OrderHistory from './OrderHistory/OrderHistory.jsx';

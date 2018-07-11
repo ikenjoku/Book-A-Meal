@@ -25,12 +25,18 @@ class Signup extends Component {
     onSubmit = (event) => {
       event.preventDefault();
       const { signUpData } = this.state;
-      this.props.signupAUser(signUpData)
+      if(!signUpData.firstname || !signUpData.lastname || !signUpData.username || !signUpData.email 
+        || !signUpData.password || !signUpData.confirmPassword){
+            this.setState(() => ({ error: 'Please fill in all the fields' }));
+      } else {
+      this.props.signupAUser(signUpData);
+      }
     }
     render() {
         return (
             this.props.isLoggedIn === true ?  <Redirect to='/menu'/> :
             <main className="">
+                {this.state.error &&  <p>{this.state.error}</p> }
                 <form className="form-wrapper" onSubmit={this.onSubmit}>
                     <h2 className="center">Sign In</h2>
                     <div>
