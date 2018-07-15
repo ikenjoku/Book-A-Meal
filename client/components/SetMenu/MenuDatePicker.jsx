@@ -47,7 +47,7 @@ class MenuDatePicker extends Component {
           </form>
         </div>
         { this.props.createdMenu && this.props.selectedDate === this.props.createdMenu.date ? 
-            <p>New Menu Successfully Created. Click to add meals to menu for {moment(this.props.createdMenu.date).format("dddd, MMMM Do YYYY")}</p> : null
+            <p className='notification'>New Menu Successfully Created. Click to add meals to menu for {moment(this.props.createdMenu.date).format("dddd, MMMM Do YYYY")}</p> : null
         } 
       </div>
     );

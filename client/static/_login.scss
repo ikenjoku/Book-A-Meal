@@ -1,14 +1,13 @@
 .form-wrapper {
   margin: 100px auto;
   border-radius: 5px;
-  background-color: #e0dfdf;
   padding: 20px;
   max-width: 500px;
   h2 {
     font-family: sans-serif;
     letter-spacing: 1px;
     font-size: 2.5em;
-    color: #000000;
+    color: #ffffff;
   }
 }
 
@@ -24,10 +23,20 @@
 
 .formText {
   padding: 5px 10px;
+  p {
+    color: white;
+    a {
+      text-decoration: none;
+      color: #d88c77;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
   a {
     text-decoration: none;
-    color: #9D2401;
+    color: #d88c77;
     font-size: 15px;
+    font-weight: bold;
   }
 }
 
@@ -43,6 +52,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 15px;
 }
 
 .btn-control {
@@ -54,6 +64,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 20px;
 }
 
 .input-field-control {
@@ -78,4 +89,13 @@
 
 .btn-control:hover {
   background-color: rgb(148, 33, 1);
+}
+
+.login-bg{
+  height: 100%;
+  background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)), 
+      url('https://res.cloudinary.com/ikeenjoku/image/upload/v1531582495/bookameal/homepage-splash.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

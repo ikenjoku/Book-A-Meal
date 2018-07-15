@@ -28,7 +28,7 @@ class NavBar extends Component {
     return (
       <header>
         <nav className="topnav" id="myTopnav">
-          <NavLink to='/' id='companyLogo' activeClassName='activeNavLink' exact>Book-A-Meal</NavLink>
+          <NavLink to='/' id='companyLogo' activeClassName='activeNavLink' exact><i className="fas fa-utensils"></i> Book-A-Meal</NavLink>
           <Navigation
             activeLink={this.props.activeLink}
             navLinks={navLinks}

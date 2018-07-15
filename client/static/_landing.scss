@@ -5,19 +5,38 @@
   margin: 100px auto;
   background-color: #ededed;
   border-radius: 5px;
-  opacity: 0.8;
+  opacity: 0.9;
   p {
     text-align: justify;
-    font-family: 'Sans Serif', cursive;
+    font-family: 'Open Sans', sans-serif;
     font-size: 22px;
     letter-spacing: 1px;
-    font-weight: 400;
   }
   h3 {
-    font-family: 'sans serif', cursive;
+    font-family: 'Open Sans', sans-serif;
     font-size: 35px;
   }
 }
+
+@media screen and (max-width: 500px){
+  #welcomeContent {
+    margin: 100px 10px;
+    background-color: #ededed;
+    border-radius: 5px;
+    opacity: 0.8;
+    font-family: 'Open Sans', sans-serif;
+    p {
+      text-align: justify;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    h3 {
+      font-size: 25px;
+    }
+  }
+  
+}
+
 
 .enter-btn {
   background-color: #9D2401;
@@ -48,4 +67,14 @@
   font-weight: bold;
   border-radius: 2px;
   transition: all 0.3s ease 0s;
+}
+
+.landing{
+  background-image: url('https://res.cloudinary.com/ikeenjoku/image/upload/v1531578357/bookameal/bg-img.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)), 
+  //     url('https://res.cloudinary.com/ikeenjoku/image/upload/v1531578357/bookameal/bg-img.jpg')
 }

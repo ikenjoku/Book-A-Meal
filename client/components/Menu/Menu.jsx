@@ -18,8 +18,8 @@ export default class Menu extends Component {
           </div>
           <div className="order-summary">
             <div className="order-summary-wrap">
-              <PreviousOrderTable />
               <CurrentOrderTable />
+              <PreviousOrderTable />
             </div>
           </div>
         </main>

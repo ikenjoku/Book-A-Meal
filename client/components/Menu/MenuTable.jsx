@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import MenuList from './MenuList';
 import DatePicker from '../DatePicker.jsx';
 import { getAMenu } from "../../actions/menuActions.js";
-import { orderAMeal, modifyAnOrder } from "../../actions/orderActions.js";
+import { orderAMeal, modifyAnOrder, modifyOrderStatus } from "../../actions/orderActions.js";
 
 class MenuTable extends Component {
   constructor(props){
@@ -18,7 +18,7 @@ class MenuTable extends Component {
   }
   render(){
     const { menu } = this.props;
-     
+      const ordertoModify = this.props.previousOrders.find(order => this.props.orderIdToModify === order.id);
     
     return (
       
@@ -28,7 +28,7 @@ class MenuTable extends Component {
         <DatePicker btnName='Get Menu' onSubmit={
           (selectedDate) => this.props.getAMenu(selectedDate)
         } />
-        { this.props.changeOrderStatus && <p className='error-alert'>Select a new meal</p>}
+        { this.props.changeOrderStatus && <p className='popup-notice'>{`Choose a meal to modify ${ordertoModify && ordertoModify.Meal.name} order`}<span><i className="fas fa-times" onClick={() => {this.props.modifyOrderStatus(!this.props.changeOrderStatus)}}></i></span></p>}
         {this.props.error && <p className='error-alert'>No Menu is set for this day</p> }
          { menu && !this.props.error ?
         <MenuList 
@@ -55,10 +55,11 @@ const mapStateToProps = state => ({
   error: state.menuReducer.error,
   user: state.authReducer.user,
   changeOrderStatus: state.orderReducer.changeOrderStatus,
-  orderIdToModify: state.orderReducer.orderIdToModify
+  orderIdToModify: state.orderReducer.orderIdToModify,
+  previousOrders: state.orderReducer.previousOrders
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ orderAMeal, getAMenu, modifyAnOrder }, dispatch);
+  bindActionCreators({ orderAMeal, getAMenu, modifyAnOrder, modifyOrderStatus }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuTable);

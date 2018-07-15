@@ -35,10 +35,10 @@ class Signup extends Component {
     render() {
         return (
             this.props.isLoggedIn === true ?  <Redirect to='/menu'/> :
-            <main className="">
+            <main className="signup-bg">
                 {this.state.error &&  <p>{this.state.error}</p> }
                 <form className="form-wrapper" onSubmit={this.onSubmit}>
-                    <h2 className="center">Sign In</h2>
+                    <h2 className="center">Sign up</h2>
                     <div>
                         <input
                             className="form-control"

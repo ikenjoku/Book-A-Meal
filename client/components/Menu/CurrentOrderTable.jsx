@@ -4,7 +4,7 @@ import { cancelAnOrder, modifyOrderStatus } from "../../actions/orderActions";
 
 const CurrentOrderTable = ({currentOrders, changeOrderStatus, cancelAnOrder, modifyOrderStatus, orderIdToModify}) => {
   const pendingOrders = currentOrders.filter(order => order.status === 'pending');
-  console.log('======', changeOrderStatus, orderIdToModify)
+  console.log('==xxxxxxxxxx====', currentOrders)
 
   return (
     <div>
@@ -12,10 +12,10 @@ const CurrentOrderTable = ({currentOrders, changeOrderStatus, cancelAnOrder, mod
       {pendingOrders.length === 0 ? <p>No current orders</p> : 
       pendingOrders.map(order => 
         <div key={order.id} className="order-item">
-          <div className="order-item-qty">{order.Meal.name}</div>
-          <div className="order-item-name">{order.amount}</div>
-          <div className="order-item-price"><button onClick={() => {modifyOrderStatus(!changeOrderStatus, order.id)}} className="cancel-order-btn">change</button> 
-          <button onClick={() => {cancelAnOrder(order.id)}} className="cancel-order-btn">X</button> </div>
+          <div className="order-item-name">{order.Meal.name}</div>
+          <div className="order-item-amount">&#8358; {order.amount}</div>
+          <div className="order-item-actions"><button className={changeOrderStatus ? 'highlight-btn' : undefined} onClick={() => {modifyOrderStatus(!changeOrderStatus, order.id)}} ><i className='far fa-edit'></i></button> 
+          <button onClick={() => {cancelAnOrder(order.id)}}><i className="far fa-times-circle 5x"></i></button> </div>
         </div>
       )}
       <hr />
