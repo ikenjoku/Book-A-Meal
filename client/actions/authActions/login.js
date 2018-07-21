@@ -6,7 +6,7 @@ import {
 import { setAuthorizationToken } from '../../utils/authHelpers';
 
 // Actions
-const loginSuccess = user => ({
+export const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
   user,
 });
@@ -16,18 +16,19 @@ const loginFailure = error => ({
   error,
 });
 
-const isLoggedIn = status => ({
+export const isLoggedIn = status => ({
   type: AUTH_LOGIN_STATUS,
   isLoggedIn: status,
 });
 
-const isLoading = status => ({
+export const isLoading = status => ({
   type: AUTH_LOADING,
   isLoading: status,
 });
 
 // Action Creators
 export const loginAUser = loginData => (dispatch) => {
+  dispatch(isLoading(true));
   return API.post('/auth/login', loginData)
     .then((res) => {
       const token = res.data.token;

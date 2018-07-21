@@ -7,7 +7,7 @@ import {
   GET_ORDERS_BY_DATE_SUCCESS, GET_ORDERS_BY_DATE_FAILURE,
   GET_ALL_PREVIOUS_ORDERS_SUCCESS, GET_ALL_PREVIOUS_ORDERS_FAILURE,
   DELIVER_ORDER_SUCCESS, DELIVER_ORDER_FAILURE,
-  GET_ORDER_LOADING_STATUS,
+  GET_ORDER_LOADING_STATUS, CHANGE_ORDER_STATUS
 } from './actionTypes';
 
 // Actions
@@ -59,9 +59,9 @@ const isLoadingOrders = status => ({
   isLoadingOrders: status,
 });
 
-const modifyOrderSuccess = ({deliveredOrder, id}) => ({
+const modifyOrderSuccess = ({modifiedOrder, id}) => ({
   type: MODIFY_ORDER_SUCCESS,
-  deliveredOrder,
+  modifiedOrder,
   id,
 });
 
@@ -70,15 +70,21 @@ const modifyOrderFailure = error => ({
   error,
 });
 
-const cancelOrderSuccess = ({deliveredOrder, id}) => ({
+const cancelOrderSuccess = ({cancelledOrder, id}) => ({
   type: CANCEL_ORDER_SUCCESS,
-  deliveredOrder,
+  cancelledOrder,
   id,
 });
 
 const cancelOrderFailure = error => ({
   type: CANCEL_ORDER_FAILURE,
   error,
+});
+
+export const modifyOrderStatus = (status, orderId='') =>({
+  type: CHANGE_ORDER_STATUS,
+  changeOrderStatus: status,
+  orderIdToModify: orderId
 });
 
 // Action Creators
@@ -129,6 +135,34 @@ export const deliverAnOrder = id => (dispatch) => {
     })
     .catch((error) => {
       dispatch(deliverOrderFailure(error));
+      notify.error(error.response.data.message);
+    });
+};
+
+export const cancelAnOrder = id => (dispatch) => {
+  API.put(`/orders/${id}`, {cancel: true})
+    .then((res) => {
+      dispatch(cancelOrderSuccess({cancelledOrder:res.data.order, id}));
+      notify.success(res.data.message);
+    })
+    .catch((error) => {
+      dispatch(cancelOrderFailure(error));
+      notify.error(error.response.data.message);
+    });
+};
+
+export const modifyAnOrder = ({id, newMealId}) => (dispatch) => {
+  console.log('..............', {id, newMealId});
+  API.put(`/orders/${id}`, {newMealId})
+    .then((res) => {
+      dispatch(modifyOrderSuccess({modifiedOrder:res.data.order, id}));
+      dispatch(getAllPreviousOrders());
+      dispatch(modifyOrderStatus(false));
+      notify.success(res.data.message);
+    })
+    .catch((error) => {
+      dispatch(modifyOrderFailure(error));
+      dispatch(modifyOrderStatus(false));
       notify.error(error.response.data.message);
     });
 };

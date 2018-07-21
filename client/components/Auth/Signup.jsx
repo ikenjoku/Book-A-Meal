@@ -25,13 +25,20 @@ class Signup extends Component {
     onSubmit = (event) => {
       event.preventDefault();
       const { signUpData } = this.state;
-      this.props.signupAUser(signUpData)
+      if(!signUpData.firstname || !signUpData.lastname || !signUpData.username || !signUpData.email 
+        || !signUpData.password || !signUpData.confirmPassword){
+            this.setState(() => ({ error: 'Please fill in all the fields' }));
+      } else {
+      this.props.signupAUser(signUpData);
+      }
     }
     render() {
         return (
-            <main className="">
-                <form className="form-wrapper">
-                    <h2 className="center">Sign In</h2>
+            this.props.isLoggedIn === true ?  <Redirect to='/menu'/> :
+            <main className="signup-bg">
+                {this.state.error &&  <p>{this.state.error}</p> }
+                <form className="form-wrapper" onSubmit={this.onSubmit}>
+                    <h2 className="center">Sign up</h2>
                     <div>
                         <input
                             className="form-control"
@@ -108,14 +115,7 @@ class Signup extends Component {
     }
 }
 
-
-const mapStateToProps = state => {
-  return {
-    state: state.authReducer,
-  }
-}
-
 const mapDispatchToProps = dispatch => 
   bindActionCreators({signupAUser}, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(null, mapDispatchToProps)(Signup);

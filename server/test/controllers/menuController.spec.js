@@ -8,6 +8,9 @@ chai.use(chaiHttp);
 
 let userToken;
 let adminToken;
+let newMenu;
+let updatedMenu;
+const today = new Date().toISOString().substr(0, 10);
 
 before((done) => {
   chai.request(app)
@@ -29,6 +32,18 @@ before((done) => {
     });
 });
 
+before((done) => {
+  chai.request(app)
+    .post('/api/v1/menu')
+    .send({ date: today, mealId: 1 })
+    .set('x-access-token', adminToken)
+    .end((err, res) => {
+      updatedMenu = res.body.updatedMenu;
+      done();
+    });
+});
+
+
 describe('Given /GET /api/v1/menu', () => {
   describe('When user wants to get menu', () => {
     it('should return menu set for today', (done) => {
@@ -38,16 +53,16 @@ describe('Given /GET /api/v1/menu', () => {
         .end((err, res) => {
           res.status.should.eql(200);
           res.should.be.a('object');
-          res.body.should.have.property('id');
-          res.body.should.have.property('date');
-          res.body.Meals.should.be.a('array');
-          res.body.Meals[0].should.be.a('object');
-          res.body.Meals[0].should.have.property('id');
-          res.body.Meals[0].id.should.be.a('number');
-          res.body.Meals[0].should.have.property('name');
-          res.body.Meals[0].should.have.property('price');
-          res.body.Meals[0].should.have.property('description');
-          res.body.Meals[0].should.have.property('imageurl');
+          res.body.menu.should.have.property('id');
+          res.body.menu.should.have.property('date');
+          res.body.menu.Meals.should.be.a('array');
+          res.body.menu.Meals[0].should.be.a('object');
+          res.body.menu.Meals[0].should.have.property('id');
+          res.body.menu.Meals[0].id.should.be.a('number');
+          res.body.menu.Meals[0].should.have.property('name');
+          res.body.menu.Meals[0].should.have.property('price');
+          res.body.menu.Meals[0].should.have.property('description');
+          res.body.menu.Meals[0].should.have.property('imageurl');
           done();
         });
     });
@@ -58,16 +73,16 @@ describe('Given /GET /api/v1/menu', () => {
         .end((err, res) => {
           res.status.should.eql(200);
           res.should.be.a('object');
-          res.body.should.have.property('id');
-          res.body.should.have.property('date').eql('2018-05-18');
-          res.body.Meals.should.be.a('array');
-          res.body.Meals[0].should.be.a('object');
-          res.body.Meals[0].should.have.property('id');
-          res.body.Meals[0].id.should.be.a('number');
-          res.body.Meals[0].should.have.property('name');
-          res.body.Meals[0].should.have.property('price');
-          res.body.Meals[0].should.have.property('description');
-          res.body.Meals[0].should.have.property('imageurl');
+          res.body.menu.should.have.property('id');
+          res.body.menu.should.have.property('date').eql('2018-05-18');
+          res.body.menu.Meals.should.be.a('array');
+          res.body.menu.Meals[0].should.be.a('object');
+          res.body.menu.Meals[0].should.have.property('id');
+          res.body.menu.Meals[0].id.should.be.a('number');
+          res.body.menu.Meals[0].should.have.property('name');
+          res.body.menu.Meals[0].should.have.property('price');
+          res.body.menu.Meals[0].should.have.property('description');
+          res.body.menu.Meals[0].should.have.property('imageurl');
           done();
         });
     });

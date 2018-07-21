@@ -13,21 +13,21 @@ const errorHandler = (error, req, res) => {
       messages = [...messages, ...err.messages];
     });
 
-    return res.status(400).json({
+    res.status(400).send({
       statusText: error.statusText,
       errors: {
-        messages,
-      },
+        messages
+      }
     });
   }
 
   if (error.name === 'SequelizeDatabaseError' && error.parent.routine === 'DateTimeParseError') {
     return res.status(400).send({
-      message: 'Invalid date. Use this format YYYY-MM-DD',
+      message: 'Invalid date. Use this format YYYY-MM-DD'
     });
   }
-  res.status(error.status || 500);
-  res.send({ Error: error });
+  
+  res.status(error.status || 500).send({ Error: error });
 };
 
 export default errorHandler;

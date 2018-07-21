@@ -17,14 +17,16 @@ class PreviousOrderTable extends Component{
     return (
     <div>
       <h4>Previous orders</h4>
+      <div className='prev-order-container'>
       {deliveredOrders.length === 0 ? <p>No order history</p> :
         deliveredOrders.map(previousOrder =>
-        <div key={previousOrder.id} className="order-item">
-          <div className="order-item-qty">{previousOrder.date}</div>
+        <div key={previousOrder.id} className="previous-order-item">
+          <div className="order-item-date">{previousOrder.date}</div>
           <div className="order-item-name">{previousOrder.Meal.name}</div>
           <div className="order-item-price">&#8358; {previousOrder.amount} </div>
         </div>
         )}
+      </div>
     </div>
     );
 }

@@ -24,8 +24,6 @@ export const meals = [
     description: 'Semolina, Egusi Soup, Meat, Extra',
     price: 1200,
     imageurl: 'https://africa-public.food.jcts/80/80418_1465475724_ma.jpg',
-    createdAt: new Date(),
-    updatedAt: new Date(),
   },
   {
     id: 3,

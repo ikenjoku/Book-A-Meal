@@ -3,8 +3,8 @@
 // import moxios from 'moxios';
 // import expect from 'expect';
 // import { getAllMeals, addAMeal, removeAMeal, updateAMeal } from '../../actions/mealActions.js';
+// import { GET_MEALS_LOADING_STATUS, GET_MEALS_SUCCESS } from "../../actions/actionTypes";
 // import { mockStoreData } from "../mocks";
-// import { meals } from '../mocks';
 
 // const middlewares = [thunk];
 // const mockStore = configureMockStore(middlewares);
@@ -14,7 +14,7 @@
 //   afterEach(() => moxios.uninstall());
 
 //   describe('getAllMeals', () => {
-//     it('should dispatch GET_MEALS_SUCCESS and meals', async (done) => {
+//     it('should dispatch GET_MEALS_SUCCESS and meals', (done) => {
 //       const meals = mockStoreData.mealReducer.meals;
 //       moxios.stubRequest('/meals', {
 //           status: 200,
@@ -22,19 +22,18 @@
 //         });
   
 //       const expectedActions = [
-//         { type: 'GET_MEALS_LOADING_STATUS', status: true },
-//         { type: 'GET_MEALS_SUCCESS', meals },
-//         { type: 'GET_MEALS_LOADING_STATUS', status: false }
+//         { type: GET_MEALS_LOADING_STATUS, status: true },
+//         { type: GET_MEALS_SUCCESS, meals },
+//         { type: GET_MEALS_LOADING_STATUS, status: false }
 //       ];
 //       const store = mockStore({});
   
-//       await store.dispatch(getAllMeals());
+//       store.dispatch(getAllMeals());
 //       expect(store.getActions()).toEqual(expectedActions);
 //       done();
 //     });
 //   });
 // });
+test('pass', () => {
 
-test('just pass', () => {
-
-})
+});

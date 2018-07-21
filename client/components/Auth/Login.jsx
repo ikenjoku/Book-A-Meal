@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect, Link } from "react-router-dom";
 import { loginAUser } from "../../actions/authActions/login";
+import { ToastContainer } from "react-toastify";
 
 class Login extends Component {
   state = {
@@ -28,7 +29,7 @@ class Login extends Component {
   render() {
     return (
       this.props.isLoggedIn === true ?  <Redirect to='/menu'/> :
-      <main className='mainContent'>
+      <main className='mainContent login-bg'>
         <form className='form-wrapper' onSubmit={this.onSubmit}>
           <h2 className="center">Login</h2>
           <div>
@@ -36,7 +37,7 @@ class Login extends Component {
               className="form-control"
               type="text"
               name="email"
-              placeholder="Email"
+              placeholder="Enter your email"
               value={this.state.data.email}
               onChange={this.onFormInput}
             />
@@ -46,7 +47,7 @@ class Login extends Component {
               className="form-control"
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Enter you password"
               value={this.state.data.password}
               onChange={this.onFormInput}
             />

@@ -24,8 +24,6 @@ class MealController {
     const imageurl = req.file.secure_url;
     let { price } = req.body;
     price = Number(price);
-    console.log(req.file);
-    console.log('>>>>>>>>', req.body);
     Meal.findOne({ where: { name } })
       .then((meal) => {
         if (meal) {

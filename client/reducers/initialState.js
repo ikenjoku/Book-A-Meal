@@ -30,5 +30,7 @@ export default {
     orders: [],
     previousOrders: [],
     isLoadingOrders:false,
+    changeOrderStatus: false,
+    orderIdToModify: ''
   },
 };

@@ -3,15 +3,30 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
-import { removeAMeal, getAllMeals } from "../../actions/mealActions.js";
+import { getAllMeals } from "../../actions/mealActions.js";
+import OptionModal from '../OptionModal';
+export class MealList extends Component{
 
-class MealList extends Component{
-    constructor(props){
-        super(props);
+    state = {
+      showDeleteModal: undefined,
+      mealId: undefined
     }
 
     componentDidMount(){
-        this.props.dispatch(getAllMeals());
+      this.props.dispatch(getAllMeals());
+    }
+    handleModalClose = () => {
+      this.setState(() => ({
+        showDeleteModal: undefined,
+        mealId: undefined
+      }));
+    }
+    handleDelete = (id) => {
+      const mealToDelete = this.props.meals.find(meal => meal.id === id);
+      this.setState(() => ({
+          showDeleteModal: mealToDelete.name,
+          mealId: mealToDelete.id
+      }));
     }
 
     render(){
@@ -20,8 +35,8 @@ class MealList extends Component{
       <h2 className="center cool-lg-text">Manage Meals</h2>
       <Link className='addMealLink' to={'/meals/create'}><div className='addMealLinkD'>Add a New Meal</div></Link>
 
-          <h1 className="meal-table-title">All Meal List</h1>
           <div id="all-meal-table">
+          <h1 className="meal-table-title center">All Meal List</h1>
               <div className="contain-table-headers">
                   <p>Image</p>
                   <p>Name</p>
@@ -40,7 +55,7 @@ class MealList extends Component{
                 <h3 id='loader-text'>Fetching...</h3>  
                 </div> : 
               <div className="meal-table">
-                  {this.props.meals.map(meal =>
+                  { this.props.meals && this.props.meals.map(meal =>
                     <div key={meal.id} className="meal-table-item">
                         <div className="meal-table-item-img">
                             <p><img src={meal.imageurl} alt="" /></p>
@@ -64,9 +79,8 @@ class MealList extends Component{
                             </Link>
                             <a 
                               className="mg-meal-btn btn-danger"
-                              onClick={(e) => {
-                                this.props.dispatch(removeAMeal({id:meal.id}));
-                              }}
+                                onClick={ () => { this.handleDelete(meal.id) }
+                              }
                               >
                               Delete
                             </a>
@@ -77,13 +91,18 @@ class MealList extends Component{
             </div>
               }
             <hr />
+            <OptionModal
+              handleModalClose={this.handleModalClose}
+              showDeleteModal={this.state.showDeleteModal}
+              mealId={this.state.mealId}
+              />
         </div>
       </main>
     );
 }
 }
 
-const mapStateToProps = state => ({
+ export const mapStateToProps = state => ({
     meals: state.mealReducer.meals,
     isLoading: state.mealReducer.isLoading,
 });

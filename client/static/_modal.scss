@@ -1,0 +1,49 @@
+.ReactModalPortal > div {
+  opacity: 0;
+};
+
+.ReactModalPortal .ReactModal__Overlay {
+  transition: opacity 200ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+};
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+};
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+};
+
+.deleteModal{
+  background-color: #ea5b31;
+  border-radius: 5px;
+  color: #ffffff;
+  max-width: 400px;
+  outline: none;
+  text-align: center;
+  padding: 20px 40px;
+}
+
+.deleteModal button{
+    background-color: #9d2401;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 10px;
+    width: 50px;
+    font-weight: 700;
+    margin-right: 25px;
+    cursor: pointer;
+    font-size: 1.17em;
+    transition: background-color 0.5s ease;
+}
+
+.deleteModal button:hover{
+  background-color: #ffffff;
+  color: #C63A11;
+
+}
