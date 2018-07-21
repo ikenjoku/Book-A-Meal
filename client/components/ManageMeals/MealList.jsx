@@ -5,7 +5,7 @@ import Loader from "react-loader-spinner";
 
 import { getAllMeals } from "../../actions/mealActions.js";
 import OptionModal from '../OptionModal';
-class MealList extends Component{
+export class MealList extends Component{
 
     state = {
       showDeleteModal: undefined,
@@ -55,7 +55,7 @@ class MealList extends Component{
                 <h3 id='loader-text'>Fetching...</h3>  
                 </div> : 
               <div className="meal-table">
-                  {this.props.meals.map(meal =>
+                  { this.props.meals && this.props.meals.map(meal =>
                     <div key={meal.id} className="meal-table-item">
                         <div className="meal-table-item-img">
                             <p><img src={meal.imageurl} alt="" /></p>
@@ -102,7 +102,7 @@ class MealList extends Component{
 }
 }
 
-const mapStateToProps = state => ({
+ export const mapStateToProps = state => ({
     meals: state.mealReducer.meals,
     isLoading: state.mealReducer.isLoading,
 });

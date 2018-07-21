@@ -10,11 +10,11 @@ require('dotenv').config();
 chai.should();
 chai.use(chaiHttp);
 
-
+let userToken;
+let adminToken;
+let sampleUserToken;
 describe('Users', () => {
-  let userToken;
-  let adminToken;
-  let sampleUserToken;
+
   before((done) => {
     chai.request(app)
       .post('/api/v1/auth/login')
@@ -30,15 +30,6 @@ describe('Users', () => {
       .send(mockData.user)
       .end((err, res) => {
         userToken = res.body.token;
-        done();
-      });
-  });
-  before((done) => {
-    chai.request(app)
-      .post('/api/v1/auth/login')
-      .send(mockData.userWithBadEmail)
-      .end((err, res) => {
-        sampleUserToken = res.body.token;
         done();
       });
   });
@@ -58,12 +49,32 @@ describe('Users', () => {
           .post('/api/v1/auth/signup')
           .send(user)
           .end((err, res) => {
+            console.log(res.body);
             res.should.have.status(400);
-            res.body.errors.messages[0].should.eql('"firstname" is required');
+            res.body.message.should.eql('Firstname is required');
             done();
           });
       });
-      it('Then it should not add a user without a userName', (done) => {
+      it('Then it should not add a user without a lastname', (done) => {
+        const user = {
+          firstname: 'Adino',
+          lastname: '',
+          username: 'Idrismo',
+          email: 'Idris@gmail.com',
+          password: 'idris1',
+          confirmPassword: 'idris1',
+        };
+        chai.request(app)
+          .post('/api/v1/auth/signup')
+          .send(user)
+          .end((err, res) => {
+            res.should.have.status(400);
+            res.body.message.should.eql('Lastname is required');
+            done();
+          });
+      });
+
+      it('Then it should not add a user without a username', (done) => {
         const user = {
           firstname: 'Idrismo',
           lastname: 'Elba',
@@ -77,7 +88,7 @@ describe('Users', () => {
           .send(user)
           .end((err, res) => {
             res.should.have.status(400);
-            res.body.errors.messages[0].should.eql('"username" is required');
+            res.body.message.should.eql('Username is required');
             done();
           });
       });
@@ -95,7 +106,7 @@ describe('Users', () => {
           .send(user)
           .end((err, res) => {
             res.should.have.status(400);
-            res.body.errors.messages[0].should.eql('"email" is required');
+            res.body.message.should.eql('Email is required');
             done();
           });
       });
@@ -113,17 +124,17 @@ describe('Users', () => {
           .send(user)
           .end((err, res) => {
             res.should.have.status(400);
-            res.body.errors.messages[0].should.eql('"email" must be a valid email');
+            res.body.message.should.eql('Invalid email');
             done();
           });
       });
-      it('Then it should not add a user without a password', (done) => {
+      it('Then it should not add a user when password and password retype do not match', (done) => {
         const user = {
           firstname: 'Idrismo',
           lastname: 'Elba',
           username: 'Bellema',
           email: 'Idris@gmail.com',
-          password: '',
+          password: 'sdfds',
           confirmPassword: 'idris1',
         };
         chai.request(app)
@@ -131,30 +142,10 @@ describe('Users', () => {
           .send(user)
           .end((err, res) => {
             res.should.have.status(400);
-            res.body.errors.messages[0].should.eql('"password" is required');
+            res.body.message.should.eql('Passwords do not match');
             done();
           });
       });
-      it(
-        'Then it should not add a user with password less than 5 characters',
-        (done) => {
-          const user = {
-            firstname: 'Idrismo',
-            lastname: 'Elba',
-            username: 'Bellema',
-            email: 'Idris@gmail.com',
-            password: 'is1',
-            confirmPassword: 'is1',
-          };
-          chai.request(app)
-            .post('/api/v1/auth/signup')
-            .send(user)
-            .end((err, res) => {
-              res.should.have.status(400);
-              done();
-            });
-        },
-      );
       it(
         'Then it should not add a user if the email already exist',
         (done) => {
@@ -163,7 +154,7 @@ describe('Users', () => {
             lastname: 'Chima',
             username: 'Vero',
             email: 'chubby@gmail.com',
-            password: '',
+            password: 'idris1',
             confirmPassword: 'idris1',
           };
           chai.request(app)
@@ -171,7 +162,7 @@ describe('Users', () => {
             .send(user)
             .end((err, res) => {
               res.should.have.status(409);
-              res.body.errors.messages[0].should.eql('email is associated with an account');
+              res.body.message.should.eql('email is associated with an account');
               done();
             });
         },
@@ -203,8 +194,7 @@ describe('Users', () => {
             .end((err, res) => {
               res.should.have.status(201);
               res.body.message.should.eql('Welcome Eze. Enjoy your meal');
-              res.body.email.should.eql('eazy@gmail.com');
-              res.body.username.should.eql('Eze');
+              res.body.firstname.should.eql('Eze');
               res.body.isAdmin.should.eql(false);
               res.body.should.have.property('token');
               done();
@@ -217,7 +207,7 @@ describe('Users', () => {
   describe('Given /api/v1/auth/login', () => {
     describe('When a user wants to sign in', () => {
       it(
-        'Then it should fail if the user does not enter the email and password fields',
+        'Then it should fail if the user does not enter an email address',
         (done) => {
           const mockUser = {
             email: '',
@@ -228,13 +218,13 @@ describe('Users', () => {
             .send(mockUser)
             .end((err, res) => {
               res.should.have.status(400);
-              res.body.errors.messages[0].should.eql('"email" is required');
+              res.body.message.should.eql('Please fill in your email');
               done();
             });
         },
       );
       it(
-        'Then it should fail if the user does not enter password fields',
+        'Then it should fail if the user does not enter a password',
         (done) => {
           const mockUser = {
             email: 'kcee@gmail.com',
@@ -245,7 +235,7 @@ describe('Users', () => {
             .send(mockUser)
             .end((err, res) => {
               res.should.have.status(400);
-              res.body.errors.messages[0].should.eql('"password" is required');
+              res.body.message.should.eql('Please fill in your password');
               done();
             });
         },
@@ -260,7 +250,7 @@ describe('Users', () => {
           .send(mockUser)
           .end((err, res) => {
             res.should.have.status(403);
-            res.body.message.should.eql('user does not exist');
+            res.body.message.should.eql('User does not exist');
             done();
           });
       });
@@ -276,23 +266,7 @@ describe('Users', () => {
             .send(mockUser)
             .end((err, res) => {
               res.should.have.status(403);
-              res.body.message.should.eql('wrong username and password combination');
-              done();
-            });
-        },
-      );
-      it(
-        'Then it should not log in a user with password less than 5 characters',
-        (done) => {
-          const user = {
-            email: 'kcee@gmail.com',
-            password: 'ema',
-          };
-          chai.request(app)
-            .post('/api/v1/auth/login')
-            .send(user)
-            .end((err, res) => {
-              res.should.have.status(400);
+              res.body.message.should.eql('Wrong username and password combination');
               done();
             });
         },

@@ -13,10 +13,9 @@ import orderController from '../controllers/orders';
 
 // import uploadImage from '../helpers/uploadImage';
 import authenticate from '../middlewares/authenticate';
-import { isAdmin, validateId, trimInputs } from '../middlewares/isAdmin';
+import { isAdmin, validateId } from '../middlewares/isAdmin';
 import { validateMealCreate, validateMealUpdate } from '../middlewares/validations/meal';
-import { beforeSignup, validateSignup, validateLogin } from '../middlewares/validations/user';
-
+import { validateSignup, validateSignin, trimInputs} from '../middlewares/validateInputs';
 dotenv.config();
 
 cloudinary.config({
@@ -42,8 +41,8 @@ router.get('/', (req, res) => {
   res.status(200).send('Welcome home, Book_A_Meal');
 })
   // Users
-  .post('/auth/signup', beforeSignup, validateSignup, userController.create)
-  .post('/auth/login', validateLogin, userController.login)
+  .post('/auth/signup', validateSignup, userController.create)
+  .post('/auth/login', validateSignin, userController.login)
 
   // Meals
   .get('/meals', authenticate, mealController.getMeals)

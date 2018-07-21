@@ -103,7 +103,7 @@ describe('Given /POST /api/v1/orders', () => {
           res.body.message.should.eql('Rice only has been ordered.');
           res.body.should.have.property('order');
           res.body.order.status.should.eql('pending');
-          res.body.order.price.should.eql(1500);
+          res.body.order.amount.should.eql(1500);
           done();
         });
     });

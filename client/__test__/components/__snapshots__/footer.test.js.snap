@@ -30,5 +30,18 @@ exports[`it should render footer correctly 1`] = `
   <p>
     Book-A-Meal © 2018
   </p>
+  <p>
+    Designed with 
+    <i
+      className="fas fa-heart"
+    />
+     by 
+    <a
+      href="https://github.com/ikenjoku/Book-A-Meal"
+      target="blank"
+    >
+      Ikechukwu Njoku
+    </a>
+  </p>
 </footer>
 `;

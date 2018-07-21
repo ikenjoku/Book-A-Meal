@@ -4,6 +4,7 @@ import {
   SIGNUP_SUCCESS, SIGNUP_FAILURE
 } from '../actionTypes';
 import { isLoggedIn, isLoading } from "./login";
+import { setAuthorizationToken } from '../../utils/authHelpers'
 // Actions
 
 const signUpSuccess = user => ({
