@@ -177,9 +177,10 @@ describe('Given /PUT /api/v1/orders', () => {
     it('should not update an order after 15 mins of making it', (done) => {
       const body = {
         newMealId: 4,
+        id: 5,
       };
       chai.request(app)
-        .put('/api/v1/orders/5')
+        .put('/api/v1/orders')
         .set('x-access-token', userToken)
         .send(body)
         .end((err, res) => {
