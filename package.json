@@ -13,15 +13,17 @@
         "start:server": "nodemon server/bin/www.js --exec babel-node",
         "server:lint": "eslint \"server/**/*.js\" app.js --fix",
         "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
-        "build:client": "webpack",
-        "build:server": "babel server --presets env --out-dir dist/server --source-maps",
         "start:dist": "node dist/server/bin/www.js",
         "test": "npm run test:server",
         "test:server": "cross-env NODE_ENV=test nyc mocha --timeout 10000 server/test/**/*.spec.js  --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
         "test:client": "jest --config=jest.config.js",
         "cleardb": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
         "pretest": "npm run cleardb && cross-env NODE_ENV=test sequelize db:migrate && cross-env NODE_ENV=test sequelize db:seed:all",
-        "reset:db": "NODE_ENV=development sequelize db:migrate && sequelize db:seed:all"
+        "reset:db": "NODE_ENV=development sequelize db:migrate && sequelize db:seed:all",
+        "build:client": "webpack",
+        "build:server": "babel server --presets env --out-dir dist/server --source-maps",
+        "build": "npm run build:server && npm run build:client",
+        "heroku-postbuild": "npm run build"
     },
     "repository": {
         "type": "git",
