@@ -20,8 +20,9 @@
         "cleardb": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
         "pretest": "npm run cleardb && cross-env NODE_ENV=test sequelize db:migrate && cross-env NODE_ENV=test sequelize db:seed:all",
         "reset:db": "NODE_ENV=development sequelize db:migrate && sequelize db:seed:all",
+        "copy:docs":"cp -r server/docs dist/server/docs",
         "build:client": "webpack",
-        "build:server": "babel server --presets env --out-dir dist/server --source-maps",
+        "build:server": "babel server --ignore test,seeders,docs --presets env --out-dir dist/server --source-maps && npm run copy:docs",
         "build": "npm run build:server && npm run build:client",
         "heroku-postbuild": "npm run build"
     },
