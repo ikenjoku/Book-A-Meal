@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/api-docs', express.static(path.join(__dirname, '/docs')));
 app.use(express.static(path.join(__dirname, '../client')));
 app.use('/api/v1', routes);
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'client/index.html')));
+app.get('*', (req, res) => res.sendFile(path.join(path.dirname(__dirname), 'client/index.html')));
 
 
 /**
