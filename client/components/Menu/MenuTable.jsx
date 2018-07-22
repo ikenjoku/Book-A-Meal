@@ -23,7 +23,6 @@ class MenuTable extends Component {
     return (
       
       <div>
-        
         <h2 className="center cool-lg-text">Menu List</h2>
         <DatePicker btnName='Get Menu' onSubmit={
           (selectedDate) => this.props.getAMenu(selectedDate)

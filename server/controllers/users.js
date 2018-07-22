@@ -80,9 +80,9 @@ class UserController {
    * @memberof UserController
    */
   static login(req, res, next) {
-    const email = req.body.email;
+    const userEmail = req.body.email;
     const password = req.body.password;
-    return User.findOne({ where: { email } }).then((user) => {
+    return User.findOne({ where: { email: userEmail } }).then((user) => {
       if (!user) {
         return res.status(403).send({
           message: 'User does not exist',

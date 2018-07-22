@@ -1,12 +1,9 @@
 import API from '../axiosConfig';
-import notify from "./notify";
+import notify from './notify';
 import {
   SET_MENU_SUCCESS, SET_MENU_FAILURE,
-  SET_SELECTED_DATE,
-  ADD_MEAL_TO_MENU_FAILURE, ADD_MEAL_TO_MENU_SUCCESS,
-} from './actionTypes';
-
-// Actions
+  SET_SELECTED_DATE, ADD_MEAL_TO_MENU_FAILURE,
+  ADD_MEAL_TO_MENU_SUCCESS } from './actionTypes';
 
 const setMenu = createdMenu => ({
   type: SET_MENU_SUCCESS,
@@ -23,39 +20,37 @@ export const setSelectedDate = selectedDate => ({
   selectedDate,
 });
 
-export const addMealToMenuSuccess = ({message, updatedMenu}) => ({
+export const addMealToMenuSuccess = ({ updatedMenu }) => ({
   type: ADD_MEAL_TO_MENU_SUCCESS,
   updatedMenu,
 });
 
-export const addMealToMenuFailure = (error) => ({
-  type: ADD_MEAL_TO_MENU_SUCCESS,
+export const addMealToMenuFailure = error => ({
+  type: ADD_MEAL_TO_MENU_FAILURE,
   error,
 });
 
 
-// Action Creators
-export const setAMenu = ({ selectedDate, formattedDate }) => (dispatch) => {
+export const setAMenu = ({ selectedDate }) => (dispatch) => {
   API.post('/menu', { date: selectedDate })
     .then((res) => {
       dispatch(setMenu(res.data));
-      notify.success('New Menu Created')
+      notify.success('New Menu Created');
     })
     .catch((error) => {
       dispatch(setMenuFailure(error));
-      notify.error(error.message)
+      notify.error(error.message);
     });
 };
 
-export const addAMealToMenu = ({date, mealId}) => (dispatch) => {
+export const addAMealToMenu = ({ date, mealId }) => (dispatch) => {
   API.post('/menu', { date, mealId })
-  .then((res) => {
-    dispatch(addMealToMenuSuccess(res.data));
-    notify.success('Meal successfully added to menu')
-  })
-  .catch((error) => {
-    dispatch(addMealToMenuFailure(error));
-    notify.error(error.message)
-  });
-}
-// make an action to dispatch meal id with selected menu date
+    .then((res) => {
+      dispatch(addMealToMenuSuccess(res.data));
+      notify.success('Meal successfully added to menu');
+    })
+    .catch((error) => {
+      dispatch(addMealToMenuFailure(error));
+      notify.error(error.message);
+    });
+};

@@ -32,7 +32,7 @@ class MenuController {
       if (!menu) {
         return res.status(404).send({ message: `Menu has not been set for ${date}` });
       }
-      res.status(200).send({menu});
+      res.status(200).send({ menu });
     }).catch(error => next(error));
   }
   /**

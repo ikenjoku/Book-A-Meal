@@ -1,5 +1,5 @@
 import API from '../axiosConfig';
-import notify from "./notify";
+import notify from './notify';
 import {
   ORDER_MEAL_SUCCESS, ORDER_MEAL_FAILURE,
   MODIFY_ORDER_SUCCESS, MODIFY_ORDER_FAILURE,
@@ -7,12 +7,10 @@ import {
   GET_ORDERS_BY_DATE_SUCCESS, GET_ORDERS_BY_DATE_FAILURE,
   GET_ALL_PREVIOUS_ORDERS_SUCCESS, GET_ALL_PREVIOUS_ORDERS_FAILURE,
   DELIVER_ORDER_SUCCESS, DELIVER_ORDER_FAILURE,
-  GET_ORDER_LOADING_STATUS, CHANGE_ORDER_STATUS
+  GET_ORDER_LOADING_STATUS, CHANGE_ORDER_STATUS,
 } from './actionTypes';
 
-// Actions
-
-const orderMealSuccess = ({order, meal}) => ({
+const orderMealSuccess = ({ order, meal }) => ({
   type: ORDER_MEAL_SUCCESS,
   orderedMeal: order,
   meal,
@@ -43,7 +41,7 @@ const getPreviousOrdersFailure = error => ({
   error,
 });
 
-const deliverOrderSuccess = ({deliveredOrder, id}) => ({
+const deliverOrderSuccess = ({ deliveredOrder, id }) => ({
   type: DELIVER_ORDER_SUCCESS,
   deliveredOrder,
   id,
@@ -59,7 +57,7 @@ const isLoadingOrders = status => ({
   isLoadingOrders: status,
 });
 
-const modifyOrderSuccess = ({modifiedOrder, id}) => ({
+const modifyOrderSuccess = ({ modifiedOrder, id }) => ({
   type: MODIFY_ORDER_SUCCESS,
   modifiedOrder,
   id,
@@ -70,7 +68,7 @@ const modifyOrderFailure = error => ({
   error,
 });
 
-const cancelOrderSuccess = ({cancelledOrder, id}) => ({
+const cancelOrderSuccess = ({ cancelledOrder, id }) => ({
   type: CANCEL_ORDER_SUCCESS,
   cancelledOrder,
   id,
@@ -81,17 +79,26 @@ const cancelOrderFailure = error => ({
   error,
 });
 
-export const modifyOrderStatus = (status, orderId='') =>({
+export const modifyOrderStatus = (status, orderId = '') => ({
   type: CHANGE_ORDER_STATUS,
   changeOrderStatus: status,
-  orderIdToModify: orderId
+  orderIdToModify: orderId,
 });
 
-// Action Creators
-export const orderAMeal = ({mealId, id, meal}) => (dispatch) => {
-  API.post('/orders', {mealId, id})
+export const getAllPreviousOrders = () => (dispatch) => {
+  API.get('/orders/customer')
     .then((res) => {
-      dispatch(orderMealSuccess({order:res.data.order, meal}));
+      dispatch(getPreviousOrdersSuccess(res.data.orders));
+    })
+    .catch((error) => {
+      dispatch(getPreviousOrdersFailure(error));
+    });
+};
+
+export const orderAMeal = ({ mealId, id, meal }) => (dispatch) => {
+  API.post('/orders', { mealId, id })
+    .then((res) => {
+      dispatch(orderMealSuccess({ order: res.data.order, meal }));
       dispatch(getAllPreviousOrders());
       notify.success(res.data.message);
     })
@@ -115,23 +122,11 @@ export const getOrdersByDate = ({ selectedDate }) => (dispatch) => {
     });
 };
 
-export const getAllPreviousOrders = () => (dispatch) => {
-  API.get('/orders/customer')
-  .then((res) => {
-    dispatch(getPreviousOrdersSuccess(res.data.orders));
-    console.log(res.data);
-  })
-  .catch((error) => {
-    dispatch(getPreviousOrdersFailure(error));
-  })
-};
-
 export const deliverAnOrder = id => (dispatch) => {
   API.put(`/orders/${id}/deliver`)
     .then((res) => {
-      dispatch(deliverOrderSuccess({deliveredOrder:res.data.order, id}));
+      dispatch(deliverOrderSuccess({ deliveredOrder: res.data.order, id }));
       notify.success(res.data.message);
-      console.log({deliveredOrder:res.data.order, id})
     })
     .catch((error) => {
       dispatch(deliverOrderFailure(error));
@@ -140,9 +135,9 @@ export const deliverAnOrder = id => (dispatch) => {
 };
 
 export const cancelAnOrder = id => (dispatch) => {
-  API.put(`/orders/${id}`, {cancel: true})
+  API.put(`/orders/${id}`, { cancel: true })
     .then((res) => {
-      dispatch(cancelOrderSuccess({cancelledOrder:res.data.order, id}));
+      dispatch(cancelOrderSuccess({ cancelledOrder: res.data.order, id }));
       notify.success(res.data.message);
     })
     .catch((error) => {
@@ -151,11 +146,10 @@ export const cancelAnOrder = id => (dispatch) => {
     });
 };
 
-export const modifyAnOrder = ({id, newMealId}) => (dispatch) => {
-  console.log('..............', {id, newMealId});
-  API.put(`/orders/${id}`, {newMealId})
+export const modifyAnOrder = ({ id, newMealId }) => (dispatch) => {
+  API.put(`/orders/${id}`, { newMealId })
     .then((res) => {
-      dispatch(modifyOrderSuccess({modifiedOrder:res.data.order, id}));
+      dispatch(modifyOrderSuccess({ modifiedOrder: res.data.order, id }));
       dispatch(getAllPreviousOrders());
       dispatch(modifyOrderStatus(false));
       notify.success(res.data.message);

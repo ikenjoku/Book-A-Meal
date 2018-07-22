@@ -32,10 +32,10 @@ app.get('*', (req, res) => res.sendFile(path.join(path.dirname(__dirname), 'clie
 app.use((error, req, res) => {
   if (error.name === 'SequelizeDatabaseError' && error.parent.routine === 'DateTimeParseError') {
     return res.status(400).send({
-      message: 'Invalid date. Use this format YYYY-MM-DD'
+      message: 'Invalid date. Use this format YYYY-MM-DD',
     });
   }
-  
+
   res.status(error.status || 500).send({ message: 'Server error', error });
 });
 
