@@ -94,3 +94,44 @@ export const validateSignin = (req, res, next) => {
   }
   next();
 };
+
+export const validateMealCreate = (req, res, next) => {
+  const { name, description, price } = req.body;
+  if (!name || typeof name !== 'string') {
+    return res.status(400).send({
+      message: 'Please fill in the meal name',
+    });
+  } else if (!req.file) {
+    return res.status(400).send({
+      message: 'Please upload the meal image',
+    });
+  } else if (!description) {
+    return res.status(400).send({
+      message: 'Please describe the meal',
+    });
+  } else if (!price) {
+    return res.status(400).send({
+      message: 'Please fill in the meal price',
+    });
+  }
+  next();
+};
+
+
+export const validateMealUpdate = (req, res, next) => {
+  const { name, description, price } = req.body;
+  if (!name || typeof name !== 'string') {
+    return res.status(400).send({
+      message: 'Please fill in the meal name',
+    });
+  } else if (!description) {
+    return res.status(400).send({
+      message: 'Please describe the meal',
+    });
+  } else if (!price || Number.isNaN(Number(price))) {
+    return res.status(400).send({
+      message: 'Please fill in a valid meal price',
+    });
+  }
+  next();
+};

@@ -83,7 +83,6 @@ describe('Given /GET /api/v1/meals', () => {
 describe('Given /POST /api/v1/meals', () => {
   describe('When adminUser wants to add a meal', () => {
     it('should add a new meal and return the meal added', (done) => {
-
       chai.request(app)
         .post('/api/v1/meals')
         .set('x-access-token', adminToken)
@@ -103,7 +102,6 @@ describe('Given /POST /api/v1/meals', () => {
         });
     });
     it('should not add a meal with invalid field', (done) => {
-
       chai.request(app)
         .post('/api/v1/meals')
         .set('x-access-token', adminToken)
@@ -113,15 +111,12 @@ describe('Given /POST /api/v1/meals', () => {
         .attach('imageurl', `${__dirname}/testmeal.png`)
         .end((err, res) => {
           res.status.should.eql(400);
-          // res.body.should.have.property('errors');
-          // res.body.errors.should.have.property('messages');
-          // res.body.errors.messages[0].should.eql('"name" is required');
-          // res.body.should.be.a('object');
+          res.body.message.should.eql('Please fill in the meal name');
+          res.body.should.be.a('object');
           done();
         });
     });
     it('should not add a meal if it already exist', (done) => {
-
       chai.request(app)
         .post('/api/v1/meals')
         .set('x-access-token', adminToken)
@@ -143,7 +138,6 @@ describe('Given /POST /api/v1/meals', () => {
 describe('Given /PUT /api/v1/meals', () => {
   describe('When adminUser wants to update a meal', () => {
     it('should update a meal with valid data fields', (done) => {
-
       chai.request(app)
         .put('/api/v1/meals/2')
         .set('x-access-token', adminToken)
@@ -157,7 +151,6 @@ describe('Given /PUT /api/v1/meals', () => {
           res.body.should.be.a('object');
           res.body.updatedMeal.name.should.eql('Rice only');
           res.body.updatedMeal.description.should.eql('Rice, Beans, Plantain, Panla Sauce, Max Coke');
-          res.body.updatedMeal.price.should.eql(1500);
           res.body.updatedMeal.id.should.eql(2);
           done();
         });
@@ -165,7 +158,6 @@ describe('Given /PUT /api/v1/meals', () => {
     it(
       'should not update a meal when mealId does not exist',
       (done) => {
-
         chai.request(app)
           .put('/api/v1/meals/25')
           .set('x-access-token', adminToken)
@@ -186,21 +178,18 @@ describe('Given /PUT /api/v1/meals', () => {
     it(
       'should not update a meal with invalid data fields',
       (done) => {
-
         chai.request(app)
           .put('/api/v1/meals/2')
           .set('x-access-token', adminToken)
           .set('Content-Type', 'multipart/form-data')
           .field('name', 'Rice only')
           .field('description', 'this is a new description')
-          .field('price', '15hgvgv00')
+          .field('price', 'a')
           .attach('imageurl', `${__dirname}/testmeal.png`)
           .end((err, res) => {
             res.status.should.eql(400);
-            // res.body.should.have.property('errors');
-            // res.body.errors.should.have.property('messages');
-            // res.body.errors.messages[0].should.eql('"price" must be a number');
-            // res.body.should.be.a('object');
+            res.body.message.should.eql('Please fill in a valid meal price');
+            res.body.should.be.a('object');
             done();
           });
       },
