@@ -4,7 +4,6 @@ import { cancelAnOrder, modifyOrderStatus } from "../../actions/orderActions";
 
 const CurrentOrderTable = ({currentOrders, changeOrderStatus, cancelAnOrder, modifyOrderStatus, orderIdToModify}) => {
   const pendingOrders = currentOrders.filter(order => order.status === 'pending');
-  console.log('==xxxxxxxxxx====', currentOrders)
 
   return (
     <div>

@@ -1,11 +1,10 @@
 import notify from '../notify';
 import API from '../../axiosConfig';
+import { setAuthorizationToken } from '../../utils/authHelpers';
 import {
   LOGIN_SUCCESS, AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_FAILURE,
 } from '../actionTypes';
-import { setAuthorizationToken } from '../../utils/authHelpers';
 
-// Actions
 export const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
   user,
@@ -26,7 +25,6 @@ export const isLoading = status => ({
   isLoading: status,
 });
 
-// Action Creators
 export const loginAUser = loginData => (dispatch) => {
   dispatch(isLoading(true));
   return API.post('/auth/login', loginData)
@@ -46,7 +44,3 @@ export const loginAUser = loginData => (dispatch) => {
     });
 };
 
-// export const notifyUser = msg => (dispatch) => {
-//   dispatch(loginFailure({ message: 'Please login' }));
-//   notify.error(msg);
-// };

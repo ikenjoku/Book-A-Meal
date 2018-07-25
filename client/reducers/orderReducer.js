@@ -31,7 +31,7 @@ const orderReducer = (state = initialState.orderReducer, action) => {
       return {
         ...state,
         error: action.error,
-        orders: []
+        orders: [],
       };
     case GET_ALL_PREVIOUS_ORDERS_SUCCESS:
       return {
@@ -43,10 +43,10 @@ const orderReducer = (state = initialState.orderReducer, action) => {
         ...state,
         error: action.error,
       };
-      case DELIVER_ORDER_SUCCESS:
+    case DELIVER_ORDER_SUCCESS:
       orders = state.orders.filter(order => order.id !== action.id);
       deliveredOrder = state.orders.find(order => order.id === action.id);
-      deliveredOrder = {...deliveredOrder, status: 'delivered'}
+      deliveredOrder = { ...deliveredOrder, status: 'delivered' };
       return { ...state, orders: [...orders, deliveredOrder] };
     case DELIVER_ORDER_FAILURE:
       return {
@@ -54,27 +54,27 @@ const orderReducer = (state = initialState.orderReducer, action) => {
         error: action.error,
       };
     case GET_ORDER_LOADING_STATUS:
-    return {
-      ...state,
-      isLoadingOrders: action.isLoadingOrders
-    }
+      return {
+        ...state,
+        isLoadingOrders: action.isLoadingOrders,
+      };
     case CANCEL_ORDER_SUCCESS:
       previousOrders = state.previousOrders.filter(order => order.id !== action.id);
       return {
         ...state,
         previousOrders,
-      }
+      };
     case CANCEL_ORDER_FAILURE:
       return {
         ...state,
         error: action.error,
-      }
+      };
     case CHANGE_ORDER_STATUS:
       return {
         ...state,
         changeOrderStatus: action.changeOrderStatus,
-        orderIdToModify: action.orderIdToModify
-      }
+        orderIdToModify: action.orderIdToModify,
+      };
     default:
       return {
         ...state,

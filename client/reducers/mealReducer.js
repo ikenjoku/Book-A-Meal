@@ -13,7 +13,7 @@ export default (state = initialState.mealReducer, action) => {
   let meals;
   switch (action.type) {
     case GET_MEALS_SUCCESS:
-      return { ...state, meals: action.meals};
+      return { ...state, meals: action.meals };
     case GET_MEALS_FAILURE:
       return { ...state, error: action.error };
     case GET_MEALS_LOADING_STATUS:

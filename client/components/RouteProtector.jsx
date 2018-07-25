@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import notify from '../actions/notify';
-// import { notifyUser } from "../actions/authActions/login";
  
 
 export default (ComposedComponent) => {

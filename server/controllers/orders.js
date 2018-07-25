@@ -1,3 +1,5 @@
+import differenceInMinutes from 'date-fns/difference_in_minutes';
+
 import { Order, User, Meal } from '../models';
 
 /**
@@ -222,12 +224,8 @@ class OrderController {
         if (order.userId !== id) {
           return res.status(401).send({ message: 'You can not modify this order' });
         }
-        const orderHour = new Date(order.createdAt).getHours() * 60;
-        const orderMinutes = new Date(order.createdAt).getMinutes();
-        const orderTime = orderHour + orderMinutes;
-        const timeNow = (new Date().getHours() * 60) + (new Date().getMinutes());
 
-        if ((timeNow - orderTime) > 15) {
+        if ((differenceInMinutes(new Date(), new Date(order.createdAt))) >= 15) {
           return res.status(401).send({ message: 'You can not modify this order anymore' });
         }
         if (cancel) {

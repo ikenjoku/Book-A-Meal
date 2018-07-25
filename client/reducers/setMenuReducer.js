@@ -48,5 +48,3 @@ const setMenuReducer = (state = initialState, action) => {
 };
 
 export default setMenuReducer;
-
-// HAVE SELECTED DATE...onChange dispatches selected menu/date.. add to menu picks selected plus meal id.....created action also sets selected prpoerty of state

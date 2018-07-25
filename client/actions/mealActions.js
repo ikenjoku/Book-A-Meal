@@ -4,13 +4,9 @@ import {
   ADD_MEAL_SUCCESS, ADD_MEAL_FAILURE,
   UPDATE_MEAL_SUCCESS, UPDATE_MEAL_FAILURE,
   REMOVE_MEAL_SUCCESS, REMOVE_MEAL_FAILURE,
-  GET_MEALS_LOADING_STATUS
+  GET_MEALS_LOADING_STATUS,
 } from './actionTypes';
 
-
-// Actions
-
-// Get Meals
 const getMeals = meals => ({
   type: GET_MEALS_SUCCESS,
   meals,
@@ -25,7 +21,7 @@ const getMealsLoadingStatus = status => ({
   type: GET_MEALS_LOADING_STATUS,
   status,
 });
-// Add Meal
+
 const addMeal = meal => ({
   type: ADD_MEAL_SUCCESS,
   meal: meal.meal,
@@ -36,7 +32,7 @@ const addMealFailure = error => ({
   error,
 });
 
-// Update Meal
+
 const updateMeal = ({ id, updatedMeal }) => ({
   type: UPDATE_MEAL_SUCCESS,
   id,
@@ -48,7 +44,6 @@ const updateMealFailure = error => ({
   error,
 });
 
-// Remove Meal
 const removeMeal = ({ id }) => ({
   type: REMOVE_MEAL_SUCCESS,
   id,
@@ -59,8 +54,6 @@ const removeMealFailure = error => ({
   error,
 });
 
-
-// Action Creators
 
 const getAllMeals = () => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
@@ -103,7 +96,7 @@ const updateAMeal = (id, updates) => (dispatch) => {
 
 const removeAMeal = ({ id }) => (dispatch) => {
   API.delete(`/meals/${id}`)
-    .then((res) => {
+    .then(() => {
       dispatch(removeMeal({ id }));
     })
     .catch((error) => {

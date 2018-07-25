@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Redirect, Link } from "react-router-dom";
 import { loginAUser } from "../../actions/authActions/login";
-import { ToastContainer } from "react-toastify";
 
 class Login extends Component {
   state = {
