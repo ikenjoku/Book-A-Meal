@@ -93,7 +93,7 @@ describe('Given /GET /api/v1/menu', () => {
         .end((err, res) => {
           res.should.have.status(404);
           res.should.be.a('object');
-          res.body.message.should.eql('Menu has not been set for 2069-02-22');
+          res.body.message.should.eql('Menu has not been set for Friday, February 22nd 2069');
           done();
         });
     });
@@ -112,7 +112,7 @@ describe('Given /POST /api/v1/menu', () => {
         .send(body)
         .end((err, res) => {
           res.status.should.eql(201);
-          res.body.message.should.eql('Menu for 2018-08-22 was successfully created');
+          res.body.message.should.eql('Successfully created a menu for Wednesday, August 22nd 2018');
           res.body.newMenu.id.should.eql(4);
           res.body.newMenu.date.should.eql('2018-08-22');
           done();
@@ -128,7 +128,7 @@ describe('Given /POST /api/v1/menu', () => {
         .send(body)
         .end((err, res) => {
           res.status.should.eql(400);
-          res.body.message.should.have.eql('Menu for 2018-05-15 already exist');
+          res.body.message.should.have.eql('Menu for Tuesday, May 15th 2018 already exists');
           res.body.should.be.a('object');
           done();
         });
@@ -144,7 +144,7 @@ describe('Given /POST /api/v1/menu', () => {
         .send(body)
         .end((err, res) => {
           res.status.should.eql(200);
-          res.body.message.should.eql('Meal added to menu of 2018-05-18 successfully');
+          res.body.message.should.eql('Meal added to menu of Friday, May 18th 2018');
           res.body.should.be.a('object');
           done();
         });
@@ -160,7 +160,7 @@ describe('Given /POST /api/v1/menu', () => {
         .send(body)
         .end((err, res) => {
           res.status.should.eql(400);
-          res.body.message.should.have.eql('No menu is set for 2022-05-15');
+          res.body.message.should.have.eql('No menu is set for Sunday, May 15th 2022');
           res.body.should.be.a('object');
           done();
         });
