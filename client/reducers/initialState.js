@@ -9,6 +9,9 @@ export default {
     meals: [],
     error: null,
     isLoading: false,
+    paginatedMeals: [],
+    count: 0,
+    pages: 0,
 
   },
   menuReducer: {

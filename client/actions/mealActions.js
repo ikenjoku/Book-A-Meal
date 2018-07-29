@@ -4,12 +4,19 @@ import {
   ADD_MEAL_SUCCESS, ADD_MEAL_FAILURE,
   UPDATE_MEAL_SUCCESS, UPDATE_MEAL_FAILURE,
   REMOVE_MEAL_SUCCESS, REMOVE_MEAL_FAILURE,
-  GET_MEALS_LOADING_STATUS,
+  GET_MEALS_LOADING_STATUS, GET_PAGINATED_MEALS
 } from './actionTypes';
 
 const getMeals = meals => ({
   type: GET_MEALS_SUCCESS,
   meals,
+});
+
+const getPageMeals = ({meals, count, pages}) => ({
+  type: GET_PAGINATED_MEALS,
+  meals,
+  count,
+  pages
 });
 
 const getMealsFailure = error => ({
@@ -67,6 +74,18 @@ const getAllMeals = () => (dispatch) => {
       // dispatch(getMealsLoadingStatus(false));
     });
 };
+const getPaginatedMeals = (page) => (dispatch) => {
+  dispatch(getMealsLoadingStatus(true));
+  API.get(`/mealz/${page}`)
+    .then((res) => {
+      dispatch(getPageMeals(res.data));
+      dispatch(getMealsLoadingStatus(false));
+    })
+    .catch((err) => {
+      dispatch(getMealsFailure(err));
+      // dispatch(getMealsLoadingStatus(false));
+    });
+};
 
 const addAMeal = mealData => (dispatch) => {
   API.post('/meals', mealData)
@@ -106,6 +125,7 @@ const removeAMeal = ({ id }) => (dispatch) => {
 
 
 export {
+  getPaginatedMeals,
   getAllMeals,
   addAMeal,
   updateAMeal,

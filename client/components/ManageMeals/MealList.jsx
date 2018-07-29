@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
-import { getAllMeals } from "../../actions/mealActions.js";
+import { getAllMeals, getPaginatedMeals } from "../../actions/mealActions.js";
 import OptionModal from '../OptionModal';
 export class MealList extends Component{
 
     state = {
       showDeleteModal: undefined,
-      mealId: undefined
+      mealId: undefined,
+      currentPage: 0
     }
 
     componentDidMount(){
       this.props.dispatch(getAllMeals());
+      this.props.dispatch(getPaginatedMeals(this.state.currentPage));
     }
     handleModalClose = () => {
       this.setState(() => ({
@@ -28,8 +30,27 @@ export class MealList extends Component{
           mealId: mealToDelete.id
       }));
     }
+    handleNext = () => {
+      if(this.props.pages -1 > this.state.currentPage){
+        this.props.dispatch(getPaginatedMeals(this.state.currentPage + 1));
+        this.setState((prevState) => ({ currentPage: prevState.currentPage + 1}));
+      }
+    }
+    handlePrevious = () => {
+      if(this.state.currentPage > 0){
+        this.props.dispatch(getPaginatedMeals(this.state.currentPage - 1));
+        this.setState((prevState) => ({ currentPage: prevState.currentPage - 1}));
+      }
+      console.log(this.state.currentPage)
+    }
 
     render(){
+      let pageNum, numOfPage;
+      let pageNumArr = [];
+      numOfPage = this.props.pages || 0;
+      for (let pageNum = 0; pageNum < numOfPage ; pageNum++) {
+        pageNumArr.push(pageNum + 1);
+      }
     return (
       <main className="manage-meals-content">
       <h2 className="center cool-lg-text">Manage Meals</h2>
@@ -55,7 +76,7 @@ export class MealList extends Component{
                 <h3 id='loader-text'>Fetching...</h3>  
                 </div> : 
               <div className="meal-table">
-                  { this.props.meals && this.props.meals.map(meal =>
+                  { this.props.paginatedMeals && this.props.paginatedMeals.map(meal =>
                     <div key={meal.id} className="meal-table-item">
                         <div className="meal-table-item-img">
                             <p><img src={meal.imageurl} alt="" /></p>
@@ -91,6 +112,18 @@ export class MealList extends Component{
             </div>
               }
             <hr />
+            <div class='center'>
+              <span onClick={ () => { this.handlePrevious()}}><i className="fas fa-angle-double-left page-btn"></i></span>
+              { 
+                pageNumArr && pageNumArr.map(num => 
+                  <span className={this.state.currentPage === num - 1 ? 'page-num current-page' : 'page-num'} key={num} onClick={() => {
+                    this.props.dispatch(getPaginatedMeals(num - 1));
+                    this.setState(() => ({currentPage: num - 1}));
+                  }
+                }>{num}</span>
+              )}
+              <span ><i className="fas fa-angle-double-right page-btn" onClick={ () => { this.handleNext()}}></i></span>
+            </div>
             <OptionModal
               handleModalClose={this.handleModalClose}
               showDeleteModal={this.state.showDeleteModal}
@@ -105,6 +138,10 @@ export class MealList extends Component{
  export const mapStateToProps = state => ({
     meals: state.mealReducer.meals,
     isLoading: state.mealReducer.isLoading,
+    count: state.mealReducer.count,
+    pages: state.mealReducer.pages,
+    paginatedMeals: state.mealReducer.paginatedMeals,
+
 });
 
 export default connect(mapStateToProps)(MealList)
