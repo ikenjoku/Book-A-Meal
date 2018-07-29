@@ -91,6 +91,24 @@ class MealController {
       .then(meals => res.status(200).send({ meals }))
       .catch(error => next(error));
   }
+
+  static paginatedMeals(req, res, next){
+    let page = req.params.page || 0;      // page number
+    let limit = 5;   // number of records per page
+    let offset = page * limit;
+      
+    Meal.findAndCountAll({
+        limit: limit,
+        offset: offset,
+        order: ['id']
+    }).then((data) => {
+      let pages = Math.ceil(data.count / limit);
+      offset = limit * (page - 1);
+      let meals = data.rows;
+      res.status(200).json({'meals': meals, 'count': data.count, 'pages': pages});
+   })
+    .catch(error => next(error));
+  }
   /**
    * Edit a particular meal
    *
