@@ -14,7 +14,6 @@ export class MealList extends Component{
     }
 
     componentDidMount(){
-      this.props.dispatch(getAllMeals());
       this.props.dispatch(getPaginatedMeals(this.state.currentPage));
     }
     handleModalClose = () => {
@@ -41,11 +40,10 @@ export class MealList extends Component{
         this.props.dispatch(getPaginatedMeals(this.state.currentPage - 1));
         this.setState((prevState) => ({ currentPage: prevState.currentPage - 1}));
       }
-      console.log(this.state.currentPage)
     }
 
     render(){
-      let pageNum, numOfPage;
+      let numOfPage;
       let pageNumArr = [];
       numOfPage = this.props.pages || 0;
       for (let pageNum = 0; pageNum < numOfPage ; pageNum++) {
@@ -112,7 +110,7 @@ export class MealList extends Component{
             </div>
               }
             <hr />
-            <div class='center'>
+            <div className='center'>
               <span onClick={ () => { this.handlePrevious()}}><i className="fas fa-angle-double-left page-btn"></i></span>
               { 
                 pageNumArr && pageNumArr.map(num => 

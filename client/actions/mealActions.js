@@ -76,7 +76,7 @@ const getAllMeals = () => (dispatch) => {
 };
 const getPaginatedMeals = (page) => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
-  API.get(`/mealz/${page}`)
+  API.get(`/meals/${page}`)
     .then((res) => {
       dispatch(getPageMeals(res.data));
       dispatch(getMealsLoadingStatus(false));

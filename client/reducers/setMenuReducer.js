@@ -1,17 +1,13 @@
 import {
   SET_MENU_SUCCESS, SET_MENU_FAILURE, SET_SELECTED_DATE,
   ADD_MEAL_TO_MENU_SUCCESS, ADD_MEAL_TO_MENU_FAILURE,
+  GET_PAGINATED_MEALS, GET_MEALS_FAILURE, 
+  GET_MEALS_LOADING_STATUS
 } from '../actions/actionTypes';
+import initialState from '../reducers/initialState';
 
-const initialState = {
-  createdMenu: null,
-  selectedDate: '',
-  error: null,
-  success: false,
-  updatedMenu: null,
-};
 
-const setMenuReducer = (state = initialState, action) => {
+const setMenuReducer = (state = initialState.setMenuReducer, action) => {
   switch (action.type) {
     case SET_MENU_SUCCESS:
       return {
@@ -40,6 +36,12 @@ const setMenuReducer = (state = initialState, action) => {
         ...state,
         error: action.error,
       };
+    case GET_PAGINATED_MEALS:
+      return { ...state, paginatedMeals: action.meals, count: action.count, pages: action.pages };
+    case GET_MEALS_FAILURE:
+      return { ...state, error: action.error };
+    case GET_MEALS_LOADING_STATUS:
+      return { ...state, isLoading: action.status };
     default:
       return {
         ...state,

@@ -25,6 +25,10 @@ export default {
     error: null,
     success: false,
     updatedMenu: null,
+    isLoading: false,
+    paginatedMeals: [],
+    count: 0,
+    pages: 0,
   },
   orderReducer: {
     orderedMeal: null,
