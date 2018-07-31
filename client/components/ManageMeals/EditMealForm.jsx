@@ -25,7 +25,7 @@ export class EditMealForm extends Component{
 
 const mapStateToProps = (state, props) => {
   return {
-    meal: state.mealReducer.meals.find((meal) => meal.id === Number(props.match.params.id))
+    meal: state.mealReducer.paginatedMeals.find((meal) => meal.id === Number(props.match.params.id))
   };
 };
 

@@ -48,7 +48,6 @@ class MealController {
   /**
    * Get a particular meal
    *
-   * @static
    *
    * @param {Object} - express http request object
    * @param {Object} - express http response object
@@ -86,14 +85,9 @@ class MealController {
    *
    * @memberof MealController
    */
-  static getMeals(req, res, next) {
-    Meal.findAll()
-      .then(meals => res.status(200).send({ meals }))
-      .catch(error => next(error));
-  }
 
-  static paginatedMeals(req, res, next){
-    let page = req.params.page || 0;      // page number
+  static getMeals(req, res, next){
+    let page = req.query.page || 0;      // page number
     let limit = 5;   // number of records per page
     let offset = page * limit;
       
@@ -155,7 +149,6 @@ class MealController {
   /**
    * Remove a particular meal
    *
-   * @static
    *
    * @param {Object} - express http request object
    * @param {Object} - express http response object

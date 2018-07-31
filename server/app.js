@@ -36,7 +36,9 @@ app.use((error, req, res) => {
     });
   }
 
-  res.status(error.status || 500).send({ message: 'Server error', error });
+  res.status(500).send({
+    message: 'Internal server rror'
+  })
 });
 
 

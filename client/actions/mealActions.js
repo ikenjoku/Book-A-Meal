@@ -62,21 +62,9 @@ const removeMealFailure = error => ({
 });
 
 
-const getAllMeals = () => (dispatch) => {
-  dispatch(getMealsLoadingStatus(true));
-  API.get('/meals')
-    .then((res) => {
-      dispatch(getMeals(res.data.meals));
-      dispatch(getMealsLoadingStatus(false));
-    })
-    .catch((err) => {
-      dispatch(getMealsFailure(err));
-      // dispatch(getMealsLoadingStatus(false));
-    });
-};
 const getPaginatedMeals = (page) => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
-  API.get(`/meals/${page}`)
+  API.get(`/meals?page=${page}`)
     .then((res) => {
       dispatch(getPageMeals(res.data));
       dispatch(getMealsLoadingStatus(false));
@@ -126,7 +114,6 @@ const removeAMeal = ({ id }) => (dispatch) => {
 
 export {
   getPaginatedMeals,
-  getAllMeals,
   addAMeal,
   updateAMeal,
   removeAMeal,

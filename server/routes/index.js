@@ -17,9 +17,9 @@ router.get('/', (req, res) => {
   .post('/auth/signup', validateSignup, userController.create)
   .post('/auth/login', validateSignin, userController.login)
 
-  .get('/meals', authenticate, mealController.getMeals)
+  .get('/meals', authenticate, isAdmin, mealController.getMeals)
   .get('/meals/:id', validateId, authenticate, mealController.getMeal)
-  .get('/meals/:page', authenticate, isAdmin, mealController.paginatedMeals)
+  
   .post('/meals', uploadImage.single('imageurl'), validateMealCreate, authenticate, isAdmin, mealController.addMeal)
   .put('/meals/:id', uploadImage.single('imageurl'), validateMealUpdate, validateId, authenticate, isAdmin, mealController.updateMeal)
   .delete('/meals/:id', validateId, authenticate, isAdmin, mealController.removeMeal)

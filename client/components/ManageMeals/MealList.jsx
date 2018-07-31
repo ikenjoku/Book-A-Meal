@@ -134,7 +134,7 @@ export class MealList extends Component{
 }
 
  export const mapStateToProps = state => ({
-    meals: state.mealReducer.meals,
+    meals: state.mealReducer.paginatedMeals,
     isLoading: state.mealReducer.isLoading,
     count: state.mealReducer.count,
     pages: state.mealReducer.pages,

@@ -75,7 +75,7 @@ export const addAMealToMenu = ({ date, mealId }) => (dispatch) => {
 
 export const getPaginatedMeals = (page) => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
-  API.get(`/meals/${page}`)
+  API.get(`/meals?page=${page}`)
     .then((res) => {
       dispatch(getPageMeals(res.data));
       dispatch(getMealsLoadingStatus(false));

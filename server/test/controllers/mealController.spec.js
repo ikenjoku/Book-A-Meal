@@ -101,7 +101,7 @@ describe('Given /POST /api/v1/meals', () => {
           done();
         });
     });
-    it('should not add a meal with invalid field', (done) => {
+    it('should not add a meal without a name', (done) => {
       chai.request(app)
         .post('/api/v1/meals')
         .set('x-access-token', adminToken)
@@ -112,6 +112,51 @@ describe('Given /POST /api/v1/meals', () => {
         .end((err, res) => {
           res.status.should.eql(400);
           res.body.message.should.eql('Please fill in the meal name');
+          res.body.should.be.a('object');
+          done();
+        });
+    });
+    it('should not add a meal without a price', (done) => {
+      chai.request(app)
+        .post('/api/v1/meals')
+        .set('x-access-token', adminToken)
+        .set('Content-Type', 'multipart/form-data')
+        .field('name', 'Ingera Ethi')
+        .field('description', 'Spicy hot meat flakes with stew')
+        .attach('imageurl', `${__dirname}/testmeal.png`)
+        .end((err, res) => {
+          res.status.should.eql(400);
+          res.body.message.should.eql('Please fill in the meal price');
+          res.body.should.be.a('object');
+          done();
+        });
+    });
+    it('should not add a meal without a description', (done) => {
+      chai.request(app)
+        .post('/api/v1/meals')
+        .set('x-access-token', adminToken)
+        .set('Content-Type', 'multipart/form-data')
+        .field('name', 'Spicy Suya')
+        .field('price', 2500)
+        .attach('imageurl', `${__dirname}/testmeal.png`)
+        .end((err, res) => {
+          res.status.should.eql(400);
+          res.body.message.should.eql('Please describe the meal');
+          res.body.should.be.a('object');
+          done();
+        });
+    });
+    it('should not add a meal without an image', (done) => {
+      chai.request(app)
+        .post('/api/v1/meals')
+        .set('x-access-token', adminToken)
+        .set('Content-Type', 'multipart/form-data')
+        .field('name', 'Spicy Banga')
+        .field('description', 'Spicy hot meat flakes with stew')
+        .field('price', 2500)
+        .end((err, res) => {
+          res.status.should.eql(400);
+          res.body.message.should.eql('Please upload the meal image');
           res.body.should.be.a('object');
           done();
         });
@@ -176,7 +221,7 @@ describe('Given /PUT /api/v1/meals', () => {
       },
     );
     it(
-      'should not update a meal with invalid data fields',
+      'should not update a meal with invalid price field',
       (done) => {
         chai.request(app)
           .put('/api/v1/meals/2')
@@ -189,6 +234,44 @@ describe('Given /PUT /api/v1/meals', () => {
           .end((err, res) => {
             res.status.should.eql(400);
             res.body.message.should.eql('Please fill in a valid meal price');
+            res.body.should.be.a('object');
+            done();
+          });
+      },
+    );
+    it(
+      'should not update a meal without a meal name',
+      (done) => {
+        chai.request(app)
+          .put('/api/v1/meals/2')
+          .set('x-access-token', adminToken)
+          .set('Content-Type', 'multipart/form-data')
+          .field('name', '')
+          .field('description', 'this is a new description')
+          .field('price', 1200)
+          .attach('imageurl', `${__dirname}/testmeal.png`)
+          .end((err, res) => {
+            res.status.should.eql(400);
+            res.body.message.should.eql('Please fill in the meal name');
+            res.body.should.be.a('object');
+            done();
+          });
+      },
+    );
+    it(
+      'should not update a meal without a description',
+      (done) => {
+        chai.request(app)
+          .put('/api/v1/meals/2')
+          .set('x-access-token', adminToken)
+          .set('Content-Type', 'multipart/form-data')
+          .field('name', 'Rice only')
+          .field('description', '')
+          .field('price', 1500)
+          .attach('imageurl', `${__dirname}/testmeal.png`)
+          .end((err, res) => {
+            res.status.should.eql(400);
+            res.body.message.should.eql('Please describe the meal');
             res.body.should.be.a('object');
             done();
           });
