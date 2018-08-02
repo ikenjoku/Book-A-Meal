@@ -128,6 +128,24 @@ describe('Users', () => {
             done();
           });
       });
+      it('Then it should not add a user when password field is empty', (done) => {
+        const user = {
+          firstname: 'Idrismo',
+          lastname: 'Elba',
+          username: 'Bellema',
+          email: 'Idris@gmail.com',
+          password: '',
+          confirmPassword: 'idris1',
+        };
+        chai.request(app)
+          .post('/api/v1/auth/signup')
+          .send(user)
+          .end((err, res) => {
+            res.should.have.status(400);
+            res.body.message.should.eql('Password is required');
+            done();
+          });
+      });
       it('Then it should not add a user when password and password retype do not match', (done) => {
         const user = {
           firstname: 'Idrismo',
@@ -219,6 +237,23 @@ describe('Users', () => {
             .end((err, res) => {
               res.should.have.status(400);
               res.body.message.should.eql('Please fill in your email');
+              done();
+            });
+        },
+      );
+      it(
+        'Then it should fail if the user does not enter a valid email address',
+        (done) => {
+          const mockUser = {
+            email: 'gboy.com',
+            password: 'secretpassword',
+          };
+          chai.request(app)
+            .post('/api/v1/auth/login')
+            .send(mockUser)
+            .end((err, res) => {
+              res.should.have.status(400);
+              res.body.message.should.eql('Ooops...invalid email');
               done();
             });
         },

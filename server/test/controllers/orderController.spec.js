@@ -159,6 +159,21 @@ describe('Given /PUT /api/v1/orders', () => {
           done();
         });
     });
+    it('should update an order if new meal does not exist', (done) => {
+      const body = {
+        newMealId: 430,
+      };
+      chai.request(app)
+        .put('/api/v1/orders/6')
+        .set('x-access-token', userToken)
+        .send(body)
+        .end((err, res) => {
+          res.status.should.eql(400);
+          res.body.should.be.a('object');
+          res.body.message.should.have.eql('New Meal does not exist');
+          done();
+        });
+    });
     it('should not update if an order was not made by the same user', (done) => {
       const body = {
         newMealId: 4,

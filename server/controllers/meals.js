@@ -48,7 +48,6 @@ class MealController {
   /**
    * Get a particular meal
    *
-   * @static
    *
    * @param {Object} - express http request object
    * @param {Object} - express http response object
@@ -86,10 +85,23 @@ class MealController {
    *
    * @memberof MealController
    */
-  static getMeals(req, res, next) {
-    Meal.findAll()
-      .then(meals => res.status(200).send({ meals }))
-      .catch(error => next(error));
+
+  static getMeals(req, res, next){
+    let page = req.query.page || 0;      // page number
+    let limit = 5;   // number of records per page
+    let offset = page * limit;
+      
+    Meal.findAndCountAll({
+        limit: limit,
+        offset: offset,
+        order: ['id']
+    }).then((data) => {
+      let pages = Math.ceil(data.count / limit);
+      offset = limit * (page - 1);
+      let meals = data.rows;
+      res.status(200).json({'meals': meals, 'count': data.count, 'pages': pages});
+   })
+    .catch(error => next(error));
   }
   /**
    * Edit a particular meal
@@ -137,7 +149,6 @@ class MealController {
   /**
    * Remove a particular meal
    *
-   * @static
    *
    * @param {Object} - express http request object
    * @param {Object} - express http response object
