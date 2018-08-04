@@ -76,7 +76,4 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = dispatch => 
-  bindActionCreators({ loginAUser }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, {loginAUser})(Login);

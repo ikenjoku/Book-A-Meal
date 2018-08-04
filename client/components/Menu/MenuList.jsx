@@ -1,6 +1,4 @@
 import React from 'react';
-import fallbackImage from "../../static/mealImg.jpg"
-
 
 const MenuList = ({ menu, handleOrder, user, changeOrderStatus, handleModifyOrder, orderIdToModify }) => (
   <div>

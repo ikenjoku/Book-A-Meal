@@ -13,7 +13,7 @@ const CurrentOrderTable = ({currentOrders, changeOrderStatus, cancelAnOrder, mod
         <div key={order.id} className="order-item">
           <div className="order-item-name">{order.Meal.name}</div>
           <div className="order-item-amount">&#8358; {order.amount}</div>
-          <div className="order-item-actions"><button className={changeOrderStatus ? 'highlight-btn' : undefined} onClick={() => {modifyOrderStatus(!changeOrderStatus, order.id)}} ><i className='far fa-edit'></i></button> 
+          <div className="order-item-actions"><button className={changeOrderStatus && orderIdToModify === order.id ? 'highlight-btn' : undefined} onClick={() => {modifyOrderStatus(!changeOrderStatus, order.id)}} ><i className='far fa-edit'></i></button> 
           <button onClick={() => {cancelAnOrder(order.id)}}><i className="far fa-times-circle 5x"></i></button> </div>
         </div>
       )}

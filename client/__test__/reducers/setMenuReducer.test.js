@@ -20,6 +20,10 @@ test("should create a day's menu", () => {
     error: null,
     success: true,
     updatedMenu: null,
+    count: 0,
+    isLoading: false,
+    pages: 0,
+    paginatedMeals: [],
   });
 });
 
@@ -53,6 +57,10 @@ test("should create a day's menu", () => {
     selectedDate: '',
     error: null,
     success: false,
+    count: 0,
+    isLoading: false,
+    pages: 0,
+    paginatedMeals: [],
    });
 });
 

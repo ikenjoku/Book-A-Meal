@@ -21,15 +21,15 @@ test('should render the MealList correctly', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it('should   map state to props correctly', () => {
-  const appState = {mealReducer: { meals }};
-  const ownProps = {
-    meals: [],
-    isLoading: false,
-  };
+// it('should   map state to props correctly', () => {
+//   const appState = {mealReducer: { meals }};
+//   const ownProps = {
+//     meals: [],
+//     isLoading: false,
+//   };
 
-  const componentState = mapStateToProps(appState, ownProps);
-  console.log(componentState)
-  expect(componentState).toEqual({ meals });
+//   const componentState = mapStateToProps(appState, ownProps);
+//   console.log(componentState)
+//   expect(componentState).toEqual({ meals });
 
-})
+// })

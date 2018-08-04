@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
-import { getAllMeals, getPaginatedMeals } from "../../actions/mealActions.js";
+import { getPaginatedMeals } from "../../actions/mealActions.js";
 import OptionModal from '../OptionModal';
 export class MealList extends Component{
 
@@ -14,7 +14,7 @@ export class MealList extends Component{
     }
 
     componentDidMount(){
-      this.props.dispatch(getPaginatedMeals(this.state.currentPage));
+      this.props.getPaginatedMeals(this.state.currentPage);
     }
     handleModalClose = () => {
       this.setState(() => ({
@@ -31,13 +31,13 @@ export class MealList extends Component{
     }
     handleNext = () => {
       if(this.props.pages -1 > this.state.currentPage){
-        this.props.dispatch(getPaginatedMeals(this.state.currentPage + 1));
+        this.props.getPaginatedMeals(this.state.currentPage + 1);
         this.setState((prevState) => ({ currentPage: prevState.currentPage + 1}));
       }
     }
     handlePrevious = () => {
       if(this.state.currentPage > 0){
-        this.props.dispatch(getPaginatedMeals(this.state.currentPage - 1));
+        this.props.getPaginatedMeals(this.state.currentPage - 1);
         this.setState((prevState) => ({ currentPage: prevState.currentPage - 1}));
       }
     }
@@ -115,7 +115,7 @@ export class MealList extends Component{
               { 
                 pageNumArr && pageNumArr.map(num => 
                   <span className={this.state.currentPage === num - 1 ? 'page-num current-page' : 'page-num'} key={num} onClick={() => {
-                    this.props.dispatch(getPaginatedMeals(num - 1));
+                    this.props.getPaginatedMeals(num - 1);
                     this.setState(() => ({currentPage: num - 1}));
                   }
                 }>{num}</span>
@@ -134,7 +134,6 @@ export class MealList extends Component{
 }
 
  export const mapStateToProps = state => ({
-    meals: state.mealReducer.paginatedMeals,
     isLoading: state.mealReducer.isLoading,
     count: state.mealReducer.count,
     pages: state.mealReducer.pages,
@@ -142,4 +141,4 @@ export class MealList extends Component{
 
 });
 
-export default connect(mapStateToProps)(MealList)
+export default connect(mapStateToProps, {getPaginatedMeals})(MealList)
