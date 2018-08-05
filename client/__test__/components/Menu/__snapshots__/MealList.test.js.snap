@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the MealList correctly 1`] = `
+<MenuList
+  changeOrderStatus={false}
+  handleModifyOrder={[MockFunction]}
+  handleOrder={[MockFunction]}
+  menu={
+    Object {
+      "Meals": Array [
+        Object {
+          "MealMenu": Object {
+            "createdAt": "2018-07-01T23:56:28.012Z",
+            "mealId": 31,
+            "menuId": 23,
+            "updatedAt": "2018-07-01T23:56:28.012Z",
+          },
+          "description": "Heavily loaded with smoked fish.",
+          "id": 31,
+          "imageurl": "https://res.cloudinary.com/ikeenjoku/image/upload/v1529133645/bookameal/2018-06-16T07:20:43.822ZVegetablerice%2Bplantain%2Bgoatmeat%2Bcoke.jpg.jpg",
+          "name": "Beans and Bread",
+          "price": 800,
+        },
+        Object {
+          "MealMenu": Object {
+            "createdAt": "2018-07-01T23:56:32.313Z",
+            "mealId": 34,
+            "menuId": 23,
+            "updatedAt": "2018-07-01T23:56:32.313Z",
+          },
+          "description": "Deliciously light soup with white fish balls",
+          "id": 34,
+          "imageurl": "https://res.cloudinary.com/ikeenjoku/image/upload/v1529134583/bookameal/2018-06-16T07:36:22.300Zassortedmeat.jpg.jpg",
+          "name": "Fish balls soup",
+          "price": 1200,
+        },
+        Object {
+          "MealMenu": Object {
+            "createdAt": "2018-07-01T23:56:36.920Z",
+            "mealId": 30,
+            "menuId": 23,
+            "updatedAt": "2018-07-01T23:56:36.920Z",
+          },
+          "description": "Stir fried sliced beef with premium vegetables and spices",
+          "id": 30,
+          "imageurl": "https://res.cloudinary.com/ikeenjoku/image/upload/v1529136037/bookameal/2018-06-16T08:00:34.302ZUgwu-Archi.jpg.jpg",
+          "name": "Beef with veggie soup",
+          "price": 1150,
+        },
+      ],
+      "createdAt": "2018-07-01T23:56:23.508Z",
+      "date": "2018-07-02",
+      "id": 23,
+      "updatedAt": "2018-07-01T23:56:23.508Z",
+    }
+  }
+  orderIdToModify=""
+  user={
+    Object {
+      "firstname": "Ezinne",
+      "id": 2,
+      "isAdmin": true,
+      "lastname": "Njoku",
+    }
+  }
+>
+  <div>
+    <div
+      className="food-item"
+      key="31"
+    >
+      <div
+        className="meal-table-item-img"
+      >
+        <img
+          alt=""
+          src="https://res.cloudinary.com/ikeenjoku/image/upload/v1529133645/bookameal/2018-06-16T07:20:43.822ZVegetablerice%2Bplantain%2Bgoatmeat%2Bcoke.jpg.jpg"
+        />
+      </div>
+      <div
+        className="food-title-desc"
+      >
+        <p
+          className="food-item-title"
+        >
+          Beans and Bread
+        </p>
+        <p
+          className="food-item-detail"
+        >
+          Heavily loaded with smoked fish.
+        </p>
+      </div>
+      <div
+        className="food-item-price"
+      >
+        ₦ 
+        800
+      </div>
+      <div>
+        <p
+          className="order-btn-text"
+        >
+          Place order from today's menu
+        </p>
+      </div>
+    </div>
+    <div
+      className="food-item"
+      key="34"
+    >
+      <div
+        className="meal-table-item-img"
+      >
+        <img
+          alt=""
+          src="https://res.cloudinary.com/ikeenjoku/image/upload/v1529134583/bookameal/2018-06-16T07:36:22.300Zassortedmeat.jpg.jpg"
+        />
+      </div>
+      <div
+        className="food-title-desc"
+      >
+        <p
+          className="food-item-title"
+        >
+          Fish balls soup
+        </p>
+        <p
+          className="food-item-detail"
+        >
+          Deliciously light soup with white fish balls
+        </p>
+      </div>
+      <div
+        className="food-item-price"
+      >
+        ₦ 
+        1200
+      </div>
+      <div>
+        <p
+          className="order-btn-text"
+        >
+          Place order from today's menu
+        </p>
+      </div>
+    </div>
+    <div
+      className="food-item"
+      key="30"
+    >
+      <div
+        className="meal-table-item-img"
+      >
+        <img
+          alt=""
+          src="https://res.cloudinary.com/ikeenjoku/image/upload/v1529136037/bookameal/2018-06-16T08:00:34.302ZUgwu-Archi.jpg.jpg"
+        />
+      </div>
+      <div
+        className="food-title-desc"
+      >
+        <p
+          className="food-item-title"
+        >
+          Beef with veggie soup
+        </p>
+        <p
+          className="food-item-detail"
+        >
+          Stir fried sliced beef with premium vegetables and spices
+        </p>
+      </div>
+      <div
+        className="food-item-price"
+      >
+        ₦ 
+        1150
+      </div>
+      <div>
+        <p
+          className="order-btn-text"
+        >
+          Place order from today's menu
+        </p>
+      </div>
+    </div>
+  </div>
+</MenuList>
+`;

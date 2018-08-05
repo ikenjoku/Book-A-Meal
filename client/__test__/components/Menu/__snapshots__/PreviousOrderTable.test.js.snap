@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the PreviousOrderTable correctly 1`] = `
+<div>
+  <h4>
+    Previous orders
+  </h4>
+  <div
+    className="prev-order-container"
+  >
+    <div
+      className="previous-order-item"
+      key="4"
+    >
+      <div
+        className="order-item-date"
+      >
+        2018-05-16
+      </div>
+      <div
+        className="order-item-name"
+      >
+        Egusi Semo
+      </div>
+      <div
+        className="order-item-price"
+      >
+        ₦ 
+        1500
+         
+      </div>
+    </div>
+  </div>
+</div>
+`;

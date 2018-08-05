@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { cancelAnOrder, modifyOrderStatus } from "../../actions/orderActions";
 
-const CurrentOrderTable = ({currentOrders, changeOrderStatus, cancelAnOrder, modifyOrderStatus, orderIdToModify}) => {
+export const CurrentOrderTable = ({currentOrders, changeOrderStatus, cancelAnOrder, modifyOrderStatus, orderIdToModify}) => {
   const pendingOrders = currentOrders.filter(order => order.status === 'pending');
 
   return (
@@ -14,7 +14,7 @@ const CurrentOrderTable = ({currentOrders, changeOrderStatus, cancelAnOrder, mod
           <div className="order-item-name">{order.Meal.name}</div>
           <div className="order-item-amount">&#8358; {order.amount}</div>
           <div className="order-item-actions"><button className={changeOrderStatus && orderIdToModify === order.id ? 'highlight-btn' : undefined} onClick={() => {modifyOrderStatus(!changeOrderStatus, order.id)}} ><i className='far fa-edit'></i></button> 
-          <button onClick={() => {cancelAnOrder(order.id)}}><i className="far fa-times-circle 5x"></i></button> </div>
+          <button className='cancel-order-icon' onClick={() => {cancelAnOrder(order.id)}}><i className="far fa-times-circle 5x"></i></button> </div>
         </div>
       )}
       <hr />

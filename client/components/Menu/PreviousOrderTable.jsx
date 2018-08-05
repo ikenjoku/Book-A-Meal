@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getAllPreviousOrders } from "../../actions/orderActions";
 
-
-class PreviousOrderTable extends Component{
+export class PreviousOrderTable extends Component{
   constructor(props){
     super(props);
   }

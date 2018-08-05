@@ -9,12 +9,8 @@ import { meals } from "../../mocks";
 let props, wrapper;
 
 beforeEach(() => {
-  props = {
-    meals,
-    isLoading: false,
-    dispatch: {}
-  };
-  wrapper = shallow(<MealList props={props} />);
+    const paginatedMeals = meals,
+  wrapper = shallow(<MealList getPaginatedMeals={jest.fn()} paginatedMeals={meals} props={props} />);
 });
 
 test('should render the MealList correctly', () => {

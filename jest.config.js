@@ -20,7 +20,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
-      './client/__test__/__mocks__/fileMock.js',
-    '\\.(css|scss)$': './client/__test__/__mocks__/styleMock.js'
-  }
+      '<rootDir>/client/__test__/__mocks__/fileMock.js',
+    '\\.(css|scss)$': '<rootDir>/client/__test__/__mocks__/styleMock.js'
+  },
 };
