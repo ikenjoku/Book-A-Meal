@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the AddMealForm correctly 1`] = `
+exports[`AddMeal Component should render the AddMealForm correctly 1`] = `
 <div
   className="manage-meals-content"
 >

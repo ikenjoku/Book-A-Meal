@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import MenuDatePicker from './MenuDatePicker.jsx';
 import MealList from './MealList.jsx';
 
-import { mealsSample } from "../mocks";
-
 const SetMenu = () => {
     return (
       <main className="set-menu-page">

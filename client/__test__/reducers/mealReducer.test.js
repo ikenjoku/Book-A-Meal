@@ -41,8 +41,8 @@ test('should update a meal given mealId and meal details', () => {
     id: 2,
     updatedMeal: testMeal,
   };
-  const state = mealReducer({meals}, action);
-  expect(state).toEqual({meals: [meals[0],meals[1],meals[3],meals[4], testMeal]});
+  const state = mealReducer({paginatedMeals: meals}, action);
+  expect(state).toEqual({paginatedMeals: [meals[0],meals[1],meals[3],meals[4], testMeal]});
 });
 
 test('should return error if updateMeals request fails', () => {
@@ -59,8 +59,8 @@ test('should add a meal to meals array', () => {
     type: 'ADD_MEAL_SUCCESS',
     meal: testMeal,
   };
-  const state = mealReducer({meals}, action);
-  expect(state).toEqual({...state, meals:[...meals, testMeal]});
+  const state = mealReducer({paginatedMeals: meals}, action);
+  expect(state).toEqual({...state, paginatedMeals:[...meals, testMeal]});
 });
 
 test('should return error if addMeals request fails', () => {
@@ -78,8 +78,8 @@ test('should remove meal by id', () => {
     type: 'REMOVE_MEAL_SUCCESS',
     id: meals[1].id,
   };
-  const state = mealReducer({meals}, action);
-  expect(state).toEqual({meals: [meals[0],meals[2],meals[3],meals[4]]});
+  const state = mealReducer({paginatedMeals: meals}, action);
+  expect(state).toEqual({paginatedMeals: [meals[0],meals[2],meals[3],meals[4]]});
 });
 
 test('should return error if removeMeal request fails', () => {

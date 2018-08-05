@@ -58,7 +58,4 @@ const mapStateToProps = state => ({
   previousOrders: state.orderReducer.previousOrders
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ orderAMeal, getAMenu, modifyAnOrder, modifyOrderStatus }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(MenuTable);
+export default connect(mapStateToProps, { orderAMeal, getAMenu, modifyAnOrder, modifyOrderStatus })(MenuTable);

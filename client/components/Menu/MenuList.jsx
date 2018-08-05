@@ -1,6 +1,4 @@
 import React from 'react';
-import fallbackImage from "../../static/mealImg.jpg"
-
 
 const MenuList = ({ menu, handleOrder, user, changeOrderStatus, handleModifyOrder, orderIdToModify }) => (
   <div>
@@ -18,7 +16,7 @@ const MenuList = ({ menu, handleOrder, user, changeOrderStatus, handleModifyOrde
         &#8358; {meal.price}
         </div>
     <div>{ menu.date === new Date().toISOString().substr(0,10) ?
-      <button onClick={() => {
+      <button className='order-meal-btn' onClick={() => {
         if(changeOrderStatus === false){
           handleOrder({mealId:meal.id, id:user.id, meal})
         } else {
@@ -29,7 +27,5 @@ const MenuList = ({ menu, handleOrder, user, changeOrderStatus, handleModifyOrde
     ) : <p className='error-alert'>No meals has been added to this menu.</p> }
   </div>
 );
-
-
 
 export default MenuList;

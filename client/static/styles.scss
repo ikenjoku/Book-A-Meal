@@ -16,7 +16,14 @@ body, html {
   background-color: #ededed;
 
 }
-
+.body-bg{
+  height: 100%;
+  background: linear-gradient(hsl(0, 0%, 100%),hsla(0, 0%, 100%, 0.9)),
+    url('https://res.cloudinary.com/ikeenjoku/image/upload/v1531578357/bookameal/bg-img.jpg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .app-container{
   display: grid;
   grid-template-rows: auto minmax(calc(100vh - 90px), 1fr) 45px;

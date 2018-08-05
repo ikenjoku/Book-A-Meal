@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  { NavLink } from 'react-router-dom';
+import  { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navigation from "./Navigation.jsx";
 
@@ -8,8 +8,7 @@ class NavBar extends Component {
     super(props);
   }
 
-  burgerToggler(event) {
-    event.preventDefault();
+  toggleNav(event) {
     let topNav = document.getElementById("myTopnav");
     if (topNav.className === "topnav") {
       topNav.className += " responsive";
@@ -24,7 +23,6 @@ class NavBar extends Component {
     if(this.props.user.isAdmin){
       navLinks = ['Meals', 'Set Menu', 'Order History', ...navLinks]
     }
-
     return (
       <header>
         <nav className="topnav" id="myTopnav">
@@ -32,10 +30,11 @@ class NavBar extends Component {
           <Navigation
             activeLink={this.props.activeLink}
             navLinks={navLinks}
+            toggleNav={this.toggleNav}
           />
-          <a className="icon" onClick={this.burgerToggler}>
+          <Link to="#" className="icon" onClick={this.toggleNav}>
             <i className="fa fa-bars"></i>
-          </a>
+          </Link>
         </nav>
       </header>
     );

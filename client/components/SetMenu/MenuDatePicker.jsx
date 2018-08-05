@@ -17,14 +17,14 @@ class MenuDatePicker extends Component {
     const formattedDate = moment(selectedDate).format("dddd, MMMM Do YYYY");
 
     this.setState(() => ({ selectedDate: selectedDate }));
-    this.props.dispatch(setSelectedDate(selectedDate));
+    this.props.setSelectedDate(selectedDate);
   }
   onSubmission = (event) =>{
     event.preventDefault();
     const selectedDate = this.state.selectedDate;
     const formattedDate = this.state.formattedDate;
 
-    this.props.dispatch(setAMenu({selectedDate, formattedDate}));
+    this.props.setAMenu({selectedDate, formattedDate});
   }
   render(){
     // const NewMenuDate = moment(this.props.createdMenu.date).format("dddd, MMMM Do YYYY");
@@ -61,4 +61,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(MenuDatePicker);
+export default connect(mapStateToProps, {setAMenu, setSelectedDate})(MenuDatePicker);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MealForm from '../../components/ManageMeals/MealForm';
-import { meals } from '../mocks';
+import MealForm from '../../../components/ManageMeals/MealForm';
+import { meals } from '../../mocks';
 
 
 test('it should render the MealForm correctly', () => {
