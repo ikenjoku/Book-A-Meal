@@ -3,6 +3,7 @@ module.exports = {
     {
       date: '2018-05-16',
       amount: 1100,
+      quantity: 1,
       userId: 1,
       mealId: 1,
       status: 'pending',
@@ -12,6 +13,7 @@ module.exports = {
     {
       date: '2018-05-16',
       amount: 1500,
+      quantity: 1,
       userId: 1,
       mealId: 2,
       status: 'cancelled',
@@ -21,6 +23,7 @@ module.exports = {
     {
       date: '2018-05-16',
       amount: 1200,
+      quantity: 1,
       userId: 2,
       mealId: 3,
       status: 'pending',
@@ -30,6 +33,7 @@ module.exports = {
     {
       date: '2018-05-16',
       amount: 1500,
+      quantity: 1,
       userId: 3,
       mealId: 3,
       status: 'delivered',
@@ -39,6 +43,7 @@ module.exports = {
     {
       date: '2018-05-17',
       amount: 1500,
+      quantity: 1,
       userId: 2,
       mealId: 5,
       status: 'pending',
@@ -48,6 +53,7 @@ module.exports = {
     {
       date: '2018-05-24',
       amount: 1500,
+      quantity: 1,
       userId: 2,
       mealId: 5,
       status: 'pending',
