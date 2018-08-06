@@ -29,17 +29,22 @@ app.get('*', (req, res) => res.sendFile(path.join(path.dirname(__dirname), 'clie
  * @param {Object} req express http request obect
  * @param {Object} res express http response obect
  */
-app.use((error, req, res) => {
+
+app.use((error, req, res, next) => {
+  if (res.headersSent) {
+    return next(err)
+  }
+  if (error.name === 'SequelizeUniqueConstraintError') {
+    return res.status(409).send({
+      message: 'This meal name already exists',
+    });
+  }
   if (error.name === 'SequelizeDatabaseError' && error.parent.routine === 'DateTimeParseError') {
     return res.status(400).send({
       message: 'Invalid date. Use this format YYYY-MM-DD',
     });
   }
-
-  res.status(500).send({
-    message: 'Internal server rror'
-  })
-});
-
+  res.status(500).send({ message: 'Something broke!'});
+})
 
 export default app;
