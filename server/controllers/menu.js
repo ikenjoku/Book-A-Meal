@@ -31,7 +31,7 @@ class MenuController {
       }],
     }).then((menu) => {
       if (!menu) {
-        return res.status(404).send({ message: `Menu has not been set for ${moment(date).format("dddd, MMMM Do YYYY")}` });
+        return res.status(404).send({ message: `Menu has not been set for ${moment(date).format('dddd, MMMM Do YYYY')}` });
       }
       res.status(200).send({ menu });
     }).catch(error => next(error));
@@ -58,13 +58,13 @@ class MenuController {
           if (!menu) {
             return Menu.create({ date })
               .then(newMenu => res.status(201).send({
-                message: `Successfully created a menu for ${moment(date).format("dddd, MMMM Do YYYY")}`,
+                message: `Successfully created a menu for ${moment(date).format('dddd, MMMM Do YYYY')}`,
                 newMenu,
               }))
               .catch(error => next(error));
           }
           res.status(400).send({
-            message: `Menu for ${moment(date).format("dddd, MMMM Do YYYY")} already exists`,
+            message: `Menu for ${moment(date).format('dddd, MMMM Do YYYY')} already exists`,
           });
         })
         .catch(error => next(error));
@@ -73,7 +73,7 @@ class MenuController {
       .then((menu) => {
         if (!menu) {
           return res.status(400).send({
-            message: `No menu is set for ${moment(date).format("dddd, MMMM Do YYYY")}`,
+            message: `No menu is set for ${moment(date).format('dddd, MMMM Do YYYY')}`,
           });
         }
         menu.addMeal(mealId)
@@ -84,7 +84,7 @@ class MenuController {
             });
             mealMenuInstance.save();
             res.status(200).send({
-              message: `Meal added to menu of ${moment(date).format("dddd, MMMM Do YYYY")}`,
+              message: `Meal added to menu of ${moment(date).format('dddd, MMMM Do YYYY')}`,
               updatedMenu,
             });
           })

@@ -32,7 +32,7 @@ app.get('*', (req, res) => res.sendFile(path.join(path.dirname(__dirname), 'clie
 
 app.use((error, req, res, next) => {
   if (res.headersSent) {
-    return next(err)
+    return next(error);
   }
   if (error.name === 'SequelizeUniqueConstraintError') {
     return res.status(409).send({
@@ -44,7 +44,7 @@ app.use((error, req, res, next) => {
       message: 'Invalid date. Use this format YYYY-MM-DD',
     });
   }
-  res.status(500).send({ message: 'Something broke!'});
-})
+  res.status(500).send({ message: 'Something broke!' });
+});
 
 export default app;

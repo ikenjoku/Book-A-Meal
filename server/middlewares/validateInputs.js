@@ -1,3 +1,7 @@
+import differenceInMinutes from 'date-fns/difference_in_minutes';
+import moment from 'moment';
+import { Order, Menu, Meal } from '../models';
+
 /**
  * deletes empty input fields
  *
@@ -31,6 +35,12 @@ export const trimInputs = (req, res, next) => {
       body[field] = body[field].trim();
     }
   });
+  if (req.body.amount) req.body.amount = Number(req.body.amount);
+  if (req.body.quantity) {
+    req.body.quantity = Number(req.body.quantity);
+  } else {
+    req.body.quantity = 1;
+  }
   req.body = deleteEmptyFields(body);
   next();
 };
@@ -134,4 +144,77 @@ export const validateMealUpdate = (req, res, next) => {
     });
   }
   next();
+};
+
+export const authorizeOrders = (req, res, next) => {
+  if (req.query.userId && Number(req.query.userId) === Number(req.user.id)) {
+    return next();
+  }
+  if (!req.user.isAdmin) {
+    return res.status(403).send({ message: 'You are not authorized' });
+  }
+  next();
+};
+
+export const authorizeOrdersUpdate = (req, res, next) => {
+  const orderId = req.params.id;
+  const userId = req.user.id;
+
+  if (!req.user.isAdmin) {
+    Order.findById(orderId)
+      .then((order) => {
+        if (!order) {
+          return res.status(404).send({ message: 'Order was not found' });
+        }
+        if (order.userId !== userId) {
+          return res.status(401).send({ message: 'You can not modify this order' });
+        }
+
+        if ((differenceInMinutes(new Date(), new Date(order.createdAt))) >= 15) {
+          return res.status(401).send({ message: 'You can not modify this order anymore' });
+        }
+      })
+      .catch(error => next(error));
+  }
+  next();
+};
+
+export const vaidateMealChange = (req, res, next) => {
+  if (req.body.newMealId) {
+    const todaysdate = new Date().toISOString().substr(0, 10);
+    const newMealId = Number(req.body.newMealId);
+    return Meal.findById(newMealId)
+      .then((newMeal) => {
+        if (!newMeal) {
+          return res.status(400).send({
+            message: 'New Meal does not exist',
+          });
+        }
+        return Menu.findOne({ where: { date: todaysdate } })
+          .then((menu) => {
+            if (!menu) {
+              return res.status(404).send({ message: `Menu has not been set for ${moment(todaysdate).format('dddd, MMMM Do YYYY')}` });
+            }
+            return menu.hasMeal(newMealId)
+              .then((inMenu) => {
+                if (!inMenu) {
+                  return res.status(400).send({
+                    message: "This meal is not in today's menu",
+                  });
+                }
+                req.body = {
+                  mealId: newMealId,
+                  quantity: Number(req.body.quantity),
+                  amount: Number(req.body.quantity) * newMeal.price,
+                };
+
+                return next();
+              })
+              .catch(error => next(error));
+          })
+          .catch(error => next(error));
+      })
+      .catch(error => next(error));
+  }
+  return next();
 };
