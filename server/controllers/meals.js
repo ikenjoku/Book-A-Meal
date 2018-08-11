@@ -86,22 +86,22 @@ class MealController {
    * @memberof MealController
    */
 
-  static getMeals(req, res, next){
-    let page = req.query.page || 0;      // page number
-    let limit = 5;   // number of records per page
+  static getMeals(req, res, next) {
+    const page = req.query.page || 0; // page number
+    const limit = 5; // number of records per page
     let offset = page * limit;
-      
+
     Meal.findAndCountAll({
-        limit: limit,
-        offset: offset,
-        order: ['id']
+      limit,
+      offset,
+      order: ['id'],
     }).then((data) => {
-      let pages = Math.ceil(data.count / limit);
+      const pages = Math.ceil(data.count / limit);
       offset = limit * (page - 1);
-      let meals = data.rows;
-      res.status(200).json({'meals': meals, 'count': data.count, 'pages': pages});
-   })
-    .catch(error => next(error));
+      const meals = data.rows;
+      res.status(200).json({ meals, count: data.count, pages });
+    })
+      .catch(error => next(error));
   }
   /**
    * Edit a particular meal

@@ -3,11 +3,13 @@ import userController from '../controllers/users';
 import mealController from '../controllers/meals';
 import menuController from '../controllers/menu';
 import orderController from '../controllers/orders';
-
 import uploadImage from '../helpers/uploadImage';
 import authenticate from '../middlewares/authenticate';
 import { isAdmin, validateId } from '../middlewares/isAdmin';
-import { validateSignup, validateSignin, trimInputs, validateMealCreate, validateMealUpdate, authorizeOrders, authorizeOrdersUpdate, vaidateMealChange } from '../middlewares/validateInputs';
+import { validateSignup, validateSignin, trimInputs,
+  validateMealCreate, validateMealUpdate, authorizeOrders,
+  authorizeOrdersUpdate, vaidateMealChange } from '../middlewares/validateInputs';
+import { validateMenuSetup } from '../middlewares/validateMenuSetup';
 
 const router = express.Router();
 router.all('*', trimInputs);
@@ -24,7 +26,9 @@ router.get('/', (req, res) => {
   .delete('/meals/:id', validateId, authenticate, isAdmin, mealController.removeMeal)
 
   .get('/menu', menuController.getMenu)
-  .post('/menu', authenticate, isAdmin, menuController.createMenu)
+  .post('/menu', authenticate, isAdmin, validateMenuSetup, menuController.createMenu)
+  .put('/menu/:id', authenticate, isAdmin, validateMenuSetup, menuController.UpdateMenu)
+
 
   .get('/orders', authenticate, authorizeOrders, orderController.getOrders)
   .post('/orders', authenticate, orderController.createOrder)

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Menu, Meal, MealMenu } from '../models';
+import { Menu, Meal } from '../models';
 
 /**
  * It contains utility methodes for menu
@@ -50,48 +50,91 @@ class MenuController {
    * @memberof MenuController
    */
   static createMenu(req, res, next) {
-    const { date, mealId } = req.body;
+    const { date, mealIds } = req.body;
 
-    if (date && !mealId) {
-      return Menu.findOne({ where: { date } })
-        .then((menu) => {
-          if (!menu) {
-            return Menu.create({ date })
-              .then(newMenu => res.status(201).send({
-                message: `Successfully created a menu for ${moment(date).format('dddd, MMMM Do YYYY')}`,
-                newMenu,
-              }))
-              .catch(error => next(error));
-          }
-          res.status(400).send({
+    Menu.findOne({ where: { date } })
+      .then((menu) => {
+        if (menu) {
+          return res.status(400).send({
             message: `Menu for ${moment(date).format('dddd, MMMM Do YYYY')} already exists`,
           });
-        })
-        .catch(error => next(error));
-    }
-    Menu.findOne({ where: { date } })
+        }
+
+        Menu.create({ date })
+          .then(newMenu => newMenu.addMeals(mealIds)
+            .then(() => {
+              Menu.findById(newMenu.id, {
+                where: { date },
+                include: [{
+                  model: Meal,
+                  attributes: ['id', 'name', 'price', 'description', 'imageurl'],
+                }],
+              })
+                .then((createdMenu) => {
+                  if (!createdMenu) {
+                    return res.status(404).send({ message: 'Menu was not found' });
+                  }
+                  res.status(201).send({
+                    message: `Successfully created a menu for ${moment(date).format('dddd, MMMM Do YYYY')}`,
+                    menu: createdMenu,
+                  });
+                })
+                .catch(error => next(error));
+            })
+            .catch(error => next(error)))
+          .catch(error => next(error));
+      })
+      .catch(error => next(error));
+  }
+
+  /**
+   * Updates menu for a particular day
+   *
+   * @static
+   *
+   * @param {Object} - express http request object
+   * @param {Object} - express http response object
+   * @param {Function} - calls the next middleware
+   *
+   * @return {Object} - express http response object
+   *
+   * @memberof MenuController
+   */
+  static UpdateMenu(req, res, next) {
+    const menuId = req.params.id;
+    const { mealIds } = req.body;
+
+
+    Menu.findById(menuId)
       .then((menu) => {
         if (!menu) {
           return res.status(400).send({
-            message: `No menu is set for ${moment(date).format('dddd, MMMM Do YYYY')}`,
+            message: 'No menu found',
           });
         }
-        menu.addMeal(mealId)
-          .then((updatedMenu) => {
-            const mealMenuInstance = new MealMenu({
-              mealId,
-              menuId: menu.id,
-            });
-            mealMenuInstance.save();
-            res.status(200).send({
-              message: `Meal added to menu of ${moment(date).format('dddd, MMMM Do YYYY')}`,
-              updatedMenu,
-            });
+
+        menu.setMeals(mealIds)
+          .then(() => {
+            Menu.findById(menu.id, {
+              include: [{
+                model: Meal,
+                attributes: ['id', 'name', 'price', 'description', 'imageurl'],
+              }],
+            })
+              .then((updatedMenu) => {
+                if (!updatedMenu) {
+                  return res.status(404).send({ message: 'Menu was not found' });
+                }
+                res.status(201).send({
+                  message: `Successfully updated menu for ${moment(updatedMenu.date).format('dddd, MMMM Do YYYY')}`,
+                  menu: updatedMenu,
+                });
+              })
+              .catch(error => next(error));
           })
           .catch(error => next(error));
       })
       .catch(error => next(error));
   }
 }
-
 export default MenuController;
