@@ -125,7 +125,7 @@ class MenuController {
                 if (!updatedMenu) {
                   return res.status(404).send({ message: 'Menu was not found' });
                 }
-                res.status(201).send({
+                res.status(200).send({
                   message: `Successfully updated menu for ${moment(updatedMenu.date).format('dddd, MMMM Do YYYY')}`,
                   menu: updatedMenu,
                 });

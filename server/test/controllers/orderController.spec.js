@@ -8,6 +8,7 @@ chai.use(chaiHttp);
 
 let userToken;
 let adminToken;
+let otherUserToken;
 
 before((done) => {
   chai.request(app)
@@ -25,6 +26,16 @@ before((done) => {
     .send({ email: 'kcee@gmail.com', password: 'password' })
     .end((err, res) => {
       userToken = res.body.token;
+      done();
+    });
+});
+
+before((done) => {
+  chai.request(app)
+    .post('/api/v1/auth/login')
+    .send({ email: 'james@gmail.com', password: 'password' })
+    .end((err, res) => {
+      otherUserToken = res.body.token;
       done();
     });
 });
@@ -53,12 +64,12 @@ describe('Given /GET /api/v1/orders', () => {
     });
     it('should return orders for a particular day', (done) => {
       chai.request(app)
-        .get('/api/v1/orders/date?date=2018-05-16')
+        .get('/api/v1/orders?date=2018-05-16')
         .set('x-access-token', adminToken)
         .end((err, res) => {
           res.status.should.eql(200);
           res.should.be.a('object');
-          res.body.should.have.property('message').eql('Orders for 2018-05-16 retrieved successfully');
+          res.body.should.have.property('message').eql('Orders retrieved successfully');
           res.body.should.have.property('orders');
           res.body.orders.should.be.a('array');
           res.body.orders[0].should.be.a('object');
@@ -73,7 +84,7 @@ describe('Given /GET /api/v1/orders', () => {
     });
     it('should return previous orders for a particular user', (done) => {
       chai.request(app)
-        .get('/api/v1/orders/customer')
+        .get('/api/v1/orders?userId=2')
         .set('x-access-token', userToken)
         .end((err, res) => {
           res.status.should.eql(200);
@@ -125,11 +136,11 @@ describe('Given /POST /api/v1/orders', () => {
   });
 });
 
-describe('Given /PUT /api/v1/orders', () => {
+describe('Given /PUT /api/v1/orders/:id', () => {
   describe('When a user wants to update an order', () => {
     it('should update an order with a new meal', (done) => {
       const body = {
-        newMealId: 4,
+        newMealId: 1,
       };
       chai.request(app)
         .put('/api/v1/orders/6')
@@ -139,8 +150,8 @@ describe('Given /PUT /api/v1/orders', () => {
           res.status.should.eql(200);
           res.body.should.be.a('object');
           res.body.message.should.eql('Your order has been updated');
-          res.body.order.mealId.should.eql(4);
-          res.body.order.amount.should.eql(1250);
+          res.body.order.mealId.should.eql(1);
+          res.body.order.amount.should.eql(1100);
           done();
         });
     });
@@ -176,11 +187,11 @@ describe('Given /PUT /api/v1/orders', () => {
     });
     it('should not update if an order was not made by the same user', (done) => {
       const body = {
-        newMealId: 4,
+        newMealId: 2,
       };
       chai.request(app)
         .put('/api/v1/orders/6')
-        .set('x-access-token', adminToken)
+        .set('x-access-token', otherUserToken)
         .send(body)
         .end((err, res) => {
           res.status.should.eql(401);
@@ -206,7 +217,7 @@ describe('Given /PUT /api/v1/orders', () => {
     });
     it('should cancel an order within 15 mins of making it', (done) => {
       const body = {
-        cancel: true,
+        status: 'cancelled',
       };
       chai.request(app)
         .put('/api/v1/orders/6')
@@ -215,7 +226,7 @@ describe('Given /PUT /api/v1/orders', () => {
         .end((err, res) => {
           res.status.should.eql(200);
           res.body.should.be.a('object');
-          res.body.message.should.eql('Your order has been cancelled');
+          res.body.message.should.eql('Your order has been updated');
           res.body.order.status.should.eql('cancelled');
           done();
         });

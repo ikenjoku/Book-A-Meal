@@ -61,7 +61,7 @@ describe('Given /GET /api/v1/meals', () => {
           res.body.meal.name.should.eql('Rice and Beans');
           res.body.meal.description.should.eql('Rice, Beans, Plantain, Panla Sauce, Max Coke');
           res.body.meal.price.should.eql(1500);
-          res.body.meal.imageurl.should.eql('https://africa-public.food.jumia.com/dynamic/production/ng/images/products/80/80418_1465475724_ma.jpg');
+          res.body.meal.imageurl.should.eql('https://res.cloudinary.com/ikeenjoku/image/upload/v1532320842/bookameal/2018-07-23T04:40:42.344Zsemo-egusi.jpg.jpg');
           res.body.meal.id.should.eql(2);
           done();
         });
@@ -253,6 +253,25 @@ describe('Given /PUT /api/v1/meals', () => {
           .end((err, res) => {
             res.status.should.eql(400);
             res.body.message.should.eql('Please fill in the meal name');
+            res.body.should.be.a('object');
+            done();
+          });
+      },
+    );
+    it(
+      'should not update a meal to a meal name that already exist',
+      (done) => {
+        chai.request(app)
+          .put('/api/v1/meals/2')
+          .set('x-access-token', adminToken)
+          .set('Content-Type', 'multipart/form-data')
+          .field('name', 'Onion Jappatti')
+          .field('description', 'this is a new description')
+          .field('price', 1200)
+          .attach('imageurl', `${__dirname}/testmeal.png`)
+          .end((err, res) => {
+            res.status.should.eql(409);
+            res.body.message.should.eql('This meal name already exists');
             res.body.should.be.a('object');
             done();
           });
