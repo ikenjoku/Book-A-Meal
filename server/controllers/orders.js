@@ -20,7 +20,7 @@ class OrderController {
    * @memberof OrderController
    */
   static createOrder(req, res, next) {
-    const { mealId } = req.body;
+    const { mealId, quantity } = req.body;
     const { id } = req.user;
     const userId = id;
     const date = new Date().toISOString().substr(0, 10);
@@ -37,7 +37,8 @@ class OrderController {
             }
             Order.create({
               date,
-              amount: meal.price,
+              amount: meal.price * quantity,
+              quantity,
               userId,
               mealId,
             })

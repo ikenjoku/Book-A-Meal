@@ -92,7 +92,7 @@ describe('Given /POST /api/v1/menu', () => {
     it('should create a new menu', (done) => {
       const body = {
         date: '2018-08-22',
-        mealIds: [1, 2, 3],
+        mealIds: [1, 2, 4],
       };
       chai.request(app)
         .post('/api/v1/menu')
@@ -118,6 +118,38 @@ describe('Given /POST /api/v1/menu', () => {
         .end((err, res) => {
           res.status.should.eql(400);
           res.body.message.should.have.eql('Menu for Tuesday, May 15th 2018 already exists');
+          res.body.should.be.a('object');
+          done();
+        });
+    });
+    it('should not create a menu with invalid meal IDs', (done) => {
+      const body = {
+        date: '2018-05-15',
+        mealIds: [0, -2],
+      };
+      chai.request(app)
+        .post('/api/v1/menu')
+        .set('x-access-token', adminToken)
+        .send(body)
+        .end((err, res) => {
+          res.status.should.eql(400);
+          res.body.message.should.have.eql('Invalid meal IDs');
+          res.body.should.be.a('object');
+          done();
+        });
+    });
+    it('should not create a menu if mealId does not match a meal', (done) => {
+      const body = {
+        date: '2018-05-25',
+        mealIds: [1, 340],
+      };
+      chai.request(app)
+        .post('/api/v1/menu')
+        .set('x-access-token', adminToken)
+        .send(body)
+        .end((err, res) => {
+          res.status.should.eql(400);
+          res.body.message.should.have.eql('Meal does not exist. Check meal_id sent');
           res.body.should.be.a('object');
           done();
         });
