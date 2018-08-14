@@ -1,4 +1,4 @@
-import { Order, User, Meal } from '../models';
+import { Order, User, Meal, Menu } from '../models';
 
 /**
  * It contains utility methods for orders
@@ -35,18 +35,34 @@ class OrderController {
             if (!user) {
               return res.status(404).send({ message: 'Please signup to proceed' });
             }
-            Order.create({
-              date,
-              amount: meal.price * quantity,
-              quantity,
-              userId,
-              mealId,
-            })
-              .then(order => res.status(201)
-                .send({
-                  message: `${meal.name} has been ordered.`,
-                  order,
-                }))
+            return Menu.findOne({ where: { date } })
+              .then((menu) => {
+                if (!menu) {
+                  return res.status(404).send({ message: `Menu has not been set for ${moment(todaysdate).format('dddd, MMMM Do YYYY')}` });
+                }
+                return menu.hasMeal(mealId)
+                  .then((inMenu) => {
+                    if (!inMenu) {
+                      return res.status(400).send({
+                        message: "This meal is not in today's menu",
+                      });
+                    }
+                    Order.create({
+                      date,
+                      amount: meal.price * quantity,
+                      quantity,
+                      userId,
+                      mealId,
+                    })
+                      .then(order => res.status(201)
+                        .send({
+                          message: `${meal.name} has been ordered.`,
+                          order,
+                        }))
+                      .catch(error => next(error));
+                  })
+                  .catch(error => next(error));
+              })
               .catch(error => next(error));
           })
           .catch(error => next(error));
