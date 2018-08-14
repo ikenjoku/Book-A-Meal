@@ -271,7 +271,7 @@ describe('Given /PUT /api/v1/meals', () => {
           .attach('imageurl', `${__dirname}/testmeal.png`)
           .end((err, res) => {
             res.status.should.eql(409);
-            res.body.message.should.eql('This meal name already exists');
+            res.body.message.should.eql('Meal name already exist. Use a different name.');
             res.body.should.be.a('object');
             done();
           });

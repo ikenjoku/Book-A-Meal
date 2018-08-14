@@ -143,7 +143,16 @@ export const validateMealUpdate = (req, res, next) => {
       message: 'Please fill in a valid meal price',
     });
   }
-  next();
+  return Meal.findOne({ where: { name: req.body.name } })
+    .then((meal) => {
+      if (meal) {
+        return res.status(409).send({
+          message: 'Meal name already exist. Use a different name.',
+        });
+      }
+      return next();
+    })
+    .catch(error => next(error));
 };
 
 export const authorizeOrders = (req, res, next) => {
