@@ -1,0 +1,65 @@
+.no-menu-card {
+  text-align: center;
+  background: white;
+  max-width: 750px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  h3 {
+    font-size: 2em;
+    padding-top: 100px;
+    color: #9e6234;
+  }
+  button{
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    border: 1px solid #eb5a31;
+    cursor: pointer;
+    color: #eb5a31;
+    margin-top: 30px;
+    outline: none;
+    transition: background-color 0.5s ease;
+  }
+  button:hover{
+    background-color: #eb5a31;
+    color: #ffffff;
+  }
+}
+
+.menu-card {
+  text-align: center;
+  background: white;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  h3 {
+    font-size: 2em;
+    padding-top: 25px;
+    color: #9e6234;
+  }
+  .menu-card-meals{
+    height: 300px;
+    overflow: scroll;
+    ul {
+      list-style: none;
+      font-size: 1.3em;
+      color: #6f6f6f;
+    }
+  }
+  button{
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    border: 1px solid #eb5a31;
+    cursor: pointer;
+    color: #eb5a31;
+    margin: 20px;
+    outline: none;
+    transition: background-color 0.5s ease;
+  }
+  button:hover{
+    background-color: #eb5a31;
+    color: #ffffff;
+  }
+}
