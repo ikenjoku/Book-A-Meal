@@ -8,7 +8,7 @@ export class PreviousOrderTable extends Component{
   }
 
   componentDidMount(){
-    this.props.getAllPreviousOrders();
+    this.props.getAllPreviousOrders(this.props.userId);
   }
 
   render(){
@@ -32,6 +32,7 @@ export class PreviousOrderTable extends Component{
 }
 
 const mapStateToProps = state => ({
+  userId: state.authReducer.user.id,
   isLoggedIn: state.authReducer.isLoading,
   previousOrders: state.orderReducer.previousOrders,
 });

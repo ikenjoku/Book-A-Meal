@@ -23,7 +23,7 @@ export class MealList extends Component{
       }));
     }
     handleDelete = (id) => {
-      const mealToDelete = this.props.meals.find(meal => meal.id === id);
+      const mealToDelete = this.props.paginatedMeals.find(meal => meal.id === id);
       this.setState(() => ({
           showDeleteModal: mealToDelete.name,
           mealId: mealToDelete.id

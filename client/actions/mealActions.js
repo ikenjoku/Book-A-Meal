@@ -4,7 +4,7 @@ import {
   ADD_MEAL_SUCCESS, ADD_MEAL_FAILURE,
   UPDATE_MEAL_SUCCESS, UPDATE_MEAL_FAILURE,
   REMOVE_MEAL_SUCCESS, REMOVE_MEAL_FAILURE,
-  GET_MEALS_LOADING_STATUS, GET_PAGINATED_MEALS
+  GET_MEALS_LOADING_STATUS, GET_PAGINATED_MEALS,
 } from './actionTypes';
 
 const getMeals = meals => ({
@@ -12,11 +12,11 @@ const getMeals = meals => ({
   meals,
 });
 
-const getPageMeals = ({meals, count, pages}) => ({
+const getPageMeals = ({ meals, count, pages }) => ({
   type: GET_PAGINATED_MEALS,
   meals,
   count,
-  pages
+  pages,
 });
 
 const getMealsFailure = error => ({
@@ -62,7 +62,7 @@ const removeMealFailure = error => ({
 });
 
 
-const getPaginatedMeals = (page) => (dispatch) => {
+const getPaginatedMeals = page => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
   API.get(`/meals?page=${page}`)
     .then((res) => {

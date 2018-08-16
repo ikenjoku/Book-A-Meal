@@ -14,6 +14,7 @@ import OrderHistory from './OrderHistory/OrderHistory.jsx';
 
 import SetMenu from './SetMenu/SetMenu.jsx';
 import Menu from './Menu/Menu.jsx';
+import SetupMenu from './SetupMenu/SetupMenu.jsx'
 
 import Footer from './Footer.jsx';
 import NotFound from './NotFound.jsx';
@@ -33,7 +34,7 @@ const App = () => (
           <Route path='/meals/create' component={withAuthentication(AddMeal)} />
           <Route path='/meals/edit/:id' component={withAuthentication(EditMeal)} />
           <Route path='/order-history' component={withAuthentication(OrderHistory)} />
-          <Route path='/set-menu' component={withAuthentication(SetMenu)} />
+          <Route path='/set-menu' component={withAuthentication(SetupMenu)} />
           <Route component={NotFound}/>
         </Switch>
       <Footer />

@@ -3,7 +3,7 @@ import notify from './notify';
 import {
   SET_MENU_SUCCESS, SET_MENU_FAILURE,
   SET_SELECTED_DATE, ADD_MEAL_TO_MENU_FAILURE,
-  ADD_MEAL_TO_MENU_SUCCESS, GET_PAGINATED_MEALS, 
+  ADD_MEAL_TO_MENU_SUCCESS, GET_PAGINATED_MEALS,
   GET_MEALS_LOADING_STATUS, GET_MEALS_FAILURE } from './actionTypes';
 
 const setMenu = createdMenu => ({
@@ -31,11 +31,11 @@ export const addMealToMenuFailure = error => ({
   error,
 });
 
-const getPageMeals = ({meals, count, pages}) => ({
+const getPageMeals = ({ meals, count, pages }) => ({
   type: GET_PAGINATED_MEALS,
   meals,
   count,
-  pages
+  pages,
 });
 
 const getMealsLoadingStatus = status => ({
@@ -73,7 +73,7 @@ export const addAMealToMenu = ({ date, mealId }) => (dispatch) => {
     });
 };
 
-export const getPaginatedMeals = (page) => (dispatch) => {
+export const getPaginatedMeals = page => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
   API.get(`/meals?page=${page}`)
     .then((res) => {
