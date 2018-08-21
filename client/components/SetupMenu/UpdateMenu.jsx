@@ -7,64 +7,59 @@ import { getAMeals, updateAMenu } from '../../actions/setupMenuActions';
 class UpdateMenu extends Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
     this.props.getAMeals();
   }
 
-  async handleSubmit(values) {
-    await this.props.updateAMenu(values, this.props.menuId);
-    return this.props.closeModal();
+  handleSubmit = (values) => {
+    this.props.updateAMenu(values, this.props.menuId)
+    this.props.closeModal()
   }
 
   render() {
     const {
-      meals, error, isUpdating, isFetching,
+      meals, isUpdating, isFetching,
     } = this.props;
 
     return (
-      <div>
-        <h2 className="text-center">Update Menu</h2>
+      <div className='setup-form'>
+        <h2>Update Menu</h2>
         {isFetching
-        ?
+          ?
           <p>Loading...</p>
-        :
+          :
           <MealSetupForm
-            error={error}
             handleSubmit={this.handleSubmit}
             meals={meals}
             action="Update"
             isSubmitting={isUpdating}
+            date={this.props.selectedDate}
           />}
       </div>
     );
   }
 }
 
-// UpdateMenu.propTypes = {
-//   modifyMenu: PropTypes.func.isRequired,
-//   fetchMeals: PropTypes.func.isRequired,
-//   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   isUpdating: PropTypes.bool.isRequired,
-//   isFetching: PropTypes.bool.isRequired,
-//   menuId: PropTypes.string.isRequired,
-//   /* eslint react/require-default-props: 0 */
-//   error: PropTypes.oneOfType([
-//     PropTypes.string,
-//     PropTypes.objectOf(PropTypes.string),
-//   ]),
-//   closeModal: PropTypes.func.isRequired,
-// };
+UpdateMenu.propTypes = {
+  updateAMenu: PropTypes.func.isRequired,
+  getAMeals: PropTypes.func.isRequired,
+  meals: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isUpdating: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  menuId: PropTypes.number.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  selectedDate: PropTypes.string.isRequired,
+};
 
 const mapStateToProps = state => ({
-  error: state.setupMenuReducer.error,
   meals: state.setupMenuReducer.meals,
   isUpdating: state.setupMenuReducer.isUpdating,
   isFetching: state.setupMenuReducer.isFetching,
   menuId: state.setupMenuReducer.currentMenu.id,
+  selectedDate: state.setupMenuReducer.selectedDate,
 });
 
-export default connect(mapStateToProps,{ getAMeals, updateAMenu })(UpdateMenu);
+export default connect(mapStateToProps, { getAMeals, updateAMenu })(UpdateMenu);
 

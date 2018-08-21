@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import DatePicker from '../DatePicker.jsx';
 import MenuCard from './MenuCard.jsx';
-import { getAMenu } from "../../actions/setupMenuActions";
+import { getAMenu, setSelectedDate } from "../../actions/setupMenuActions";
 
 
 class SetupMenu extends Component {
@@ -11,9 +11,10 @@ class SetupMenu extends Component {
     super(props);
 
   }
-  componentDidMount(){
+  componentDidMount() {
     const today = new Date().toISOString().substr(0, 10);
-    this.props.getAMenu({selectedDate:today});
+    this.props.getAMenu({ selectedDate: today });
+    this.props.setSelectedDate({ selectedDate: today });
   }
 
   render() {
@@ -22,13 +23,14 @@ class SetupMenu extends Component {
         <div className="cool-lg-text">
           <h2>Setup Menu</h2>
         </div>
-        <DatePicker btnName='Get Menu' onSubmit={
-          (selectedDate) => this.props.getAMenu(selectedDate)
-        }/>
-        <MenuCard/>
+        <DatePicker btnName='Find Menu'
+          onSubmit={selectedDate => this.props.getAMenu(selectedDate)}
+          onChange={selectedDate => this.props.setSelectedDate(selectedDate)}
+        />
+        <MenuCard />
       </main>
     );
   }
 }
 
-export default connect(null, { getAMenu })(SetupMenu);
+export default connect(null, { getAMenu, setSelectedDate })(SetupMenu);

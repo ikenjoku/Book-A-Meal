@@ -1,24 +1,29 @@
 import API from '../axiosConfig';
 import notify from './notify';
 import {
-  GET_MENU_SUCCESS, GET_MENU_FAILURE,
+  FETCH_MENU_SUCCESS, FETCH_MENU_FAILURE,
   GET_MENU_LOADING_STATUS, SET_MENU_SUCCESS,
   SET_MENU_FAILURE, UPDATE_MENU_SUCCESS,
   UPDATE_MENU_FAILURE, GET_MEALS_SUCCESS,
   GET_MEALS_FAILURE, UPDATE_MENU_LOADING_STATUS,
   CREATE_MENU_LOADING_STATUS, GET_MEALS_LOADING_STATUS,
+  SET_SELECTED_DATE,
 } from './actionTypes';
 
 const getMenu = currentMenu => ({
-  type: GET_MENU_SUCCESS,
+  type: FETCH_MENU_SUCCESS,
   currentMenu,
 });
 
 const getMenuFailure = error => ({
-  type: GET_MENU_FAILURE,
+  type: FETCH_MENU_FAILURE,
   error,
 });
 
+export const setSelectedDate = ({ selectedDate }) => ({
+  type: SET_SELECTED_DATE,
+  selectedDate,
+});
 
 const setMenu = currentMenu => ({
   type: SET_MENU_SUCCESS,
@@ -99,7 +104,8 @@ export const setAMenu = ({ date, mealIds }) => (dispatch) => {
     });
 };
 
-export const updateAMenu = ({ id, mealIds }) => (dispatch) => {
+export const updateAMenu = ({ mealIds }, id) => (dispatch) => {
+  console.log(id, mealIds);
   dispatch(isUpdating(true));
   API.put(`/menu/${id}`, { mealIds })
     .then((res) => {

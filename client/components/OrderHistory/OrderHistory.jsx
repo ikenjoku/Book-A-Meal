@@ -11,9 +11,9 @@ class OrderHistory extends Component {
     super(props);
 
   }
-  componentDidMount(){
+  componentDidMount() {
     const today = new Date().toISOString().substr(0, 10);
-    this.props.getOrdersByDate({selectedDate:today});
+    this.props.getOrdersByDate({ selectedDate: today });
   }
 
   render() {
@@ -24,8 +24,8 @@ class OrderHistory extends Component {
         </div>
         <DatePicker btnName='Get Orders' onSubmit={
           (selectedDate) => this.props.getOrdersByDate(selectedDate)
-        }/>
-        <OrderList/>
+        } />
+        <OrderList />
       </main>
     );
   }

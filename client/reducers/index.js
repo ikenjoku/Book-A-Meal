@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import mealReducer from './mealReducer';
-import setMenuReducer from './setMenuReducer';
 import setupMenuReducer from './setupMenuReducer';
 import menuReducer from './menuReducer';
 import orderReducer from './orderReducer';
@@ -11,7 +10,6 @@ import initialState from './initialState';
 
 const baseReducer = combineReducers({
   mealReducer,
-  setMenuReducer,
   menuReducer,
   orderReducer,
   authReducer,

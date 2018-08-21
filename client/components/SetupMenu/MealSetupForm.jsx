@@ -4,14 +4,18 @@ import MealCheckList from './MealCheckList';
 
 class MealSetupForm extends Component {
   state = {
-      date: '',
-      mealIds: [],
-    };
+    date: this.props.date || '',
+    mealIds: [],
+  };
 
   handleChange = (event) => {
-    this.setState({
-      date: event.target.date,
-    });
+    const selectedDate = event.target.value;
+
+    this.setState(() => (
+      {
+        date: selectedDate,
+      }
+    ));
   }
 
   handleSubmit = (event) => {
@@ -44,33 +48,30 @@ class MealSetupForm extends Component {
         className="menu-setup-form"
         onSubmit={this.handleSubmit}
       >
-        <h3 className="text-center">
-          Setup Menu
-        </h3>
         <div>
-          <label >
-            Date:
-          </label>
+          <button className='calender-btn'><i className="far fa-calendar-alt fa-2x"></i></button>
           <input
+            readOnly
             name="date"
-            placeholder=""
+            type='date'
             value={this.state.date}
-            onChange={this.handleChange}
           />
         </div>
-        <div>
-          <h3>Choose meals to add to menu</h3>
+        <h3>Choose meals to add to menu</h3>
+        <div className='meal-check-list'>
           <MealCheckList
             meals={this.props.meals}
             handleSelect={this.handleSelect}
           />
         </div>
-        <button
-          value="Submit"
-          type="submit"
-        >
-          {this.props.action} Menu
+        <div className='setup-btn-container'>
+          <button
+            value="Submit"
+            type="submit"
+          >
+            {this.props.action} Menu
         </button>
+        </div>
       </form>
     );
   }

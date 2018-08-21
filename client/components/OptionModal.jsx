@@ -15,11 +15,11 @@ const OptionModal = (props) => (
     <h3>Are you sure you want to delete {props.showDeleteModal} meal</h3>
     <button
       onClick={(e) => {
-        props.removeAMeal({id: props.mealId});
+        props.removeAMeal({ id: props.mealId });
         props.handleModalClose();
       }}>Yes</button>
     <button onClick={props.handleModalClose}>No</button>
-  </Modal> 
+  </Modal>
 );
 
 

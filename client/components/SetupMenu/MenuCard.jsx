@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import moment from 'moment';
 import Modal from 'react-modal';
+import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import { connect } from "react-redux";
 import { getAMenu } from "../../actions/setupMenuActions";
 import CreateMenu from './CreateMenu';
@@ -14,11 +16,11 @@ class MenuCard extends Component{
     }
   }
   handleOpenModal = () => {
-    this.setState({ isOpen: true });
+    this.setState(() => ({ isOpen: true }));
   }
 
   handleCloseModal = () => {
-    this.setState({ isOpen: false });
+    this.setState(() => ({ isOpen: false }));
   }
 
   handleMenuUpdate() {
@@ -50,7 +52,7 @@ class MenuCard extends Component{
           <div className='menu-card-meals'>
           <ul>
             {
-              this.props.currentMenu.Meals.map(meal => <li>{ meal.name }</li>)
+              this.props.currentMenu.Meals.map(meal => <li key={meal.id}>{ meal.name }</li>)
             }
           </ul>
           </div>
@@ -62,11 +64,9 @@ class MenuCard extends Component{
             contentLabel="Menu"
             style={modalStyle}
           >
-            <button
-              value="&times;"
+           <div className="close-icon"> <button
               onClick={this.handleCloseModal}
-              className="close"
-            >close</button>
+            ><i className="fas fa-times fa-2x"></i></button></div>
              <UpdateMenu closeModal={this.handleCloseModal} />
           </Modal>
         </div> :
@@ -81,28 +81,43 @@ class MenuCard extends Component{
               contentLabel="Menu"
               style={modalStyle}
             >
-              <button
-                value="&times;"
+              <div className="close-icon">
+               <button
                 onClick={this.handleCloseModal}
-                className="close"
-              >close</button>
+            ><i className="fas fa-times fa-2x"></i></button></div>
                 <CreateMenu closeModal={this.handleCloseModal} />
             </Modal>
             </div>
           </div> 
     return(
       <div className=''>
-        {renderedContent}
+      {this.props.isLoadingMenu ? 
+      <div className='loading-spinner'>
+          <Loader 
+              type="Circles"
+              color="#9D2401"
+              height="100"
+              width="100"
+          />
+          <h3 id='loader-text'>Please wait...</h3>  
+          </div>: renderedContent}
       </div>
     );
   }
 }
 
+MenuCard.propTypes = {
+  getAMenu: PropTypes.func.isRequired,
+  isLoadingMenu: PropTypes.bool.isRequired,
+  currentMenu: PropTypes.object.isRequired,
+  selectedDate: PropTypes.string.isRequired,
+};
+
 const mapStateToProps = state => {
   return {
     currentMenu: state.setupMenuReducer.currentMenu,
     isLoadingMenu: state.setupMenuReducer.isLoadingMenu,
-    error: state.setupMenuReducer.error
+    selectedDate: state.setupMenuReducer.selectedDate,
   }
 }
 

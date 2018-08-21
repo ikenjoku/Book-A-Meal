@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Navigation from "./Navigation.jsx";
 
@@ -20,7 +20,7 @@ class NavBar extends Component {
   render() {
     let navLinks = [];
     navLinks = this.props.isLoggedIn ? ['Menu', 'Logout'] : ['Login', 'Signup'];
-    if(this.props.user.isAdmin){
+    if (this.props.user.isAdmin) {
       navLinks = ['Meals', 'Set Menu', 'Order History', ...navLinks]
     }
     return (
@@ -41,7 +41,7 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = ({authReducer}) => {
+const mapStateToProps = ({ authReducer }) => {
   return {
     isLoggedIn: authReducer.isLoggedIn,
     user: authReducer.user,
@@ -49,4 +49,4 @@ const mapStateToProps = ({authReducer}) => {
 }
 
 
-export default connect(mapStateToProps, null)(NavBar);
+export default connect(mapStateToProps, null, null, { pure: false })(NavBar);
