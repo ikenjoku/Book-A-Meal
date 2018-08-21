@@ -1,24 +1,40 @@
 import {
-  GET_A_MENU_SUCCESS, GET_A_MENU_FAILURE, GET_MENU_LOADING_STATUS,
+  GET_MENU_SUCCESS, GET_MENU_FAILURE,
+  GET_MENU_LOADING_STATUS, SET_MENU_SUCCESS,
+  SET_MENU_FAILURE, UPDATE_MENU_SUCCESS,
+  UPDATE_MENU_FAILURE, GET_MEALS_SUCCESS,
+  GET_MEALS_FAILURE, UPDATE_MENU_LOADING_STATUS,
+  CREATE_MENU_LOADING_STATUS, GET_MEALS_LOADING_STATUS,
 } from '../actions/actionTypes';
 import initialState from '../reducers/initialState';
 
 
 const setupMenuReducer = (state = initialState.setupMenuReducer, action) => {
   switch (action.type) {
-    case GET_A_MENU_SUCCESS:
-      return {
-        ...state,
-        currentMenu: action.currentMenu,
-        error: null,
-      };
-    case GET_A_MENU_FAILURE:
-      return {
-        ...state,
-        error: action.error,
-      };
+    case GET_MENU_SUCCESS:
+      return { ...state, currentMenu: action.currentMenu, error: null };
+    case GET_MENU_FAILURE:
+      return { ...state, error: action.error };
+    case SET_MENU_SUCCESS:
+      return { ...state, currentMenu: action.currentMenu };
+    case SET_MENU_FAILURE:
+      return { ...state, error: action.error };
+    case UPDATE_MENU_SUCCESS:
+      return { ...state, currentMenu: action.currentMenu };
+    case UPDATE_MENU_FAILURE:
+      return { ...state, error: action.error };
+    case GET_MEALS_FAILURE:
+      return { ...state, error: action.error };
+    case GET_MEALS_SUCCESS:
+      return { ...state, meals: action.meals, error: null };
     case GET_MENU_LOADING_STATUS:
       return { ...state, isLoadingMenu: action.status };
+    case UPDATE_MENU_LOADING_STATUS:
+      return { ...state, isUpdating: action.status };
+    case CREATE_MENU_LOADING_STATUS:
+      return { ...state, isCreating: action.status };
+    case GET_MEALS_LOADING_STATUS:
+      return { ...state, isFetching: action.status };
     default:
       return {
         ...state,

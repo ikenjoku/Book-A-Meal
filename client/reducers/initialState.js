@@ -33,6 +33,10 @@ export default {
     currentMenu: {},
     isLoadingMenu: false,
     error: null,
+    meals: [],
+    isUpdating: false,
+    isFetching: false,
+    isCreating: false,
   },
   orderReducer: {
     orderedMeal: null,
