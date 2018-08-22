@@ -22,7 +22,7 @@ const MenuList = ({ menu, handleOrder, user, changeOrderStatus, handleModifyOrde
         } else {
           handleModifyOrder({newMealId: meal.id, id: orderIdToModify})
         }
-        }} className="food-add-btn">Order</button> : <p className='order-btn-text'>Place order from today's menu</p>}</div>
+        }} className="food-add-btn">Place Order</button> : <p className='order-btn-text'>Place order from today's menu</p>}</div>
       </div>
     ) : <p className='error-alert'>No meals has been added to this menu.</p> }
   </div>
