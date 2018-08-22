@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import bgImg from '../static/bg-img.jpg';
 import { connect } from 'react-redux';
 
 class Landing extends Component {
@@ -22,10 +21,8 @@ class Landing extends Component {
   }
 }
 
-const mapStateToProps = ({ authReducer }) => {
-  return {
-    isLoggedIn: authReducer.isLoggedIn,
-  }
-}
+const mapStateToProps = ({ authReducer }) => ({
+  isLoggedIn: authReducer.isLoggedIn,
+});
 
 export default connect(mapStateToProps, null)(Landing);

@@ -6,7 +6,7 @@ import notify from '../actions/notify';
 
 export default (ComposedComponent) => {
 
-  class Authenticate extends Component {
+  class ProtectRoute extends Component {
 
     isLoggedIn = () => {
       if (localStorage.BAMtoken) {
@@ -20,15 +20,14 @@ export default (ComposedComponent) => {
         return <ComposedComponent {...this.props} />
       } else {
         notify.error('Please log in to proceed');
-        // this.props.notifyUser('Please log in to proceed');
         return <Redirect to='/login' />
       }
     }
   }
-  //add proptypes here
+
   const mapStateToProps = ({ authReducer }) => ({
     isLoggedIn: authReducer.isLoggedIn,
     isAdmin: authReducer.user.isAdmin,
   });
-  return connect(mapStateToProps, null)(Authenticate);
+  return connect(mapStateToProps, null)(ProtectRoute);
 };

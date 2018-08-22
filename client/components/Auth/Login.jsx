@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect, Link } from "react-router-dom";
 import { loginAUser } from "../../actions/authActions/login";
@@ -61,7 +61,6 @@ class Login extends Component {
             <hr />
             <div className="right formText">
               <p>No Account? <Link to="/signup">Sign Up</Link> </p>
-              <Link to="#">Forgot your password?</Link>
             </div>
           </form>
         </main>
@@ -69,11 +68,15 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
+Login.propTypes = {
+  loginAUser: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  authLoading: PropTypes.bool.isRequired,
+}
+
+const mapStateToProps = state => ({
     isLoggedIn: state.authReducer.isLoggedIn,
     authLoading: state.authReducer.authLoading,
-  }
-};
+});
 
 export default connect(mapStateToProps, { loginAUser })(Login);

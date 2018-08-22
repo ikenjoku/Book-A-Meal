@@ -1,3 +1,4 @@
+import notify from './notify';
 import API from '../axiosConfig';
 import {
   GET_MEALS_SUCCESS, GET_MEALS_FAILURE,
@@ -71,43 +72,43 @@ const getPaginatedMeals = page => (dispatch) => {
     })
     .catch((err) => {
       dispatch(getMealsFailure(err));
-      // dispatch(getMealsLoadingStatus(false));
+      dispatch(getMealsLoadingStatus(false));
     });
 };
 
 const addAMeal = mealData => (dispatch) => {
   API.post('/meals', mealData)
     .then((res) => {
-      dispatch(addMeal({
-        meal: res.data.meal,
-      }));
+      dispatch(addMeal({ meal: res.data.meal }));
+      notify.success(res.data.message);
     })
-    .catch((err) => {
-      dispatch(addMealFailure(err));
+    .catch((error) => {
+      dispatch(addMealFailure(error));
+      notify.error(error.response.data.message);
     });
 };
-
 
 const updateAMeal = (id, updates) => (dispatch) => {
   API.put(`/meals/${id}`, updates)
     .then((res) => {
-      dispatch(updateMeal({
-        id,
-        updatedMeal: res.data.updatedMeal,
-      }));
+      dispatch(updateMeal({ id, updatedMeal: res.data.updatedMeal }));
+      notify.success(res.data.message);
     })
-    .catch((err) => {
-      dispatch(updateMealFailure(err));
+    .catch((error) => {
+      dispatch(updateMealFailure(error));
+      notify.error(error.response.data.message);
     });
 };
 
 const removeAMeal = ({ id }) => (dispatch) => {
   API.delete(`/meals/${id}`)
-    .then(() => {
+    .then((res) => {
       dispatch(removeMeal({ id }));
+      notify.success(res.data.message);
     })
     .catch((error) => {
       dispatch(removeMealFailure(error));
+      notify.error(error.response.data.message);
     });
 };
 

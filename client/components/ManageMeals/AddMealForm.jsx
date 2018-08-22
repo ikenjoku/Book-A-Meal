@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addAMeal } from "../../actions/mealActions";
+import PropTypes from 'prop-types';
 import MealForm from './MealForm';
+import { addAMeal } from "../../actions/mealActions";
 
 export class AddMealForm extends Component {
   onSubmit = (meal) => {
@@ -21,8 +22,8 @@ export class AddMealForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  addAMeal: (meal) => dispatch(addAMeal(meal))
-});
+AddMealForm.propType = {
+  addAMeal: PropTypes.func.isRequired,
+}
 
-export default connect(undefined, mapDispatchToProps)(AddMealForm);
+export default connect(undefined, { addAMeal })(AddMealForm);

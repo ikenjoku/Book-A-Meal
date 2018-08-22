@@ -145,7 +145,7 @@ export const validateMealUpdate = (req, res, next) => {
   }
   return Meal.findOne({ where: { name: req.body.name } })
     .then((meal) => {
-      if (meal) {
+      if (meal && meal.id !== Number(req.params.id)) {
         return res.status(409).send({
           message: 'Meal name already exist. Use a different name.',
         });

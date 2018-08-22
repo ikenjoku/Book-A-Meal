@@ -13,7 +13,7 @@ import SetupMenu from './SetupMenu/SetupMenu.jsx'
 
 import Footer from './Footer.jsx';
 import NotFound from './NotFound.jsx';
-import withAuthentication from "../components/RouteProtector";
+import withAuthentication from "../components/ProtectRoute";
 
 
 const App = () => (

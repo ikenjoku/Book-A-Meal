@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 class MealForm extends Component {
   constructor(props) {
@@ -103,4 +104,9 @@ class MealForm extends Component {
     );
   }
 }
+
+MealForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
 export default MealForm;

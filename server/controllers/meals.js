@@ -119,12 +119,11 @@ class MealController {
   static updateMeal(req, res, next) {
     const id = Number(req.params.id);
     delete req.body.id;
-    const imageurl = req.file.secure_url;
-    const {
-      name,
-      description,
-      price,
-    } = req.body;
+    const body = req.body;
+
+    if (req.file.secure_url) {
+      body.imageurl = req.file.secure_url;
+    }
 
     Meal.findById(id)
       .then((meal) => {
@@ -133,9 +132,7 @@ class MealController {
             message: 'Meal does not exist',
           });
         }
-        meal.update({
-          name, description, price, imageurl,
-        })
+        meal.update(body)
           .then((updatedMeal) => {
             res.status(200).send({
               message: 'Successfully updated meal',
