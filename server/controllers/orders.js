@@ -20,9 +20,9 @@ class OrderController {
    * @memberof OrderController
    */
   static createOrder(req, res, next) {
-    const { mealId, quantity } = req.body;
-    const { id } = req.user;
-    const userId = id;
+    const userId = req.user.id;
+    const { mealId } = req.body;
+    const quantity = Number(req.body.quantity);
     const date = new Date().toISOString().substr(0, 10);
 
     Meal.findById(mealId)
@@ -30,7 +30,7 @@ class OrderController {
         if (!meal) {
           return res.status(404).send({ message: 'Meal does not exist' });
         }
-        User.findById(id)
+        User.findById(userId)
           .then((user) => {
             if (!user) {
               return res.status(404).send({ message: 'Please signup to proceed' });

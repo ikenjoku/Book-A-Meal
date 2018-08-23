@@ -167,3 +167,41 @@
   color: gray;
   padding-right: 20px;
 }
+#place-order-table{
+  thead{
+    td{
+      color: #ffffff;
+      background-color: #ea5b31;
+    }
+  }
+  tbody{
+    tr{
+      background-color: #f2f2f2;
+      input{
+        width: 30px;
+        padding: 5px;
+        border-radius: 2px;
+        outline: whitesmoke;
+      }
+    }
+  }
+}
+
+.order-btn-container{
+  text-align: right;
+  margin-top: 40px;
+  button{
+    width: 125px;
+    margin-left: 20px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #942101;
+    color: white;
+    &:hover {
+      background-color: #942101c9;
+    }
+  }
+}
