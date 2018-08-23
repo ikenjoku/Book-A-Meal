@@ -19,16 +19,6 @@ export default {
     error: null,
 
   },
-  // setMenuReducer: {
-  //   createdMenu: null,
-  //   selectedDate: '',
-  //   success: false,
-  //   updatedMenu: null,
-  //   isLoading: false,
-  //   paginatedMeals: [],
-  //   count: 0,
-  //   pages: 0,
-  // },
   setupMenuReducer: {
     currentMenu: {},
     selectedDate: '',

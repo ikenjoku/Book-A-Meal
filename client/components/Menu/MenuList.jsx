@@ -25,8 +25,8 @@ class MenuList extends Component {
   handleModifyOrder = (order) => {
     this.props.modifyAnOrder(order)
   }
-  handleOpenModal = () => {
-    this.setState(() => ({ isOpen: true }));
+  handleOpenModal = ({ mealId }) => {
+    this.setState(() => ({ mealId, isOpen: true }));
   }
 
   handleCloseModal = () => {
@@ -69,9 +69,7 @@ class MenuList extends Component {
               <div>{menu.date === new Date().toISOString().substr(0, 10) ?
                 <button className='order-meal-btn' onClick={() => {
                   if (changeOrderStatus === false) {
-                    this.setState(() => ({ mealId: meal.id }));
-                    this.handleOpenModal();
-                    // this.handleOrder({ mealId: meal.id, id: user.id, meal })
+                    this.handleOpenModal({ mealId: meal.id });
                   } else {
                     this.handleModifyOrder({ newMealId: meal.id, id: orderIdToModify })
                   }

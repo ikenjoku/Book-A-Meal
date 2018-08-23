@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
-import CancelOrder from './CancelOrder';
+import CancelOrder from './CancelOrder.jsx';
+import UpdateOrder from './UpdateOrder.jsx';
 import { cancelAnOrder, modifyOrderStatus } from "../../actions/orderActions";
 
 class CurrentOrderTable extends Component{
@@ -11,14 +12,23 @@ class CurrentOrderTable extends Component{
       openCancelModal: false,
       openUpdateModal: false,
       orderId: undefined,
+      orderToUpdate: undefined,
     }
   }
-  openCancelModal = () => {
-    this.setState(() => ({ openCancelModal: true }));
+  openCancelModal = ({ orderId }) => {
+    this.setState(() => ({ orderId, openCancelModal: true }));
   }
 
   closeCancelModal = () => {
     this.setState(() => ({ openCancelModal: false }));
+  }
+
+  handleOrderUpdate = (orderToUpdate) => {
+    this.setState(() => ({ orderToUpdate, openUpdateModal: true }))
+  }
+
+  closeUpdateModal = () => {
+    this.setState(() => ({ openUpdateModal: false }));
   }
 
   render(){
@@ -52,15 +62,17 @@ class CurrentOrderTable extends Component{
             <div className="order-item-actions">
               <button 
                 className={changeOrderStatus && orderIdToModify === order.id ? 'highlight-btn' : undefined} 
-                onClick={() => { modifyOrderStatus(!changeOrderStatus, order.id) }}
+                onClick={() => { 
+                  this.handleOrderUpdate(order);
+                  modifyOrderStatus(!changeOrderStatus, order.id); 
+                }}
               >
                 <i className='far fa-edit'></i>
               </button>
               <button 
                 className='cancel-order-icon' 
                 onClick={() => { 
-                  this.setState(() => ({ orderId: order.id }));
-                  this.openCancelModal();
+                  this.openCancelModal({ orderId: order.id });
                 }}
               >
                 <i className="far fa-times-circle 5x"></i>
@@ -81,6 +93,19 @@ class CurrentOrderTable extends Component{
            closeModal={this.closeCancelModal}
            orderId={this.state.orderId} 
            />
+        </Modal>
+        <Modal
+          isOpen={this.state.openUpdateModal}
+          contentLabel="update-order"
+          style={modalStyle}
+        >
+          <div className="close-icon"> <button
+            onClick={this.closeUpdateModal}
+          ><i className="fas fa-times fa-2x"></i></button></div>
+            <UpdateOrder
+            closeModal={this.closeUpdateModal}
+            orderToUpdate={this.state.orderToUpdate} 
+            />
         </Modal>
     </div>
     );

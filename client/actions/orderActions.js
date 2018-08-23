@@ -160,3 +160,18 @@ export const modifyAnOrder = ({ id, newMealId }) => (dispatch) => {
       notify.error(error.response.data.message);
     });
 };
+
+export const updateAnOrder = ({ id, quantity, amount, userId }) => (dispatch) => {
+  API.put(`/orders/${id}`, { quantity, amount })
+    .then((res) => {
+      dispatch(modifyOrderSuccess({ modifiedOrder: res.data.order, id }));
+      dispatch(getAllPreviousOrders(userId));
+      dispatch(modifyOrderStatus(false));
+      notify.success(res.data.message);
+    })
+    .catch((error) => {
+      dispatch(modifyOrderFailure(error));
+      dispatch(modifyOrderStatus(false));
+      notify.error(error.response.data.message);
+    });
+};
