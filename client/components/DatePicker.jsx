@@ -1,34 +1,20 @@
 import React, { Component } from 'react';
-import moment from 'moment';
-
 
 export default class DatePicker extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedDate: '',
-      formattedDate: '',
-    }
+  state = {
+    selectedDate: '',
   }
+
   onDateChange = (event) => {
     const selectedDate = event.target.value;
-    const formattedDate = moment(selectedDate).format("dddd, MMMM Do YYYY");
-
-    this.setState(() => (
-      {
-        selectedDate: selectedDate,
-        formattedDate: formattedDate,
-      }
-    ));
-    if (this.props.onChange) {
-      this.props.onChange({ selectedDate })
-    }
+    this.setState(() => ({ selectedDate: selectedDate }));
+    if (this.props.onChange) { this.props.onChange({ selectedDate }) }
   }
+
   onFormSubmit = (event) => {
     event.preventDefault();
-    const { selectedDate, formattedDate } = this.state;
-    this.props.onSubmit({ selectedDate, formattedDate })
+    const { selectedDate } = this.state;
+    this.props.onSubmit({ selectedDate })
   }
 
   render() {

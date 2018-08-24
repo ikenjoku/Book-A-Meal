@@ -2,31 +2,29 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
-
+import Modal from 'react-modal';
+import DeleteMeal from './DeleteMeal.jsx';
 import { getPaginatedMeals } from "../../actions/mealActions.js";
-import OptionModal from '../OptionModal';
 export class MealList extends Component {
 
   state = {
-    showDeleteModal: undefined,
-    mealId: undefined,
+    openDeleteModal: false,
+    mealToDelete: undefined,
     currentPage: 0
   }
 
   componentDidMount() {
     this.props.getPaginatedMeals(this.state.currentPage);
   }
-  handleModalClose = () => {
+  closeDeleteModal = () => {
     this.setState(() => ({
-      showDeleteModal: undefined,
-      mealId: undefined
+      openDeleteModal: false,
     }));
   }
-  handleDelete = (id) => {
-    const mealToDelete = this.props.paginatedMeals.find(meal => meal.id === id);
+  handleDelete = (mealToDelete) => {
     this.setState(() => ({
-      showDeleteModal: mealToDelete.name,
-      mealId: mealToDelete.id
+      mealToDelete,
+      openDeleteModal: true,
     }));
   }
   handleNext = () => {
@@ -49,6 +47,24 @@ export class MealList extends Component {
     for (let pageNum = 0; pageNum < numOfPage; pageNum++) {
       pageNumArr.push(pageNum + 1);
     }
+
+    const modalStyle = {
+      overlay: {
+        backgroundColor: 'rgba(0, 0, 0, 0.25)',
+      },
+      content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        minWidth: '20rem',
+        width: '60%',
+        overflow: 'hidden',
+      },
+    };
+    
     return (
       <main className="manage-meals-content">
         <h2 className="center cool-lg-text">Manage Meals</h2>
@@ -98,7 +114,7 @@ export class MealList extends Component {
                             </Link>
                         <a
                           className="mg-meal-btn btn-danger"
-                          onClick={() => { this.handleDelete(meal.id) }
+                          onClick={() => { this.handleDelete(meal) }
                           }
                         >
                           Delete
@@ -122,11 +138,20 @@ export class MealList extends Component {
               )}
             <span ><i className="fas fa-angle-double-right page-btn" onClick={() => { this.handleNext() }}></i></span>
           </div>
-          <OptionModal
-            handleModalClose={this.handleModalClose}
-            showDeleteModal={this.state.showDeleteModal}
-            mealId={this.state.mealId}
-          />
+            <Modal
+              isOpen={this.state.openDeleteModal}
+              contentLabel="delete-order"
+              style={modalStyle}
+              ariaHideApp={false}
+            >
+              <div className="close-icon"> <button
+                onClick={this.closeDeleteModal}
+              ><i className="fas fa-times fa-2x"></i></button></div>
+                <DeleteMeal
+                closeModal={this.closeDeleteModal}
+                meal={this.state.mealToDelete} 
+                />
+            </Modal>
         </div>
       </main>
     );

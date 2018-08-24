@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import CancelOrder from './CancelOrder.jsx';
 import UpdateOrder from './UpdateOrder.jsx';
-import { cancelAnOrder, modifyOrderStatus } from "../../actions/orderActions";
 
 class CurrentOrderTable extends Component{
   constructor(props){
@@ -32,7 +31,7 @@ class CurrentOrderTable extends Component{
   }
 
   render(){
-    const { currentOrders, changeOrderStatus, cancelAnOrder, modifyOrderStatus, orderIdToModify } = this.props;
+    const { currentOrders } = this.props;
     const pendingOrders = currentOrders.filter(order => order.status === 'pending');
     const modalStyle = {
       overlay: {
@@ -61,11 +60,7 @@ class CurrentOrderTable extends Component{
             <div className="order-item-amount">&#8358; {order.amount}</div>
             <div className="order-item-actions">
               <button 
-                className={changeOrderStatus && orderIdToModify === order.id ? 'highlight-btn' : undefined} 
-                onClick={() => { 
-                  this.handleOrderUpdate(order);
-                  modifyOrderStatus(!changeOrderStatus, order.id); 
-                }}
+                onClick={() => { this.handleOrderUpdate(order)}}
               >
                 <i className='far fa-edit'></i>
               </button>
@@ -85,6 +80,7 @@ class CurrentOrderTable extends Component{
         isOpen={this.state.openCancelModal}
         contentLabel="cancel-order"
         style={modalStyle}
+        ariaHideApp={false}
       >
         <div className="close-icon"> <button
           onClick={this.closeCancelModal}
@@ -98,6 +94,7 @@ class CurrentOrderTable extends Component{
           isOpen={this.state.openUpdateModal}
           contentLabel="update-order"
           style={modalStyle}
+          ariaHideApp={false}
         >
           <div className="close-icon"> <button
             onClick={this.closeUpdateModal}
@@ -114,9 +111,6 @@ class CurrentOrderTable extends Component{
 
 const mapStateToProps = state => ({
   currentOrders: state.orderReducer.previousOrders,
-  changeOrderStatus: state.orderReducer.changeOrderStatus,
-  orderIdToModify: state.orderReducer.orderIdToModify
-
 });
 
-export default connect(mapStateToProps, { cancelAnOrder, modifyOrderStatus })(CurrentOrderTable);
+export default connect(mapStateToProps, null)(CurrentOrderTable);

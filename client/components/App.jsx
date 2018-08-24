@@ -10,11 +10,9 @@ import AddMeal from './ManageMeals/AddMealForm.jsx';
 import OrderHistory from './OrderHistory/OrderHistory.jsx';
 import Menu from './Menu/Menu.jsx';
 import SetupMenu from './SetupMenu/SetupMenu.jsx'
-
 import Footer from './Footer.jsx';
 import NotFound from './NotFound.jsx';
 import withAuthentication from "../components/ProtectRoute";
-
 
 const App = () => (
   <BrowserRouter>

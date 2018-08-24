@@ -1,32 +1,20 @@
-import React, { Component } from 'react';
-
+import React from 'react';
 import MenuTable from './MenuTable.jsx';
 import PreviousOrderTable from './PreviousOrderTable.jsx';
 import CurrentOrderTable from './CurrentOrderTable.jsx';
 
-export default class Menu extends Component {
-  constructor(props) {
-    super(props);
-  }
+const Menu = () =>
+  <main className="menu-list-content">
+    <div className="menu-list">
+      <MenuTable />
+    </div>
+    <div className="order-summary">
+      <div className="order-summary-wrap">
+        <CurrentOrderTable />
+        <PreviousOrderTable />
+      </div>
+    </div>
+  </main>
 
-
-  render() {
-    return (
-        <main className="menu-list-content">
-          <div className="menu-list">
-            <MenuTable  />
-          </div>
-          <div className="order-summary">
-            <div className="order-summary-wrap">
-              <CurrentOrderTable />
-              <PreviousOrderTable />
-            </div>
-          </div>
-        </main>
-    );
-  }
-}
-
-
-
+export default Menu;
 

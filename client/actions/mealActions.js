@@ -100,7 +100,7 @@ const updateAMeal = (id, updates) => (dispatch) => {
     });
 };
 
-const removeAMeal = ({ id }) => (dispatch) => {
+const removeAMeal = id => (dispatch) => {
   API.delete(`/meals/${id}`)
     .then((res) => {
       dispatch(removeMeal({ id }));

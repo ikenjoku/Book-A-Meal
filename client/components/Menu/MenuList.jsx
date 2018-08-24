@@ -80,6 +80,7 @@ class MenuList extends Component {
               isOpen={this.state.isOpen}
               contentLabel="place-order"
               style={modalStyle}
+              ariaHideApp={false}
             >
               <div className="close-icon">
                <button

@@ -205,3 +205,25 @@
     }
   }
 }
+
+.confirm-modal{
+  text-align: center;
+  margin-bottom: 10px;
+  h3{
+    margin-top: 0px;
+  }
+  button{
+    width: 125px;
+    margin-left: 20px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #942101;
+    color: white;
+    &:hover {
+      background-color: #942101c9;
+    }
+  }
+}
