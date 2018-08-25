@@ -86,23 +86,51 @@ class MealController {
    * @memberof MealController
    */
 
+  // static getMeals(req, res, next) {
+  //   const page = req.query.page || 0; // page number
+  //   const limit = 5; // number of records per page
+  //   let offset = page * limit;
+
+  //   Meal.findAndCountAll({
+  //     limit,
+  //     offset,
+  //     order: ['id'],
+  //   }).then((data) => {
+  //     const pages = Math.ceil(data.count / limit);
+  //     offset = limit * (page - 1);
+  //     const meals = data.rows;
+  //     res.status(200).json({ meals, count: data.count, pages });
+  //   })
+  //     .catch(error => next(error));
+  // }
+
   static getMeals(req, res, next) {
-    const page = req.query.page || 0; // page number
-    const limit = 5; // number of records per page
-    let offset = page * limit;
+    const limit = req.query.limit || 5;
+    const page = req.query.page || 1;
+    const offset = limit * (page - 1);
 
     Meal.findAndCountAll({
       limit,
       offset,
-      order: ['id'],
-    }).then((data) => {
-      const pages = Math.ceil(data.count / limit);
-      offset = limit * (page - 1);
-      const meals = data.rows;
-      res.status(200).json({ meals, count: data.count, pages });
+      order: [['createdAt', 'DESC']],
+    }).then((meals) => {
+      if (meals.count === 0) {
+        return res.status(404).send({
+          message: 'No meals found',
+          meals: meals.rows,
+        });
+      }
+      const pages = Math.ceil(meals.count / limit);
+      return res.status(200).send({
+        message: 'Meals successfully retrieved',
+        meals,
+        pages,
+        count: meals.count,
+      });
     })
       .catch(error => next(error));
   }
+
   /**
    * Edit a particular meal
    *

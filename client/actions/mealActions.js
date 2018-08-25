@@ -15,7 +15,7 @@ const getMeals = meals => ({
 
 const getPageMeals = ({ meals, count, pages }) => ({
   type: GET_PAGINATED_MEALS,
-  meals,
+  meals: meals.rows,
   count,
   pages,
 });
@@ -63,9 +63,9 @@ const removeMealFailure = error => ({
 });
 
 
-const getPaginatedMeals = page => (dispatch) => {
+const getPaginatedMeals = ({ limit, page }) => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
-  API.get(`/meals?page=${page}`)
+  API.get(`/meals?limit=${limit}&page=${page}`)
     .then((res) => {
       dispatch(getPageMeals(res.data));
       dispatch(getMealsLoadingStatus(false));

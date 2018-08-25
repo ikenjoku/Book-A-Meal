@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import Modal from 'react-modal';
+import Pagination from "react-js-pagination";
 import DeleteMeal from './DeleteMeal.jsx';
 import { getPaginatedMeals } from "../../actions/mealActions.js";
 export class MealList extends Component {
@@ -10,44 +11,33 @@ export class MealList extends Component {
   state = {
     openDeleteModal: false,
     mealToDelete: undefined,
-    currentPage: 0
+    activePage: 1,
   }
 
   componentDidMount() {
-    this.props.getPaginatedMeals(this.state.currentPage);
+    this.props.getPaginatedMeals({limit: 5, page: 1});
   }
+
   closeDeleteModal = () => {
     this.setState(() => ({
       openDeleteModal: false,
     }));
   }
+
   handleDelete = (mealToDelete) => {
     this.setState(() => ({
       mealToDelete,
       openDeleteModal: true,
     }));
   }
-  handleNext = () => {
-    if (this.props.pages - 1 > this.state.currentPage) {
-      this.props.getPaginatedMeals(this.state.currentPage + 1);
-      this.setState((prevState) => ({ currentPage: prevState.currentPage + 1 }));
-    }
-  }
-  handlePrevious = () => {
-    if (this.state.currentPage > 0) {
-      this.props.getPaginatedMeals(this.state.currentPage - 1);
-      this.setState((prevState) => ({ currentPage: prevState.currentPage - 1 }));
-    }
+
+  handlePageChange = (pageNumber) => {
+    const limit = 5;
+    this.props.getPaginatedMeals({limit, page:pageNumber});
+    this.setState(() => ({activePage: pageNumber}));
   }
 
   render() {
-    let numOfPage;
-    let pageNumArr = [];
-    numOfPage = this.props.pages || 0;
-    for (let pageNum = 0; pageNum < numOfPage; pageNum++) {
-      pageNumArr.push(pageNum + 1);
-    }
-
     const modalStyle = {
       overlay: {
         backgroundColor: 'rgba(0, 0, 0, 0.25)',
@@ -126,17 +116,14 @@ export class MealList extends Component {
               </div>
           }
           <hr />
-          <div className='center'>
-            <span onClick={() => { this.handlePrevious() }}><i className="fas fa-angle-double-left page-btn"></i></span>
-            {
-              pageNumArr && pageNumArr.map(num =>
-                <span className={this.state.currentPage === num - 1 ? 'page-num current-page' : 'page-num'} key={num} onClick={() => {
-                  this.props.getPaginatedMeals(num - 1);
-                  this.setState(() => ({ currentPage: num - 1 }));
-                }
-                }>{num}</span>
-              )}
-            <span ><i className="fas fa-angle-double-right page-btn" onClick={() => { this.handleNext() }}></i></span>
+          <div className='center'>      
+            <Pagination
+                activePage={this.state.activePage}
+                itemsCountPerPage={5}
+                totalItemsCount={this.props.count}
+                pageRangeDisplayed={5}
+                onChange={this.handlePageChange}
+              />
           </div>
             <Modal
               isOpen={this.state.openDeleteModal}

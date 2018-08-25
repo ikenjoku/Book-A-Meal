@@ -63,6 +63,7 @@ class MenuCard extends Component{
             isOpen={this.state.isOpen}
             contentLabel="Menu"
             style={modalStyle}
+            ariaHideApp={false}
           >
            <div className="close-icon"> <button
               onClick={this.handleCloseModal}
@@ -80,6 +81,7 @@ class MenuCard extends Component{
               isOpen={this.state.isOpen}
               contentLabel="Menu"
               style={modalStyle}
+              ariaHideApp={false}
             >
               <div className="close-icon">
                <button

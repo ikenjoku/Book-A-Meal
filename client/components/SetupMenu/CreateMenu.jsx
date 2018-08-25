@@ -10,7 +10,7 @@ class CreateMenu extends Component {
   }
 
   componentDidMount() {
-    this.props.getAMeals();
+    this.props.getAMeals({limit: 20, page: 1});
   }
 
   handleSubmit = (values) => {

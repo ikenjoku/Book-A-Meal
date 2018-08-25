@@ -25,6 +25,8 @@ export default {
     isLoadingMenu: false,
     error: null,
     meals: [],
+    count: 0,
+    pages: 0,
     isUpdating: false,
     isFetching: false,
     isCreating: false,

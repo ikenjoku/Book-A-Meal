@@ -14,7 +14,9 @@ class PlaceOrder extends Component {
   }
 
   handleConfirmOrder = () => {
-    const { mealId, quantity } = this.state;
+    const { mealId } = this.state;
+    const quantity = Number(this.state.quantity)
+    console.log({ mealId, quantity })
     this.props.handleOrder({ mealId, quantity });
     this.props.closeModal();
   }

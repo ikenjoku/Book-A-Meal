@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeAMeal } from "../../actions/mealActions";
 
-const DeleteMeal = ({ meal, closeModal, removeAMeal }) => {
+export const DeleteMeal = ({ meal, closeModal, removeAMeal }) => {
 
   return (
     <div className='confirm-modal'>
       <h3>Are you sure you want to delete {meal.name}?</h3>
       <div>
-        <button onClick={() => {
+        <button id='confirm-delete-btn' onClick={() => {
           removeAMeal(meal.id);
           closeModal();
           }}>Yes</button>

@@ -46,9 +46,11 @@ const updateMenuFailure = error => ({
   error,
 });
 
-const getMeals = meals => ({
+const getMeals = ({ meals, count, pages }) => ({
   type: GET_MEALS_SUCCESS,
-  meals,
+  meals: meals.rows,
+  count,
+  pages,
 });
 
 const getMealsFailure = error => ({
@@ -95,38 +97,41 @@ export const setAMenu = ({ date, mealIds }) => (dispatch) => {
   dispatch(isCreating(true));
   API.post('/menu', { date, mealIds })
     .then((res) => {
+      notify.success(res.data.message);
       dispatch(setMenu(res.data.menu));
       dispatch(isCreating(false));
     })
     .catch((error) => {
       dispatch(setMenuFailure(error));
       dispatch(isCreating(false));
+      notify.error(error.response.data.message);
     });
 };
 
 export const updateAMenu = ({ mealIds }, id) => (dispatch) => {
-  console.log(id, mealIds);
   dispatch(isUpdating(true));
   API.put(`/menu/${id}`, { mealIds })
     .then((res) => {
+      notify.success(res.data.message);
       dispatch(updateMenu(res.data.menu));
       dispatch(isUpdating(false));
     })
     .catch((error) => {
       dispatch(updateMenuFailure(error));
       dispatch(isUpdating(false));
+      notify.error(error.response.data.message);
     });
 };
 
-export const getAMeals = () => (dispatch) => {
+export const getAMeals = ({ limit, page }) => (dispatch) => {
   dispatch(isFetching(true));
-  API.get('/meals')
+  API.get(`/meals?limit=${limit}&page=${page}`)
     .then((res) => {
-      dispatch(getMeals(res.data.meals));
+      dispatch(getMeals(res.data));
       dispatch(isFetching(false));
     })
     .catch((error) => {
       dispatch(getMealsFailure(error));
-      dispatch(isUpdating(false));
+      dispatch(isFetching(false));
     });
 };

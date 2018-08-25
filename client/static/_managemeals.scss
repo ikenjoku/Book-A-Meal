@@ -174,3 +174,26 @@
   font-size: 25px;
   color: white;
 }
+
+.pagination{
+  display: inline-block;
+  li {
+    list-style: none;
+    float: left;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    color: #ededed;
+    a {
+      text-decoration: none;
+      color: #ea5b31
+    }
+  }
+  li.active{
+    background-color: #ea5b31;
+    border: 1px solid #ea5b31;
+    a{
+      color: white;
+    }
+  }
+}

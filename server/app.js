@@ -44,6 +44,7 @@ app.use((error, req, res, next) => {
       message: 'Invalid date. Use this format YYYY-MM-DD',
     });
   }
+  console.log(error);
   res.status(500).send({ message: 'Something broke!' });
 });
 

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Pagination from "react-js-pagination";
+import { connect } from 'react-redux';
+import { getAMeals } from '../../actions/setupMenuActions';
 import MealCheckList from './MealCheckList';
 
 class MealSetupForm extends Component {
   state = {
     date: this.props.date || '',
     mealIds: [],
+    activePage: 1,
   };
 
   handleChange = (event) => {
@@ -42,6 +46,12 @@ class MealSetupForm extends Component {
     }
   }
 
+  handlePageChange = (pageNumber) => {
+    const limit = 20;
+    this.props.getAMeals({limit, page:pageNumber});
+    this.setState(() => ({activePage: pageNumber}));
+  }
+
   render() {
     return (
       <form
@@ -64,6 +74,15 @@ class MealSetupForm extends Component {
             handleSelect={this.handleSelect}
           />
         </div>
+        <div className='center'>      
+            <Pagination
+                activePage={this.state.activePage}
+                itemsCountPerPage={20}
+                totalItemsCount={this.props.count}
+                pageRangeDisplayed={20}
+                onChange={this.handlePageChange}
+              />
+          </div>
         <div className='setup-btn-container'>
           <button
             value="Submit"
@@ -77,10 +96,16 @@ class MealSetupForm extends Component {
   }
 }
 
+export const mapStateToProps = state => ({
+  count: state.setupMenuReducer.count,
+  pages: state.setupMenuReducer.pages,
+});
+
 MealSetupForm.propTypes = {
   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   action: PropTypes.string.isRequired,
 };
 
-export default MealSetupForm;
+
+export default connect(mapStateToProps, { getAMeals })(MealSetupForm);

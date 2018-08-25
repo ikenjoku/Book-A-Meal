@@ -27,7 +27,7 @@ const setupMenuReducer = (state = initialState.setupMenuReducer, action) => {
     case GET_MEALS_FAILURE:
       return { ...state, error: action.error };
     case GET_MEALS_SUCCESS:
-      return { ...state, meals: action.meals, error: null };
+      return { ...state, meals: action.meals, count: action.count, pages: action.pages, error: null };
     case SET_SELECTED_DATE:
       return { ...state, selectedDate: action.selectedDate };
     case GET_MENU_LOADING_STATUS:
