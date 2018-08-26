@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import QuantityField from './QuantityField';
-class PlaceOrder extends Component {
+export class PlaceOrder extends Component {
   state = {
     quantity: 1,
     mealId: this.props.mealId,
@@ -16,7 +16,6 @@ class PlaceOrder extends Component {
   handleConfirmOrder = () => {
     const { mealId } = this.state;
     const quantity = Number(this.state.quantity)
-    console.log({ mealId, quantity })
     this.props.handleOrder({ mealId, quantity });
     this.props.closeModal();
   }
@@ -57,7 +56,7 @@ PlaceOrder.propTypes = {
   closeModal: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   mealsInMenu: state.menuReducer.selectedMenu.Meals,
 });
 export default connect(mapStateToProps, null)(PlaceOrder);

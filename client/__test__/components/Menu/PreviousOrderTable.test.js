@@ -1,20 +1,33 @@
 import React from 'react';
 import { shallow } from "enzyme";
-import { PreviousOrderTable } from "../../../components/Menu/PreviousOrderTable";
+import { PreviousOrderTable, mapStateToProps } from "../../../components/Menu/PreviousOrderTable";
+import initialState from '../../../reducers/initialState';
 import { orders } from "../../mocks";
 
-let getAllPreviousOrders, wrapper;
 
-beforeEach(() => {
-  getAllPreviousOrders = jest.fn();
-  wrapper = shallow(
-  <PreviousOrderTable 
-    getAllPreviousOrders={getAllPreviousOrders} 
-    isLoggedIn={true}
-    previousOrders={orders}
-  />);
-});
+describe('Menu: PreviousOrderTable Component', () => {
+  let wrapper, previousOrders;
+  previousOrders = orders;
 
-test('should render the PreviousOrderTable correctly', () => {
-  expect(wrapper).toMatchSnapshot();
+  test('Should render PreviousOrderTable correctly', () => {
+    wrapper = shallow(
+      <PreviousOrderTable
+        previousOrders={orders}
+      />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('Should show a notice when there are no previous orders', () => {
+    wrapper = shallow(
+      <PreviousOrderTable
+        previousOrders={[]}
+      />);
+      expect(wrapper.find('.no-history-alert').length).toBe(1);
+    });
+
+  test('should map state to props', () => {
+    const ownProps = { previousOrders: previousOrders };
+    const tree = mapStateToProps(initialState, ownProps);
+    expect(tree).toMatchSnapshot();
+  });
 });

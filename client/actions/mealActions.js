@@ -1,69 +1,64 @@
 import notify from './notify';
 import API from '../axiosConfig';
 import {
-  GET_MEALS_SUCCESS, GET_MEALS_FAILURE,
+  GET_MEALS_FAILURE,
   ADD_MEAL_SUCCESS, ADD_MEAL_FAILURE,
   UPDATE_MEAL_SUCCESS, UPDATE_MEAL_FAILURE,
   REMOVE_MEAL_SUCCESS, REMOVE_MEAL_FAILURE,
   GET_MEALS_LOADING_STATUS, GET_PAGINATED_MEALS,
 } from './actionTypes';
 
-const getMeals = meals => ({
-  type: GET_MEALS_SUCCESS,
-  meals,
-});
-
-const getPageMeals = ({ meals, count, pages }) => ({
+export const getPageMeals = ({ meals, count, pages }) => ({
   type: GET_PAGINATED_MEALS,
   meals: meals.rows,
   count,
   pages,
 });
 
-const getMealsFailure = error => ({
+export const getMealsFailure = error => ({
   type: GET_MEALS_FAILURE,
   error,
 });
 
-const getMealsLoadingStatus = status => ({
+export const getMealsLoadingStatus = status => ({
   type: GET_MEALS_LOADING_STATUS,
   status,
 });
 
-const addMeal = meal => ({
+export const addMeal = meal => ({
   type: ADD_MEAL_SUCCESS,
   meal: meal.meal,
 });
 
-const addMealFailure = error => ({
+export const addMealFailure = error => ({
   type: ADD_MEAL_FAILURE,
   error,
 });
 
 
-const updateMeal = ({ id, updatedMeal }) => ({
+export const updateMeal = ({ id, updatedMeal }) => ({
   type: UPDATE_MEAL_SUCCESS,
   id,
   updatedMeal,
 });
 
-const updateMealFailure = error => ({
+export const updateMealFailure = error => ({
   type: UPDATE_MEAL_FAILURE,
   error,
 });
 
-const removeMeal = ({ id }) => ({
+export const removeMeal = ({ id }) => ({
   type: REMOVE_MEAL_SUCCESS,
   id,
 });
 
-const removeMealFailure = error => ({
+export const removeMealFailure = error => ({
   type: REMOVE_MEAL_FAILURE,
   error,
 });
 
 
-const getPaginatedMeals = ({ limit, page }) => (dispatch) => {
+export const getPaginatedMeals = ({ limit, page }) => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
   API.get(`/meals?limit=${limit}&page=${page}`)
     .then((res) => {
@@ -76,7 +71,7 @@ const getPaginatedMeals = ({ limit, page }) => (dispatch) => {
     });
 };
 
-const addAMeal = mealData => (dispatch) => {
+export const addAMeal = mealData => (dispatch) => {
   API.post('/meals', mealData)
     .then((res) => {
       dispatch(addMeal({ meal: res.data.meal }));
@@ -88,7 +83,7 @@ const addAMeal = mealData => (dispatch) => {
     });
 };
 
-const updateAMeal = (id, updates) => (dispatch) => {
+export const updateAMeal = (id, updates) => (dispatch) => {
   API.put(`/meals/${id}`, updates)
     .then((res) => {
       dispatch(updateMeal({ id, updatedMeal: res.data.updatedMeal }));
@@ -100,7 +95,7 @@ const updateAMeal = (id, updates) => (dispatch) => {
     });
 };
 
-const removeAMeal = id => (dispatch) => {
+export const removeAMeal = id => (dispatch) => {
   API.delete(`/meals/${id}`)
     .then((res) => {
       dispatch(removeMeal({ id }));
@@ -110,12 +105,4 @@ const removeAMeal = id => (dispatch) => {
       dispatch(removeMealFailure(error));
       notify.error(error.response.data.message);
     });
-};
-
-
-export {
-  getPaginatedMeals,
-  addAMeal,
-  updateAMeal,
-  removeAMeal,
 };

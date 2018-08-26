@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
+import modalStyle from '../../utils/modalStyle'
 import CancelOrder from './CancelOrder.jsx';
 import UpdateOrder from './UpdateOrder.jsx';
+import { getAllPreviousOrders } from "../../actions/orderActions";
 
-class CurrentOrderTable extends Component{
+export class CurrentOrderTable extends Component{
   constructor(props){
     super(props)
     this.state = {
@@ -14,6 +16,11 @@ class CurrentOrderTable extends Component{
       orderToUpdate: undefined,
     }
   }
+
+  componentDidMount(){
+    this.props.getAllPreviousOrders(this.props.userId);
+  }
+
   openCancelModal = ({ orderId }) => {
     this.setState(() => ({ orderId, openCancelModal: true }));
   }
@@ -33,22 +40,6 @@ class CurrentOrderTable extends Component{
   render(){
     const { currentOrders } = this.props;
     const pendingOrders = currentOrders.filter(order => order.status === 'pending');
-    const modalStyle = {
-      overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.25)',
-      },
-      content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        minWidth: '20rem',
-        width: '60%',
-        overflow: 'hidden',
-      },
-    };
 
     return (
     <div>
@@ -60,6 +51,7 @@ class CurrentOrderTable extends Component{
             <div className="order-item-amount">&#8358; {order.amount}</div>
             <div className="order-item-actions">
               <button 
+                  className='update-order-icon' 
                 onClick={() => { this.handleOrderUpdate(order)}}
               >
                 <i className='far fa-edit'></i>
@@ -109,8 +101,9 @@ class CurrentOrderTable extends Component{
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   currentOrders: state.orderReducer.previousOrders,
+  userId: state.authReducer.user.id,
 });
 
-export default connect(mapStateToProps, null)(CurrentOrderTable);
+export default connect(mapStateToProps, { getAllPreviousOrders })(CurrentOrderTable);

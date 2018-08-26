@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the CurrentOrderTable correctly 1`] = `
+exports[`Menu: CurrentOrderTable Component Should render CurrentOrderTable correctly 1`] = `
 <div>
   <h4>
     Current Order
@@ -24,6 +24,7 @@ exports[`should render the CurrentOrderTable correctly 1`] = `
       className="order-item-actions"
     >
       <button
+        className="update-order-icon"
         onClick={[Function]}
       >
         <i
@@ -38,9 +39,109 @@ exports[`should render the CurrentOrderTable correctly 1`] = `
           className="far fa-times-circle 5x"
         />
       </button>
-       
     </div>
   </div>
   <hr />
+  <Modal
+    ariaHideApp={false}
+    bodyOpenClassName="ReactModal__Body--open"
+    closeTimeoutMS={0}
+    contentLabel="cancel-order"
+    isOpen={false}
+    parentSelector={[Function]}
+    portalClassName="ReactModalPortal"
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    shouldFocusAfterRender={true}
+    shouldReturnFocusAfterClose={true}
+    style={
+      Object {
+        "content": Object {
+          "bottom": "auto",
+          "left": "50%",
+          "marginRight": "-50%",
+          "minWidth": "20rem",
+          "overflow": "hidden",
+          "right": "auto",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "width": "40%",
+        },
+        "overlay": Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.25)",
+        },
+      }
+    }
+  >
+    <div
+      className="close-icon"
+    >
+       
+      <button
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-times fa-2x"
+        />
+      </button>
+    </div>
+    <Connect(CancelOrder)
+      closeModal={[Function]}
+    />
+  </Modal>
+  <Modal
+    ariaHideApp={false}
+    bodyOpenClassName="ReactModal__Body--open"
+    closeTimeoutMS={0}
+    contentLabel="update-order"
+    isOpen={false}
+    parentSelector={[Function]}
+    portalClassName="ReactModalPortal"
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    shouldFocusAfterRender={true}
+    shouldReturnFocusAfterClose={true}
+    style={
+      Object {
+        "content": Object {
+          "bottom": "auto",
+          "left": "50%",
+          "marginRight": "-50%",
+          "minWidth": "20rem",
+          "overflow": "hidden",
+          "right": "auto",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "width": "40%",
+        },
+        "overlay": Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.25)",
+        },
+      }
+    }
+  >
+    <div
+      className="close-icon"
+    >
+       
+      <button
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-times fa-2x"
+        />
+      </button>
+    </div>
+    <Connect(UpdateOrder)
+      closeModal={[Function]}
+    />
+  </Modal>
 </div>
+`;
+
+exports[`Menu: CurrentOrderTable Component should map state to props 1`] = `
+Object {
+  "currentOrders": Array [],
+  "userId": undefined,
+}
 `;

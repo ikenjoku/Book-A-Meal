@@ -28,7 +28,7 @@ EditMealForm.propTypes = {
   meal: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = (state, props) => ({
+export const mapStateToProps = (state, props) => ({
   meal: state.mealReducer.paginatedMeals.find((meal) => meal.id === Number(props.match.params.id))
 });
 

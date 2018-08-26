@@ -1,23 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
-import { getAllPreviousOrders } from "../../actions/orderActions";
 
-export class PreviousOrderTable extends Component{
-  constructor(props){
-    super(props);
-  }
-
-  componentDidMount(){
-    this.props.getAllPreviousOrders(this.props.userId);
-  }
-
-  render(){
-    const deliveredOrders = this.props.previousOrders.filter(order => order.status === 'delivered');
+export const PreviousOrderTable = (props) => {
+    const deliveredOrders = props.previousOrders.filter(order => order.status === 'delivered');
     return (
     <div>
       <h4>Previous orders</h4>
       <div className='prev-order-container'>
-      {deliveredOrders.length === 0 ? <p>No order history</p> :
+      {deliveredOrders.length === 0 ? <p className='no-history-alert'>No order history</p> :
         deliveredOrders.map(previousOrder =>
         <div key={previousOrder.id} className="previous-order-item">
           <div className="order-item-date">{previousOrder.date}</div>
@@ -29,12 +19,9 @@ export class PreviousOrderTable extends Component{
     </div>
     );
 }
-}
 
-const mapStateToProps = state => ({
-  userId: state.authReducer.user.id,
-  isLoggedIn: state.authReducer.isLoading,
+export const mapStateToProps = state => ({
   previousOrders: state.orderReducer.previousOrders,
 });
 
-export default connect(mapStateToProps, { getAllPreviousOrders })(PreviousOrderTable);
+export default connect(mapStateToProps, null)(PreviousOrderTable);

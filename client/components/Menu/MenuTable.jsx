@@ -4,9 +4,8 @@ import { connect } from "react-redux";
 import MenuList from './MenuList';
 import DatePicker from '../DatePicker.jsx';
 import { getAMenu } from "../../actions/menuActions.js";
-import { orderAMeal } from "../../actions/orderActions.js";
 
-class MenuTable extends Component {
+export class MenuTable extends Component {
   constructor(props) {
     super(props);
   }
@@ -33,9 +32,9 @@ class MenuTable extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   menu: state.menuReducer.selectedMenu,
   error: state.menuReducer.error,
 });
 
-export default connect(mapStateToProps, { orderAMeal, getAMenu })(MenuTable);
+export default connect(mapStateToProps, { getAMenu })(MenuTable);

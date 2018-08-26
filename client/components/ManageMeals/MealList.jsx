@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import Modal from 'react-modal';
 import Pagination from "react-js-pagination";
+import modalStyle from '../../utils/modalStyle'
 import DeleteMeal from './DeleteMeal.jsx';
 import { getPaginatedMeals } from "../../actions/mealActions.js";
 export class MealList extends Component {
@@ -38,22 +39,7 @@ export class MealList extends Component {
   }
 
   render() {
-    const modalStyle = {
-      overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.25)',
-      },
-      content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-        minWidth: '20rem',
-        width: '60%',
-        overflow: 'hidden',
-      },
-    };
+    
     
     return (
       <main className="manage-meals-content">

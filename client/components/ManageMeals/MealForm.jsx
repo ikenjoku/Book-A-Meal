@@ -18,6 +18,7 @@ class MealForm extends Component {
   }
 
   onFormInput = (event) => {
+    event.preventDefault();
     const meal = this.state.meal;
     switch (event.target.name) {
       case 'imageurl':
@@ -40,7 +41,6 @@ class MealForm extends Component {
       formData.append('price', price);
       formData.append('description', description);
       formData.append('imageurl', imageurl);
-      console.log('success', this.state, formData.get('price'));
       this.props.onSubmit(formData);
 
     } else {
