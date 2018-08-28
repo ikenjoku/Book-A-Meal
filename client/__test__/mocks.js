@@ -6,8 +6,8 @@ export const meals = [
     description: 'Max Jollof rice, plantain, grilled turkey, bellefull Coke',
     price: 1100,
     imageurl: 'https://africa-publicmages/products/80/80418_1465475724_ma.jpg',
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: '2018-08-27T19:48:26.757Z',
+    updatedAt: '2018-08-27T19:48:26.757Z',
   },
   {
     id: 1,
@@ -15,8 +15,8 @@ export const meals = [
     description: 'Rice, Beans, Plantain, Panla Sauce, Max Coke',
     price: 1500,
     imageurl: 'https://africa-g/images/products/80/80418_1465475724_ma.jpg',
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: '2018-08-27T19:48:26.757Z',
+    updatedAt: '2018-08-27T19:48:26.757Z',
   },
   {
     id: 2,
@@ -31,8 +31,8 @@ export const meals = [
     description: 'Chicken salad with extra cabbage',
     price: 1250,
     imageurl: 'https://dynamic/production/ng/images/products/80/_ma.jpg',
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: '2018-08-27T19:48:26.757Z',
+    updatedAt: '2018-08-27T19:48:26.757Z',
   },
   {
     id: 4,
@@ -40,8 +40,8 @@ export const meals = [
     description: 'Ingera palate with raw meat sauce',
     price: 2200,
     imageurl: 'https://dynamic/production/ng/images/produc475724_ma.jpg',
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: '2018-08-27T19:48:26.757Z',
+    updatedAt: '2018-08-27T19:48:26.757Z',
   },
 ];
 
@@ -167,7 +167,7 @@ export const menus = [{
   ],
 },
 {
-  id: 24,
+  id: 23,
   date: new Date().toISOString().substr(0, 10),
   createdAt: '2018-07-01T23:56:23.508Z',
   updatedAt: '2018-07-01T23:56:23.508Z',
@@ -274,5 +274,17 @@ export const orders = [
       name: 'Egusi Semo',
       price: 1200,
     },
+  },
+];
+
+export const testUsers = [
+  {
+    email: 'chubby@gmail.com',
+    id: 1,
+    isAdmin: true,
+  }, {
+    email: 'kcee@gmail.com',
+    id: 1,
+    isAdmin: false,
   },
 ];

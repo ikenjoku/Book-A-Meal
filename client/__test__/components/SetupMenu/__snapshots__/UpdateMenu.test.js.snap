@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateMenu Component should map state to props 1`] = `
+Object {
+  "isFetching": false,
+  "isUpdating": false,
+  "meals": Array [],
+  "menuId": undefined,
+  "selectedDate": "",
+}
+`;
+
+exports[`UpdateMenu Component should render UpdateMenu correctly 1`] = `
+<div
+  className="setup-form"
+>
+  <h2>
+    Update Menu
+  </h2>
+  <Connect(MealSetupForm)
+    action="Update"
+    date="2018-09-23"
+    handleSubmit={[Function]}
+    isSubmitting={false}
+    meals={
+      Array [
+        Object {
+          "createdAt": "2018-08-27T19:48:26.757Z",
+          "description": "Max Jollof rice, plantain, grilled turkey, bellefull Coke",
+          "id": 0,
+          "imageurl": "https://africa-publicmages/products/80/80418_1465475724_ma.jpg",
+          "name": "Nigerian Jollof",
+          "price": 1100,
+          "updatedAt": "2018-08-27T19:48:26.757Z",
+        },
+        Object {
+          "createdAt": "2018-08-27T19:48:26.757Z",
+          "description": "Rice, Beans, Plantain, Panla Sauce, Max Coke",
+          "id": 1,
+          "imageurl": "https://africa-g/images/products/80/80418_1465475724_ma.jpg",
+          "name": "Rice and Beans",
+          "price": 1500,
+          "updatedAt": "2018-08-27T19:48:26.757Z",
+        },
+        Object {
+          "description": "Semolina, Egusi Soup, Meat, Extra",
+          "id": 2,
+          "imageurl": "https://africa-public.food.jcts/80/80418_1465475724_ma.jpg",
+          "name": "Egusi Semo",
+          "price": 1200,
+        },
+        Object {
+          "createdAt": "2018-08-27T19:48:26.757Z",
+          "description": "Chicken salad with extra cabbage",
+          "id": 3,
+          "imageurl": "https://dynamic/production/ng/images/products/80/_ma.jpg",
+          "name": "Green Calulu",
+          "price": 1250,
+          "updatedAt": "2018-08-27T19:48:26.757Z",
+        },
+        Object {
+          "createdAt": "2018-08-27T19:48:26.757Z",
+          "description": "Ingera palate with raw meat sauce",
+          "id": 4,
+          "imageurl": "https://dynamic/production/ng/images/produc475724_ma.jpg",
+          "name": "Onion Jappatti",
+          "price": 2200,
+          "updatedAt": "2018-08-27T19:48:26.757Z",
+        },
+      ]
+    }
+  />
+</div>
+`;

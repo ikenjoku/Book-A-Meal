@@ -6,7 +6,7 @@ import OrderList from './OrderList.jsx';
 import { getOrdersByDate } from "../../actions/orderActions";
 
 
-class OrderHistory extends Component {
+export class OrderHistory extends Component {
   constructor(props) {
     super(props);
 

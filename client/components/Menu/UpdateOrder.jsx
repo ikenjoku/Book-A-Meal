@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import QuantityField from './QuantityField';
 import { updateAnOrder } from '../../actions/orderActions'
 
-class UpdateOrder extends Component {
+export class UpdateOrder extends Component {
   state = {
     orderToUpdate: this.props.orderToUpdate,
     quantity: this.props.orderToUpdate.quantity,
@@ -13,6 +13,7 @@ class UpdateOrder extends Component {
   }
 
   handleChange = (event) => {
+    event.preventDefault();
     const quantity = event.target.value;
     this.setState(() => ({ quantity }));
   }
@@ -61,7 +62,7 @@ UpdateOrder.propTypes = {
   orderToUpdate: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   previousOrders: state.orderReducer.previousOrders
 });
 export default connect(mapStateToProps, { updateAnOrder } )(UpdateOrder);

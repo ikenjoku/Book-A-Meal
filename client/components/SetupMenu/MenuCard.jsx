@@ -9,7 +9,7 @@ import { getAMenu } from "../../actions/setupMenuActions";
 import CreateMenu from './CreateMenu';
 import UpdateMenu from './UpdateMenu';
 
-class MenuCard extends Component {
+export class MenuCard extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -22,10 +22,6 @@ class MenuCard extends Component {
 
   handleCloseModal = () => {
     this.setState(() => ({ isOpen: false }));
-  }
-
-  handleMenuUpdate() {
-    this.handleOpenModal();
   }
 
   render() {
@@ -99,7 +95,7 @@ MenuCard.propTypes = {
   selectedDate: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     currentMenu: state.setupMenuReducer.currentMenu,
     isLoadingMenu: state.setupMenuReducer.isLoadingMenu,

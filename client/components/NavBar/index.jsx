@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Navigation from "./Navigation.jsx";
+import Navigation from "./Navigation";
 
-class NavBar extends Component {
+export class Index extends Component {
   constructor(props) {
     super(props);
   }
@@ -41,7 +41,7 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = ({ authReducer }) => {
+export const mapStateToProps = ({ authReducer }) => {
   return {
     isLoggedIn: authReducer.isLoggedIn,
     user: authReducer.user,
@@ -49,4 +49,4 @@ const mapStateToProps = ({ authReducer }) => {
 }
 
 
-export default connect(mapStateToProps, null, null, { pure: false })(NavBar);
+export default connect(mapStateToProps, null, null, { pure: false })(Index);

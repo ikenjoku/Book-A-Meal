@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealCheckList Component should render MealCheckList correctly 1`] = `
+Array [
+  <div
+    key="0"
+  />,
+  <div
+    key="1"
+  />,
+  <div
+    key="2"
+  />,
+  <div
+    key="3"
+  />,
+  <div
+    key="4"
+  />,
+]
+`;

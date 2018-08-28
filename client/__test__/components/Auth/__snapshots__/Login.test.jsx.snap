@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Component it should render Login form correctly 1`] = `
+<main
+  className="mainContent login-bg"
+>
+  <form
+    className="form-wrapper"
+    onSubmit={[Function]}
+  >
+    <h2
+      className="center"
+    >
+      Login
+    </h2>
+    <div>
+      <input
+        className="form-control"
+        name="email"
+        onChange={[Function]}
+        placeholder="Enter your email"
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <input
+        className="form-control"
+        name="password"
+        onChange={[Function]}
+        placeholder="Enter you password"
+        type="password"
+        value=""
+      />
+    </div>
+    <div>
+      <input
+        className="btn-control loginsubmitBtn"
+        type="submit"
+        value="Submit"
+      />
+    </div>
+    <hr />
+    <div
+      className="right formText"
+    >
+      <p>
+        No Account? 
+        <Link
+          replace={false}
+          to="/signup"
+        >
+          Sign Up
+        </Link>
+         
+      </p>
+    </div>
+  </form>
+</main>
+`;
+
+exports[`Login Component should map state to props 1`] = `
+Object {
+  "authLoading": true,
+  "isLoggedIn": false,
+}
+`;

@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MealCheckList = ({ meals, handleSelect }) => {
-  const handleClick = (event) => {
-    handleSelect(event);
-  }
-
   return meals.map(meal => (
     <div key={meal.id}>
       <label>
@@ -13,7 +9,7 @@ const MealCheckList = ({ meals, handleSelect }) => {
           type="checkbox"
           name="meals"
           value={meal.id}
-          onClick={handleClick}
+          onClick={handleSelect}
           />
           <span>{meal.name}</span>
       </label>

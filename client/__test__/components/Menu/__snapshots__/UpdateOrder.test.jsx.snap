@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateOrder Component should map state to props 1`] = `
+Object {
+  "previousOrders": Array [],
+}
+`;
+
+exports[`UpdateOrder Component should render UpdateOrder correctly 1`] = `
+<div>
+  <h2>
+    Update Order
+  </h2>
+  <table
+    id="place-order-table"
+  >
+    <thead>
+      <tr>
+        <td>
+          Meal
+        </td>
+        <td>
+          Quantity
+        </td>
+        <td>
+          Total
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Egusi Semo
+        </td>
+        <td>
+          <QuantityField
+            handleChange={[Function]}
+          />
+        </td>
+        <td>
+          ₦ 
+          NaN
+          .00
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    className="order-btn-container"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Update Order
+    </button>
+    <button
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+`;

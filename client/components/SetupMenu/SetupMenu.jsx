@@ -5,8 +5,7 @@ import DatePicker from '../DatePicker.jsx';
 import MenuCard from './MenuCard.jsx';
 import { getAMenu, setSelectedDate } from "../../actions/setupMenuActions";
 
-
-class SetupMenu extends Component {
+export class SetupMenu extends Component {
   constructor(props) {
     super(props);
 

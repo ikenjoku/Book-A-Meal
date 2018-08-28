@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealSetupForm Component should map state to props 1`] = `
+Object {
+  "count": 0,
+  "pages": 0,
+}
+`;
+
+exports[`MealSetupForm Component should render MealSetupForm correctly 1`] = `
+<form
+  className="menu-setup-form"
+  onSubmit={[Function]}
+>
+  <div>
+    <button
+      className="calender-btn"
+    >
+      <i
+        className="far fa-calendar-alt fa-2x"
+      />
+    </button>
+    <input
+      name="date"
+      readOnly={true}
+      type="date"
+      value=""
+    />
+  </div>
+  <h3>
+    Choose meals to add to menu
+  </h3>
+  <div
+    className="meal-check-list"
+  >
+    <MealCheckList
+      handleSelect={[Function]}
+      meals={
+        Array [
+          Object {
+            "createdAt": "2018-08-27T19:48:26.757Z",
+            "description": "Max Jollof rice, plantain, grilled turkey, bellefull Coke",
+            "id": 0,
+            "imageurl": "https://africa-publicmages/products/80/80418_1465475724_ma.jpg",
+            "name": "Nigerian Jollof",
+            "price": 1100,
+            "updatedAt": "2018-08-27T19:48:26.757Z",
+          },
+          Object {
+            "createdAt": "2018-08-27T19:48:26.757Z",
+            "description": "Rice, Beans, Plantain, Panla Sauce, Max Coke",
+            "id": 1,
+            "imageurl": "https://africa-g/images/products/80/80418_1465475724_ma.jpg",
+            "name": "Rice and Beans",
+            "price": 1500,
+            "updatedAt": "2018-08-27T19:48:26.757Z",
+          },
+          Object {
+            "description": "Semolina, Egusi Soup, Meat, Extra",
+            "id": 2,
+            "imageurl": "https://africa-public.food.jcts/80/80418_1465475724_ma.jpg",
+            "name": "Egusi Semo",
+            "price": 1200,
+          },
+          Object {
+            "createdAt": "2018-08-27T19:48:26.757Z",
+            "description": "Chicken salad with extra cabbage",
+            "id": 3,
+            "imageurl": "https://dynamic/production/ng/images/products/80/_ma.jpg",
+            "name": "Green Calulu",
+            "price": 1250,
+            "updatedAt": "2018-08-27T19:48:26.757Z",
+          },
+          Object {
+            "createdAt": "2018-08-27T19:48:26.757Z",
+            "description": "Ingera palate with raw meat sauce",
+            "id": 4,
+            "imageurl": "https://dynamic/production/ng/images/produc475724_ma.jpg",
+            "name": "Onion Jappatti",
+            "price": 2200,
+            "updatedAt": "2018-08-27T19:48:26.757Z",
+          },
+        ]
+      }
+    />
+  </div>
+  <div
+    className="center"
+  >
+    <a
+      activePage={1}
+      firstPageText="«"
+      getPageUrl={[Function]}
+      hideFirstLastPages={false}
+      innerClass="pagination"
+      itemsCountPerPage={20}
+      lastPageText="»"
+      nextPageText="⟩"
+      onChange={[Function]}
+      pageRangeDisplayed={20}
+      prevPageText="⟨"
+    />
+  </div>
+  <div
+    className="setup-btn-container"
+  >
+    <button
+      type="submit"
+      value="Submit"
+    >
+      Create
+       Menu
+    </button>
+  </div>
+</form>
+`;

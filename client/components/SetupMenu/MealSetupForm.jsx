@@ -5,22 +5,12 @@ import { connect } from 'react-redux';
 import { getAMeals } from '../../actions/setupMenuActions';
 import MealCheckList from './MealCheckList';
 
-class MealSetupForm extends Component {
+export class MealSetupForm extends Component {
   state = {
     date: this.props.date || '',
     mealIds: [],
     activePage: 1,
   };
-
-  handleChange = (event) => {
-    const selectedDate = event.target.value;
-
-    this.setState(() => (
-      {
-        date: selectedDate,
-      }
-    ));
-  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -106,6 +96,5 @@ MealSetupForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   action: PropTypes.string.isRequired,
 };
-
 
 export default connect(mapStateToProps, { getAMeals })(MealSetupForm);

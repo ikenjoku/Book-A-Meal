@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import MealSetupForm from './MealSetupForm';
 import { getAMeals, updateAMenu } from '../../actions/setupMenuActions';
 
-class UpdateMenu extends Component {
+export class UpdateMenu extends Component {
   constructor(props) {
     super(props);
   }
@@ -28,7 +28,7 @@ class UpdateMenu extends Component {
         <h2>Update Menu</h2>
         {isFetching
           ?
-          <p>Loading...</p>
+          <p className='loading-update-meals'>Loading...</p>
           :
           <MealSetupForm
             handleSubmit={this.handleSubmit}
@@ -53,7 +53,7 @@ UpdateMenu.propTypes = {
   selectedDate: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   meals: state.setupMenuReducer.meals,
   isUpdating: state.setupMenuReducer.isUpdating,
   isFetching: state.setupMenuReducer.isFetching,

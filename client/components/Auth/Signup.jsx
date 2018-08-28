@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { signupAUser } from "../../actions/authActions/signup";
 
-class Signup extends Component {
+export class Signup extends Component {
 	state = {
 		signUpData: {
 			firstname: '',
@@ -17,6 +17,7 @@ class Signup extends Component {
 		error: ''
 	}
 	onInputChange = (event) => {
+		event.preventDefault();
 		const { signUpData } = this.state;
 		signUpData[event.target.name] = event.target.value.trim();
 		this.setState(() => ({ signUpData }));
@@ -121,7 +122,7 @@ Signup.propTypes = {
 	authLoading: PropTypes.bool.isRequired,
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
 	isLoggedIn: state.authReducer.isLoggedIn,
 	authLoading: state.authReducer.authLoading,
 });

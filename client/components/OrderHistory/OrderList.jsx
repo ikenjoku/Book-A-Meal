@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { deliverAnOrder } from "../../actions/orderActions";
 
-const OrderList = ({ orders, deliverAnOrder, isLoadingOrders }) => {
+export const OrderList = ({ orders, deliverAnOrder, isLoadingOrders }) => {
   let daysTotal = 0;
   let serialNum = 0
   orders.map(order => { if (order.status === 'delivered') daysTotal += order.amount });
@@ -57,11 +57,10 @@ const OrderList = ({ orders, deliverAnOrder, isLoadingOrders }) => {
   );
 }
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     orders: state.orderReducer.orders,
     isLoadingOrders: state.orderReducer.isLoadingOrders,
-    error: state.orderReducer.error
   }
 }
 export default connect(mapStateToProps, { deliverAnOrder })(OrderList);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect, Link } from "react-router-dom";
 import { loginAUser } from "../../actions/authActions/login";
 
-class Login extends Component {
+export class Login extends Component {
   state = {
     data: {
       email: '',
@@ -14,6 +14,7 @@ class Login extends Component {
   }
 
   onFormInput = (event) => {
+    event.preventDefault();
     const { data } = this.state;
     data[event.target.name] = event.target.value.trim();
     this.setState(() => ({ data }));
@@ -74,7 +75,7 @@ Login.propTypes = {
   authLoading: PropTypes.bool.isRequired,
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     isLoggedIn: state.authReducer.isLoggedIn,
     authLoading: state.authReducer.authLoading,
 });

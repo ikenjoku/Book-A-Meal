@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import MealSetupForm from './MealSetupForm';
 import { getAMeals, setAMenu } from '../../actions/setupMenuActions';
 
-class CreateMenu extends Component {
+export class CreateMenu extends Component {
   constructor(props) {
     super(props);
   }
@@ -52,7 +52,7 @@ CreateMenu.propTypes = {
   selectedDate: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   meals: state.setupMenuReducer.meals,
   isFetching: state.setupMenuReducer.isFetching,
   isCreating: state.setupMenuReducer.isCreating,

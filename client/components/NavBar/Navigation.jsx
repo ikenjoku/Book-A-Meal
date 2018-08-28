@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { logoutAUser } from "../../actions/authActions/logout";
 
 
-class Navigation extends Component {
+export class Navigation extends Component {
   constructor(props) {
     super(props);
   }

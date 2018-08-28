@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar: Index Component should map state to props 1`] = `
+Object {
+  "isLoggedIn": false,
+  "user": Object {},
+}
+`;
+
+exports[`NavBar: Index Component should render NavBar correctly when admin is logged in 1`] = `
+<header>
+  <nav
+    className="topnav"
+    id="myTopnav"
+  >
+    <NavLink
+      activeClassName="active"
+      ariaCurrent="true"
+      exact={true}
+      id="companyLogo"
+      to="/"
+    >
+      <i
+        className="fas fa-utensils"
+      />
+       Book-A-Meal
+    </NavLink>
+    <Connect(Navigation)
+      navLinks={
+        Array [
+          "Meals",
+          "Set Menu",
+          "Order History",
+          "Menu",
+          "Logout",
+        ]
+      }
+      toggleNav={[Function]}
+    />
+    <Link
+      className="icon"
+      onClick={[Function]}
+      replace={false}
+      to="#"
+    >
+      <i
+        className="fa fa-bars"
+      />
+    </Link>
+  </nav>
+</header>
+`;
+
+exports[`NavBar: Index Component should render NavBar correctly when customer is logged in 1`] = `
+<header>
+  <nav
+    className="topnav"
+    id="myTopnav"
+  >
+    <NavLink
+      activeClassName="active"
+      ariaCurrent="true"
+      exact={true}
+      id="companyLogo"
+      to="/"
+    >
+      <i
+        className="fas fa-utensils"
+      />
+       Book-A-Meal
+    </NavLink>
+    <Connect(Navigation)
+      navLinks={
+        Array [
+          "Menu",
+          "Logout",
+        ]
+      }
+      toggleNav={[Function]}
+    />
+    <Link
+      className="icon"
+      onClick={[Function]}
+      replace={false}
+      to="#"
+    >
+      <i
+        className="fa fa-bars"
+      />
+    </Link>
+  </nav>
+</header>
+`;
+
+exports[`NavBar: Index Component should render NavBar correctly when logged out 1`] = `
+<header>
+  <nav
+    className="topnav"
+    id="myTopnav"
+  >
+    <NavLink
+      activeClassName="active"
+      ariaCurrent="true"
+      exact={true}
+      id="companyLogo"
+      to="/"
+    >
+      <i
+        className="fas fa-utensils"
+      />
+       Book-A-Meal
+    </NavLink>
+    <Connect(Navigation)
+      navLinks={
+        Array [
+          "Login",
+          "Signup",
+        ]
+      }
+      toggleNav={[Function]}
+    />
+    <Link
+      className="icon"
+      onClick={[Function]}
+      replace={false}
+      to="#"
+    >
+      <i
+        className="fa fa-bars"
+      />
+    </Link>
+  </nav>
+</header>
+`;
