@@ -5,11 +5,10 @@ import initialState from '../../../reducers/initialState'
 import { meals } from '../../mocks';
 
 describe('CreateMenu Component', () => {
-  let wrapper, closeModal, setAMenu, getAMeals, isFetching, isCreating, selectedDate;
+  let wrapper, closeModal, setAMenu, getAMeals, isCreating, selectedDate;
   setAMenu = jest.fn();
   getAMeals = jest.fn();
   closeModal = jest.fn();
-  isFetching = false;
   isCreating = false;
   selectedDate = '2018-09-23';
 
@@ -20,23 +19,11 @@ describe('CreateMenu Component', () => {
       getAMeals={getAMeals}
       closeModal={closeModal}
       meals={meals}
-      isFetching={isFetching}
       isCreating={isCreating}
       />);
     expect(wrapper).toMatchSnapshot();
   });
-  test('should render Loading when fetching meals', () => {
-    wrapper = shallow(
-      <CreateMenu
-      setAMenu={setAMenu}
-      getAMeals={getAMeals}
-      closeModal={closeModal}
-      meals={meals}
-      isFetching={true}
-      isCreating={isCreating}
-      />);
-    expect(wrapper).toMatchSnapshot();
-  });
+
   it('should handleSubmit when called with mealIds', () => {
     wrapper = shallow(
       <CreateMenu

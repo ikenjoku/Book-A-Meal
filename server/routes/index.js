@@ -8,7 +8,7 @@ import authenticate from '../middlewares/authenticate';
 import { isAdmin, validateId } from '../middlewares/isAdmin';
 import { validateSignup, validateSignin, trimInputs,
   validateMealCreate, validateMealUpdate, authorizeOrders,
-  authorizeOrdersUpdate, vaidateMealChange } from '../middlewares/validateInputs';
+  authorizeOrdersUpdate, validateMealChange } from '../middlewares/validateInputs';
 import { validateMenuSetup } from '../middlewares/validateMenuSetup';
 
 const router = express.Router();
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
 
   .get('/orders', authenticate, authorizeOrders, orderController.getOrders)
   .post('/orders', authenticate, orderController.createOrder)
-  .put('/orders/:id', validateId, authenticate, authorizeOrdersUpdate, vaidateMealChange, orderController.updateOrder)
+  .put('/orders/:id', validateId, authenticate, authorizeOrdersUpdate, validateMealChange, orderController.updateOrder)
   // catch all 404
   .all('*', (req, res) => res.status(404).send({
     message: 'There is nothing happening here',

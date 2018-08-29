@@ -18,7 +18,7 @@ const orderReducer = (state = initialState.orderReducer, action) => {
       return {
         ...state,
         orderedMeal: action.orderedMeal,
-        orders: [...state.orders, action.meal],
+        orders: [...state.orders],
         error: null,
       };
     case GET_ORDERS_BY_DATE_SUCCESS:

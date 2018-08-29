@@ -3,7 +3,6 @@
 exports[`CreateMenu Component should map state to props 1`] = `
 Object {
   "isCreating": false,
-  "isFetching": false,
   "meals": Array [],
   "selectedDate": "",
 }
@@ -68,18 +67,5 @@ exports[`CreateMenu Component should render CreateMenu correctly 1`] = `
       ]
     }
   />
-</div>
-`;
-
-exports[`CreateMenu Component should render Loading when fetching meals 1`] = `
-<div
-  className="setup-form"
->
-  <h2>
-    Create a menu
-  </h2>
-  <h3>
-    Fetching meals...
-  </h3>
 </div>
 `;

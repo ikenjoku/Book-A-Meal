@@ -37,7 +37,7 @@ export class MealSetupForm extends Component {
   }
 
   handlePageChange = (pageNumber) => {
-    const limit = 20;
+    const limit = 5;
     this.props.getAMeals({limit, page:pageNumber});
     this.setState(() => ({activePage: pageNumber}));
   }
@@ -67,9 +67,9 @@ export class MealSetupForm extends Component {
         <div className='center'>      
             <Pagination
                 activePage={this.state.activePage}
-                itemsCountPerPage={20}
+                itemsCountPerPage={5}
                 totalItemsCount={this.props.count}
-                pageRangeDisplayed={20}
+                pageRangeDisplayed={5}
                 onChange={this.handlePageChange}
               />
           </div>

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 /**
- *Gets json web token from the request
+ *@description - Gets json web token from the request
  *
  * @param {Object} req - express http request object
  *
@@ -16,7 +16,7 @@ const getToken = (req) => {
   return token;
 };
 /**
- * authenticate a token from the http request object
+ * @description - authenticate a token from the http request object
  *
  * @param {Object} req - express http request object
  * @param {Object} res - express http response object

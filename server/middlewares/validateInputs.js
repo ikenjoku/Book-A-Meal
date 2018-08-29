@@ -3,7 +3,7 @@ import moment from 'moment';
 import { Order, Menu, Meal } from '../models';
 
 /**
- * deletes empty input fields
+ * @description - deletes empty input fields
  *
  * @param {Object} object of user inputs
  *
@@ -19,7 +19,7 @@ const deleteEmptyFields = (object) => {
   return object;
 };
 /**
- * trims string values in object
+ * @description - trims string values in object
  *
  * @param {Object} express http request object
  * @param {Object} express http response object
@@ -36,18 +36,22 @@ export const trimInputs = (req, res, next) => {
     }
   });
   if (req.body.amount) req.body.amount = Number(req.body.amount);
-  if (req.body.quantity) {
-    req.body.quantity = Number(req.body.quantity);
-  } else {
-    req.body.quantity = 1;
-  }
+  if (req.body.quantity) req.body.quantity = Number(req.body.quantity);
   req.body = deleteEmptyFields(body);
   next();
 };
 
 const isEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|z(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}]),|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-
+/**
+ * @description - Validates signup credentials
+ *
+ * @param {Object} express http request object
+ * @param {Object} express http response object
+ * @param {Function} next calls next middleware
+ *
+ * @return {Function|Object} returns error or calls next middleware
+ */
 export const validateSignup = (req, res, next) => {
   delete req.body.id;
   delete req.body.isAdmin;
@@ -86,7 +90,15 @@ export const validateSignup = (req, res, next) => {
   next();
 };
 
-
+/**
+ * @description - Validates signin credentials
+ *
+ * @param {Object} express http request object
+ * @param {Object} express http response object
+ * @param {Function} next calls next middleware
+ *
+ * @return {Function|Object} returns error or calls next middleware
+ */
 export const validateSignin = (req, res, next) => {
   const { email, password } = req.body;
   if (!password || typeof password !== 'string') {
@@ -105,6 +117,15 @@ export const validateSignin = (req, res, next) => {
   next();
 };
 
+/**
+ * @description - Validates new meal credentials
+ *
+ * @param {Object} express http request object
+ * @param {Object} express http response object
+ * @param {Function} next calls next middleware
+ *
+ * @return {Function|Object} returns error or calls next middleware
+ */
 export const validateMealCreate = (req, res, next) => {
   const { name, description, price } = req.body;
   if (!name || typeof name !== 'string') {
@@ -127,7 +148,15 @@ export const validateMealCreate = (req, res, next) => {
   next();
 };
 
-
+/**
+ * @description - Validates meal update credentials
+ *
+ * @param {Object} express http request object
+ * @param {Object} express http response object
+ * @param {Function} next calls next middleware
+ *
+ * @return {Function|Object} returns error or calls next middleware
+ */
 export const validateMealUpdate = (req, res, next) => {
   const { name, description, price } = req.body;
   if (!name || typeof name !== 'string') {
@@ -155,6 +184,15 @@ export const validateMealUpdate = (req, res, next) => {
     .catch(error => next(error));
 };
 
+/**
+ * @description - Validates user before orders route
+ *
+ * @param {Object} express http request object
+ * @param {Object} express http response object
+ * @param {Function} next calls next middleware
+ *
+ * @return {Function|Object} returns error or calls next middleware
+ */
 export const authorizeOrders = (req, res, next) => {
   if (req.query.userId && Number(req.query.userId) === Number(req.user.id)) {
     return next();
@@ -165,6 +203,15 @@ export const authorizeOrders = (req, res, next) => {
   next();
 };
 
+/**
+ * @description - Checks user before orders update
+ *
+ * @param {Object} express http request object
+ * @param {Object} express http response object
+ * @param {Function} next calls next middleware
+ *
+ * @return {Function|Object} returns error or calls next middleware
+ */
 export const authorizeOrdersUpdate = (req, res, next) => {
   const orderId = req.params.id;
   const userId = req.user.id;
@@ -188,7 +235,16 @@ export const authorizeOrdersUpdate = (req, res, next) => {
   next();
 };
 
-export const vaidateMealChange = (req, res, next) => {
+/**
+ * @description - Checks user before orders update
+ *
+ * @param {Object} express http request object
+ * @param {Object} express http response object
+ * @param {Function} next calls next middleware
+ *
+ * @return {Function|Object} returns error or calls next middleware
+ */
+export const validateMealChange = (req, res, next) => {
   if (req.body.newMealId) {
     const todaysdate = new Date().toISOString().substr(0, 10);
     const newMealId = Number(req.body.newMealId);

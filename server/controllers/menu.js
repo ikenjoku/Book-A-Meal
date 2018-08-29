@@ -2,7 +2,7 @@ import moment from 'moment';
 import { Menu, Meal } from '../models';
 
 /**
- * It contains utility methodes for menu
+ * @description - contains utility methodes for menu
  *
  * @class MenuController
  */
@@ -37,7 +37,7 @@ class MenuController {
     }).catch(error => next(error));
   }
   /**
-   * Create menu for a particular day
+   * @description - Create menu for a particular day
    *
    * @static
    *
@@ -88,7 +88,7 @@ class MenuController {
   }
 
   /**
-   * Updates menu for a particular day
+   * @description - Updates menu for a particular day
    *
    * @static
    *

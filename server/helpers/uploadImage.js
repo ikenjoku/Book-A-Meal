@@ -3,6 +3,14 @@ import cloudinaryStorage from 'multer-storage-cloudinary';
 import multer from 'multer';
 import dotenv from 'dotenv';
 
+/**
+ * @description - Sets up cloudinary upload
+ *
+ * @param {number} object configuration object
+ *
+ * @return {Object} - express http response object
+ */
+
 dotenv.config();
 
 cloudinary.config({

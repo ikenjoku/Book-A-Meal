@@ -5,11 +5,10 @@ import initialState from '../../../reducers/initialState'
 import { meals } from '../../mocks';
 
 describe('UpdateMenu Component', () => {
-  let wrapper, closeModal, updateAMenu, getAMeals, isFetching, isUpdating, selectedDate, menuId;
+  let wrapper, closeModal, updateAMenu, getAMeals, isUpdating, selectedDate, menuId;
   updateAMenu = jest.fn();
   getAMeals = jest.fn();
   closeModal = jest.fn();
-  isFetching = false;
   isUpdating = false;
   selectedDate = '2018-09-23';
   menuId = 23;
@@ -20,26 +19,12 @@ describe('UpdateMenu Component', () => {
       getAMeals={getAMeals}
       closeModal={closeModal}
       meals={meals}
-      isFetching={isFetching}
       isUpdating={isUpdating}
       selectedDate={selectedDate}
       />);
     expect(wrapper).toMatchSnapshot();
   });
 
-  test('should render spinner when fetching meals', () => {
-    wrapper = shallow(
-      <UpdateMenu
-      updateAMenu={updateAMenu}
-      getAMeals={getAMeals}
-      closeModal={closeModal}
-      meals={meals}
-      isFetching={true}
-      isUpdating={isUpdating}
-      selectedDate={selectedDate}
-      />);
-      expect(wrapper.find('.loading-update-meals').length).toBe(1);
-  });
 
   it('should handleSubmit when called with mealIds', () => {
     wrapper = shallow(
@@ -48,7 +33,6 @@ describe('UpdateMenu Component', () => {
       getAMeals={getAMeals}
       closeModal={closeModal}
       meals={meals}
-      isFetching={isFetching}
       isUpdating={isUpdating}
       selectedDate={selectedDate}
       />);

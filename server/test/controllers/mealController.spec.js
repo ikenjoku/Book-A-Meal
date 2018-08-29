@@ -31,23 +31,17 @@ before((done) => {
 
 describe('Given /GET /api/v1/meals', () => {
   describe('When adminUser wants to get meals', () => {
-    it('should return all meals', (done) => {
+    it('should return paginated meals', (done) => {
       chai.request(app)
-        .get('/api/v1/meals')
+        .get('/api/v1/meals?limit=5&page=1')
         .set('x-access-token', adminToken)
         .end((err, res) => {
           res.status.should.eql(200);
           res.should.be.a('object');
-          res.body.meals.length.should.eql(5);
-          res.body.meals.should.be.a('array');
-          res.body.meals[0].should.be.a('object');
-          res.body.meals[0].should.have.property('id');
-          res.body.meals[0].id.should.be.a('number');
-          res.body.meals[0].should.have.property('name');
-          res.body.meals[0].name.should.be.a('string');
-          res.body.meals[0].name.should.eql('Nigerian Jollof');
-          res.body.meals[1].name.should.eql('Rice and Beans');
-          res.body.meals[2].name.should.eql('Egusi Semo');
+          res.body.meals.rows.should.be.a('array');
+          res.body.meals.rows.length.should.eql(5);
+          res.body.count.should.eql(5);
+          res.body.pages.should.eql(1);
           done();
         });
     });

@@ -2,7 +2,6 @@
 
 exports[`UpdateMenu Component should map state to props 1`] = `
 Object {
-  "isFetching": false,
   "isUpdating": false,
   "meals": Array [],
   "menuId": undefined,

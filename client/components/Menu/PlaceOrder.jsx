@@ -15,8 +15,9 @@ export class PlaceOrder extends Component {
 
   handleConfirmOrder = () => {
     const { mealId } = this.state;
+    const userId = this.props.userId;
     const quantity = Number(this.state.quantity)
-    this.props.handleOrder({ mealId, quantity });
+    this.props.handleOrder({ mealId, quantity, userId });
     this.props.closeModal();
   }
   render() {
@@ -52,11 +53,13 @@ export class PlaceOrder extends Component {
 
 PlaceOrder.propTypes = {
   mealId: PropTypes.number.isRequired,
+  userId: PropTypes.number.isRequired,
   handleOrder: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
 }
 
 export const mapStateToProps = state => ({
   mealsInMenu: state.menuReducer.selectedMenu.Meals,
+  userId: state.authReducer.user.id,
 });
 export default connect(mapStateToProps, null)(PlaceOrder);

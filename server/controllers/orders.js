@@ -1,13 +1,13 @@
 import { Order, User, Meal, Menu } from '../models';
 
 /**
- * It contains utility methods for orders
+ * @description - It contains utility methods for orders
  *
  * @class OrderController
  */
 class OrderController {
   /**
-   * Place an order for a particular meal
+   * @description - Place an order for a particular meal
    *
    * @static
    *
@@ -70,7 +70,7 @@ class OrderController {
   }
 
   /**
-   * Retrieve orders from database
+   * @description - Get orders from database
    *
    * @static
    *
@@ -112,7 +112,7 @@ class OrderController {
   }
 
   /**
-   * Update a particlar order
+   * @description - Update a particlar order
    *
    * @static
    *

@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 /**
- * Hashes the password of a given user
+ * @description - Hashes the password of a given user
  *
  * @param {Object} user object
  *
@@ -16,7 +16,7 @@ export const hashPassword = (user) => {
 };
 
 /**
- *It makes a token using credentials provided
+ * @description - makes a token using credentials provided
  * @param {Object} object of key values to sign jsonwebtoken
  * @param {String} expiration time
  *

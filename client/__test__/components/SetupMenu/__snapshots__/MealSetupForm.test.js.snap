@@ -33,7 +33,7 @@ exports[`MealSetupForm Component should render MealSetupForm correctly 1`] = `
   <div
     className="meal-check-list"
   >
-    <MealCheckList
+    <Connect(MealCheckList)
       handleSelect={[Function]}
       meals={
         Array [
@@ -93,11 +93,11 @@ exports[`MealSetupForm Component should render MealSetupForm correctly 1`] = `
       getPageUrl={[Function]}
       hideFirstLastPages={false}
       innerClass="pagination"
-      itemsCountPerPage={20}
+      itemsCountPerPage={5}
       lastPageText="»"
       nextPageText="⟩"
       onChange={[Function]}
-      pageRangeDisplayed={20}
+      pageRangeDisplayed={5}
       prevPageText="⟨"
     />
   </div>

@@ -10,10 +10,9 @@ import {
   GET_ORDER_LOADING_STATUS, CHANGE_ORDER_STATUS,
 } from './actionTypes';
 
-const orderMealSuccess = ({ order, meal }) => ({
+const orderMealSuccess = ({ order }) => ({
   type: ORDER_MEAL_SUCCESS,
   orderedMeal: order,
-  meal,
 });
 
 const orderMealFailure = error => ({
@@ -95,11 +94,11 @@ export const getAllPreviousOrders = userId => (dispatch) => {
     });
 };
 
-export const orderAMeal = ({ mealId, id, meal }) => (dispatch) => {
-  API.post('/orders', { mealId, id })
+export const orderAMeal = ({ mealId, quantity, userId }) => (dispatch) => {
+  API.post('/orders', { mealId, quantity })
     .then((res) => {
-      dispatch(orderMealSuccess({ order: res.data.order, meal }));
-      dispatch(getAllPreviousOrders());
+      dispatch(orderMealSuccess({ order: res.data.order }));
+      dispatch(getAllPreviousOrders(userId));
       notify.success(res.data.message);
     })
     .catch((error) => {

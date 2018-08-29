@@ -1,13 +1,13 @@
 import { Meal } from '../models';
 
 /**
- * It contains utility methods for meals
+ * @description - It contains utility methods for meals
  *
  * @class MealController
  */
 class MealController {
   /**
-   * Add a new meal
+   * @description - Add a new meal
    *
    * @static
    *
@@ -46,8 +46,9 @@ class MealController {
       .catch(error => next(error));
   }
   /**
-   * Get a particular meal
+   * @description - Get a particular meal
    *
+   * @static
    *
    * @param {Object} - express http request object
    * @param {Object} - express http response object
@@ -73,7 +74,7 @@ class MealController {
       .catch(error => next(error));
   }
   /**
-   * Get all meals
+   * @description - Get oaginated meals
    *
    * @static
    *
@@ -85,24 +86,6 @@ class MealController {
    *
    * @memberof MealController
    */
-
-  // static getMeals(req, res, next) {
-  //   const page = req.query.page || 0; // page number
-  //   const limit = 5; // number of records per page
-  //   let offset = page * limit;
-
-  //   Meal.findAndCountAll({
-  //     limit,
-  //     offset,
-  //     order: ['id'],
-  //   }).then((data) => {
-  //     const pages = Math.ceil(data.count / limit);
-  //     offset = limit * (page - 1);
-  //     const meals = data.rows;
-  //     res.status(200).json({ meals, count: data.count, pages });
-  //   })
-  //     .catch(error => next(error));
-  // }
 
   static getMeals(req, res, next) {
     const limit = req.query.limit || 5;
@@ -132,7 +115,7 @@ class MealController {
   }
 
   /**
-   * Edit a particular meal
+   * @description - Edits a particular meal
    *
    * @static
    *
@@ -172,8 +155,9 @@ class MealController {
       .catch(error => next(error));
   }
   /**
-   * Remove a particular meal
+   * @description - Remove a particular meal
    *
+   * @static
    *
    * @param {Object} - express http request object
    * @param {Object} - express http response object

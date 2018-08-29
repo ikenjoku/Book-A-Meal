@@ -10,7 +10,7 @@ export class CreateMenu extends Component {
   }
 
   componentDidMount() {
-    this.props.getAMeals({limit: 20, page: 1});
+    this.props.getAMeals({limit: 5, page: 1});
   }
 
   handleSubmit = (values) => {
@@ -26,17 +26,13 @@ export class CreateMenu extends Component {
     return (
       <div className='setup-form'>
         <h2>Create a menu</h2>
-        {isFetching
-          ?
-          <h3>Fetching meals...</h3>
-          :
           <MealSetupForm
             handleSubmit={this.handleSubmit}
             meals={meals}
             action="Create"
             isSubmitting={isCreating}
             date={this.props.selectedDate}
-          />}
+          />
       </div>
     );
   }
@@ -46,7 +42,6 @@ CreateMenu.propTypes = {
   getAMeals: PropTypes.func.isRequired,
   setAMenu: PropTypes.func.isRequired,
   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isFetching: PropTypes.bool.isRequired,
   isCreating: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   selectedDate: PropTypes.string.isRequired,
@@ -54,7 +49,6 @@ CreateMenu.propTypes = {
 
 export const mapStateToProps = state => ({
   meals: state.setupMenuReducer.meals,
-  isFetching: state.setupMenuReducer.isFetching,
   isCreating: state.setupMenuReducer.isCreating,
   selectedDate: state.setupMenuReducer.selectedDate,
 });

@@ -104,6 +104,8 @@ describe('Given /POST /api/v1/orders', () => {
       const body = {
         mealId: 2,
         userId: 2,
+        quantity: 2,
+        amount: 3000,
       };
       chai.request(app)
         .post('/api/v1/orders')
@@ -114,7 +116,7 @@ describe('Given /POST /api/v1/orders', () => {
           res.body.message.should.eql('Rice only has been ordered.');
           res.body.should.have.property('order');
           res.body.order.status.should.eql('pending');
-          res.body.order.amount.should.eql(1500);
+          res.body.order.amount.should.eql(3000);
           done();
         });
     });
@@ -141,6 +143,7 @@ describe('Given /PUT /api/v1/orders/:id', () => {
     it('should update an order with a new meal', (done) => {
       const body = {
         newMealId: 1,
+        quantity: 2,
       };
       chai.request(app)
         .put('/api/v1/orders/6')
@@ -151,7 +154,7 @@ describe('Given /PUT /api/v1/orders/:id', () => {
           res.body.should.be.a('object');
           res.body.message.should.eql('Your order has been updated');
           res.body.order.mealId.should.eql(1);
-          res.body.order.amount.should.eql(1100);
+          res.body.order.amount.should.eql(2200);
           done();
         });
     });
