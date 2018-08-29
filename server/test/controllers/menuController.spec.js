@@ -10,7 +10,6 @@ let userToken;
 let adminToken;
 let newMenu;
 let updatedMenu;
-const today = new Date().toISOString().substr(0, 10);
 
 before((done) => {
   chai.request(app)
@@ -31,18 +30,6 @@ before((done) => {
       done();
     });
 });
-
-before((done) => {
-  chai.request(app)
-    .post('/api/v1/menu')
-    .send({ date: today, mealId: 1 })
-    .set('x-access-token', adminToken)
-    .end((err, res) => {
-      updatedMenu = res.body.updatedMenu;
-      done();
-    });
-});
-
 
 describe('Given /GET /api/v1/menu', () => {
   describe('When user wants to get menu', () => {
@@ -105,6 +92,7 @@ describe('Given /POST /api/v1/menu', () => {
     it('should create a new menu', (done) => {
       const body = {
         date: '2018-08-22',
+        mealIds: [1, 2, 4],
       };
       chai.request(app)
         .post('/api/v1/menu')
@@ -113,14 +101,15 @@ describe('Given /POST /api/v1/menu', () => {
         .end((err, res) => {
           res.status.should.eql(201);
           res.body.message.should.eql('Successfully created a menu for Wednesday, August 22nd 2018');
-          res.body.newMenu.id.should.eql(4);
-          res.body.newMenu.date.should.eql('2018-08-22');
+          res.body.menu.id.should.eql(4);
+          res.body.menu.date.should.eql('2018-08-22');
           done();
         });
     });
     it('should not create a menu if it already exist', (done) => {
       const body = {
         date: '2018-05-15',
+        mealIds: [1, 2],
       };
       chai.request(app)
         .post('/api/v1/menu')
@@ -133,26 +122,10 @@ describe('Given /POST /api/v1/menu', () => {
           done();
         });
     });
-    it('should add a meal to a particular menu', (done) => {
+    it('should not create a menu with invalid meal IDs', (done) => {
       const body = {
-        date: '2018-05-18',
-        mealId: 3,
-      };
-      chai.request(app)
-        .post('/api/v1/menu')
-        .set('x-access-token', adminToken)
-        .send(body)
-        .end((err, res) => {
-          res.status.should.eql(200);
-          res.body.message.should.eql('Meal added to menu of Friday, May 18th 2018');
-          res.body.should.be.a('object');
-          done();
-        });
-    });
-    it('should not add a meal if menu if menu does not exist', (done) => {
-      const body = {
-        date: '2022-05-15',
-        mealId: 3,
+        date: '2018-05-15',
+        mealIds: [0, -2],
       };
       chai.request(app)
         .post('/api/v1/menu')
@@ -160,7 +133,23 @@ describe('Given /POST /api/v1/menu', () => {
         .send(body)
         .end((err, res) => {
           res.status.should.eql(400);
-          res.body.message.should.have.eql('No menu is set for Sunday, May 15th 2022');
+          res.body.message.should.have.eql('Invalid meal IDs');
+          res.body.should.be.a('object');
+          done();
+        });
+    });
+    it('should not create a menu if mealId does not match a meal', (done) => {
+      const body = {
+        date: '2018-05-25',
+        mealIds: [1, 340],
+      };
+      chai.request(app)
+        .post('/api/v1/menu')
+        .set('x-access-token', adminToken)
+        .send(body)
+        .end((err, res) => {
+          res.status.should.eql(400);
+          res.body.message.should.have.eql('Meal does not exist. Check meal_id sent');
           res.body.should.be.a('object');
           done();
         });
@@ -168,3 +157,38 @@ describe('Given /POST /api/v1/menu', () => {
   });
 });
 
+describe('Given /PUT /api/v1/menu/:id', () => {
+  describe('When adminUser wants to update a menu', () => {
+    it('should update menu with given ID', (done) => {
+      const body = {
+        mealIds: [1, 2],
+      };
+      chai.request(app)
+        .put('/api/v1/menu/2')
+        .set('x-access-token', adminToken)
+        .send(body)
+        .end((err, res) => {
+          res.status.should.eql(200);
+          res.body.message.should.eql('Successfully updated menu for Tuesday, May 15th 2018');
+          res.body.menu.id.should.eql(2);
+          res.body.menu.date.should.eql('2018-05-15');
+          done();
+        });
+    });
+    it('should not update menu with incorrect ID', (done) => {
+      const body = {
+        mealIds: [1, 2],
+      };
+      chai.request(app)
+        .put('/api/v1/menu/233')
+        .set('x-access-token', adminToken)
+        .send(body)
+        .end((err, res) => {
+          res.status.should.eql(400);
+          res.body.message.should.have.eql('No menu found');
+          res.body.should.be.a('object');
+          done();
+        });
+    });
+  });
+});

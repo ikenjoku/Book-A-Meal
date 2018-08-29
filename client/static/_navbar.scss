@@ -31,7 +31,7 @@
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .topnav .links{
     display: none;
   }
@@ -42,7 +42,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .topnav.responsive {
     position: relative;
   }

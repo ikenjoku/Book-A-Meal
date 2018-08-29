@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderHistory Component should render the OrderHistory correctly 1`] = `
+<main
+  className="order-history-content"
+  id="order-history-container"
+>
+  <div
+    className="cool-lg-text"
+  >
+    <h2>
+      Order History
+    </h2>
+  </div>
+  <DatePicker
+    btnName="Get Orders"
+    onSubmit={[Function]}
+  />
+  <Connect(OrderList) />
+</main>
+`;

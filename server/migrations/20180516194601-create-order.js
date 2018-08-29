@@ -14,6 +14,11 @@ module.exports = {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
+    quantity: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 1
+    },
     userId: {
       type: Sequelize.INTEGER,
       onDelete: 'CASCADE',

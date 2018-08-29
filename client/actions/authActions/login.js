@@ -1,9 +1,7 @@
 import notify from '../notify';
 import API from '../../axiosConfig';
 import { setAuthorizationToken } from '../../utils/authHelpers';
-import {
-  LOGIN_SUCCESS, AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_FAILURE,
-} from '../actionTypes';
+import { LOGIN_SUCCESS, AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_FAILURE } from '../actionTypes';
 
 export const loginSuccess = user => ({
   type: LOGIN_SUCCESS,

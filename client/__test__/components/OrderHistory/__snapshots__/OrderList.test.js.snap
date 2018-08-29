@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderList should map state to props 1`] = `
+Object {
+  "isLoadingOrders": false,
+  "orders": Array [],
+}
+`;
+
+exports[`OrderList should render the OrderList correctly 1`] = `
+<div>
+  <div>
+    <table
+      className="order-table-body"
+    >
+      <thead>
+        <tr>
+          <th>
+            S/N
+          </th>
+          <th>
+            Customer
+          </th>
+          <th>
+            Order Summary
+          </th>
+          <th>
+            Amount
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          key="2"
+        >
+          <td>
+            1
+          </td>
+          <td>
+            Ezinne
+             
+            Njoku
+          </td>
+          <td>
+            Rice and Beans
+          </td>
+          <td>
+            ₦
+            1500
+          </td>
+          <td>
+            cancelled
+          </td>
+          <td />
+        </tr>
+        <tr
+          key="3"
+        >
+          <td>
+            2
+          </td>
+          <td>
+            Kelechi
+             
+            Njoku
+          </td>
+          <td>
+            Egusi Semo
+          </td>
+          <td>
+            ₦
+            1200
+          </td>
+          <td>
+            pending
+          </td>
+          <td>
+            <button
+              className="deliverBtn"
+              onClick={[Function]}
+            >
+              deliver
+            </button>
+          </td>
+        </tr>
+        <tr
+          key="4"
+        >
+          <td>
+            3
+          </td>
+          <td>
+            Nnamdi
+             
+            James
+          </td>
+          <td>
+            Egusi Semo
+          </td>
+          <td>
+            ₦
+            1500
+          </td>
+          <td>
+            delivered
+          </td>
+          <td />
+        </tr>
+      </tbody>
+    </table>
+    <div
+      id="total-made"
+    >
+      <h2>
+        Total: ₦
+        1500
+      </h2>
+    </div>
+  </div>
+</div>
+`;

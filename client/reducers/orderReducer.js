@@ -1,5 +1,5 @@
 import {
-  ORDER_MEAL_SUCCESS, ORDER_MEAL_FAILURE,
+  ORDER_MEAL_SUCCESS,
   GET_ORDERS_BY_DATE_SUCCESS, GET_ORDERS_BY_DATE_FAILURE,
   GET_ALL_PREVIOUS_ORDERS_SUCCESS, GET_ALL_PREVIOUS_ORDERS_FAILURE,
   DELIVER_ORDER_SUCCESS, DELIVER_ORDER_FAILURE,
@@ -18,7 +18,7 @@ const orderReducer = (state = initialState.orderReducer, action) => {
       return {
         ...state,
         orderedMeal: action.orderedMeal,
-        orders: [...state.orders, action.meal],
+        orders: [...state.orders],
         error: null,
       };
     case GET_ORDERS_BY_DATE_SUCCESS:

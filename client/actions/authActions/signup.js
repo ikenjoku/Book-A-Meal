@@ -1,10 +1,8 @@
-import API from '../../axiosConfig';
 import notify from '../notify';
-import {
-  SIGNUP_SUCCESS, SIGNUP_FAILURE,
-} from '../actionTypes';
+import API from '../../axiosConfig';
 import { isLoggedIn, isLoading } from './login';
 import { setAuthorizationToken } from '../../utils/authHelpers';
+import { SIGNUP_SUCCESS, SIGNUP_FAILURE } from '../actionTypes';
 
 const signUpSuccess = user => ({
   type: SIGNUP_SUCCESS,
@@ -15,7 +13,6 @@ const signUpFailure = error => ({
   type: SIGNUP_FAILURE,
   error,
 });
-
 
 export const signupAUser = signupData => (dispatch) => {
   dispatch(isLoading(true));

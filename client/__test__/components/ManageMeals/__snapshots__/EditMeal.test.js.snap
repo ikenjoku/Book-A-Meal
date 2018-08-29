@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the EditMealForm correctly 1`] = `
+exports[`EditMealForm should map state to props 1`] = `
+Object {
+  "meal": undefined,
+}
+`;
+
+exports[`EditMealForm should render the EditMealForm correctly 1`] = `
 <div
   className="manage-meals-content"
 >

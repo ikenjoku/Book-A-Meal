@@ -4,13 +4,13 @@ import { User } from '../models';
 import { getJWT } from '../helpers/helpers';
 
 /**
- * It contains utility methods for users
+ * @description - It contains utility methods for users
  *
  * @class UserController
  */
 class UserController {
   /**
-   * Register a new user
+   * @description - Register a new user
    *
    * @static
    *
@@ -67,7 +67,7 @@ class UserController {
       .catch(error => next(error));
   }
   /**
-   * Logs in a new user
+   * @description - Logs in a new user
    *
    * @static
    *

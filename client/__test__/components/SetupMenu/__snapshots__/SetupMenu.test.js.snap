@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SetupMenu Component should render the SetupMenu correctly 1`] = `
+<main
+  id="setup-menu-container"
+>
+  <div
+    className="cool-lg-text"
+  >
+    <h2>
+      Setup Menu
+    </h2>
+  </div>
+  <DatePicker
+    btnName="Find Menu"
+    onChange={[Function]}
+    onSubmit={[Function]}
+  />
+  <Connect(MenuCard) />
+</main>
+`;

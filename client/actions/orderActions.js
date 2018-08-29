@@ -10,10 +10,9 @@ import {
   GET_ORDER_LOADING_STATUS, CHANGE_ORDER_STATUS,
 } from './actionTypes';
 
-const orderMealSuccess = ({ order, meal }) => ({
+const orderMealSuccess = ({ order }) => ({
   type: ORDER_MEAL_SUCCESS,
   orderedMeal: order,
-  meal,
 });
 
 const orderMealFailure = error => ({
@@ -85,8 +84,8 @@ export const modifyOrderStatus = (status, orderId = '') => ({
   orderIdToModify: orderId,
 });
 
-export const getAllPreviousOrders = () => (dispatch) => {
-  API.get('/orders/customer')
+export const getAllPreviousOrders = userId => (dispatch) => {
+  API.get(`/orders?userId=${userId}`)
     .then((res) => {
       dispatch(getPreviousOrdersSuccess(res.data.orders));
     })
@@ -95,11 +94,11 @@ export const getAllPreviousOrders = () => (dispatch) => {
     });
 };
 
-export const orderAMeal = ({ mealId, id, meal }) => (dispatch) => {
-  API.post('/orders', { mealId, id })
+export const orderAMeal = ({ mealId, quantity, userId }) => (dispatch) => {
+  API.post('/orders', { mealId, quantity })
     .then((res) => {
-      dispatch(orderMealSuccess({ order: res.data.order, meal }));
-      dispatch(getAllPreviousOrders());
+      dispatch(orderMealSuccess({ order: res.data.order }));
+      dispatch(getAllPreviousOrders(userId));
       notify.success(res.data.message);
     })
     .catch((error) => {
@@ -110,7 +109,7 @@ export const orderAMeal = ({ mealId, id, meal }) => (dispatch) => {
 
 export const getOrdersByDate = ({ selectedDate }) => (dispatch) => {
   dispatch(isLoadingOrders(true));
-  API.get(`/orders/date?date=${selectedDate}`)
+  API.get(`/orders?date=${selectedDate}`)
     .then(({ data: { orders } }) => {
       dispatch(getOrdersSucces(orders));
       dispatch(isLoadingOrders(false));
@@ -123,7 +122,7 @@ export const getOrdersByDate = ({ selectedDate }) => (dispatch) => {
 };
 
 export const deliverAnOrder = id => (dispatch) => {
-  API.put(`/orders/${id}/deliver`)
+  API.put(`/orders/${id}`, { status: 'delivered' })
     .then((res) => {
       dispatch(deliverOrderSuccess({ deliveredOrder: res.data.order, id }));
       notify.success(res.data.message);
@@ -135,7 +134,7 @@ export const deliverAnOrder = id => (dispatch) => {
 };
 
 export const cancelAnOrder = id => (dispatch) => {
-  API.put(`/orders/${id}`, { cancel: true })
+  API.put(`/orders/${id}`, { status: 'cancelled' })
     .then((res) => {
       dispatch(cancelOrderSuccess({ cancelledOrder: res.data.order, id }));
       notify.success(res.data.message);
@@ -151,6 +150,21 @@ export const modifyAnOrder = ({ id, newMealId }) => (dispatch) => {
     .then((res) => {
       dispatch(modifyOrderSuccess({ modifiedOrder: res.data.order, id }));
       dispatch(getAllPreviousOrders());
+      dispatch(modifyOrderStatus(false));
+      notify.success(res.data.message);
+    })
+    .catch((error) => {
+      dispatch(modifyOrderFailure(error));
+      dispatch(modifyOrderStatus(false));
+      notify.error(error.response.data.message);
+    });
+};
+
+export const updateAnOrder = ({ id, quantity, amount, userId }) => (dispatch) => {
+  API.put(`/orders/${id}`, { quantity, amount })
+    .then((res) => {
+      dispatch(modifyOrderSuccess({ modifiedOrder: res.data.order, id }));
+      dispatch(getAllPreviousOrders(userId));
       dispatch(modifyOrderStatus(false));
       notify.success(res.data.message);
     })

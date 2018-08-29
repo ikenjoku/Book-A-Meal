@@ -5,20 +5,16 @@ exports[`it should render footer correctly 1`] = `
   className="footer"
 >
   <ToastContainer
-    autoClose={5000}
+    autoClose={4000}
     bodyClassName={null}
-    className={null}
-    closeButton={
-      <CloseButton
-        ariaLabel="close"
-      />
-    }
+    className="toast-container"
+    closeButton={false}
     closeOnClick={true}
     draggable={true}
     draggablePercent={80}
-    hideProgressBar={false}
+    hideProgressBar={true}
     newestOnTop={false}
-    pauseOnHover={true}
+    pauseOnHover={false}
     pauseOnVisibilityChange={true}
     position="top-right"
     progressClassName={null}

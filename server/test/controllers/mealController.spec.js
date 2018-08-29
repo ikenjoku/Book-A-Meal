@@ -31,23 +31,17 @@ before((done) => {
 
 describe('Given /GET /api/v1/meals', () => {
   describe('When adminUser wants to get meals', () => {
-    it('should return all meals', (done) => {
+    it('should return paginated meals', (done) => {
       chai.request(app)
-        .get('/api/v1/meals')
+        .get('/api/v1/meals?limit=5&page=1')
         .set('x-access-token', adminToken)
         .end((err, res) => {
           res.status.should.eql(200);
           res.should.be.a('object');
-          res.body.meals.length.should.eql(5);
-          res.body.meals.should.be.a('array');
-          res.body.meals[0].should.be.a('object');
-          res.body.meals[0].should.have.property('id');
-          res.body.meals[0].id.should.be.a('number');
-          res.body.meals[0].should.have.property('name');
-          res.body.meals[0].name.should.be.a('string');
-          res.body.meals[0].name.should.eql('Nigerian Jollof');
-          res.body.meals[1].name.should.eql('Rice and Beans');
-          res.body.meals[2].name.should.eql('Egusi Semo');
+          res.body.meals.rows.should.be.a('array');
+          res.body.meals.rows.length.should.eql(5);
+          res.body.count.should.eql(5);
+          res.body.pages.should.eql(1);
           done();
         });
     });
@@ -61,7 +55,7 @@ describe('Given /GET /api/v1/meals', () => {
           res.body.meal.name.should.eql('Rice and Beans');
           res.body.meal.description.should.eql('Rice, Beans, Plantain, Panla Sauce, Max Coke');
           res.body.meal.price.should.eql(1500);
-          res.body.meal.imageurl.should.eql('https://africa-public.food.jumia.com/dynamic/production/ng/images/products/80/80418_1465475724_ma.jpg');
+          res.body.meal.imageurl.should.eql('https://res.cloudinary.com/ikeenjoku/image/upload/v1532320842/bookameal/2018-07-23T04:40:42.344Zsemo-egusi.jpg.jpg');
           res.body.meal.id.should.eql(2);
           done();
         });
@@ -201,26 +195,6 @@ describe('Given /PUT /api/v1/meals', () => {
         });
     });
     it(
-      'should not update a meal when mealId does not exist',
-      (done) => {
-        chai.request(app)
-          .put('/api/v1/meals/25')
-          .set('x-access-token', adminToken)
-          .set('Content-Type', 'multipart/form-data')
-          .field('name', 'Rice only')
-          .field('description', 'Rice, Beans, Plantain, Panla Sauce, Max Coke')
-          .field('price', 1500)
-          .attach('imageurl', `${__dirname}/testmeal.png`)
-          .end((err, res) => {
-            res.status.should.eql(422);
-            res.body.should.be.a('object');
-            res.body.should.have.property('message')
-              .eql('Meal does not exist');
-            done();
-          });
-      },
-    );
-    it(
       'should not update a meal with invalid price field',
       (done) => {
         chai.request(app)
@@ -253,6 +227,25 @@ describe('Given /PUT /api/v1/meals', () => {
           .end((err, res) => {
             res.status.should.eql(400);
             res.body.message.should.eql('Please fill in the meal name');
+            res.body.should.be.a('object');
+            done();
+          });
+      },
+    );
+    it(
+      'should not update a meal to a meal name that already exist',
+      (done) => {
+        chai.request(app)
+          .put('/api/v1/meals/2')
+          .set('x-access-token', adminToken)
+          .set('Content-Type', 'multipart/form-data')
+          .field('name', 'Onion Jappatti')
+          .field('description', 'this is a new description')
+          .field('price', 1200)
+          .attach('imageurl', `${__dirname}/testmeal.png`)
+          .end((err, res) => {
+            res.status.should.eql(409);
+            res.body.message.should.eql('Meal name already exist. Use a different name.');
             res.body.should.be.a('object');
             done();
           });

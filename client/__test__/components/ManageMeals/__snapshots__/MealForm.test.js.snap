@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`it should render the MealForm correctly 1`] = `
+exports[`MealForm Component it should render the MealForm correctly 1`] = `
 <div>
   <form
     className="add-meal-form"
@@ -61,7 +61,7 @@ exports[`it should render the MealForm correctly 1`] = `
 </div>
 `;
 
-exports[`it should render the MealForm with data correctly 1`] = `
+exports[`MealForm Component it should render the MealForm with data correctly 1`] = `
 <div>
   <form
     className="add-meal-form"

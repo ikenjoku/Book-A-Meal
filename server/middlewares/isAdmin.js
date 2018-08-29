@@ -1,5 +1,5 @@
 /**
- * checks if user is an Admin user
+ * @description - checks if user is an Admin user
  *
  * @param {Object} express http request object
  * @param {Object} express http response object
@@ -16,7 +16,7 @@ export const isAdmin = (req, res, next) => (
     })
 );
 /**
- * checks if /:id is an integer
+ * @description - checks ID param is an integer
  *
  * @param {Object} express http request object
  * @param {Object} express http response object

@@ -1,13 +1,13 @@
 import { Meal } from '../models';
 
 /**
- * It contains utility methods for meals
+ * @description - It contains utility methods for meals
  *
  * @class MealController
  */
 class MealController {
   /**
-   * Add a new meal
+   * @description - Add a new meal
    *
    * @static
    *
@@ -46,8 +46,9 @@ class MealController {
       .catch(error => next(error));
   }
   /**
-   * Get a particular meal
+   * @description - Get a particular meal
    *
+   * @static
    *
    * @param {Object} - express http request object
    * @param {Object} - express http response object
@@ -73,7 +74,7 @@ class MealController {
       .catch(error => next(error));
   }
   /**
-   * Get all meals
+   * @description - Get oaginated meals
    *
    * @static
    *
@@ -86,25 +87,35 @@ class MealController {
    * @memberof MealController
    */
 
-  static getMeals(req, res, next){
-    let page = req.query.page || 0;      // page number
-    let limit = 5;   // number of records per page
-    let offset = page * limit;
-      
+  static getMeals(req, res, next) {
+    const limit = req.query.limit || 5;
+    const page = req.query.page || 1;
+    const offset = limit * (page - 1);
+
     Meal.findAndCountAll({
-        limit: limit,
-        offset: offset,
-        order: ['id']
-    }).then((data) => {
-      let pages = Math.ceil(data.count / limit);
-      offset = limit * (page - 1);
-      let meals = data.rows;
-      res.status(200).json({'meals': meals, 'count': data.count, 'pages': pages});
-   })
-    .catch(error => next(error));
+      limit,
+      offset,
+      order: [['createdAt', 'DESC']],
+    }).then((meals) => {
+      if (meals.count === 0) {
+        return res.status(404).send({
+          message: 'No meals found',
+          meals: meals.rows,
+        });
+      }
+      const pages = Math.ceil(meals.count / limit);
+      return res.status(200).send({
+        message: 'Meals successfully retrieved',
+        meals,
+        pages,
+        count: meals.count,
+      });
+    })
+      .catch(error => next(error));
   }
+
   /**
-   * Edit a particular meal
+   * @description - Edits a particular meal
    *
    * @static
    *
@@ -119,12 +130,11 @@ class MealController {
   static updateMeal(req, res, next) {
     const id = Number(req.params.id);
     delete req.body.id;
-    const imageurl = req.file.secure_url;
-    const {
-      name,
-      description,
-      price,
-    } = req.body;
+    const body = req.body;
+
+    if (req.file.secure_url) {
+      body.imageurl = req.file.secure_url;
+    }
 
     Meal.findById(id)
       .then((meal) => {
@@ -133,9 +143,7 @@ class MealController {
             message: 'Meal does not exist',
           });
         }
-        meal.update({
-          name, description, price, imageurl,
-        })
+        meal.update(body)
           .then((updatedMeal) => {
             res.status(200).send({
               message: 'Successfully updated meal',
@@ -147,8 +155,9 @@ class MealController {
       .catch(error => next(error));
   }
   /**
-   * Remove a particular meal
+   * @description - Remove a particular meal
    *
+   * @static
    *
    * @param {Object} - express http request object
    * @param {Object} - express http response object

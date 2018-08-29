@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu: Menu Component Should render Menu Component corectly 1`] = `
+<main
+  className="menu-list-content"
+>
+  <div
+    className="menu-list"
+  >
+    <Connect(MenuTable) />
+  </div>
+  <div
+    className="order-summary"
+  >
+    <div
+      className="order-summary-wrap"
+    >
+      <Connect(CurrentOrderTable) />
+      <Connect(PreviousOrderTable) />
+    </div>
+  </div>
+</main>
+`;

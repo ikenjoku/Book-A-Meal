@@ -1,27 +1,122 @@
 import React from 'react';
 import { shallow } from "enzyme";
-import { CurrentOrderTable } from "../../../components/Menu/CurrentOrderTable";
+import { CurrentOrderTable, mapStateToProps } from "../../../components/Menu/CurrentOrderTable";
+import initialState from '../../../reducers/initialState'
 import { orders } from '../../mocks';
 
-let cancelAnOrder, modifyOrderStatus, wrapper;
+describe('Menu: CurrentOrderTable Component', () => {
+  let currentOrders, wrapper, userId, getAllPreviousOrders;
+  currentOrders = orders;
+  userId = 1;
+  getAllPreviousOrders = jest.fn();
+  test('Should render CurrentOrderTable correctly', () => {
+    wrapper = shallow(
+      <CurrentOrderTable
+        currentOrders={currentOrders}
+        userId={userId}
+        getAllPreviousOrders={getAllPreviousOrders}
+      />);
+    expect(wrapper).toMatchSnapshot();
+  });
 
-beforeEach(() => {
-  cancelAnOrder = jest.fn();
-  wrapper = shallow(
-  <CurrentOrderTable 
-    cancelAnOrder={cancelAnOrder} 
-    modifyOrderStatus={modifyOrderStatus}
-    currentOrders={orders}
-    changeOrderStatus={false}
-    orderIdToModify={''}
-  />);
-});
+  test('Should render a message when there are no pending orders', () => {
+    wrapper = shallow(
+      <CurrentOrderTable
+        currentOrders={[orders[0], orders[2]]}
+        userId={userId}
+        getAllPreviousOrders={getAllPreviousOrders}
+      />);
+    expect(wrapper.find('.order-item').length).toBe(0);
+  });
 
-test('should render the CurrentOrderTable correctly', () => {
-  expect(wrapper).toMatchSnapshot();
-});
+  test('should handleOrderUpdate  when update button is clicked', () => {
+    wrapper = shallow( <CurrentOrderTable 
+      currentOrders={currentOrders} 
+      userId={userId}
+      getAllPreviousOrders={getAllPreviousOrders}
+      />);
 
-test('should cancel an order when cancel button is clicked', () => {
-  wrapper.find('.cancel-order-icon').prop('onClick')(3);
-  expect(cancelAnOrder).toHaveBeenLastCalledWith(3);
+    const handleOrderUpdateSpy = jest.spyOn(
+      wrapper.instance(), 'handleOrderUpdate'
+    );
+    const orderToUpdate = orders[1]
+    wrapper.instance().handleOrderUpdate(orderToUpdate);
+    expect(handleOrderUpdateSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test('should close update modal when No button is clicked', () => {
+    wrapper = shallow( <CurrentOrderTable 
+      currentOrders={currentOrders} 
+      userId={userId}
+      getAllPreviousOrders={getAllPreviousOrders}
+      />);
+
+    const closeUpdateModalSpy = jest.spyOn(
+      wrapper.instance(), 'closeUpdateModal'
+    );
+    wrapper.instance().closeUpdateModal();
+    expect(closeUpdateModalSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test('should openCancelModal when cancel button is clicked', () => {
+    wrapper = shallow( <CurrentOrderTable 
+      currentOrders={currentOrders} 
+      userId={userId}
+      getAllPreviousOrders={getAllPreviousOrders}
+      />);
+
+    const openCancelModalSpy = jest.spyOn(
+      wrapper.instance(), 'openCancelModal'
+    );
+    wrapper.instance().openCancelModal({ orderId: 2 });
+    expect(openCancelModalSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test('should close order-cancel modal when No button is clicked', () => {
+    wrapper = shallow(<CurrentOrderTable 
+      currentOrders={currentOrders} 
+      userId={userId}
+      getAllPreviousOrders={getAllPreviousOrders}
+      />);
+
+    const closeCancelModalSpy = jest.spyOn(
+      wrapper.instance(), 'closeCancelModal'
+    );
+    wrapper.instance().closeCancelModal();
+    expect(closeCancelModalSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test('should call handleOrderUpdate when Edit button is clicked', () => {
+    wrapper = shallow(<CurrentOrderTable 
+      currentOrders={currentOrders} 
+      userId={userId}
+      getAllPreviousOrders={getAllPreviousOrders}
+      />);
+
+    const handleOrderUpdateSpy = jest.spyOn(
+      wrapper.instance(), 'handleOrderUpdate'
+    );
+    wrapper.find('.update-order-icon').simulate('click', orders[0]);
+    expect(handleOrderUpdateSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test('should call openCancelModal when Cancel button is clicked', () => {
+    wrapper = shallow(<CurrentOrderTable 
+      currentOrders={currentOrders} 
+      userId={userId}
+      getAllPreviousOrders={getAllPreviousOrders}
+      />);
+
+    const openCancelModalSpy = jest.spyOn(
+      wrapper.instance(), 'openCancelModal'
+    );
+    wrapper.find('.cancel-order-icon').simulate('click', {orderId: 2});
+    expect(openCancelModalSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test('should map state to props', () => {
+    const ownProps = { currentOrders: orders };
+    const tree = mapStateToProps(initialState, ownProps);
+    expect(tree).toMatchSnapshot();
+  });
 });

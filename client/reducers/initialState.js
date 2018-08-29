@@ -19,16 +19,17 @@ export default {
     error: null,
 
   },
-  setMenuReducer: {
-    createdMenu: null,
+  setupMenuReducer: {
+    currentMenu: {},
     selectedDate: '',
+    isLoadingMenu: false,
     error: null,
-    success: false,
-    updatedMenu: null,
-    isLoading: false,
-    paginatedMeals: [],
+    meals: [],
     count: 0,
     pages: 0,
+    isUpdating: false,
+    isFetching: false,
+    isCreating: false,
   },
   orderReducer: {
     orderedMeal: null,

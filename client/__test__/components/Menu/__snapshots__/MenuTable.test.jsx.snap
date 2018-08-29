@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu: MenuTable Component Should render MenuTable correctly 1`] = `
+<div>
+  <h2
+    className="center cool-lg-text"
+  >
+    Menu
+  </h2>
+  <DatePicker
+    btnName="Get Menu"
+    onSubmit={[Function]}
+  />
+  <Connect(MenuList) />
+</div>
+`;
+
+exports[`Menu: MenuTable Component should map state to props 1`] = `
+Object {
+  "error": null,
+  "menu": null,
+}
+`;

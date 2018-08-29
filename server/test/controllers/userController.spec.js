@@ -49,7 +49,6 @@ describe('Users', () => {
           .post('/api/v1/auth/signup')
           .send(user)
           .end((err, res) => {
-            console.log(res.body);
             res.should.have.status(400);
             res.body.message.should.eql('Firstname is required');
             done();

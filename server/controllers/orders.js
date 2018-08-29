@@ -1,15 +1,13 @@
-import differenceInMinutes from 'date-fns/difference_in_minutes';
-
-import { Order, User, Meal } from '../models';
+import { Order, User, Meal, Menu } from '../models';
 
 /**
- * It contains utility methods for orders
+ * @description - It contains utility methods for orders
  *
  * @class OrderController
  */
 class OrderController {
   /**
-   * Place an order for a particular meal
+   * @description - Place an order for a particular meal
    *
    * @static
    *
@@ -22,9 +20,9 @@ class OrderController {
    * @memberof OrderController
    */
   static createOrder(req, res, next) {
+    const userId = req.user.id;
     const { mealId } = req.body;
-    const { id } = req.user;
-    const userId = id;
+    const quantity = Number(req.body.quantity);
     const date = new Date().toISOString().substr(0, 10);
 
     Meal.findById(mealId)
@@ -32,29 +30,47 @@ class OrderController {
         if (!meal) {
           return res.status(404).send({ message: 'Meal does not exist' });
         }
-        User.findById(id)
+        User.findById(userId)
           .then((user) => {
             if (!user) {
               return res.status(404).send({ message: 'Please signup to proceed' });
             }
-            Order.create({
-              date,
-              amount: meal.price,
-              userId,
-              mealId,
-            })
-              .then(order => res.status(201)
-                .send({
-                  message: `${meal.name} has been ordered.`,
-                  order,
-                }))
+            return Menu.findOne({ where: { date } })
+              .then((menu) => {
+                if (!menu) {
+                  return res.status(404).send({ message: `Menu has not been set for ${moment(todaysdate).format('dddd, MMMM Do YYYY')}` });
+                }
+                return menu.hasMeal(mealId)
+                  .then((inMenu) => {
+                    if (!inMenu) {
+                      return res.status(400).send({
+                        message: "This meal is not in today's menu",
+                      });
+                    }
+                    Order.create({
+                      date,
+                      amount: meal.price * quantity,
+                      quantity,
+                      userId,
+                      mealId,
+                    })
+                      .then(order => res.status(201)
+                        .send({
+                          message: `${meal.name} has been ordered.`,
+                          order,
+                        }))
+                      .catch(error => next(error));
+                  })
+                  .catch(error => next(error));
+              })
               .catch(error => next(error));
           })
           .catch(error => next(error));
       });
   }
+
   /**
-   * Get all orders from database
+   * @description - Get orders from database
    *
    * @static
    *
@@ -66,8 +82,13 @@ class OrderController {
    *
    * @memberof OrderController
    */
-  static getAllOrders(req, res, next) {
+  static getOrders(req, res, next) {
+    const query = {};
+    if (req.query.date) query.date = req.query.date;
+    if (req.query.userId) query.userId = req.query.userId;
+
     Order.findAll({
+      where: query,
       include: [{
         model: User,
         attributes: ['id', 'firstname', 'lastname'],
@@ -83,122 +104,15 @@ class OrderController {
           });
         }
         res.status(200).send({
-          message: 'All orders retrieved successfully',
+          message: 'Orders retrieved successfully',
           orders,
         });
       })
       .catch(error => next(error));
   }
-  /**
-   * Get orders for a particular day
-   *
-   * @static
-   *
-   * @param {Object} - express http request object
-   * @param {Object} - express http response object
-   * @param {Function} - calls the next middleware
-   *
-   * @return {Object} - express http response object
-   *
-   * @memberof OrderController
-   */
-  static getOrdersByDate(req, res, next) {
-    const todaysdate = new Date().toISOString();
-    const date = req.query.date || todaysdate.substr(0, 10);
 
-    Order.findAll({
-      where: { date },
-      include: [{
-        model: User,
-        attributes: ['id', 'firstname', 'lastname'],
-      }, {
-        model: Meal,
-        attributes: ['id', 'name', 'price'],
-      }],
-    })
-      .then((orders) => {
-        if (orders.length < 1) {
-          return res.status(404).send({
-            message: 'No orders found for this day',
-          });
-        }
-        res.status(200).send({
-          message: `Orders for ${date} retrieved successfully`,
-          orders,
-        });
-      })
-      .catch(error => next(error));
-  }
   /**
-   * Get orders for a particular user
-   *
-   * @static
-   *
-   * @param {Object} - express http request object
-   * @param {Object} - express http response object
-   * @param {Function} - calls the next middleware
-   *
-   * @return {Object} - express http response object
-   *
-   * @memberof OrderController
-   */
-  static getOrdersByUser(req, res, next) {
-    const userId = req.user.id;
-
-    Order.findAll({
-      where: { userId },
-      include: [
-        {
-          model: Meal,
-          attributes: ['id', 'name', 'price'],
-        },
-      ],
-    })
-      .then((orders) => {
-        if (orders.length === 0) {
-          return res.status(404).send({
-            message: 'You have not made any orders yet',
-          });
-        }
-        res.status(200).send({
-          message: 'Your prevoius orders',
-          orders,
-        });
-      })
-      .catch(error => next(error));
-  }
-  /**
-   * Deliver a particular order
-   *
-   * @static
-   *
-   * @param {Object} - express http request object
-   * @param {Object} - express http response object
-   * @param {Function} - calls the next middleware
-   *
-   * @return {Object} - express http response object
-   *
-   * @memberof OrderController
-   */
-  static deliverOrder(req, res, next) {
-    const { id } = req.params;
-    Order.findById(id)
-      .then((order) => {
-        if (!order) {
-          return res.status(404).send({ message: 'Order was not found' });
-        }
-        order.update({
-          status: 'delivered',
-        })
-          .then(() => res.status(200).send({
-            message: 'Order has been delivered',
-            order,
-          }))
-          .catch(error => next(error));
-      });
-  }
-  /**
-   * Update a particlar order
+   * @description - Update a particlar order
    *
    * @static
    *
@@ -212,53 +126,24 @@ class OrderController {
    */
   static updateOrder(req, res, next) {
     const originalOrderId = req.params.id;
-    const { cancel } = req.body;
-    const id = Number(req.user.id);
-    const newMealId = Number(req.body.newMealId);
-
     Order.findById(originalOrderId)
       .then((order) => {
         if (!order) {
-          return res.status(404).send({ message: 'Order was not found' });
-        }
-        if (order.userId !== id) {
-          return res.status(401).send({ message: 'You can not modify this order' });
-        }
-
-        if ((differenceInMinutes(new Date(), new Date(order.createdAt))) >= 15) {
-          return res.status(401).send({ message: 'You can not modify this order anymore' });
-        }
-        if (cancel) {
-          return order.update({
-            status: 'cancelled',
-          })
-            .then(() => res.status(200).send({
-              message: 'Your order has been cancelled',
-              order,
-            }))
-            .catch(error => next(error));
+          return res.status(400).send({
+            message: 'Order does not exist',
+          });
         }
 
-        Meal.findById(newMealId)
-          .then((newMeal) => {
-            if (!newMeal) {
-              return res.status(400).send({
-                message: 'New Meal does not exist',
-              });
-            }
-            order.update({
-              mealId: newMeal.id,
-              amount: newMeal.price,
-            })
-              .then(updatedOrder => res.status(200).send({
-                message: 'Your order has been updated',
-                order: updatedOrder,
-              }))
-              .catch(error => next(error));
-          })
+        order.update(req.body)
+          .then(updatedOrder => res.status(200).send({
+            message: 'Your order has been updated',
+            order: updatedOrder,
+          }))
           .catch(error => next(error));
-      });
+      })
+      .catch(error => next(error));
   }
 }
+
 export default OrderController;
 
