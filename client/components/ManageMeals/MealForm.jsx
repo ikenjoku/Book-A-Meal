@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class MealForm extends Component {
@@ -14,7 +14,7 @@ class MealForm extends Component {
         imageurl: props.meal ? props.meal.imageurl : '',
       },
       error: '',
-    }
+    };
   }
 
   onFormInput = (event) => {
@@ -42,7 +42,6 @@ class MealForm extends Component {
       formData.append('description', description);
       formData.append('imageurl', imageurl);
       this.props.onSubmit(formData);
-
     } else {
       this.setState(() => ({ error: 'Please fill all the fields' }));
     }
@@ -54,9 +53,10 @@ class MealForm extends Component {
         {this.state.error && <p>{this.state.error}</p>}
         <form
           onSubmit={this.onFormSubmit}
-          name='mealForm'
-          encType='multipart/form-data'
-          className="add-meal-form">
+          name="mealForm"
+          encType="multipart/form-data"
+          className="add-meal-form"
+        >
           <input
             className="form-control"
             type="text"
@@ -72,7 +72,8 @@ class MealForm extends Component {
             name="description"
             value={this.state.meal.description}
             onChange={this.onFormInput}
-            placeholder="Short Description" />
+            placeholder="Short Description"
+          />
 
           <input
             className="form-control"
@@ -80,22 +81,26 @@ class MealForm extends Component {
             name="price"
             value={this.state.meal.price}
             onChange={this.onFormInput}
-            placeholder="Price" />
+            placeholder="Price"
+          />
 
           <input
             className="form-control"
             type="file"
             name="imageurl"
-            onChange={this.onFormInput} />
+            onChange={this.onFormInput}
+          />
 
-          <div className='centerBtn'>
+          <div className="centerBtn">
             <input
               className="mealFormBtn"
               type="submit"
-              value="Submit" />
+              value="Submit"
+            />
 
             <Link
-              to='/meals'>
+              to="/meals"
+            >
               <div className="mealFormBtn">Go Back</div>
             </Link>
           </div>
@@ -106,6 +111,7 @@ class MealForm extends Component {
 }
 
 MealForm.propTypes = {
+  meal: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
