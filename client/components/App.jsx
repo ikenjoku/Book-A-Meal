@@ -1,33 +1,33 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NavBar from './NavBar/Index.jsx';
-import Landing from './Landing.jsx';
-import Login from './Auth/Login.jsx';
-import Signup from './Auth/Signup.jsx';
-import MealList from './ManageMeals/MealList.jsx';
-import EditMeal from './ManageMeals/EditMealForm.jsx';
-import AddMeal from './ManageMeals/AddMealForm.jsx';
-import OrderHistory from './OrderHistory/OrderHistory.jsx';
-import Menu from './Menu/Menu.jsx';
-import SetupMenu from './SetupMenu/SetupMenu.jsx'
-import Footer from './Footer.jsx';
-import NotFound from './NotFound.jsx';
-import withAuthentication from "../components/ProtectRoute";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Footer from './Footer';
+import Menu from './Menu/Menu';
+import Landing from './Landing';
+import Login from './Auth/Login';
+import NotFound from './NotFound';
+import Signup from './Auth/Signup';
+import NavBar from './NavBar/Index';
+import SetupMenu from './SetupMenu/SetupMenu';
+import MealList from './ManageMeals/MealList';
+import AddMeal from './ManageMeals/AddMealForm';
+import EditMeal from './ManageMeals/EditMealForm';
+import OrderHistory from './OrderHistory/OrderHistory';
+import withAuthentication from '../components/ProtectRoute';
 
 const App = () => (
   <BrowserRouter>
-    <div className='app-container'>
+    <div className="app-container">
       <NavBar />
       <Switch>
-        <Route path='/' exact component={Landing} />
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
-        <Route path='/menu' component={withAuthentication(Menu)} />
-        <Route path='/meals' exact component={withAuthentication(MealList)} />
-        <Route path='/meals/create' component={withAuthentication(AddMeal)} />
-        <Route path='/meals/edit/:id' component={withAuthentication(EditMeal)} />
-        <Route path='/order-history' component={withAuthentication(OrderHistory)} />
-        <Route path='/set-menu' component={withAuthentication(SetupMenu)} />
+        <Route path="/" exact component={Landing} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/menu" component={withAuthentication(Menu)} />
+        <Route path="/meals" exact component={withAuthentication(MealList)} />
+        <Route path="/meals/create" component={withAuthentication(AddMeal)} />
+        <Route path="/meals/edit/:id" component={withAuthentication(EditMeal)} />
+        <Route path="/order-history" component={withAuthentication(OrderHistory)} />
+        <Route path="/set-menu" component={withAuthentication(SetupMenu)} />
         <Route component={NotFound} />
       </Switch>
       <Footer />

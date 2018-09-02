@@ -5,34 +5,28 @@ import MealSetupForm from './MealSetupForm';
 import { getAMeals, updateAMenu } from '../../actions/setupMenuActions';
 
 export class UpdateMenu extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    this.props.getAMeals({limit: 5, page: 1});
+    this.props.getAMeals({ limit: 5, page: 1 });
   }
 
   handleSubmit = (values) => {
-    this.props.updateAMenu(values, this.props.menuId)
-    this.props.closeModal()
+    this.props.updateAMenu(values, this.props.menuId);
+    this.props.closeModal();
   }
 
   render() {
-    const {
-      meals, isUpdating, isFetching,
-    } = this.props;
+    const { meals, isUpdating } = this.props;
 
     return (
-      <div className='setup-form'>
+      <div className="setup-form">
         <h2>Update Menu</h2>
-          <MealSetupForm
-            handleSubmit={this.handleSubmit}
-            meals={meals}
-            action="Update"
-            isSubmitting={isUpdating}
-            date={this.props.selectedDate}
-          />
+        <MealSetupForm
+          handleSubmit={this.handleSubmit}
+          meals={meals}
+          action="Update"
+          isSubmitting={isUpdating}
+          date={this.props.selectedDate}
+        />
       </div>
     );
   }

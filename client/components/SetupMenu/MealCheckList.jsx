@@ -3,24 +3,23 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 
-export const MealCheckList = ({ meals, handleSelect, isFetching }) => {
-  return (isFetching ? 
+export const MealCheckList = ({ meals, handleSelect, isFetching }) =>
+  (isFetching ?
     <h3>Fetching meals...</h3>
     :
     meals.map(meal => (
-    <div key={meal.id}>
-      <label>
-        <input
-          type="checkbox"
-          name="meals"
-          value={meal.id}
-          onClick={handleSelect}
+      <div key={meal.id}>
+        <label htmlFor="meal">
+          <input
+            type="checkbox"
+            name="meals"
+            value={meal.id}
+            onClick={handleSelect}
           />
           <span>{meal.name}</span>
-      </label>
-    </div>
-  )));
-};
+        </label>
+      </div>
+    )));
 
 export const mapStateToProps = state => ({
   isFetching: state.setupMenuReducer.isFetching,

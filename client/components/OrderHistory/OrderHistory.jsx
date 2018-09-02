@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from "react-redux";
-import DatePicker from '../DatePicker.jsx';
-import OrderList from './OrderList.jsx';
-import { getOrdersByDate } from "../../actions/orderActions";
+import { connect } from 'react-redux';
+import DatePicker from '../DatePicker';
+import OrderList from './OrderList';
+import { getOrdersByDate } from '../../actions/orderActions';
 
 
 export class OrderHistory extends Component {
-  constructor(props) {
-    super(props);
-
-  }
   componentDidMount() {
     const today = new Date().toISOString().substr(0, 10);
     this.props.getOrdersByDate({ selectedDate: today });
@@ -18,17 +14,24 @@ export class OrderHistory extends Component {
 
   render() {
     return (
-      <main id='order-history-container' className="order-history-content">
+      <main id="order-history-container" className="order-history-content">
         <div className="cool-lg-text">
           <h2>Order History</h2>
         </div>
-        <DatePicker btnName='Get Orders' onSubmit={
-          (selectedDate) => this.props.getOrdersByDate(selectedDate)
-        } />
+        <DatePicker
+          btnName="Get Orders"
+          onSubmit={
+          selectedDate => this.props.getOrdersByDate(selectedDate)
+          }
+        />
         <OrderList />
       </main>
     );
   }
 }
+
+OrderHistory.propTypes = {
+  getOrdersByDate: PropTypes.func.isRequired,
+};
 
 export default connect(null, { getOrdersByDate })(OrderHistory);
