@@ -61,7 +61,6 @@ exports[`Login Component it should render Login form correctly 1`] = `
 
 exports[`Login Component should map state to props 1`] = `
 Object {
-  "authLoading": true,
   "isLoggedIn": false,
 }
 `;

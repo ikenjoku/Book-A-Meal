@@ -14,6 +14,7 @@ exports[`OrderHistory Component should render the OrderHistory correctly 1`] = `
   </div>
   <DatePicker
     btnName="Get Orders"
+    onChange={null}
     onSubmit={[Function]}
   />
   <Connect(OrderList) />

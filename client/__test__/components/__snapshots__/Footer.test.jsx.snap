@@ -27,11 +27,7 @@ exports[`it should render footer correctly 1`] = `
     Book-A-Meal © 2018
   </p>
   <p>
-    Designed with 
-    <i
-      className="fas fa-heart"
-    />
-     by 
+    Designed by 
     <a
       href="https://github.com/ikenjoku/Book-A-Meal"
       target="blank"

@@ -111,8 +111,12 @@ class MealForm extends Component {
 }
 
 MealForm.propTypes = {
-  meal: PropTypes.object.isRequired,
+  meal: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
+};
+
+MealForm.defaultProps = {
+  meal: undefined,
 };
 
 export default MealForm;

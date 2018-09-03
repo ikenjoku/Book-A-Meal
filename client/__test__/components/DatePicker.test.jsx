@@ -3,16 +3,16 @@ import { shallow } from 'enzyme';
 import DatePicker from '../../components/DatePicker';
 
 describe('DatePicker Component', () => {
-  let wrapper, onChange, onSubmit;
-  onChange = jest.fn();
-  onSubmit = jest.fn();
-
+  let wrapper;
+  const onChange = jest.fn();
+  const onSubmit = jest.fn();
+  const btnName = 'Do something';
   test('should render DatePicker correctly', () => {
-    wrapper = shallow(
-      <DatePicker
-        onChange={onChange}
-        onSubmit={onSubmit}
-      />);
+    wrapper = shallow(<DatePicker
+      onChange={onChange}
+      onSubmit={onSubmit}
+      btnName={btnName}
+    />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -21,6 +21,7 @@ describe('DatePicker Component', () => {
       <DatePicker
         onChange={onChange}
         onSubmit={onSubmit}
+        btnName={btnName}
       />);
 
     const onDateChangeSpy = jest.spyOn(
@@ -39,6 +40,7 @@ describe('DatePicker Component', () => {
       <DatePicker
         onChange={onChange}
         onSubmit={onSubmit}
+        btnName={btnName}
       />);
 
     const onFormSubmitSpy = jest.spyOn(

@@ -76,7 +76,6 @@ exports[`Menu: CurrentOrderTable Component Should render CurrentOrderTable corre
     <div
       className="close-icon"
     >
-       
       <button
         onClick={[Function]}
       >
@@ -123,7 +122,6 @@ exports[`Menu: CurrentOrderTable Component Should render CurrentOrderTable corre
     <div
       className="close-icon"
     >
-       
       <button
         onClick={[Function]}
       >

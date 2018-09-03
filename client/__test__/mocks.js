@@ -288,3 +288,25 @@ export const testUsers = [
     isAdmin: false,
   },
 ];
+
+export const testOrder = {
+  id: 2,
+  date: '2018-05-16',
+  amount: 1500,
+  userId: 1,
+  quantity: 2,
+  mealId: 2,
+  status: 'cancelled',
+  createdAt: '2018-05-23T19:56:44.346Z',
+  updatedAt: '2018-05-23T19:56:44.346Z',
+  User: {
+    id: 1,
+    firstname: 'Ezinne',
+    lastname: 'Njoku',
+  },
+  Meal: {
+    id: 2,
+    name: 'Rice and Beans',
+    price: 1500,
+  },
+};

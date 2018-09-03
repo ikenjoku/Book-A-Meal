@@ -17,6 +17,7 @@ exports[`DatePicker Component should render DatePicker correctly 1`] = `
     <input
       className="input-btn-control"
       type="submit"
+      value="Do something"
     />
   </form>
 </div>

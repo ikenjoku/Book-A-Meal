@@ -9,6 +9,7 @@ exports[`Menu: MenuTable Component Should render MenuTable correctly 1`] = `
   </h2>
   <DatePicker
     btnName="Get Menu"
+    onChange={null}
     onSubmit={[Function]}
   />
   <Connect(MenuList) />

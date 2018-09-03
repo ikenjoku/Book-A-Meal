@@ -23,9 +23,10 @@ exports[`NavBar: Index Component should render NavBar correctly when admin is lo
       <i
         className="fas fa-utensils"
       />
-       Book-A-Meal
+      Book-A-Meal
     </NavLink>
     <Connect(Navigation)
+      activeLink={null}
       navLinks={
         Array [
           "Meals",
@@ -67,9 +68,10 @@ exports[`NavBar: Index Component should render NavBar correctly when customer is
       <i
         className="fas fa-utensils"
       />
-       Book-A-Meal
+      Book-A-Meal
     </NavLink>
     <Connect(Navigation)
+      activeLink={null}
       navLinks={
         Array [
           "Menu",
@@ -108,9 +110,10 @@ exports[`NavBar: Index Component should render NavBar correctly when logged out 
       <i
         className="fas fa-utensils"
       />
-       Book-A-Meal
+      Book-A-Meal
     </NavLink>
     <Connect(Navigation)
+      activeLink={null}
       navLinks={
         Array [
           "Login",
