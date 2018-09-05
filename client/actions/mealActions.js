@@ -60,49 +60,49 @@ export const removeMealFailure = error => ({
 
 export const getPaginatedMeals = ({ limit, page }) => (dispatch) => {
   dispatch(getMealsLoadingStatus(true));
-  API.get(`/meals?limit=${limit}&page=${page}`)
+  return API.get(`/meals?limit=${limit}&page=${page}`)
     .then((res) => {
       dispatch(getPageMeals(res.data));
       dispatch(getMealsLoadingStatus(false));
     })
-    .catch((err) => {
-      dispatch(getMealsFailure(err));
+    .catch((error) => {
+      dispatch(getMealsFailure(error.response.data));
       dispatch(getMealsLoadingStatus(false));
     });
 };
 
 export const addAMeal = mealData => (dispatch) => {
-  API.post('/meals', mealData)
+  return API.post('/meals', mealData)
     .then((res) => {
       dispatch(addMeal({ meal: res.data.meal }));
       notify.success(res.data.message);
     })
     .catch((error) => {
-      dispatch(addMealFailure(error));
+      dispatch(addMealFailure(error.response.data));
       notify.error(error.response.data.message);
     });
 };
 
 export const updateAMeal = (id, updates) => (dispatch) => {
-  API.put(`/meals/${id}`, updates)
+  return API.put(`/meals/${id}`, updates)
     .then((res) => {
       dispatch(updateMeal({ id, updatedMeal: res.data.updatedMeal }));
       notify.success(res.data.message);
     })
     .catch((error) => {
-      dispatch(updateMealFailure(error));
+      dispatch(updateMealFailure(error.response.data));
       notify.error(error.response.data.message);
     });
 };
 
 export const removeAMeal = id => (dispatch) => {
-  API.delete(`/meals/${id}`)
+  return API.delete(`/meals/${id}`)
     .then((res) => {
       dispatch(removeMeal({ id }));
       notify.success(res.data.message);
     })
     .catch((error) => {
-      dispatch(removeMealFailure(error));
+      dispatch(removeMealFailure(error.response.data));
       notify.error(error.response.data.message);
     });
 };

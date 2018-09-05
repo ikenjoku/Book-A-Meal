@@ -16,7 +16,7 @@
         "start:dist": "NODE_ENV=production node dist/server/bin/www.js",
         "test": "npm run test:server",
         "test:server": "cross-env NODE_ENV=test nyc mocha --timeout 10000 server/test/**/*.spec.js  --exit --recursive --require babel-core/register --require regenerator-runtime/runtime",
-        "test:client": "jest --coverage --config=jest.config.js",
+        "test:client": "NODE_ENV=test jest --coverage --config=jest.config.js",
         "cleardb": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
         "pretest": "npm run cleardb && cross-env NODE_ENV=test sequelize db:migrate && cross-env NODE_ENV=test sequelize db:seed:all",
         "reset:db": "NODE_ENV=development sequelize db:migrate && sequelize db:seed:all",
@@ -84,6 +84,7 @@
         "swagger-ui-dist": "^3.15.0"
     },
     "devDependencies": {
+        "axios-mock-adapter": "^1.15.0",
         "babel-eslint": "^8.2.6",
         "babel-jest": "^23.2.0",
         "babel-loader": "^7.1.4",
@@ -106,7 +107,6 @@
         "eslint-plugin-jsx-a11y": "^6.0.2",
         "eslint-plugin-react": "^7.4.0",
         "expect": "^23.2.0",
-        "fetch-mock": "^6.5.2",
         "file-loader": "^1.1.11",
         "mini-css-extract-plugin": "^0.4.0",
         "mocha": "^5.1.1",
