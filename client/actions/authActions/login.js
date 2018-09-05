@@ -3,7 +3,7 @@ import API from '../../axiosConfig';
 import { setAuthorizationToken } from '../../utils/authHelpers';
 import { LOGIN_SUCCESS, AUTH_LOADING, AUTH_LOGIN_STATUS, LOGIN_FAILURE } from '../actionTypes';
 
-export const loginSuccess = user => ({
+export const loginSuccess = ({ user }) => ({
   type: LOGIN_SUCCESS,
   user,
 });
@@ -24,20 +24,19 @@ export const isLoading = status => ({
 });
 
 export const loginAUser = loginData => (dispatch) => {
-  dispatch(isLoading(true));
   return API.post('/auth/login', loginData)
     .then((res) => {
       const token = res.data.token;
       localStorage.setItem('BAMtoken', token);
       setAuthorizationToken(token);
-      dispatch(loginSuccess(res.data));
+      dispatch(loginSuccess({ user: res.data }));
       dispatch(isLoggedIn(true));
       dispatch(isLoading(false));
       notify.success(res.data.message);
       return res.data;
     })
     .catch((error) => {
-      dispatch(loginFailure(error));
+      dispatch(loginFailure(error.response.data));
       notify.error(error.response.data.message);
     });
 };

@@ -19,16 +19,13 @@ describe('mealActions', () => {
   });
 
   it('creates LOGOUT_SUCCESS when logoutAUser is successful', () => {
-  //   const userId = 2;
-  //   const response = { message: 'Successfully ordered meal', orders: [{ name: 'users orders' }] };
-  //   mock.onGet(`${baseURL}/orders?userId=${userId}`)
-  //     .reply(200, response);
+    const userId = 2;
+    const response = { message: 'Successfully ordered meal', orders: [{ name: 'users orders' }] };
+    mock.onGet(`${baseURL}/orders?userId=${userId}`)
+      .reply(200, response);
 
-  //   const expectedActions = { type: actionTypes.LOGOUT_SUCCESS };
-  //   return store.dispatch(logoutActions
-  //     .logoutAUser())
-  //     .then(() => {
-  //       expect(store.getActions()[0]).toEqual(expectedActions);
-  //     });
+    const expectedActions = { type: actionTypes.LOGOUT_SUCCESS };
+    store.dispatch(logoutActions.logoutAUser());
+    expect(store.getActions()[0]).toEqual(expectedActions);
   });
 });

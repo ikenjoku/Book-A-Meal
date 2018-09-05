@@ -59,7 +59,6 @@ class MenuController {
             message: `Menu for ${moment(date).format('dddd, MMMM Do YYYY')} already exists`,
           });
         }
-
         Menu.create({ date })
           .then(newMenu => newMenu.addMeals(mealIds)
             .then(() => {
