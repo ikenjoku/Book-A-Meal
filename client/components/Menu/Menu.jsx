@@ -5,7 +5,7 @@ import CurrentOrderTable from './CurrentOrderTable';
 
 const Menu = () =>
   (
-    <main className="menu-list-content">
+    <main id="menu-page" className="menu-list-content">
       <div className="menu-list">
         <MenuTable />
       </div>

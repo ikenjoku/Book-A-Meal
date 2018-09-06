@@ -14,6 +14,7 @@ const Landing = props =>
           We planned to satisfy your belly with all the good stuff.
         </p>
         <Link
+          id="enter-btn"
           to={props.isLoggedIn ? '/menu' : '/login'}
           className="btn menu-btn-nature enter-btn"
         >

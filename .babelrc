@@ -2,7 +2,9 @@
     "presets": ["env", "react", "stage-2"],
     "plugins": [
         "transform-object-rest-spread", 
-        "transform-class-properties", ["transform-runtime", {
+        "transform-class-properties",
+        "add-module-exports",
+        ["transform-runtime", {
             "polyfill": false,
             "regenerator": true
         }]

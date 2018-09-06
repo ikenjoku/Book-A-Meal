@@ -37,9 +37,14 @@ render() {
   return (
     this.props.isLoggedIn === true ? <Redirect to="/menu" /> :
     <main className="signup-bg">
-      {this.state.error && <p>{this.state.error}</p>}
       <form className="form-wrapper" onSubmit={this.onSubmit}>
         <h2 className="center">Sign up</h2>
+
+        {this.state.error &&
+          <div className="alert alert-danger">
+            {this.state.error}
+          </div>}
+
         <div>
           <input
             className="form-control"

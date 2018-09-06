@@ -10,6 +10,7 @@ export class Login extends Component {
       email: '',
       password: '',
     },
+    error: '',
   }
 
   onFormInput = (event) => {
@@ -21,16 +22,26 @@ export class Login extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    const { data } = this.state;
-    this.props.loginAUser(data);
+    const { data: { email, password } } = this.state;
+    if (email && password) {
+      this.setState(() => ({ error: '' }));
+
+      this.props.loginAUser({ email, password });
+    } else {
+      this.setState(() => ({ error: 'email and password are required' }));
+    }
   }
 
   render() {
     return (
       this.props.isLoggedIn === true ? <Redirect to="/menu" /> :
       <main className="mainContent login-bg">
-        <form className="form-wrapper" onSubmit={this.onSubmit}>
+        <form id="login-form" className="form-wrapper" onSubmit={this.onSubmit}>
           <h2 className="center">Login</h2>
+          {this.state.error &&
+          <div className="alert alert-danger">
+            {this.state.error}
+          </div>}
           <div>
             <input
               className="form-control"

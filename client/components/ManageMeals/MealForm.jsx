@@ -50,13 +50,17 @@ class MealForm extends Component {
   render() {
     return (
       <div>
-        {this.state.error && <p>{this.state.error}</p>}
         <form
           onSubmit={this.onFormSubmit}
           name="mealForm"
           encType="multipart/form-data"
           className="add-meal-form"
         >
+          {this.state.error &&
+          <div className="alert alert-danger">
+            {this.state.error}
+          </div>}
+
           <input
             className="form-control"
             type="text"
