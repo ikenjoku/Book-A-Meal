@@ -84,12 +84,14 @@ export class MealList extends Component {
                       <div className="meal-table-item-action">
                         <p>
                           <Link
+                            id={`edit-meal-${meal.id}`}
                             to={`/meals/edit/${meal.id}`}
                             className="mg-meal-btn btn-spacer"
                           >
                             Edit
                           </Link>
                           <Link
+                            id={`delete-meal-${meal.id}`}
                             to="#"
                             className="mg-meal-btn btn-danger"
                             onClick={() => { this.handleDelete(meal); }

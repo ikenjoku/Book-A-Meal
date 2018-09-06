@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 export default () => (
   <footer className="footer">
     <ToastContainer
-      autoClose={15000}
+      autoClose={3000}
       hideProgressBar={true}
       closeOnClick={true}
       pauseOnHover={false}

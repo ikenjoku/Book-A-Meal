@@ -70,7 +70,7 @@ export class Login extends Component {
             />
           </div>
           <hr />
-          <div className="right formText">
+          <div className="right form-text">
             <p>No Account? <Link to="/signup">Sign Up</Link> </p>
           </div>
         </form>

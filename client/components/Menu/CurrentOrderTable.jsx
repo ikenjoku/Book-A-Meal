@@ -53,12 +53,14 @@ export class CurrentOrderTable extends Component {
                 <div className="order-item-amount">&#8358; {order.amount}</div>
                 <div className="order-item-actions">
                   <button
+                    id={`update-order-${order.id}`}
                     className="update-order-icon"
                     onClick={() => { this.handleOrderUpdate(order); }}
                   >
                     <i className="far fa-edit" />
                   </button>
                   <button
+                    id={`cancel-order-${order.id}`}
                     className="cancel-order-icon"
                     onClick={() => {
                       this.openCancelModal({ orderId: order.id });

@@ -51,6 +51,7 @@ class MealForm extends Component {
     return (
       <div>
         <form
+          id="meal-form"
           onSubmit={this.onFormSubmit}
           name="mealForm"
           encType="multipart/form-data"

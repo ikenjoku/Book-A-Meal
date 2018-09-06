@@ -20,6 +20,7 @@
         "object-curly-newline":"off",
         "jsx-a11y/anchor-is-valid": "off",
         "react/forbid-prop-types": "off",
-        "no-shadow": "off"
+        "no-shadow": "off",
+        "func-names": "off"
     }
 }

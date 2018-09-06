@@ -25,19 +25,21 @@ onInputChange = (event) => {
 
 onSubmit = (event) => {
   event.preventDefault();
-  const { signUpData } = this.state;
-  if (!signUpData.firstname || !signUpData.lastname || !signUpData.username || !signUpData.email
-  || !signUpData.password || !signUpData.confirmPassword) {
-    this.setState(() => ({ error: 'Please fill in all the fields' }));
+  const { signUpData: {
+    firstname, lastname, username, email, password, confirmPassword },
+  } = this.state;
+
+  if (firstname && lastname && username && email && password && confirmPassword) {
+    this.props.signupAUser({ firstname, lastname, username, email, password, confirmPassword });
   } else {
-    this.props.signupAUser(signUpData);
+    this.setState(() => ({ error: 'Please fill in all the fields' }));
   }
 }
 render() {
   return (
     this.props.isLoggedIn === true ? <Redirect to="/menu" /> :
     <main className="signup-bg">
-      <form className="form-wrapper" onSubmit={this.onSubmit}>
+      <form id="signup-form" className="form-wrapper" onSubmit={this.onSubmit}>
         <h2 className="center">Sign up</h2>
 
         {this.state.error &&
@@ -112,7 +114,7 @@ render() {
             value="Submit"
           />
         </div>
-        <div className="right formText">
+        <div className="right form-text">
           <p>Already have an account? <Link to="/login">Log In</Link> </p>
         </div>
       </form>

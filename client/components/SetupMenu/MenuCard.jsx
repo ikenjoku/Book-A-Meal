@@ -37,6 +37,7 @@ export class MenuCard extends Component {
             </ul>
           </div>
           <button
+            id="open-update-btn"
             onClick={this.handleOpenModal}
           >
             Update Menu
@@ -62,6 +63,7 @@ export class MenuCard extends Component {
         <div className="no-menu-card">
           <h3>No Menu has been set for this day</h3>
           <button
+            id="open-create-btn"
             onClick={this.handleOpenModal}
           >
             Create Menu

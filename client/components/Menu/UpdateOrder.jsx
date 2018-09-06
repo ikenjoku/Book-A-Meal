@@ -49,7 +49,7 @@ export class UpdateOrder extends Component {
           </tbody>
         </table>
         <div className="order-btn-container">
-          <button onClick={this.handleUpdateOrder}>Update Order</button>
+          <button id="confirm-update-order" onClick={this.handleUpdateOrder}>Update Order</button>
           <button onClick={closeModal}>Cancel</button>
         </div>
       </div>

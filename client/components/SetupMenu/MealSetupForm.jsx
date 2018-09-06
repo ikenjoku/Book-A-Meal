@@ -60,7 +60,7 @@ export class MealSetupForm extends Component {
           />
         </div>
         <h3>Choose meals to add to menu</h3>
-        <div className="meal-check-list">
+        <div id="meal-check-list" className="meal-check-list">
           <MealCheckList
             meals={this.props.meals}
             handleSelect={this.handleSelect}
@@ -77,6 +77,7 @@ export class MealSetupForm extends Component {
         </div>
         <div className="setup-btn-container">
           <button
+            id="setup-menu-btn"
             value="Submit"
             type="submit"
           >

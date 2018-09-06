@@ -38,6 +38,7 @@ export const OrderList = ({ orders, deliverAnOrder, isLoadingOrders }) => {
                   <td>{order.status}</td>
                   <td>{order.status === 'pending' &&
                     <button
+                      id={`deliver-order-${order.id}`}
                       className="deliverBtn"
                       onClick={() => deliverAnOrder(order.id)}
                     >

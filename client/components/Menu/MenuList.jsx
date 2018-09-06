@@ -48,6 +48,7 @@ export class MenuList extends Component {
                 <div>
                   {menu.date === new Date().toISOString().substr(0, 10) ?
                     <button
+                      id={`order-meal-${meal.id}`}
                       className="food-add-btn"
                       onClick={() => { this.handleOpenModal({ mealId: meal.id }); }}
                     >

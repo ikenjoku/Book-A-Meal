@@ -45,7 +45,7 @@ export class PlaceOrder extends Component {
           </tbody>
         </table>
         <div className="order-btn-container">
-          <button onClick={this.handleConfirmOrder}>Confirm Order</button>
+          <button id="confirm-place-order" onClick={this.handleConfirmOrder}>Confirm Order</button>
           <button onClick={closeModal}>Cancel</button>
         </div>
       </div>
