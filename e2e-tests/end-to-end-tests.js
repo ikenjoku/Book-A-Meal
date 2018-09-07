@@ -167,7 +167,7 @@ module.exports = {
       .waitForElementVisible('main#menu-page', 10000)
       .url('http://localhost:9500/set-menu')
       .waitForElementVisible('.menu-card', 10000)
-      .setValue('input[name="menu-date"]', '07-09-2018')
+      .setValue('input[name="menu-date"]', '30-11-2018')
       .pause(1000)
       .click('input[type="submit"]')
       .waitForElementVisible('.no-menu-card', 10000)
@@ -180,7 +180,7 @@ module.exports = {
       .click('#setup-menu-btn')
       .pause(1000)
       .waitForElementVisible('.success-container', 10000)
-      .assert.containsText('.toast-success', 'Successfully created a menu for Friday, September 7th 2018')
+      .assert.containsText('.toast-success', 'Successfully created a menu for Friday, November 30th 2018')
       .end();
   },
 
@@ -204,7 +204,7 @@ module.exports = {
       .click('#setup-menu-btn')
       .pause(1000)
       .waitForElementVisible('.success-container', 10000)
-      .assert.containsText('.toast-success', 'Successfully updated menu for Thursday, September 6th 2018')
+      .assert.containsText('.toast-success', 'Successfully updated menu for Friday, September 7th 2018')
       .end();
   },
 

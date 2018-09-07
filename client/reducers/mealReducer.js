@@ -30,7 +30,9 @@ export default (state = initialState.mealReducer, action) => {
     case UPDATE_MEAL_FAILURE:
       return { ...state, error: action.error };
     case REMOVE_MEAL_SUCCESS:
-      return { ...state, paginatedMeals: state.paginatedMeals.filter(meal => meal.id !== action.id) };
+      return {
+        ...state, paginatedMeals: state.paginatedMeals.filter(meal => meal.id !== action.id),
+      };
     case REMOVE_MEAL_FAILURE:
       return { ...state, error: action.error };
     default:
