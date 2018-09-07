@@ -50,6 +50,7 @@ exports[`UpdateOrder Component should render UpdateOrder correctly 1`] = `
     className="order-btn-container"
   >
     <button
+      id="confirm-update-order"
       onClick={[Function]}
     >
       Update Order

@@ -44,6 +44,7 @@ exports[`Menu: PlaceOrder Component should render PlaceOrder correctly 1`] = `
     className="order-btn-container"
   >
     <button
+      id="confirm-place-order"
       onClick={[Function]}
     >
       Confirm Order

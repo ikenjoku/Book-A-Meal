@@ -5,7 +5,7 @@ exports[`it should render footer correctly 1`] = `
   className="footer"
 >
   <ToastContainer
-    autoClose={4000}
+    autoClose={3000}
     bodyClassName={null}
     className="toast-container"
     closeButton={false}

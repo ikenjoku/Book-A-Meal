@@ -39,6 +39,7 @@ exports[`MenuCard Component should render MenuCard correctly 1`] = `
       </ul>
     </div>
     <button
+      id="open-update-btn"
       onClick={[Function]}
     >
       Update Menu

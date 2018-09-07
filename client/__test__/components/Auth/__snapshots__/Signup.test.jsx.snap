@@ -6,6 +6,7 @@ exports[`Signup Component it should render Signup form correctly 1`] = `
 >
   <form
     className="form-wrapper"
+    id="signup-form"
     onSubmit={[Function]}
   >
     <h2
@@ -81,7 +82,7 @@ exports[`Signup Component it should render Signup form correctly 1`] = `
       />
     </div>
     <div
-      className="right formText"
+      className="right form-text"
     >
       <p>
         Already have an account? 

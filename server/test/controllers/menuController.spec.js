@@ -192,3 +192,37 @@ describe('Given /PUT /api/v1/menu/:id', () => {
     });
   });
 });
+
+describe('Customers', () => {
+  it('should not be able to create a menu', (done) => {
+    const body = {
+      date: '2018-12-12',
+      mealIds: [1, 2, 4],
+    };
+    chai.request(app)
+      .post('/api/v1/menu')
+      .set('x-access-token', userToken)
+      .send(body)
+      .end((err, res) => {
+        res.should.have.status(403);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message').eql('You are not authorised');
+        done();
+      });
+  });
+  it('should not be able to update a menu', (done) => {
+    const body = {
+      mealIds: [1, 2],
+    };
+    chai.request(app)
+      .put('/api/v1/menu/2')
+      .set('x-access-token', userToken)
+      .send(body)
+      .end((err, res) => {
+        res.should.have.status(403);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message').eql('You are not authorised');
+        done();
+      });
+  });
+});

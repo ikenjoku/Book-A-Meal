@@ -32,6 +32,7 @@ exports[`MealSetupForm Component should render MealSetupForm correctly 1`] = `
   </h3>
   <div
     className="meal-check-list"
+    id="meal-check-list"
   >
     <Connect(MealCheckList)
       handleSelect={[Function]}
@@ -105,6 +106,7 @@ exports[`MealSetupForm Component should render MealSetupForm correctly 1`] = `
     className="setup-btn-container"
   >
     <button
+      id="setup-menu-btn"
       type="submit"
       value="Submit"
     >

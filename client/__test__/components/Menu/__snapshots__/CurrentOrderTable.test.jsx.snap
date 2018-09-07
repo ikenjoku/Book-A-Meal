@@ -25,6 +25,7 @@ exports[`Menu: CurrentOrderTable Component Should render CurrentOrderTable corre
     >
       <button
         className="update-order-icon"
+        id="update-order-3"
         onClick={[Function]}
       >
         <i
@@ -33,6 +34,7 @@ exports[`Menu: CurrentOrderTable Component Should render CurrentOrderTable corre
       </button>
       <button
         className="cancel-order-icon"
+        id="cancel-order-3"
         onClick={[Function]}
       >
         <i

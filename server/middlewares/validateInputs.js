@@ -140,7 +140,7 @@ export const validateMealCreate = (req, res, next) => {
     return res.status(400).send({
       message: 'Please describe the meal',
     });
-  } else if (!price) {
+  } else if (!price || Number.isNaN(Number(price)) || price < 1) {
     return res.status(400).send({
       message: 'Please fill in the meal price',
     });
@@ -167,7 +167,7 @@ export const validateMealUpdate = (req, res, next) => {
     return res.status(400).send({
       message: 'Please describe the meal',
     });
-  } else if (!price || Number.isNaN(Number(price))) {
+  } else if (!price || Number.isNaN(Number(price)) || price < 1) {
     return res.status(400).send({
       message: 'Please fill in a valid meal price',
     });

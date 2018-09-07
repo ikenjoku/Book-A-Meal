@@ -37,6 +37,7 @@ exports[`Menu: Menu Component Should render Menu correctly 1`] = `
     <div>
       <button
         className="food-add-btn"
+        id="order-meal-31"
         onClick={[Function]}
       >
         Place Order
@@ -78,6 +79,7 @@ exports[`Menu: Menu Component Should render Menu correctly 1`] = `
     <div>
       <button
         className="food-add-btn"
+        id="order-meal-34"
         onClick={[Function]}
       >
         Place Order
@@ -119,6 +121,7 @@ exports[`Menu: Menu Component Should render Menu correctly 1`] = `
     <div>
       <button
         className="food-add-btn"
+        id="order-meal-30"
         onClick={[Function]}
       >
         Place Order

@@ -5,6 +5,7 @@ exports[`MealForm Component it should render the MealForm correctly 1`] = `
   <form
     className="add-meal-form"
     encType="multipart/form-data"
+    id="meal-form"
     name="mealForm"
     onSubmit={[Function]}
   >
@@ -66,6 +67,7 @@ exports[`MealForm Component it should render the MealForm with data correctly 1`
   <form
     className="add-meal-form"
     encType="multipart/form-data"
+    id="meal-form"
     name="mealForm"
     onSubmit={[Function]}
   >

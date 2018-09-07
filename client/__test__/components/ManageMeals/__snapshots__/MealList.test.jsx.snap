@@ -100,6 +100,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-0"
               replace={false}
               to="/meals/edit/0"
             >
@@ -107,6 +108,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-0"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -158,6 +160,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-1"
               replace={false}
               to="/meals/edit/1"
             >
@@ -165,6 +168,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-1"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -216,6 +220,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-2"
               replace={false}
               to="/meals/edit/2"
             >
@@ -223,6 +228,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-2"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -274,6 +280,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-3"
               replace={false}
               to="/meals/edit/3"
             >
@@ -281,6 +288,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-3"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -332,6 +340,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-4"
               replace={false}
               to="/meals/edit/4"
             >
@@ -339,6 +348,7 @@ exports[`ManageMeals: MealList Component should render the MealList correctly 1`
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-4"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -642,6 +652,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-0"
               replace={false}
               to="/meals/edit/0"
             >
@@ -649,6 +660,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-0"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -700,6 +712,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-1"
               replace={false}
               to="/meals/edit/1"
             >
@@ -707,6 +720,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-1"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -758,6 +772,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-2"
               replace={false}
               to="/meals/edit/2"
             >
@@ -765,6 +780,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-2"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -816,6 +832,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-3"
               replace={false}
               to="/meals/edit/3"
             >
@@ -823,6 +840,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-3"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -874,6 +892,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-4"
               replace={false}
               to="/meals/edit/4"
             >
@@ -881,6 +900,7 @@ exports[`ManageMeals: MealList Component should should close modal when No butto
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-4"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -1052,6 +1072,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-0"
               replace={false}
               to="/meals/edit/0"
             >
@@ -1059,6 +1080,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-0"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -1110,6 +1132,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-1"
               replace={false}
               to="/meals/edit/1"
             >
@@ -1117,6 +1140,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-1"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -1168,6 +1192,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-2"
               replace={false}
               to="/meals/edit/2"
             >
@@ -1175,6 +1200,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-2"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -1226,6 +1252,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-3"
               replace={false}
               to="/meals/edit/3"
             >
@@ -1233,6 +1260,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-3"
               onClick={[Function]}
               replace={false}
               to="#"
@@ -1284,6 +1312,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
           <p>
             <Link
               className="mg-meal-btn btn-spacer"
+              id="edit-meal-4"
               replace={false}
               to="/meals/edit/4"
             >
@@ -1291,6 +1320,7 @@ exports[`ManageMeals: MealList Component should should show modal when delete bu
             </Link>
             <Link
               className="mg-meal-btn btn-danger"
+              id="delete-meal-4"
               onClick={[Function]}
               replace={false}
               to="#"
