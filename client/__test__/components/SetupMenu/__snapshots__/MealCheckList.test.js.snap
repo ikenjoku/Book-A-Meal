@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealCheckList Component should map state to props 1`] = `
+Object {
+  "isFetching": false,
+}
+`;
+
+exports[`MealCheckList Component should render Loader while still fetching meals 1`] = `
+<h3>
+  Fetching meals...
+</h3>
+`;
+
+exports[`MealCheckList Component should render MealCheckList correctly 1`] = `
+Array [
+  <div
+    key="0"
+  />,
+  <div
+    key="1"
+  />,
+  <div
+    key="2"
+  />,
+  <div
+    key="3"
+  />,
+  <div
+    key="4"
+  />,
+]
+`;

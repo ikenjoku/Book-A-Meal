@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuantityField Component should render QuantityField correctly 1`] = `
+<input
+  className="quantity-field"
+  min="1"
+  name="quantity"
+  onChange={[MockFunction]}
+  type="number"
+  value={1}
+/>
+`;

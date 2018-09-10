@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it should render footer correctly 1`] = `
+<footer
+  className="footer"
+>
+  <ToastContainer
+    autoClose={3000}
+    bodyClassName={null}
+    className="toast-container"
+    closeButton={false}
+    closeOnClick={true}
+    draggable={true}
+    draggablePercent={80}
+    hideProgressBar={true}
+    newestOnTop={false}
+    pauseOnHover={false}
+    pauseOnVisibilityChange={true}
+    position="top-right"
+    progressClassName={null}
+    rtl={false}
+    style={null}
+    toastClassName={null}
+    transition={[Function]}
+  />
+  <p>
+    Book-A-Meal © 2018
+  </p>
+  <p>
+    Designed by 
+    <a
+      href="https://github.com/ikenjoku/Book-A-Meal"
+      target="blank"
+    >
+      Ikechukwu Njoku
+    </a>
+  </p>
+</footer>
+`;

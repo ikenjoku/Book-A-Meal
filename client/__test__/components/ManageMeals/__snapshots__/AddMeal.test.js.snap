@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddMeal Component should render the AddMealForm correctly 1`] = `
+<div
+  className="manage-meals-content"
+>
+  <h3
+    className="center"
+  >
+    Add a Meal
+  </h3>
+  <div
+    className="contain-form"
+  >
+    <MealForm
+      onSubmit={[Function]}
+    />
+  </div>
+</div>
+`;

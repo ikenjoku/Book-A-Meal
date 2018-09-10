@@ -14,7 +14,7 @@ export default (ComposedComponent) => {
       return false;
     }
 
-    isValidToken = () => {
+    isInValidToken = () => {
       if (localStorage.BAMtoken) {
         return isExpiredToken(localStorage.BAMtoken);
       }
@@ -22,7 +22,7 @@ export default (ComposedComponent) => {
     }
 
     render() {
-      if (this.isLoggedIn() && this.isValidToken()) {
+      if (this.isLoggedIn() && !this.isInValidToken()) {
         return <ComposedComponent {...this.props} />;
       }
       notify.error('Please log in to proceed');

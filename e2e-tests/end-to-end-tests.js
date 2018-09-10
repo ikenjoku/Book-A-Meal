@@ -1,4 +1,7 @@
 const path = require('path');
+const moment = require('moment');
+
+const today = new Date().toISOString().substr(0, 10);
 
 module.exports = {
   'user can visit landing page': function (client) {
@@ -103,7 +106,7 @@ module.exports = {
       .setValue('input[name=imageurl]', path.join(__dirname, '../server/test/controllers/testmeal.png'))
       .click('input[type="submit"]')
       .pause(1000)
-      .waitForElementVisible('.success-container', 10000)
+      .waitForElementVisible('.success-container', 15000)
       .assert.containsText('.toast-success', 'Successfully added a new meal')
       .end();
   },
@@ -122,14 +125,20 @@ module.exports = {
       .waitForElementVisible('.meal-table', 10000)
       .click('#edit-meal-1')
       .waitForElementVisible('#meal-form', 3000)
+      .clearValue('input[name="name"]')
+      .pause(1000)
       .setValue('input[name="name"]', 'Tomatoe Purry')
+      .clearValue('input[name="description"]')
+      .pause(1000)
       .setValue('input[name="description"]', 'Fried Fresh tomatoes with hot pepper')
+      .clearValue('input[name="price"]')
+      .pause(1000)
       .setValue('input[name="price"]', 1700)
       .pause(1000)
       .setValue('input[name=imageurl]', path.join(__dirname, '../server/test/controllers/testmeal.png'))
       .click('input[type="submit"]')
       .pause(1000)
-      .waitForElementVisible('.success-container', 10000)
+      .waitForElementVisible('.success-container', 15000)
       .assert.containsText('.toast-success', 'Successfully updated meal')
       .end();
   },
@@ -150,7 +159,7 @@ module.exports = {
       .pause(1000)
       .click('#confirm-delete-btn')
       .pause(1000)
-      .waitForElementVisible('.success-container', 10000)
+      .waitForElementVisible('.success-container', 15000)
       .assert.containsText('.toast-success', 'Successfully deleted meal')
       .end();
   },
@@ -179,7 +188,7 @@ module.exports = {
       .pause(1000)
       .click('#setup-menu-btn')
       .pause(1000)
-      .waitForElementVisible('.success-container', 10000)
+      .waitForElementVisible('.success-container', 15000)
       .assert.containsText('.toast-success', 'Successfully created a menu for Friday, November 30th 2018')
       .end();
   },
@@ -203,8 +212,8 @@ module.exports = {
       .pause(1000)
       .click('#setup-menu-btn')
       .pause(1000)
-      .waitForElementVisible('.success-container', 10000)
-      .assert.containsText('.toast-success', 'Successfully updated menu for Friday, September 7th 2018')
+      .waitForElementVisible('.success-container', 15000)
+      .assert.containsText('.toast-success', `Successfully updated menu for ${moment(today).format('dddd, MMMM Do YYYY')}`)
       .end();
   },
 
@@ -224,7 +233,7 @@ module.exports = {
       .pause(2000)
       .click('#confirm-place-order')
       .pause(3000)
-      .waitForElementVisible('.success-container', 10000)
+      .waitForElementVisible('.success-container', 15000)
       .assert.containsText('.toast-success', 'Tomatoe Sauce has been ordered')
       .end();
   },
@@ -248,7 +257,7 @@ module.exports = {
       .pause(3000)
       .click('#confirm-update-order')
       .pause(3000)
-      .waitForElementVisible('.success-container', 10000)
+      .waitForElementVisible('.success-container', 15000)
       .assert.containsText('.toast-success', 'Your order has been updated')
       .end();
   },
@@ -268,7 +277,7 @@ module.exports = {
       .pause(2000)
       .click('#deliver-order-7')
       .pause(3000)
-      .waitForElementVisible('.success-container', 10000)
+      .waitForElementVisible('.success-container', 15000)
       .assert.containsText('.toast-success', 'Your order has been updated')
       .end();
   },

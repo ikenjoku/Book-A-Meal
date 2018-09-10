@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MealForm Component it should render the MealForm correctly 1`] = `
+<div>
+  <form
+    className="add-meal-form"
+    encType="multipart/form-data"
+    id="meal-form"
+    name="mealForm"
+    onSubmit={[Function]}
+  >
+    <input
+      className="form-control"
+      name="name"
+      onChange={[Function]}
+      placeholder="Meal Name"
+      type="text"
+      value=""
+    />
+    <input
+      className="form-control"
+      name="description"
+      onChange={[Function]}
+      placeholder="Short Description"
+      type="text"
+      value=""
+    />
+    <input
+      className="form-control"
+      name="price"
+      onChange={[Function]}
+      placeholder="Price"
+      type="number"
+      value=""
+    />
+    <input
+      className="form-control"
+      name="imageurl"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="centerBtn"
+    >
+      <input
+        className="mealFormBtn"
+        type="submit"
+        value="Submit"
+      />
+      <Link
+        replace={false}
+        to="/meals"
+      >
+        <div
+          className="mealFormBtn"
+        >
+          Go Back
+        </div>
+      </Link>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`MealForm Component it should render the MealForm with data correctly 1`] = `
+<div>
+  <form
+    className="add-meal-form"
+    encType="multipart/form-data"
+    id="meal-form"
+    name="mealForm"
+    onSubmit={[Function]}
+  >
+    <input
+      className="form-control"
+      name="name"
+      onChange={[Function]}
+      placeholder="Meal Name"
+      type="text"
+      value="Rice and Beans"
+    />
+    <input
+      className="form-control"
+      name="description"
+      onChange={[Function]}
+      placeholder="Short Description"
+      type="text"
+      value="Rice, Beans, Plantain, Panla Sauce, Max Coke"
+    />
+    <input
+      className="form-control"
+      name="price"
+      onChange={[Function]}
+      placeholder="Price"
+      type="number"
+      value={1500}
+    />
+    <input
+      className="form-control"
+      name="imageurl"
+      onChange={[Function]}
+      type="file"
+    />
+    <div
+      className="centerBtn"
+    >
+      <input
+        className="mealFormBtn"
+        type="submit"
+        value="Submit"
+      />
+      <Link
+        replace={false}
+        to="/meals"
+      >
+        <div
+          className="mealFormBtn"
+        >
+          Go Back
+        </div>
+      </Link>
+    </div>
+  </form>
+</div>
+`;

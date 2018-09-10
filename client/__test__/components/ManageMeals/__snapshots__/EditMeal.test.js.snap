@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditMealForm should map state to props 1`] = `
+Object {
+  "meal": undefined,
+}
+`;
+
+exports[`EditMealForm should render the EditMealForm correctly 1`] = `
+<div
+  className="manage-meals-content"
+>
+  <h3
+    className="center"
+  >
+    Update 
+    Egusi Semo
+     Meal
+  </h3>
+  <MealForm
+    meal={
+      Object {
+        "description": "Semolina, Egusi Soup, Meat, Extra",
+        "id": 2,
+        "imageurl": "https://africa-public.food.jcts/80/80418_1465475724_ma.jpg",
+        "name": "Egusi Semo",
+        "price": 1200,
+      }
+    }
+    onSubmit={[Function]}
+  />
+</div>
+`;

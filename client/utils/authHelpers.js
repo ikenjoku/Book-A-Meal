@@ -17,7 +17,8 @@ export const logout = () => {
 export const isExpiredToken = (token) => {
   const { exp } = jwtDecode(token);
   if (Date.now() / 1000 > exp) {
-    return false;
+    localStorage.removeItem('BAMtoken');
+    return true;
   }
-  return true;
+  return false;
 };

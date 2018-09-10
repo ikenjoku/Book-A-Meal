@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuCard Component should map state to props 1`] = `
+Object {
+  "currentMenu": Object {},
+  "isLoadingMenu": false,
+  "selectedDate": "",
+}
+`;
+
+exports[`MenuCard Component should render MenuCard correctly 1`] = `
+<div>
+  <div
+    className="menu-card"
+  >
+    <h3>
+      Menu for 
+      Monday, July 2nd 2018
+    </h3>
+    <div
+      className="menu-card-meals"
+    >
+      <ul>
+        <li
+          key="31"
+        >
+          Beans and Bread
+        </li>
+        <li
+          key="34"
+        >
+          Fish balls soup
+        </li>
+        <li
+          key="30"
+        >
+          Beef with veggie soup
+        </li>
+      </ul>
+    </div>
+    <button
+      id="open-update-btn"
+      onClick={[Function]}
+    >
+      Update Menu
+    </button>
+    <Modal
+      ariaHideApp={false}
+      bodyOpenClassName="ReactModal__Body--open"
+      closeTimeoutMS={0}
+      contentLabel="Menu"
+      isOpen={false}
+      parentSelector={[Function]}
+      portalClassName="ReactModalPortal"
+      shouldCloseOnEsc={true}
+      shouldCloseOnOverlayClick={true}
+      shouldFocusAfterRender={true}
+      shouldReturnFocusAfterClose={true}
+      style={
+        Object {
+          "content": Object {
+            "bottom": "auto",
+            "left": "50%",
+            "marginRight": "-50%",
+            "minWidth": "20rem",
+            "overflow": "hidden",
+            "right": "auto",
+            "top": "50%",
+            "transform": "translate(-50%, -50%)",
+            "width": "40%",
+          },
+          "overlay": Object {
+            "backgroundColor": "rgba(0, 0, 0, 0.25)",
+          },
+        }
+      }
+    >
+      <div
+        className="close-icon"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-times fa-2x"
+          />
+        </button>
+      </div>
+      <Connect(UpdateMenu)
+        closeModal={[Function]}
+      />
+    </Modal>
+  </div>
+</div>
+`;

@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu: Menu Component Should render Menu correctly 1`] = `
+<div>
+  <div
+    className="food-item"
+    key="31"
+  >
+    <div
+      className="meal-table-item-img"
+    >
+      <img
+        alt=""
+        src="https://res.cloudinary.com/ikeenjoku/image/upload/v1529133645/bookameal/2018-06-16T07:20:43.822ZVegetablerice%2Bplantain%2Bgoatmeat%2Bcoke.jpg.jpg"
+      />
+    </div>
+    <div
+      className="food-title-desc"
+    >
+      <p
+        className="food-item-title"
+      >
+        Beans and Bread
+      </p>
+      <p
+        className="food-item-detail"
+      >
+        Heavily loaded with smoked fish.
+      </p>
+    </div>
+    <div
+      className="food-item-price"
+    >
+      ₦ 
+      800
+    </div>
+    <div>
+      <button
+        className="food-add-btn"
+        id="order-meal-31"
+        onClick={[Function]}
+      >
+        Place Order
+      </button>
+    </div>
+  </div>
+  <div
+    className="food-item"
+    key="34"
+  >
+    <div
+      className="meal-table-item-img"
+    >
+      <img
+        alt=""
+        src="https://res.cloudinary.com/ikeenjoku/image/upload/v1529134583/bookameal/2018-06-16T07:36:22.300Zassortedmeat.jpg.jpg"
+      />
+    </div>
+    <div
+      className="food-title-desc"
+    >
+      <p
+        className="food-item-title"
+      >
+        Fish balls soup
+      </p>
+      <p
+        className="food-item-detail"
+      >
+        Deliciously light soup with white fish balls
+      </p>
+    </div>
+    <div
+      className="food-item-price"
+    >
+      ₦ 
+      1200
+    </div>
+    <div>
+      <button
+        className="food-add-btn"
+        id="order-meal-34"
+        onClick={[Function]}
+      >
+        Place Order
+      </button>
+    </div>
+  </div>
+  <div
+    className="food-item"
+    key="30"
+  >
+    <div
+      className="meal-table-item-img"
+    >
+      <img
+        alt=""
+        src="https://res.cloudinary.com/ikeenjoku/image/upload/v1529136037/bookameal/2018-06-16T08:00:34.302ZUgwu-Archi.jpg.jpg"
+      />
+    </div>
+    <div
+      className="food-title-desc"
+    >
+      <p
+        className="food-item-title"
+      >
+        Beef with veggie soup
+      </p>
+      <p
+        className="food-item-detail"
+      >
+        Stir fried sliced beef with premium vegetables and spices
+      </p>
+    </div>
+    <div
+      className="food-item-price"
+    >
+      ₦ 
+      1150
+    </div>
+    <div>
+      <button
+        className="food-add-btn"
+        id="order-meal-30"
+        onClick={[Function]}
+      >
+        Place Order
+      </button>
+    </div>
+  </div>
+  <Modal
+    ariaHideApp={false}
+    bodyOpenClassName="ReactModal__Body--open"
+    closeTimeoutMS={0}
+    contentLabel="place-order"
+    isOpen={false}
+    parentSelector={[Function]}
+    portalClassName="ReactModalPortal"
+    shouldCloseOnEsc={true}
+    shouldCloseOnOverlayClick={true}
+    shouldFocusAfterRender={true}
+    shouldReturnFocusAfterClose={true}
+    style={
+      Object {
+        "content": Object {
+          "bottom": "auto",
+          "left": "50%",
+          "marginRight": "-50%",
+          "minWidth": "20rem",
+          "overflow": "hidden",
+          "right": "auto",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "width": "40%",
+        },
+        "overlay": Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.25)",
+        },
+      }
+    }
+  >
+    <div
+      className="close-icon"
+    >
+      <button
+        onClick={[Function]}
+      >
+        <i
+          className="fas fa-times fa-2x"
+        />
+      </button>
+    </div>
+    <Connect(PlaceOrder)
+      closeModal={[Function]}
+      handleOrder={[Function]}
+    />
+  </Modal>
+</div>
+`;
+
+exports[`Menu: Menu Component should map state to props 1`] = `
+Object {
+  "isLoadingMenu": undefined,
+  "menu": null,
+}
+`;

@@ -1,0 +1,1401 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ManageMeals: MealList Component should map state to props 1`] = `
+Object {
+  "count": 0,
+  "isLoading": false,
+  "paginatedMeals": Array [],
+}
+`;
+
+exports[`ManageMeals: MealList Component should render the MealList correctly 1`] = `
+<main
+  className="manage-meals-content"
+>
+  <h2
+    className="center cool-lg-text"
+  >
+    Manage Meals
+  </h2>
+  <Link
+    className="addMealLink"
+    replace={false}
+    to="/meals/create"
+  >
+    <div
+      className="addMealLinkD"
+    >
+      Add a New Meal
+    </div>
+  </Link>
+  <div
+    id="all-meal-table"
+  >
+    <h1
+      className="meal-table-title center"
+    >
+      All Meal List
+    </h1>
+    <div
+      className="contain-table-headers"
+    >
+      <p>
+        Image
+      </p>
+      <p>
+        Name
+      </p>
+      <p>
+        Description
+      </p>
+      <p>
+        Price
+      </p>
+      <p>
+        Actions
+      </p>
+    </div>
+    <div
+      className="meal-table"
+    >
+      <div
+        className="meal-table-item"
+        key="0"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-publicmages/products/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Nigerian Jollof
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Max Jollof rice, plantain, grilled turkey, bellefull Coke
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1100
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-0"
+              replace={false}
+              to="/meals/edit/0"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-0"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="1"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-g/images/products/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Rice and Beans
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Rice, Beans, Plantain, Panla Sauce, Max Coke
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1500
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-1"
+              replace={false}
+              to="/meals/edit/1"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-1"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="2"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-public.food.jcts/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Egusi Semo
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Semolina, Egusi Soup, Meat, Extra
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1200
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-2"
+              replace={false}
+              to="/meals/edit/2"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-2"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="3"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://dynamic/production/ng/images/products/80/_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Green Calulu
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Chicken salad with extra cabbage
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1250
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-3"
+              replace={false}
+              to="/meals/edit/3"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-3"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="4"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://dynamic/production/ng/images/produc475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Onion Jappatti
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Ingera palate with raw meat sauce
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            2200
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-4"
+              replace={false}
+              to="/meals/edit/4"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-4"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div
+      className="center"
+    >
+      <a
+        activePage={1}
+        firstPageText="«"
+        getPageUrl={[Function]}
+        hideFirstLastPages={false}
+        innerClass="pagination"
+        itemsCountPerPage={5}
+        lastPageText="»"
+        nextPageText="⟩"
+        onChange={[Function]}
+        pageRangeDisplayed={5}
+        prevPageText="⟨"
+        totalItemsCount={5}
+      />
+    </div>
+    <Modal
+      ariaHideApp={false}
+      bodyOpenClassName="ReactModal__Body--open"
+      closeTimeoutMS={0}
+      contentLabel="delete-order"
+      isOpen={false}
+      parentSelector={[Function]}
+      portalClassName="ReactModalPortal"
+      shouldCloseOnEsc={true}
+      shouldCloseOnOverlayClick={true}
+      shouldFocusAfterRender={true}
+      shouldReturnFocusAfterClose={true}
+      style={
+        Object {
+          "content": Object {
+            "bottom": "auto",
+            "left": "50%",
+            "marginRight": "-50%",
+            "minWidth": "20rem",
+            "overflow": "hidden",
+            "right": "auto",
+            "top": "50%",
+            "transform": "translate(-50%, -50%)",
+            "width": "40%",
+          },
+          "overlay": Object {
+            "backgroundColor": "rgba(0, 0, 0, 0.25)",
+          },
+        }
+      }
+    >
+      <div
+        className="close-icon"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-times fa-2x"
+          />
+        </button>
+      </div>
+      <Connect(DeleteMeal)
+        closeModal={[Function]}
+      />
+    </Modal>
+  </div>
+</main>
+`;
+
+exports[`ManageMeals: MealList Component should render the spinner correctly when still loading 1`] = `
+<main
+  className="manage-meals-content"
+>
+  <h2
+    className="center cool-lg-text"
+  >
+    Manage Meals
+  </h2>
+  <Link
+    className="addMealLink"
+    replace={false}
+    to="/meals/create"
+  >
+    <div
+      className="addMealLinkD"
+    >
+      Add a New Meal
+    </div>
+  </Link>
+  <div
+    id="all-meal-table"
+  >
+    <h1
+      className="meal-table-title center"
+    >
+      All Meal List
+    </h1>
+    <div
+      className="contain-table-headers"
+    >
+      <p>
+        Image
+      </p>
+      <p>
+        Name
+      </p>
+      <p>
+        Description
+      </p>
+      <p>
+        Price
+      </p>
+      <p>
+        Actions
+      </p>
+    </div>
+    <div
+      className="loading-spinner"
+    >
+      <Loader
+        color="#9D2401"
+        height="100"
+        type="Circles"
+        visible={true}
+        width="100"
+      />
+      <h3
+        id="loader-text"
+      >
+        Fetching...
+      </h3>
+    </div>
+    <hr />
+    <div
+      className="center"
+    >
+      <a
+        activePage={1}
+        firstPageText="«"
+        getPageUrl={[Function]}
+        hideFirstLastPages={false}
+        innerClass="pagination"
+        itemsCountPerPage={5}
+        lastPageText="»"
+        nextPageText="⟩"
+        onChange={[Function]}
+        pageRangeDisplayed={5}
+        prevPageText="⟨"
+        totalItemsCount={5}
+      />
+    </div>
+    <Modal
+      ariaHideApp={false}
+      bodyOpenClassName="ReactModal__Body--open"
+      closeTimeoutMS={0}
+      contentLabel="delete-order"
+      isOpen={false}
+      parentSelector={[Function]}
+      portalClassName="ReactModalPortal"
+      shouldCloseOnEsc={true}
+      shouldCloseOnOverlayClick={true}
+      shouldFocusAfterRender={true}
+      shouldReturnFocusAfterClose={true}
+      style={
+        Object {
+          "content": Object {
+            "bottom": "auto",
+            "left": "50%",
+            "marginRight": "-50%",
+            "minWidth": "20rem",
+            "overflow": "hidden",
+            "right": "auto",
+            "top": "50%",
+            "transform": "translate(-50%, -50%)",
+            "width": "40%",
+          },
+          "overlay": Object {
+            "backgroundColor": "rgba(0, 0, 0, 0.25)",
+          },
+        }
+      }
+    >
+      <div
+        className="close-icon"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-times fa-2x"
+          />
+        </button>
+      </div>
+      <Connect(DeleteMeal)
+        closeModal={[Function]}
+      />
+    </Modal>
+  </div>
+</main>
+`;
+
+exports[`ManageMeals: MealList Component should should close modal when No button is clicked 1`] = `
+<main
+  className="manage-meals-content"
+>
+  <h2
+    className="center cool-lg-text"
+  >
+    Manage Meals
+  </h2>
+  <Link
+    className="addMealLink"
+    replace={false}
+    to="/meals/create"
+  >
+    <div
+      className="addMealLinkD"
+    >
+      Add a New Meal
+    </div>
+  </Link>
+  <div
+    id="all-meal-table"
+  >
+    <h1
+      className="meal-table-title center"
+    >
+      All Meal List
+    </h1>
+    <div
+      className="contain-table-headers"
+    >
+      <p>
+        Image
+      </p>
+      <p>
+        Name
+      </p>
+      <p>
+        Description
+      </p>
+      <p>
+        Price
+      </p>
+      <p>
+        Actions
+      </p>
+    </div>
+    <div
+      className="meal-table"
+    >
+      <div
+        className="meal-table-item"
+        key="0"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-publicmages/products/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Nigerian Jollof
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Max Jollof rice, plantain, grilled turkey, bellefull Coke
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1100
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-0"
+              replace={false}
+              to="/meals/edit/0"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-0"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="1"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-g/images/products/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Rice and Beans
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Rice, Beans, Plantain, Panla Sauce, Max Coke
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1500
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-1"
+              replace={false}
+              to="/meals/edit/1"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-1"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="2"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-public.food.jcts/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Egusi Semo
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Semolina, Egusi Soup, Meat, Extra
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1200
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-2"
+              replace={false}
+              to="/meals/edit/2"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-2"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="3"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://dynamic/production/ng/images/products/80/_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Green Calulu
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Chicken salad with extra cabbage
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1250
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-3"
+              replace={false}
+              to="/meals/edit/3"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-3"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="4"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://dynamic/production/ng/images/produc475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Onion Jappatti
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Ingera palate with raw meat sauce
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            2200
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-4"
+              replace={false}
+              to="/meals/edit/4"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-4"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div
+      className="center"
+    >
+      <a
+        activePage={1}
+        firstPageText="«"
+        getPageUrl={[Function]}
+        hideFirstLastPages={false}
+        innerClass="pagination"
+        itemsCountPerPage={5}
+        lastPageText="»"
+        nextPageText="⟩"
+        onChange={[Function]}
+        pageRangeDisplayed={5}
+        prevPageText="⟨"
+        totalItemsCount={5}
+      />
+    </div>
+    <Modal
+      ariaHideApp={false}
+      bodyOpenClassName="ReactModal__Body--open"
+      closeTimeoutMS={0}
+      contentLabel="delete-order"
+      isOpen={false}
+      parentSelector={[Function]}
+      portalClassName="ReactModalPortal"
+      shouldCloseOnEsc={true}
+      shouldCloseOnOverlayClick={true}
+      shouldFocusAfterRender={true}
+      shouldReturnFocusAfterClose={true}
+      style={
+        Object {
+          "content": Object {
+            "bottom": "auto",
+            "left": "50%",
+            "marginRight": "-50%",
+            "minWidth": "20rem",
+            "overflow": "hidden",
+            "right": "auto",
+            "top": "50%",
+            "transform": "translate(-50%, -50%)",
+            "width": "40%",
+          },
+          "overlay": Object {
+            "backgroundColor": "rgba(0, 0, 0, 0.25)",
+          },
+        }
+      }
+    >
+      <div
+        className="close-icon"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-times fa-2x"
+          />
+        </button>
+      </div>
+      <Connect(DeleteMeal)
+        closeModal={[Function]}
+      />
+    </Modal>
+  </div>
+</main>
+`;
+
+exports[`ManageMeals: MealList Component should should show modal when delete button is clicked 1`] = `
+<main
+  className="manage-meals-content"
+>
+  <h2
+    className="center cool-lg-text"
+  >
+    Manage Meals
+  </h2>
+  <Link
+    className="addMealLink"
+    replace={false}
+    to="/meals/create"
+  >
+    <div
+      className="addMealLinkD"
+    >
+      Add a New Meal
+    </div>
+  </Link>
+  <div
+    id="all-meal-table"
+  >
+    <h1
+      className="meal-table-title center"
+    >
+      All Meal List
+    </h1>
+    <div
+      className="contain-table-headers"
+    >
+      <p>
+        Image
+      </p>
+      <p>
+        Name
+      </p>
+      <p>
+        Description
+      </p>
+      <p>
+        Price
+      </p>
+      <p>
+        Actions
+      </p>
+    </div>
+    <div
+      className="meal-table"
+    >
+      <div
+        className="meal-table-item"
+        key="0"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-publicmages/products/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Nigerian Jollof
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Max Jollof rice, plantain, grilled turkey, bellefull Coke
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1100
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-0"
+              replace={false}
+              to="/meals/edit/0"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-0"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="1"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-g/images/products/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Rice and Beans
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Rice, Beans, Plantain, Panla Sauce, Max Coke
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1500
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-1"
+              replace={false}
+              to="/meals/edit/1"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-1"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="2"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://africa-public.food.jcts/80/80418_1465475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Egusi Semo
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Semolina, Egusi Soup, Meat, Extra
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1200
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-2"
+              replace={false}
+              to="/meals/edit/2"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-2"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="3"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://dynamic/production/ng/images/products/80/_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Green Calulu
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Chicken salad with extra cabbage
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            1250
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-3"
+              replace={false}
+              to="/meals/edit/3"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-3"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div
+        className="meal-table-item"
+        key="4"
+      >
+        <div
+          className="meal-table-item-img"
+        >
+          <p>
+            <img
+              alt=""
+              src="https://dynamic/production/ng/images/produc475724_ma.jpg"
+            />
+          </p>
+        </div>
+        <div
+          className="meal-table-item-name"
+        >
+          <p>
+            Onion Jappatti
+          </p>
+        </div>
+        <div
+          className="meal-table-item-desc"
+        >
+          <p>
+            Ingera palate with raw meat sauce
+          </p>
+        </div>
+        <div
+          className="meal-table-item-price"
+        >
+          <p>
+            ₦ 
+            2200
+          </p>
+        </div>
+        <div
+          className="meal-table-item-action"
+        >
+          <p>
+            <Link
+              className="mg-meal-btn btn-spacer"
+              id="edit-meal-4"
+              replace={false}
+              to="/meals/edit/4"
+            >
+              Edit
+            </Link>
+            <Link
+              className="mg-meal-btn btn-danger"
+              id="delete-meal-4"
+              onClick={[Function]}
+              replace={false}
+              to="#"
+            >
+              Delete
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div
+      className="center"
+    >
+      <a
+        activePage={1}
+        firstPageText="«"
+        getPageUrl={[Function]}
+        hideFirstLastPages={false}
+        innerClass="pagination"
+        itemsCountPerPage={5}
+        lastPageText="»"
+        nextPageText="⟩"
+        onChange={[Function]}
+        pageRangeDisplayed={5}
+        prevPageText="⟨"
+        totalItemsCount={5}
+      />
+    </div>
+    <Modal
+      ariaHideApp={false}
+      bodyOpenClassName="ReactModal__Body--open"
+      closeTimeoutMS={0}
+      contentLabel="delete-order"
+      isOpen={false}
+      parentSelector={[Function]}
+      portalClassName="ReactModalPortal"
+      shouldCloseOnEsc={true}
+      shouldCloseOnOverlayClick={true}
+      shouldFocusAfterRender={true}
+      shouldReturnFocusAfterClose={true}
+      style={
+        Object {
+          "content": Object {
+            "bottom": "auto",
+            "left": "50%",
+            "marginRight": "-50%",
+            "minWidth": "20rem",
+            "overflow": "hidden",
+            "right": "auto",
+            "top": "50%",
+            "transform": "translate(-50%, -50%)",
+            "width": "40%",
+          },
+          "overlay": Object {
+            "backgroundColor": "rgba(0, 0, 0, 0.25)",
+          },
+        }
+      }
+    >
+      <div
+        className="close-icon"
+      >
+        <button
+          onClick={[Function]}
+        >
+          <i
+            className="fas fa-times fa-2x"
+          />
+        </button>
+      </div>
+      <Connect(DeleteMeal)
+        closeModal={[Function]}
+      />
+    </Modal>
+  </div>
+</main>
+`;
