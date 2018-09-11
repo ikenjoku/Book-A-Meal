@@ -1,9 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`it should render 404 Page correctly 1`] = `
-<h3>
+<h3
+  id="not-found"
+>
   <p>
-    Nothing here to see
+    Nothing to see here
+  </p>
+  <p>
+    404
   </p>
   <Link
     replace={false}

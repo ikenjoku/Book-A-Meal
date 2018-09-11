@@ -13,6 +13,7 @@ import AddMeal from './ManageMeals/AddMealForm';
 import EditMeal from './ManageMeals/EditMealForm';
 import OrderHistory from './OrderHistory/OrderHistory';
 import withAuthentication from '../components/ProtectRoute';
+import isAdmin from '../components/AdminRoute';
 
 const App = () => (
   <BrowserRouter>
@@ -23,11 +24,11 @@ const App = () => (
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/menu" component={withAuthentication(Menu)} />
-        <Route path="/meals" exact component={withAuthentication(MealList)} />
-        <Route path="/meals/create" component={withAuthentication(AddMeal)} />
-        <Route path="/meals/edit/:id" component={withAuthentication(EditMeal)} />
-        <Route path="/order-history" component={withAuthentication(OrderHistory)} />
-        <Route path="/set-menu" component={withAuthentication(SetupMenu)} />
+        <Route path="/meals" exact component={isAdmin(MealList)} />
+        <Route path="/meals/create" component={isAdmin(AddMeal)} />
+        <Route path="/meals/edit/:id" component={isAdmin(EditMeal)} />
+        <Route path="/order-history" component={isAdmin(OrderHistory)} />
+        <Route path="/set-menu" component={isAdmin(SetupMenu)} />
         <Route component={NotFound} />
       </Switch>
       <Footer />

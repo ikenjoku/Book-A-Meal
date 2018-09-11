@@ -6,7 +6,7 @@ import LoginRedirect from '../components/Auth/LoginRedirect'
 
 
 export default (ComposedComponent) => {
-  class ProtectRoute extends Component {
+  class AdminRoute extends Component {
     isLoggedIn = () => {
       if (localStorage.BAMtoken) {
         return true;
@@ -22,10 +22,12 @@ export default (ComposedComponent) => {
     }
 
     render() {
-      if (this.isLoggedIn() && !this.isInValidToken()) {
+      const { isAdmin } = this.props;
+
+      if (this.isLoggedIn() && !this.isInValidToken() && isAdmin) {
         return <ComposedComponent {...this.props} />;
       }
-      notify.error('Please log in to proceed');
+      notify.error('Permissions Required. Re-login to continue');
       return <LoginRedirect />;
     }
   }
@@ -34,5 +36,5 @@ export default (ComposedComponent) => {
     isLoggedIn: authReducer.isLoggedIn,
     isAdmin: authReducer.user.isAdmin,
   });
-  return connect(mapStateToProps, null)(ProtectRoute);
+  return connect(mapStateToProps, null)(AdminRoute);
 };

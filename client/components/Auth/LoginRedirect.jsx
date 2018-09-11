@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import notify from '../../actions/notify';
+import { logoutAUser } from '../../actions/authActions/logout';
 
-const LoginRedirect = () => {
-  notify.error('Please log in to proceed');
+class LoginRedirect extends Component{
+  componentDidMount(){
+    this.props.logoutAUser()
+  }
+  render(){
   return (<Redirect to="/login" />);
-};
+  }
+} 
 
-export default LoginRedirect;
+export default connect(null, { logoutAUser })(LoginRedirect);
