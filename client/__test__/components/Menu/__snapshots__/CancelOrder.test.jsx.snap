@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cancel Order Component it should render the MealForm correctly 1`] = `
+<div
+  className="confirm-modal"
+>
+  <h3>
+    Are you sure you want to cancel this order?
+  </h3>
+  <div>
+    <button
+      id="confirm-cancel-order"
+      onClick={[Function]}
+    >
+      Yes
+    </button>
+    <button
+      onClick={[MockFunction]}
+    >
+      No
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Cancel Order Component should call cancel order action on click 1`] = `
+<div
+  className="confirm-modal"
+>
+  <h3>
+    Are you sure you want to cancel this order?
+  </h3>
+  <div>
+    <button
+      id="confirm-cancel-order"
+      onClick={[Function]}
+    >
+      Yes
+    </button>
+    <button
+      onClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        }
+      }
+    >
+      No
+    </button>
+  </div>
+</div>
+`;

@@ -30,16 +30,17 @@ exports[`UpdateOrder Component should render UpdateOrder correctly 1`] = `
     <tbody>
       <tr>
         <td>
-          Egusi Semo
+          Rice and Beans
         </td>
         <td>
           <QuantityField
             handleChange={[Function]}
+            quantity={2}
           />
         </td>
         <td>
           ₦ 
-          NaN
+          3000
           .00
         </td>
       </tr>
@@ -49,6 +50,7 @@ exports[`UpdateOrder Component should render UpdateOrder correctly 1`] = `
     className="order-btn-container"
   >
     <button
+      id="confirm-update-order"
       onClick={[Function]}
     >
       Update Order

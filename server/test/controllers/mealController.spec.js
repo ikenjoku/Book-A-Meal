@@ -321,3 +321,38 @@ describe('Given DELETE /api/v1/meals/:id', () => {
     });
   });
 });
+
+describe('Customers', () => {
+  it('should not be able to add a new meal and return the meal added', (done) => {
+    chai.request(app)
+      .post('/api/v1/meals')
+      .set('x-access-token', userToken)
+      .set('Content-Type', 'multipart/form-data')
+      .field('name', 'Ingera Meat')
+      .field('description', 'Spicy hot meat flakes with stew')
+      .field('price', 1500)
+      .attach('imageurl', `${__dirname}/testmeal.png`)
+      .end((err, res) => {
+        res.should.have.status(403);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message').eql('You are not authorised');
+        done();
+      });
+  });
+  it('should not be able to update a meal', (done) => {
+    chai.request(app)
+      .put('/api/v1/meals/2')
+      .set('x-access-token', userToken)
+      .set('Content-Type', 'multipart/form-data')
+      .field('name', 'Rice Sauce')
+      .field('description', 'Rice, Beans, Plantain, Panla Sauce, Max Coke')
+      .field('price', 1550)
+      .attach('imageurl', `${__dirname}/testmeal.png`)
+      .end((err, res) => {
+        res.should.have.status(403);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message').eql('You are not authorised');
+        done();
+      });
+  });
+});

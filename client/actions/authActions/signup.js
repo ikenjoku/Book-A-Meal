@@ -15,8 +15,7 @@ const signUpFailure = error => ({
 });
 
 export const signupAUser = signupData => (dispatch) => {
-  dispatch(isLoading(true));
-  API.post('/auth/signup', signupData)
+  return API.post('/auth/signup', signupData)
     .then((res) => {
       const token = res.data.token;
       localStorage.setItem('BAMtoken', token);

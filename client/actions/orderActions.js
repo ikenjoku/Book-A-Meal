@@ -30,9 +30,9 @@ const getOrdersFailure = error => ({
   error,
 });
 
-const getPreviousOrdersSuccess = orders => ({
+const getPreviousOrdersSuccess = ({ previousOrders }) => ({
   type: GET_ALL_PREVIOUS_ORDERS_SUCCESS,
-  previousOrders: orders,
+  previousOrders,
 });
 
 const getPreviousOrdersFailure = error => ({
@@ -85,68 +85,68 @@ export const modifyOrderStatus = (status, orderId = '') => ({
 });
 
 export const getAllPreviousOrders = userId => (dispatch) => {
-  API.get(`/orders?userId=${userId}`)
+  return API.get(`/orders?userId=${userId}`)
     .then((res) => {
-      dispatch(getPreviousOrdersSuccess(res.data.orders));
+      dispatch(getPreviousOrdersSuccess({ previousOrders: res.data.orders }));
     })
     .catch((error) => {
-      dispatch(getPreviousOrdersFailure(error));
+      dispatch(getPreviousOrdersFailure(error.response.data));
     });
 };
 
 export const orderAMeal = ({ mealId, quantity, userId }) => (dispatch) => {
-  API.post('/orders', { mealId, quantity })
+  return API.post('/orders', { mealId, quantity })
     .then((res) => {
       dispatch(orderMealSuccess({ order: res.data.order }));
       dispatch(getAllPreviousOrders(userId));
       notify.success(res.data.message);
     })
     .catch((error) => {
-      dispatch(orderMealFailure(error));
+      dispatch(orderMealFailure(error.response.data));
       notify.error(error.message);
     });
 };
 
 export const getOrdersByDate = ({ selectedDate }) => (dispatch) => {
   dispatch(isLoadingOrders(true));
-  API.get(`/orders?date=${selectedDate}`)
+  return API.get(`/orders?date=${selectedDate}`)
     .then(({ data: { orders } }) => {
       dispatch(getOrdersSucces(orders));
       dispatch(isLoadingOrders(false));
     })
     .catch((error) => {
+      dispatch(getOrdersFailure(error.response.data));
       dispatch(isLoadingOrders(false));
-      dispatch(getOrdersFailure(error));
       notify.error(error.response.data.message);
     });
 };
 
 export const deliverAnOrder = id => (dispatch) => {
-  API.put(`/orders/${id}`, { status: 'delivered' })
+  return API.put(`/orders/${id}`, { status: 'delivered' })
     .then((res) => {
       dispatch(deliverOrderSuccess({ deliveredOrder: res.data.order, id }));
       notify.success(res.data.message);
     })
     .catch((error) => {
-      dispatch(deliverOrderFailure(error));
+      dispatch(deliverOrderFailure(error.response.data));
       notify.error(error.response.data.message);
     });
 };
 
 export const cancelAnOrder = id => (dispatch) => {
-  API.put(`/orders/${id}`, { status: 'cancelled' })
+  return API.put(`/orders/${id}`, { status: 'cancelled' })
     .then((res) => {
       dispatch(cancelOrderSuccess({ cancelledOrder: res.data.order, id }));
       notify.success(res.data.message);
     })
     .catch((error) => {
-      dispatch(cancelOrderFailure(error));
+      dispatch(cancelOrderFailure(error.response.data));
       notify.error(error.response.data.message);
     });
 };
 
 export const modifyAnOrder = ({ id, newMealId }) => (dispatch) => {
-  API.put(`/orders/${id}`, { newMealId })
+  return API.put(`/orders/${id}`, { newMealId })
     .then((res) => {
       dispatch(modifyOrderSuccess({ modifiedOrder: res.data.order, id }));
       dispatch(getAllPreviousOrders());
@@ -154,14 +154,14 @@ export const modifyAnOrder = ({ id, newMealId }) => (dispatch) => {
       notify.success(res.data.message);
     })
     .catch((error) => {
-      dispatch(modifyOrderFailure(error));
+      dispatch(modifyOrderFailure(error.response.data));
       dispatch(modifyOrderStatus(false));
       notify.error(error.response.data.message);
     });
 };
 
 export const updateAnOrder = ({ id, quantity, amount, userId }) => (dispatch) => {
-  API.put(`/orders/${id}`, { quantity, amount })
+  return API.put(`/orders/${id}`, { quantity, amount })
     .then((res) => {
       dispatch(modifyOrderSuccess({ modifiedOrder: res.data.order, id }));
       dispatch(getAllPreviousOrders(userId));
@@ -169,7 +169,7 @@ export const updateAnOrder = ({ id, quantity, amount, userId }) => (dispatch) =>
       notify.success(res.data.message);
     })
     .catch((error) => {
-      dispatch(modifyOrderFailure(error));
+      dispatch(modifyOrderFailure(error.response.data));
       dispatch(modifyOrderStatus(false));
       notify.error(error.response.data.message);
     });

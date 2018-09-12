@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import MealForm from "./MealForm";
-import { updateAMeal } from "../../actions/mealActions";
+import MealForm from './MealForm';
+import { updateAMeal } from '../../actions/mealActions';
 
 export class EditMealForm extends Component {
   onSubmit = (meal) => {
@@ -26,10 +26,11 @@ export class EditMealForm extends Component {
 EditMealForm.propTypes = {
   updateAMeal: PropTypes.func.isRequired,
   meal: PropTypes.object.isRequired,
-}
+  history: PropTypes.object.isRequired,
+};
 
 export const mapStateToProps = (state, props) => ({
-  meal: state.mealReducer.paginatedMeals.find((meal) => meal.id === Number(props.match.params.id))
+  meal: state.mealReducer.paginatedMeals.find(meal => meal.id === Number(props.match.params.id)),
 });
 
 export default connect(mapStateToProps, { updateAMeal })(EditMealForm);

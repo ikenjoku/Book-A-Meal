@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
   .put('/meals/:id', uploadImage.single('imageurl'), validateMealUpdate, validateId, authenticate, isAdmin, mealController.updateMeal)
   .delete('/meals/:id', validateId, authenticate, isAdmin, mealController.removeMeal)
 
-  .get('/menu', menuController.getMenu)
+  .get('/menu', authenticate, menuController.getMenu)
   .post('/menu', authenticate, isAdmin, validateMenuSetup, menuController.createMenu)
   .put('/menu/:id', authenticate, isAdmin, validateMenuSetup, menuController.UpdateMenu)
 

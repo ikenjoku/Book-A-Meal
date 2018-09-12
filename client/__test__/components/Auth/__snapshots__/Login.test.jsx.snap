@@ -6,6 +6,7 @@ exports[`Login Component it should render Login form correctly 1`] = `
 >
   <form
     className="form-wrapper"
+    id="login-form"
     onSubmit={[Function]}
   >
     <h2
@@ -42,7 +43,7 @@ exports[`Login Component it should render Login form correctly 1`] = `
     </div>
     <hr />
     <div
-      className="right formText"
+      className="right form-text"
     >
       <p>
         No Account? 
@@ -61,7 +62,6 @@ exports[`Login Component it should render Login form correctly 1`] = `
 
 exports[`Login Component should map state to props 1`] = `
 Object {
-  "authLoading": true,
   "isLoggedIn": false,
 }
 `;

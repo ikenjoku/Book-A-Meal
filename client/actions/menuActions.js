@@ -3,9 +3,9 @@ import {
   GET_MENU_SUCCESS, GET_MENU_FAILURE,
 } from './actionTypes';
 
-const getMenuSuccess = selectedMenu => ({
+const getMenuSuccess = ({ menu }) => ({
   type: GET_MENU_SUCCESS,
-  selectedMenu: selectedMenu.menu,
+  selectedMenu: menu,
 });
 
 const getMenuFailure = error => ({
@@ -14,13 +14,12 @@ const getMenuFailure = error => ({
 });
 
 export const getAMenu = ({ selectedDate }) => (dispatch) => {
-  API.get(`/menu?date=${selectedDate}`)
+  return API.get(`/menu?date=${selectedDate}`)
     .then((res) => {
-      dispatch(getMenuSuccess(res.data));
-      // dispatch notification
+      dispatch(getMenuSuccess({ menu: res.data.menu }));
     })
     .catch((error) => {
-      dispatch(getMenuFailure(error));
+      dispatch(getMenuFailure(error.response.data));
     });
 };
 

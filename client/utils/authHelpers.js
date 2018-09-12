@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import { browserHistory } from 'react-router-dom';
 
 export const setAuthorizationToken = (token) => {
@@ -13,3 +14,11 @@ export const logout = () => {
   browserHistory.push('/');
 };
 
+export const isExpiredToken = (token) => {
+  const { exp } = jwtDecode(token);
+  if (Date.now() / 1000 > exp) {
+    localStorage.removeItem('BAMtoken');
+    return true;
+  }
+  return false;
+};

@@ -83,6 +83,8 @@ export const mockStoreData = {
         updatedAt: new Date(),
       },
     ],
+    count: 2,
+    pages: 1,
     error: null,
     isLoading: false,
 
@@ -288,3 +290,113 @@ export const testUsers = [
     isAdmin: false,
   },
 ];
+
+export const testOrder = {
+  id: 2,
+  date: '2018-05-16',
+  amount: 1500,
+  userId: 1,
+  quantity: 2,
+  mealId: 2,
+  status: 'cancelled',
+  createdAt: '2018-05-23T19:56:44.346Z',
+  updatedAt: '2018-05-23T19:56:44.346Z',
+  User: {
+    id: 1,
+    firstname: 'Ezinne',
+    lastname: 'Njoku',
+  },
+  Meal: {
+    id: 2,
+    name: 'Rice and Beans',
+    price: 1500,
+  },
+};
+
+export const testOrders = [
+  {
+    id: 2,
+    date: '2018-05-16',
+    amount: 1500,
+    userId: 1,
+    quantity: 2,
+    mealId: 2,
+    status: 'cancelled',
+    createdAt: '2018-05-23T19:56:44.346Z',
+    updatedAt: '2018-05-23T19:56:44.346Z',
+    User: {
+      id: 1,
+      firstname: 'Ezinne',
+      lastname: 'Njoku',
+    },
+    Meal: {
+      id: 2,
+      name: 'Rice and Beans',
+      price: 1500,
+    },
+  },
+  {
+    id: 3,
+    date: '2018-05-16',
+    amount: 1200,
+    userId: 2,
+    quantity: 2,
+    mealId: 3,
+    status: 'pending',
+    createdAt: '2018-05-23T19:56:44.346Z',
+    updatedAt: '2018-05-23T19:56:44.346Z',
+    User: {
+      id: 2,
+      firstname: 'Kelechi',
+      lastname: 'Njoku',
+    },
+    Meal: {
+      id: 3,
+      name: 'Egusi Semo',
+      price: 1200,
+    },
+  },
+  {
+    id: 4,
+    date: '2018-05-16',
+    amount: 1500,
+    userId: 3,
+    quantity: 2,
+    mealId: 3,
+    status: 'delivered',
+    createdAt: '2018-05-23T19:56:44.346Z',
+    updatedAt: '2018-05-23T19:56:44.346Z',
+    User: {
+      id: 3,
+      firstname: 'Nnamdi',
+      lastname: 'James',
+    },
+    Meal: {
+      id: 3,
+      name: 'Egusi Semo',
+      price: 1200,
+    },
+  },
+];
+
+export const deliveredOrder = {
+  id: 3,
+  date: '2018-05-16',
+  amount: 1200,
+  userId: 2,
+  quantity: 2,
+  mealId: 3,
+  status: 'delivered',
+  createdAt: '2018-05-23T19:56:44.346Z',
+  updatedAt: '2018-05-23T19:56:44.346Z',
+  User: {
+    id: 2,
+    firstname: 'Kelechi',
+    lastname: 'Njoku',
+  },
+  Meal: {
+    id: 3,
+    name: 'Egusi Semo',
+    price: 1200,
+  },
+};

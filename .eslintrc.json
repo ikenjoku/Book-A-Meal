@@ -2,16 +2,25 @@
     "extends": "airbnb",
     "env":{
         "mocha": true,
-        "browser": true
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "jest": true
     },
+    "parser": "babel-eslint",
     "rules": {
         "import/no-extraneous-dependencies": "off",
+        "import/no-named-as-default": "off",
         "import/no-dynamic-require": "off",
         "import/prefer-default-export": "off",
         "no-param-reassign": "off",
         "consistent-return": "off",
         "prefer-destructuring": "off",
         "no-case-declarations": "off",
-        "object-curly-newline":"off"
+        "object-curly-newline":"off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "react/forbid-prop-types": "off",
+        "no-shadow": "off",
+        "func-names": "off"
     }
 }

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePicker Component should render DatePicker correctly 1`] = `
+<div
+  className="order-history-date-picker center"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="input-field-control"
+      name="menu-date"
+      onChange={[Function]}
+      type="date"
+      value=""
+    />
+    <input
+      className="input-btn-control"
+      type="submit"
+      value="Do something"
+    />
+  </form>
+</div>
+`;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Pagination from "react-js-pagination";
+import Pagination from 'react-js-pagination';
 import { connect } from 'react-redux';
 import { getAMeals } from '../../actions/setupMenuActions';
 import MealCheckList from './MealCheckList';
@@ -38,8 +38,8 @@ export class MealSetupForm extends Component {
 
   handlePageChange = (pageNumber) => {
     const limit = 5;
-    this.props.getAMeals({limit, page:pageNumber});
-    this.setState(() => ({activePage: pageNumber}));
+    this.props.getAMeals({ limit, page: pageNumber });
+    this.setState(() => ({ activePage: pageNumber }));
   }
 
   render() {
@@ -49,42 +49,51 @@ export class MealSetupForm extends Component {
         onSubmit={this.handleSubmit}
       >
         <div>
-          <button className='calender-btn'><i className="far fa-calendar-alt fa-2x"></i></button>
+          <button className="calender-btn">
+            <i className="far fa-calendar-alt fa-2x" />
+          </button>
           <input
             readOnly
             name="date"
-            type='date'
+            type="date"
             value={this.state.date}
           />
         </div>
         <h3>Choose meals to add to menu</h3>
-        <div className='meal-check-list'>
+        <div id="meal-check-list" className="meal-check-list">
           <MealCheckList
             meals={this.props.meals}
             handleSelect={this.handleSelect}
           />
         </div>
-        <div className='center'>      
-            <Pagination
-                activePage={this.state.activePage}
-                itemsCountPerPage={5}
-                totalItemsCount={this.props.count}
-                pageRangeDisplayed={5}
-                onChange={this.handlePageChange}
-              />
-          </div>
-        <div className='setup-btn-container'>
+        <div className="center">
+          <Pagination
+            activePage={this.state.activePage}
+            itemsCountPerPage={5}
+            totalItemsCount={this.props.count}
+            pageRangeDisplayed={5}
+            onChange={this.handlePageChange}
+          />
+        </div>
+        <div className="setup-btn-container">
           <button
+            id="setup-menu-btn"
             value="Submit"
             type="submit"
           >
             {this.props.action} Menu
-        </button>
+          </button>
         </div>
       </form>
     );
   }
 }
+
+MealSetupForm.propTypes = {
+  date: PropTypes.string.isRequired,
+  getAMeals: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
+};
 
 export const mapStateToProps = state => ({
   count: state.setupMenuReducer.count,

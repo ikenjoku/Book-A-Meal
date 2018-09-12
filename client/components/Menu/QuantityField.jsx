@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const QuantityField = ({ quantity, handleChange }) => {
-  return (
+const QuantityField = ({ quantity, handleChange }) =>
+  (
     <input
       className="quantity-field"
       type="number"
@@ -12,6 +12,10 @@ const QuantityField = ({ quantity, handleChange }) => {
       onChange={handleChange}
     />
   );
+
+QuantityField.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default QuantityField;
