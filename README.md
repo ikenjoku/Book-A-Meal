@@ -3,9 +3,8 @@
 
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ikenjoku/Book-A-Meal/badge.svg?branch=develop)](https://coveralls.io/github/ikenjoku/Book-A-Meal?branch=develop)
-[![Build Status](https://travis-ci.org/ikenjoku/Book-A-Meal.svg?branch=develop)](https://travis-ci.org/ikenjoku/Book-A-Meal)
+[![Build Status](https://travis-ci.org/ikenjoku/Book-A-Meal.svg?branch=ft-implement-code-review-feedback-159572751)](https://travis-ci.org/ikenjoku/Book-A-Meal)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8e5a45961bc5c768c684/maintainability)](https://codeclimate.com/github/ikenjoku/Book-A-Meal/maintainability)
-
 ## A Food Vendor App
 
 Book-A-Meal is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat.
